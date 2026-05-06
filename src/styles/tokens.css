@@ -1,0 +1,50 @@
+/* 육즙관리소 브랜드 디자인 토큰 — Forest Sage palette */
+/* shadcn 토큰과 공존: 브랜드 시그니처 영역만 이 토큰을 사용 */
+
+:root {
+  /* Surface */
+  --color-canvas: #FAF6EE;        /* warm ivory — 90% surface */
+  --color-canvas-soft: #F2EBDD;
+  --color-taupe: #C9BBA8;
+  --color-stone: #3D4046;
+
+  /* Brand */
+  --color-forest: #1F3D2A;        /* signature 다크 */
+  --color-forest-mid: #2D5E3A;    /* accent */
+  --color-cream-gold: #D4C39A;    /* 로고/강조 */
+
+  /* Text */
+  --color-ink: #181D26;
+  --color-body: #4A6B52;
+
+  /* Borders */
+  --color-hairline: #D6DDD0;
+
+  /* Punctuation */
+  --color-coral: #AA2D00;         /* 셰프 권위 1곳에만 */
+
+  /* Radius */
+  --radius-cta: 4px;
+  --radius-card: 10px;
+  --radius-input: 6px;
+  --radius-pill: 9999px;
+
+  /* Spacing */
+  --spacing-section: 96px;
+  --spacing-section-mobile: 64px;
+}
+
+@theme {
+  /* Tailwind v4: 위 :root 변수를 Tailwind utility로 노출 */
+  --color-canvas: #FAF6EE;
+  --color-canvas-soft: #F2EBDD;
+  --color-taupe: #C9BBA8;
+  --color-stone: #3D4046;
+  --color-forest: #1F3D2A;
+  --color-forest-mid: #2D5E3A;
+  --color-cream-gold: #D4C39A;
+  --color-ink: #181D26;
+  --color-body: #4A6B52;
+  --color-hairline: #D6DDD0;
+  --color-coral: #AA2D00;
+}
