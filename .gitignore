@@ -47,3 +47,7 @@ _*.html
 
 # Pencil 임시 doc
 pencil-new.pen
+
+# Claude Code worktrees (embedded git repos)
+.claude/worktrees/
+.claude/sessions/
