@@ -75,7 +75,9 @@
       "Bash(mkdir -p _unused_internal_naver_pull)",
       "Bash(mv 매장사진_양재/* _unused_internal_naver_pull/)",
       "Bash(rmdir 매장사진_양재)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "mcp__supabase__apply_migration",
+      "mcp__supabase__get_advisors"
     ]
   }
 }
