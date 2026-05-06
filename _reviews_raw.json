@@ -1,0 +1,8 @@
+{
+  "양재역점": {
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  "더룸 을지로": {
+    "error": "HTTP Error 429: Too Many Requests"
+  }
+}
