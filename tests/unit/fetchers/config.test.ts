@@ -11,11 +11,9 @@ vi.mock('next/cache', () => ({
 import { createPublicClient } from '@/lib/supabase/service'
 import { getSiteConfig, getSiteConfigValue } from '@/lib/fetchers/config'
 
+const mockSelect = vi.fn()
 const mockClient = {
-  from: vi.fn().mockReturnThis(),
-  select: vi.fn().mockReturnThis(),
-  eq: vi.fn().mockReturnThis(),
-  single: vi.fn(),
+  from: vi.fn(() => ({ select: mockSelect })),
 }
 
 beforeEach(() => {
@@ -26,14 +24,12 @@ beforeEach(() => {
 
 describe('getSiteConfig', () => {
   it('returns record map from DB', async () => {
-    mockClient.from.mockReturnValue({
-      select: vi.fn().mockResolvedValue({
-        data: [
-          { key: 'chef_video_url', value: 'https://www.youtube.com/shorts/abc', updated_at: null },
-          { key: 'hero_h1', value: '테스트 제목', updated_at: null },
-        ],
-        error: null,
-      }),
+    mockSelect.mockResolvedValue({
+      data: [
+        { key: 'chef_video_url', value: 'https://www.youtube.com/shorts/abc' },
+        { key: 'hero_h1', value: '테스트 제목' },
+      ],
+      error: null,
     })
 
     const result = await getSiteConfig()
@@ -42,6 +38,11 @@ describe('getSiteConfig', () => {
       chef_video_url: 'https://www.youtube.com/shorts/abc',
       hero_h1: '테스트 제목',
     })
+  })
+
+  it('throws when DB returns error', async () => {
+    mockSelect.mockResolvedValue({ data: null, error: { message: 'DB error', code: '500' } })
+    await expect(getSiteConfig()).rejects.toMatchObject({ message: 'DB error' })
   })
 
   it('returns empty object when env var missing', async () => {
@@ -53,8 +54,10 @@ describe('getSiteConfig', () => {
 
 describe('getSiteConfigValue', () => {
   it('returns value for existing key', async () => {
-    mockClient.single.mockResolvedValue({
-      data: { key: 'chef_video_url', value: 'https://www.youtube.com/shorts/abc', updated_at: null },
+    mockSelect.mockResolvedValue({
+      data: [
+        { key: 'chef_video_url', value: 'https://www.youtube.com/shorts/abc' },
+      ],
       error: null,
     })
 
@@ -63,7 +66,7 @@ describe('getSiteConfigValue', () => {
   })
 
   it('returns null for missing key', async () => {
-    mockClient.single.mockResolvedValue({ data: null, error: { code: 'PGRST116' } })
+    mockSelect.mockResolvedValue({ data: [], error: null })
     const result = await getSiteConfigValue('nonexistent')
     expect(result).toBeNull()
   })
