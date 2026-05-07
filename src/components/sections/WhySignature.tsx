@@ -5,10 +5,10 @@ import { getSignatureItems } from '@/lib/fetchers/menu'
 import { COPY_KO } from '@/lib/constants/brand'
 
 const PILLARS = [
-  { icon: '🏔', title: '산지 직거래',      description: '팔도의 가장 좋은 식재료를 고집합니다. 야생쑥을 먹고 자란 산청 흑돼지·거창 백돼지 — 불포화지방산이 풍부하고 쫄깃한 육질의 비결.' },
+  { icon: '🏔', title: '가장 좋은 식재료',  description: '팔도의 가장 좋은 식재료를 고집합니다. 야생쑥을 먹고 자란 산청 흑돼지·거창 백돼지 — 불포화지방산이 풍부하고 쫄깃한 육질의 비결.' },
   { icon: '⚛',  title: '특허 파동숙성',   description: '파동 에너지로 근섬유를 이완시켜 효소 숙성을 극대화. 육즙 손실 없이 고기 전체가 고르게 부드러워지고, 잡내 없이 깊고 진한 풍미를 끌어냅니다.' },
   { icon: '💨', title: '하향식 덕트',      description: '연기·냄새를 식탁 아래로 즉시 흡입. 옷에 냄새가 배지 않고 눈이 맵지 않아, 데이트·회식·청첩장 자리에서도 깔끔하게 즐길 수 있습니다.' },
-  { icon: '🫙', title: '수제 반찬 무한리필', description: '매장에서 직접 만드는 반찬과 소스. 유자청 겉절이 · 계절 장아찌 · 고급 수향미 밥 무한리필.' },
+  { icon: '🫙', title: '직접 담근 정성찬',  description: '매장에서 직접 만드는 반찬과 소스. 유자청 겉절이 · 계절 장아찌 · 고급 수향미 밥 무한리필.' },
 ]
 
 export async function WhySignature() {

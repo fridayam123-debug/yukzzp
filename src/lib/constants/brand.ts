@@ -64,7 +64,7 @@ export const COPY_KO = {
   pillars: [
     {
       key: 'origin',
-      title: '산지 직거래',
+      title: '가장 좋은 식재료',
       description: '팔도의 가장 좋은 식재료를 고집합니다. 야생쑥을 먹고 자란 산청 흑돼지·거창 백돼지 — 불포화지방산이 풍부하고 쫄깃한 육질의 비결.',
     },
     {
@@ -79,7 +79,7 @@ export const COPY_KO = {
     },
     {
       key: 'sides',
-      title: '수제 반찬 무한리필',
+      title: '직접 담근 정성찬',
       description: '매장에서 직접 만드는 반찬과 소스. 유자청 겉절이 · 계절 장아찌 · 고급 수향미 밥 무한리필.',
     },
   ],
