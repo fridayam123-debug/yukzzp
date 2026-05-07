@@ -2,12 +2,12 @@ import { BRAND, COPY_KO } from '@/lib/constants/brand'
 
 export function GroupCTA() {
   return (
-    <section id="group" className="bg-[var(--color-forest)] text-white py-16 md:py-24 px-6 md:px-24">
+    <section id="group" className="bg-[var(--color-forest)] text-white py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="aspect-[4/3] md:aspect-video rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-stone)]" aria-label="단체 회식 공간" />
         <div className="flex flex-col gap-6">
-          <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-cream-gold)]">{COPY_KO.groupEyebrow}</div>
-          <h2 className="text-[28px] md:text-[36px] font-normal leading-[1.15]">{COPY_KO.groupH2}</h2>
+          <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">{COPY_KO.groupEyebrow}</div>
+          <h2 className="text-[32px] md:text-[44px] font-normal leading-[1.05] tracking-[-0.01em]">{COPY_KO.groupH2}</h2>
           <p className="text-[15px] opacity-85 leading-[1.55]">{COPY_KO.groupSub}</p>
           <div className="flex flex-wrap gap-2">
             <span className="px-4 py-1.5 bg-[var(--color-forest-mid)] rounded-full text-[12px]">프라이빗 룸 · 4~16인</span>

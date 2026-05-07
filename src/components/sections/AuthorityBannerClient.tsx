@@ -7,13 +7,13 @@ import { CHEF_ENDORSEMENT, COPY_KO } from '@/lib/constants/brand'
 export function AuthorityBannerClient({ videoId }: { videoId: string }) {
   const [playing, setPlaying] = useState(false)
   return (
-    <section className="bg-[var(--color-coral)] py-16 md:py-24 px-6 md:px-24">
+    <section className="bg-[var(--color-coral)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-10 items-center">
         <div className="text-white order-2 md:order-1">
-          <div className="text-[11px] tracking-[2px] font-mono opacity-80">{COPY_KO.authorityEyebrow}</div>
-          <h2 className="text-[28px] md:text-[40px] font-normal mt-4 leading-[1.15]">{COPY_KO.authorityH2}</h2>
-          <p className="text-[20px] md:text-[24px] mt-2 opacity-90">{CHEF_ENDORSEMENT.videoTitle}</p>
-          <p className="text-[13px] mt-2 opacity-70 font-mono">공식 셰프 채널 {CHEF_ENDORSEMENT.viewCount.toLocaleString()}+ 조회</p>
+          <div className="text-[11px] tracking-[0.3em] uppercase opacity-80">{COPY_KO.authorityEyebrow}</div>
+          <h2 className="text-[32px] md:text-[48px] font-normal mt-5 leading-[1.05] tracking-[-0.01em]">{COPY_KO.authorityH2}</h2>
+          <p className="text-[20px] md:text-[26px] mt-3 opacity-90 font-normal">{CHEF_ENDORSEMENT.videoTitle}</p>
+          <p className="text-[12px] mt-3 opacity-70 tracking-[0.15em] uppercase">공식 셰프 채널 {CHEF_ENDORSEMENT.viewCount.toLocaleString()}+ 조회</p>
           <button
             onClick={() => setPlaying(true)}
             className="inline-flex items-center gap-2 bg-white text-[var(--color-coral)] px-7 py-3.5 rounded-[var(--radius-cta)] text-[14px] font-medium mt-6"

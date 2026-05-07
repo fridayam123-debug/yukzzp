@@ -62,9 +62,9 @@
   --radius-input: 6px;
   --radius-pill: 9999px;
 
-  /* ── Spacing (변경 없음) ──────────────────────────────── */
-  --spacing-section: 96px;
-  --spacing-section-mobile: 64px;
+  /* ── Spacing (LV 톤 적용 — 1.33x 확장) ────────────────── */
+  --spacing-section: 128px;          /* was 96px */
+  --spacing-section-mobile: 80px;    /* was 64px */
 }
 
 @theme {

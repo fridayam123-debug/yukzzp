@@ -4,10 +4,10 @@ type Loc = Database['public']['Tables']['locations']['Row']
 
 export function ReservationCTA({ locations }: { locations: Loc[] }) {
   return (
-    <section id="reserve" className="bg-[var(--color-canvas-soft)] py-16 md:py-24 px-6 md:px-24">
-      <div className="max-w-[1024px] mx-auto text-center flex flex-col gap-6 items-center">
-        <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">{COPY_KO.reservationEyebrow}</div>
-        <h2 className="text-[36px] md:text-[48px] font-normal text-[var(--color-ink)]">{COPY_KO.reservationH2}</h2>
+    <section id="reserve" className="bg-[var(--color-canvas-soft)] py-20 md:py-32 px-6 md:px-24">
+      <div className="max-w-[1024px] mx-auto text-center flex flex-col gap-7 items-center">
+        <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-body)]">{COPY_KO.reservationEyebrow}</div>
+        <h2 className="text-[44px] md:text-[56px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]">{COPY_KO.reservationH2}</h2>
         <p className="text-[15px] text-[var(--color-body)]">{COPY_KO.reservationSub}</p>
         <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full justify-center flex-wrap">
           {locations.map(loc => (

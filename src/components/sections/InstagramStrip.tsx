@@ -2,11 +2,11 @@ import { BRAND, COPY_KO } from '@/lib/constants/brand'
 
 export function InstagramStrip() {
   return (
-    <section id="instagram" className="bg-[var(--color-canvas)] py-12 md:py-16 px-6 md:px-24">
+    <section id="instagram" className="bg-[var(--color-canvas)] py-16 md:py-24 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
-          <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">{COPY_KO.instagramEyebrow}</div>
-          <a href={BRAND.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[14px] font-medium text-[var(--color-forest-mid)]">
+        <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
+          <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-body)]">{COPY_KO.instagramEyebrow}</div>
+          <a href={BRAND.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[14px] underline underline-offset-[6px] decoration-[1px] hover:decoration-[var(--color-cream-gold)] text-[var(--color-ink)]">
             {COPY_KO.instagramFollow}
           </a>
         </div>
