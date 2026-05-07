@@ -36,7 +36,7 @@ export function PillarCard({
       {/* Hanja — decorative illustration area */}
       <div className="flex justify-center py-6">
         <span
-          className="text-[88px] leading-none select-none text-[var(--color-hairline)] font-serif"
+          className="text-[62px] leading-none select-none text-[var(--color-hairline)] font-serif"
           aria-hidden="true"
         >
           {icon}
