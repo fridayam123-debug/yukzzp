@@ -14,14 +14,28 @@ export function GroupCTA() {
             <span className="px-4 py-1.5 bg-[var(--color-forest-mid)] rounded-full text-[12px]">단체석 · 20~40인</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
-            <a href="tel:0507-1335-6363" className="inline-flex items-center justify-center gap-2 bg-[var(--color-cream-gold)] text-[var(--color-ink)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px]">
+            {/* Primary: Hanji solid + Brass border (양재 본점) */}
+            <a
+              href="tel:0507-1335-6363"
+              className="inline-flex items-center justify-center gap-2 bg-[var(--color-canvas)] text-[var(--color-ink)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-canvas-soft)] transition-colors"
+            >
               ☎ {COPY_KO.groupCtaCall} (양재)
             </a>
-            <a href="tel:0507-1461-7228" className="inline-flex items-center justify-center gap-2 bg-[var(--color-cream-gold)] text-[var(--color-ink)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px]">
+            {/* Secondary: Outline (transparent on espresso bg) + Brass border (을지로) */}
+            <a
+              href="tel:0507-1461-7228"
+              className="inline-flex items-center justify-center gap-2 bg-transparent text-[var(--color-canvas)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-cream-gold)]/10 transition-colors"
+            >
               ☎ {COPY_KO.groupCtaCall} (을지로)
             </a>
+            {/* Accent: Brass solid (카카오) */}
             {BRAND.kakaoChannelUrl && (
-              <a href={BRAND.kakaoChannelUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#FEE500] text-[var(--color-ink)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px]">
+              <a
+                href={BRAND.kakaoChannelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[var(--color-cream-gold)] text-[var(--color-ink)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:opacity-90 transition-opacity"
+              >
                 {COPY_KO.groupCtaKakao}
               </a>
             )}

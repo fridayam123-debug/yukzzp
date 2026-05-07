@@ -1,50 +1,90 @@
-/* 육즙관리소 브랜드 디자인 토큰 — Warm Stone palette */
-/* shadcn 토큰과 공존: 브랜드 시그니처 영역만 이 토큰을 사용 */
+/* 육즙관리소 브랜드 디자인 토큰 — Pantone 5+1 시스템 (옵션 A 확정 2026-05-08) */
+/* Spec: docs/superpowers/specs/2026-05-08-yukzzp-color-system-design.md (cranky-heyrovsky-ea8d8b) */
+
+/*
+ * 6 Canonical 컬러:
+ *   Hanji Cream  (Highlight)  - 한지·백자
+ *   Cream Stone  (Light)      - 분청사기·콘크리트 라이트
+ *   Brand Taupe  (Hero ★)     - 사장님 시그너처 (Litt.ly 메인 #BBACAA)
+ *   Soft Slate   (Mid-Dark)   - 옹기 표면
+ *   Espresso     (Anchor)     - 먹·옻칠
+ *   Brass / 놋쇠 (Signature)  - 놋그릇·골드 액센트
+ *
+ * 운영 규칙 (스펙 §3):
+ *   - 본문 텍스트 = Espresso 단독 (다른 컬러 본문 금지)
+ *   - Soft Slate 본문 금지 (헤어라인/캡션/아이콘 only)
+ *   - Brand Taupe 텍스트 금지 (Hero·면으로만 사용)
+ *   - Brass 본문 금지 (Large 24px+ 헤드라인·가격·CTA only)
+ *   - Primary CTA = Espresso bg + Hanji text (9.04:1 AAA)
+ */
 
 :root {
-  /* Surface */
-  --color-canvas: #FAF7F2;        /* warm ivory — 90% surface */
-  --color-canvas-soft: #EDE6DC;
-  --color-taupe: #C9BBA8;
-  --color-stone: #3A3530;
+  /* ── Surface ──────────────────────────────────────────── */
+  --color-canvas: #E8DFD2;        /* Hanji Cream — Highlight (90% surface) */
+  --color-canvas-soft: #CFC6C0;   /* Cream Stone — Light section */
+  --color-taupe: #BBACAA;         /* Brand Taupe ★ 사장님 Hero */
+  --color-stone: #3A3431;         /* Espresso (alias to anchor — 다크 시그너처 카드) */
 
-  /* Brand */
-  --color-forest: #2A2520;        /* warm charcoal — CTAs, footer, dark sections */
-  --color-forest-mid: #5C534A;    /* links, hover, badges */
-  --color-cream-gold: #CEB99A;    /* 로고/강조 */
+  /* ── Brand (기존 이름 유지, 값만 옵션 A로 정렬) ───────── */
+  --color-forest: #3A3431;        /* Espresso — 다크 CTA·Footer (legacy alias) */
+  --color-forest-mid: #928886;    /* Soft Slate — 보조·hover (legacy alias) */
+  --color-cream-gold: #B98A3F;    /* Brass — 골드 액센트·Eyebrow (legacy alias) */
 
-  /* Text */
-  --color-ink: #1C1915;
-  --color-body: #7A6D60;
+  /* ── Text ─────────────────────────────────────────────── */
+  --color-ink: #3A3431;           /* Espresso — primary text (스펙 본문 단독) */
+  --color-body: #5E5754;          /* Smoky Taupe — readable secondary (5.3:1 AA) */
 
-  /* Borders */
-  --color-hairline: #DDD4C8;
+  /* ── Borders ──────────────────────────────────────────── */
+  --color-hairline: #DAD0CB;      /* warm light divider */
 
-  /* Punctuation */
-  --color-coral: #AA2D00;         /* 셰프 권위 1곳에만 */
+  /* ── Punctuation ──────────────────────────────────────── */
+  --color-coral: #3A3431;         /* Espresso (chef 섹션 → 다크 anchor; legacy alias) */
 
-  /* Radius */
+  /* ── 신규 캐노니컬 이름 (Option A 명세) ──────────────── */
+  --color-hanji: #E8DFD2;
+  --color-cream-stone: #CFC6C0;
+  --color-brand-taupe: #BBACAA;
+  --color-soft-slate: #928886;
+  --color-espresso: #3A3431;
+  --color-brass: #B98A3F;
+
+  /* OKLCH primary (perceptually uniform — 신규 컴포넌트에서 우선 사용) */
+  --color-hanji-oklch:    oklch(89.5% 0.018 84);
+  --color-stone-oklch:    oklch(80.2% 0.011 64);
+  --color-taupe-oklch:    oklch(70.6% 0.014 28);
+  --color-slate-oklch:    oklch(57.4% 0.011 35);
+  --color-espresso-oklch: oklch(22.1% 0.008 50);
+  --color-brass-oklch:    oklch(60.1% 0.087 78);
+
+  /* ── Radius (변경 없음) ───────────────────────────────── */
   --radius-cta: 4px;
   --radius-card: 10px;
   --radius-input: 6px;
   --radius-pill: 9999px;
 
-  /* Spacing */
+  /* ── Spacing (변경 없음) ──────────────────────────────── */
   --spacing-section: 96px;
   --spacing-section-mobile: 64px;
 }
 
 @theme {
-  /* Tailwind v4: 위 :root 변수를 Tailwind utility로 노출 */
-  --color-canvas: #FAF7F2;
-  --color-canvas-soft: #EDE6DC;
-  --color-taupe: #C9BBA8;
-  --color-stone: #3A3530;
-  --color-forest: #2A2520;
-  --color-forest-mid: #5C534A;
-  --color-cream-gold: #CEB99A;
-  --color-ink: #1C1915;
-  --color-body: #7A6D60;
-  --color-hairline: #DDD4C8;
-  --color-coral: #AA2D00;
+  /* Tailwind v4: 위 :root 변수를 utility 로 노출 */
+  --color-canvas: #E8DFD2;
+  --color-canvas-soft: #CFC6C0;
+  --color-taupe: #BBACAA;
+  --color-stone: #3A3431;
+  --color-forest: #3A3431;
+  --color-forest-mid: #928886;
+  --color-cream-gold: #B98A3F;
+  --color-ink: #3A3431;
+  --color-body: #5E5754;
+  --color-hairline: #DAD0CB;
+  --color-coral: #3A3431;
+  /* 신규 시맨틱 utility */
+  --color-hanji: #E8DFD2;
+  --color-cream-stone: #CFC6C0;
+  --color-brand-taupe: #BBACAA;
+  --color-soft-slate: #928886;
+  --color-espresso: #3A3431;
+  --color-brass: #B98A3F;
 }
