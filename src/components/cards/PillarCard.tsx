@@ -16,7 +16,7 @@ export function PillarCard({
 
       {/* Ordinal header */}
       <div className="text-center mb-3">
-        <p className="text-[9px] tracking-[1.5px] font-mono text-[var(--color-body)]">
+        <p className="text-[15px] tracking-[1.5px] font-mono text-[var(--color-body)]">
           {ordinal}
         </p>
       </div>
