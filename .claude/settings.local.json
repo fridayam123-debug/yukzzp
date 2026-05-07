@@ -82,7 +82,11 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\pc\\\\Desktop\\\\j project\\\\.claude\\\\worktrees\\\\sleepy-hamilton-58679b\\\\node_modules\\\\next\\\\dist\\\\docs\\\\\" -ErrorAction SilentlyContinue | Select-Object -First 20)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git config *)"
+      "Bash(git config *)",
+      "Bash(cd '/c/Users/pc/Desktop/j project/.claude/worktrees/sleepy-hamilton-58679b' && ls -lah src/components/layout/Footer.tsx src/components/schema/RestaurantJsonLd.tsx tests/unit/components/Footer.test.tsx)",
+      "Bash(Get-Content \"C:\\\\Users\\\\pc\\\\Desktop\\\\j project\\\\node_modules\\\\lucide-react\\\\package.json\")",
+      "Bash(Select-String -Pattern '\"version\"')",
+      "Bash(mkdir -p \"C:/Users/pc/Desktop/j project/.claude/worktrees/sleepy-hamilton-58679b/src/app/locations/[slug]\")"
     ]
   }
 }
