@@ -38,15 +38,7 @@ export function PillarCard({
         <span className="text-[56px] opacity-80" aria-hidden="true">{icon}</span>
       </div>
 
-      {/* Footer */}
-      <div className="border-t border-[var(--color-hairline)] pt-3">
-        <p className="text-[8px] font-bold tracking-[2px] uppercase font-mono text-center text-[var(--color-body)]">
-          육즙관리소
-        </p>
-        <p className="text-[7px] tracking-[1px] font-mono text-center text-[var(--color-forest-mid)] mt-0.5">
-          양재 · 을지로동대문
-        </p>
-      </div>
+
     </div>
   )
 }
