@@ -274,6 +274,24 @@ export type Database = {
           },
         ]
       }
+      site_config: {
+        Row: {
+          key: string
+          value: string
+          updated_at: string | null
+        }
+        Insert: {
+          key: string
+          value: string
+          updated_at?: string | null
+        }
+        Update: {
+          key?: string
+          value?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
