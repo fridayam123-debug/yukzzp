@@ -14,14 +14,13 @@ export function GroupCTA() {
             <span className="px-4 py-1.5 bg-[var(--color-forest-mid)] rounded-full text-[12px]">단체석 · 20~40인</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
-            {/* Primary: Hanji solid + Brass border (양재 본점) */}
+            {/* Phone CTAs: outline + Brass border (양재·을지로 동등 위계) */}
             <a
               href="tel:0507-1335-6363"
-              className="inline-flex items-center justify-center gap-2 bg-[var(--color-canvas)] text-[var(--color-ink)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-canvas-soft)] transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-transparent text-[var(--color-canvas)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-cream-gold)]/10 transition-colors"
             >
               ☎ {COPY_KO.groupCtaCall} (양재)
             </a>
-            {/* Secondary: Outline (transparent on espresso bg) + Brass border (을지로) */}
             <a
               href="tel:0507-1461-7228"
               className="inline-flex items-center justify-center gap-2 bg-transparent text-[var(--color-canvas)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-cream-gold)]/10 transition-colors"
