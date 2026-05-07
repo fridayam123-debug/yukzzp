@@ -1,16 +1,23 @@
-export function PillarCard({ icon, title, description }: { icon: string; title: string; description: string }) {
+export function PillarCard({
+  icon,
+  title,
+  description,
+  ordinal,
+}: {
+  icon: string
+  title: string
+  description: string
+  ordinal: string
+}) {
   return (
     <div className="relative flex flex-col bg-white rounded-[var(--radius-card)] border border-[var(--color-hairline)] px-5 pt-12 pb-5">
-      {/* Hole punch */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[18px] h-[18px] rounded-full bg-[var(--color-espresso)]" />
+      {/* Hole punch — canvas-soft matches the section bg, giving a real-hole effect */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[18px] h-[18px] rounded-full bg-[var(--color-canvas-soft)] border border-[var(--color-hairline)]" />
 
-      {/* Brand header */}
+      {/* Ordinal header */}
       <div className="text-center mb-3">
-        <p className="text-[9px] font-bold tracking-[3px] uppercase font-mono text-[var(--color-espresso)]">
-          육즙관리소
-        </p>
-        <p className="text-[8px] tracking-[1.5px] font-mono text-[var(--color-body)] mt-0.5">
-          다섯 가지 약속
+        <p className="text-[9px] tracking-[1.5px] font-mono text-[var(--color-body)]">
+          {ordinal}
         </p>
       </div>
 
