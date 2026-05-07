@@ -29,7 +29,7 @@ export function PillarCard({
       </h3>
 
       {/* Description */}
-      <p className="text-[10.5px] text-[var(--color-body)] leading-[1.7] flex-1">
+      <p className="text-[14px] text-[var(--color-body)] leading-[1.7] flex-1">
         {description}
       </p>
 
