@@ -38,7 +38,7 @@ export function Header() {
             href="/"
             className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap hover:opacity-60 transition-opacity"
           >
-            <span className="text-[20px] md:text-[23px] tracking-[5px] font-medium text-[var(--color-espresso)]">
+            <span className="text-[23px] md:text-[26px] tracking-[5px] font-medium text-[var(--color-espresso)]">
               {BRAND.nameKo}
             </span>
           </Link>
