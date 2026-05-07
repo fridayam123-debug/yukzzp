@@ -10,7 +10,7 @@ const NAV = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-[var(--color-canvas)] border-b border-[var(--color-hairline)]">
-      <nav className="mx-auto max-w-[1440px] h-16 px-6 lg:px-12 flex items-center justify-between">
+      <nav aria-label="주 내비게이션" className="mx-auto max-w-[1440px] h-16 px-6 lg:px-12 flex items-center justify-between">
         <Link href="/" className="flex flex-col gap-0.5">
           <span className="text-[20px] font-medium text-[var(--color-ink)]">{BRAND.nameKo}</span>
           <span className="text-[9px] tracking-[2px] text-[var(--color-body)] font-mono">{BRAND.tagline}</span>
