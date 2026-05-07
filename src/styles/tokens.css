@@ -1,24 +1,24 @@
-/* 육즙관리소 브랜드 디자인 토큰 — Forest Sage palette */
+/* 육즙관리소 브랜드 디자인 토큰 — Warm Stone palette */
 /* shadcn 토큰과 공존: 브랜드 시그니처 영역만 이 토큰을 사용 */
 
 :root {
   /* Surface */
-  --color-canvas: #FAF6EE;        /* warm ivory — 90% surface */
-  --color-canvas-soft: #F2EBDD;
+  --color-canvas: #FAF7F2;        /* warm ivory — 90% surface */
+  --color-canvas-soft: #EDE6DC;
   --color-taupe: #C9BBA8;
-  --color-stone: #3D4046;
+  --color-stone: #3A3530;
 
   /* Brand */
-  --color-forest: #1F3D2A;        /* signature 다크 */
-  --color-forest-mid: #2D5E3A;    /* accent */
-  --color-cream-gold: #D4C39A;    /* 로고/강조 */
+  --color-forest: #2A2520;        /* warm charcoal — CTAs, footer, dark sections */
+  --color-forest-mid: #5C534A;    /* links, hover, badges */
+  --color-cream-gold: #CEB99A;    /* 로고/강조 */
 
   /* Text */
-  --color-ink: #181D26;
-  --color-body: #4A6B52;
+  --color-ink: #1C1915;
+  --color-body: #7A6D60;
 
   /* Borders */
-  --color-hairline: #D6DDD0;
+  --color-hairline: #DDD4C8;
 
   /* Punctuation */
   --color-coral: #AA2D00;         /* 셰프 권위 1곳에만 */
@@ -36,15 +36,15 @@
 
 @theme {
   /* Tailwind v4: 위 :root 변수를 Tailwind utility로 노출 */
-  --color-canvas: #FAF6EE;
-  --color-canvas-soft: #F2EBDD;
+  --color-canvas: #FAF7F2;
+  --color-canvas-soft: #EDE6DC;
   --color-taupe: #C9BBA8;
-  --color-stone: #3D4046;
-  --color-forest: #1F3D2A;
-  --color-forest-mid: #2D5E3A;
-  --color-cream-gold: #D4C39A;
-  --color-ink: #181D26;
-  --color-body: #4A6B52;
-  --color-hairline: #D6DDD0;
+  --color-stone: #3A3530;
+  --color-forest: #2A2520;
+  --color-forest-mid: #5C534A;
+  --color-cream-gold: #CEB99A;
+  --color-ink: #1C1915;
+  --color-body: #7A6D60;
+  --color-hairline: #DDD4C8;
   --color-coral: #AA2D00;
 }
