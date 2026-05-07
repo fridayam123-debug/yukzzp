@@ -9,7 +9,7 @@ export function RestaurantJsonLd({ location }: { location: Loc }) {
     '@type': 'Restaurant',
     '@id': `${BRAND.domain}/locations/${location.slug}`,
     name: location.name_ko,
-    image: location.hero_image ? `${BRAND.domain}${location.hero_image}` : undefined,
+    image: location.hero_image ? [`${BRAND.domain}${location.hero_image}`] : undefined,
     address: {
       '@type': 'PostalAddress',
       streetAddress: location.address_road,
@@ -20,7 +20,9 @@ export function RestaurantJsonLd({ location }: { location: Loc }) {
     telephone: location.phone,
     servesCuisine: location.category_ko,
     priceRange: '₩₩₩',
-    geo: location.geo ? { '@type': 'GeoCoordinates', ...(location.geo as object) } : undefined,
+    geo: location.geo
+      ? { '@type': 'GeoCoordinates', ...(location.geo as Record<string, unknown>) }
+      : undefined,
     sameAs: [
       BRAND.instagramUrl,
       location.naver_place_id ? `https://place.map.naver.com/restaurant/${location.naver_place_id}` : null,
