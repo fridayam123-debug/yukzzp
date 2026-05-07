@@ -5,10 +5,10 @@ import { getSignatureItems } from '@/lib/fetchers/menu'
 import { COPY_KO } from '@/lib/constants/brand'
 
 const PILLARS = [
-  { icon: '🏔', title: '산지 직지정',    description: '지리산 청정 자연 산청 흑돼지 · 거창 백돼지' },
-  { icon: '⚛',  title: '특허 파동숙성',  description: '부드러운 식감과 풍부한 육즙' },
-  { icon: '🔥', title: '100% 대나무 숯', description: '잡내 없이 깊은 불향' },
-  { icon: '👨‍🍳', title: '숙련된 그릴링',  description: '직원이 직접 굽는 무료 서비스' },
+  { icon: '🏔', title: '산지 직거래',      description: '야생쑥을 먹고 자란 산청 흑돼지 · 거창 백돼지 — 불포화지방산이 풍부한 건강한 고기' },
+  { icon: '⚛',  title: '특허 파동숙성',   description: '부드러운 식감과 풍부한 육즙' },
+  { icon: '🔥', title: '100% 대나무 숯',  description: '잡내 없이 깊은 불향' },
+  { icon: '🫙', title: '수제 반찬 무한리필', description: '유자청 겉절이 · 계절 장아찌 직접 담금 · 고급 수향미 밥' },
 ]
 
 export async function WhySignature() {

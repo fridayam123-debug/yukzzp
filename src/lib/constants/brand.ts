@@ -49,8 +49,8 @@ export const CHEF_ENDORSEMENT = {
 /** Phase 1 메인 LP 카피 (한국어) */
 export const COPY_KO = {
   heroEyebrow: '양재역 본점 · 더룸 을지로동대문점',
-  heroH1: '프리미엄 흑돼지 다이닝',
-  heroSub: '산청 흑돼지 · 거창 백돼지를 100% 대나무 숯으로',
+  heroH1: '상위1% 서울 3대 목살맛집',
+  heroSub: '야생쑥을 먹고 자란 산청 흑돼지 · 거창 백돼지. 불포화지방산이 풍부하고 쫄깃한 육질과 담백한 맛이 일품입니다.',
   heroCtaPrimary: '지금 예약하기',
   heroCtaSecondary: '메뉴 보기',
 
@@ -64,8 +64,8 @@ export const COPY_KO = {
   pillars: [
     {
       key: 'origin',
-      title: '산지 직지정',
-      description: '지리산 청정 자연 산청 흑돼지 · 거창 백돼지',
+      title: '산지 직거래',
+      description: '야생쑥을 먹고 자란 산청 흑돼지 · 거창 백돼지 — 불포화지방산이 풍부한 건강한 고기',
     },
     {
       key: 'aging',
@@ -78,9 +78,9 @@ export const COPY_KO = {
       description: '잡내 없이 깊은 불향',
     },
     {
-      key: 'service',
-      title: '숙련된 그릴링',
-      description: '직원이 직접 굽는 무료 서비스',
+      key: 'sides',
+      title: '수제 반찬 무한리필',
+      description: '유자청 겉절이 · 계절 장아찌 직접 담금 · 고급 수향미 밥',
     },
   ],
 
