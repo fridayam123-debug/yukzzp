@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/schema/OrganizationJsonLd'
 import { Hero } from '@/components/sections/Hero'
 import { AuthorityBanner } from '@/components/sections/AuthorityBanner'
+import { BrandStory } from '@/components/sections/BrandStory'
 import { WhySignature } from '@/components/sections/WhySignature'
 import { TwoLocations } from '@/components/sections/TwoLocations'
 import { GroupCTA } from '@/components/sections/GroupCTA'
@@ -21,6 +22,7 @@ export default async function HomePage() {
       <main>
         <Hero />
         <AuthorityBanner />
+        <BrandStory />
         <WhySignature />
         <TwoLocations locations={locations} />
         <GroupCTA />
