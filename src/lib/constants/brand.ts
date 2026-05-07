@@ -80,7 +80,7 @@ export const COPY_KO = {
     {
       key: 'sides',
       title: '직접 담근 정성찬',
-      description: '매장에서 직접 만드는 반찬과 소스. 유자청 겉절이 · 계절 장아찌 무한리필.',
+      description: '매장에서 직접 만드는 반찬과 7가지 소스. 유자청 겉절이 · 계절 장아찌.',
     },
   ],
 
