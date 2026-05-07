@@ -22,10 +22,10 @@ export default async function HomePage() {
       <main>
         <Hero />
         <AuthorityBanner />
-        <BrandStory />
         <WhySignature />
         <TwoLocations locations={locations} />
         <GroupCTA />
+        <BrandStory />
         <InstagramStrip />
         <ReservationCTA locations={locations} />
       </main>
