@@ -78,7 +78,10 @@
       "Bash(npm install *)",
       "mcp__supabase__apply_migration",
       "mcp__supabase__get_advisors",
-      "mcp__supabase__execute_sql"
+      "mcp__supabase__execute_sql",
+      "Bash(npx --yes shadcn@latest add accordion dialog input label sheet tabs sonner --overwrite)",
+      "Bash(cd \"/c/Users/pc/Desktop/j project\" && mkdir -p public/photos/locations/yangjae public/photos/locations/euljiro public/photos/food public/brand && echo OK)",
+      "Bash(node scripts/rename-photos.mjs)"
     ]
   }
 }
