@@ -9,6 +9,7 @@ import { WhySignature } from '@/components/sections/WhySignature'
 import { TwoLocations } from '@/components/sections/TwoLocations'
 import { GroupCTA } from '@/components/sections/GroupCTA'
 import { ReservationCTA } from '@/components/sections/ReservationCTA'
+import { ReviewStrip } from '@/components/sections/ReviewStrip'
 import { InstagramStrip } from '@/components/sections/InstagramStrip'
 
 export const dynamic = 'force-dynamic'
@@ -26,6 +27,7 @@ export default async function HomePage() {
         <TwoLocations locations={locations} />
         <GroupCTA />
         <BrandStory />
+        <ReviewStrip />
         <InstagramStrip />
         <ReservationCTA locations={locations} />
       </main>
