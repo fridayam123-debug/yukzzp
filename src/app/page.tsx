@@ -9,6 +9,7 @@ import { WhySignature } from '@/components/sections/WhySignature'
 import { TwoLocations } from '@/components/sections/TwoLocations'
 import { GroupCTA } from '@/components/sections/GroupCTA'
 import { ReservationCTA } from '@/components/sections/ReservationCTA'
+import { InteriorBanner } from '@/components/sections/InteriorBanner'
 import { ReviewStrip } from '@/components/sections/ReviewStrip'
 import { InstagramStrip } from '@/components/sections/InstagramStrip'
 
@@ -25,6 +26,7 @@ export default async function HomePage() {
         <AuthorityBanner />
         <WhySignature />
         <TwoLocations locations={locations} />
+        <InteriorBanner />
         <GroupCTA />
         <BrandStory />
         <ReviewStrip />
