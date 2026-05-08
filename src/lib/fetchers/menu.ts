@@ -1,5 +1,5 @@
 import { unstable_cache } from 'next/cache'
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/service'
 import type { Database } from '@/lib/supabase/types'
 
 export type MenuCategory = Database['public']['Tables']['menu_categories']['Row']
@@ -11,7 +11,8 @@ export type MenuItem = Database['public']['Tables']['menu_items']['Row']
  */
 export const getMenu = unstable_cache(
   async (): Promise<{ categories: MenuCategory[]; items: MenuItem[] }> => {
-    const supabase = await createClient()
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return { categories: [], items: [] }
+    const supabase = createPublicClient()
     const [{ data: cats }, { data: items }] = await Promise.all([
       supabase.from('menu_categories').select('*').order('sort_order'),
       supabase.from('menu_items').select('*').order('sort_order'),
@@ -27,7 +28,8 @@ export const getMenu = unstable_cache(
  */
 export const getSignatureItems = unstable_cache(
   async (): Promise<MenuItem[]> => {
-    const supabase = await createClient()
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return []
+    const supabase = createPublicClient()
     const { data } = await supabase
       .from('menu_items')
       .select('*')

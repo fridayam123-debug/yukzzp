@@ -1,4 +1,5 @@
 import { unstable_cache } from 'next/cache'
+import { createPublicClient } from '@/lib/supabase/service'
 import { createClient } from '@/lib/supabase/server'
 import type { Database } from '@/lib/supabase/types'
 
@@ -10,7 +11,8 @@ export type Location = Database['public']['Tables']['locations']['Row']
  */
 export const getLocations = unstable_cache(
   async (): Promise<Location[]> => {
-    const supabase = await createClient()
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return []
+    const supabase = createPublicClient()
     const { data, error } = await supabase
       .from('locations')
       .select('*')
@@ -27,6 +29,7 @@ export const getLocations = unstable_cache(
  * 매번 fresh — 어드민 미리보기에서 즉시 반영되어야 하므로 캐시 X.
  */
 export async function getLocationBySlug(slug: string): Promise<Location | null> {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('locations')
