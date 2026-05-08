@@ -8,6 +8,7 @@ export type Banner = Database['public']['Tables']['emergency_banner']['Row']
  * 매 요청마다 fresh — 사장님이 임시 휴무 공지를 즉시 띄울 수 있어야 함.
  */
 export async function getActiveBanner(): Promise<Banner | null> {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null
   const supabase = await createClient()
   const { data } = await supabase
     .from('emergency_banner')
