@@ -16,7 +16,7 @@ export function AuthorityBannerClient({ videoId }: { videoId: string }) {
           <p className="text-[12px] mt-3 opacity-70 tracking-[0.15em] uppercase">공식 셰프 채널 {CHEF_ENDORSEMENT.viewCount.toLocaleString()}+ 조회</p>
           <button
             onClick={() => setPlaying(true)}
-            className="inline-flex items-center gap-2 bg-white text-[var(--color-coral)] px-7 py-3.5 rounded-[var(--radius-cta)] text-[14px] font-medium mt-6"
+            className="inline-flex items-center gap-2 bg-[var(--color-canvas)] text-[var(--color-ink)] px-7 py-3.5 rounded-[var(--radius-cta)] text-[14px] font-medium mt-6 hover:bg-[var(--color-cream-gold)] transition-colors"
           >
             ▶ 영상 보기
           </button>

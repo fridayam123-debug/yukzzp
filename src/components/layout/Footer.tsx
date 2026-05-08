@@ -27,35 +27,35 @@ export function Footer({ locations }: { locations: Loc[] }) {
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
-            <div className="text-[24px] font-medium">{BRAND.nameKo}</div>
-            <div className="text-[10px] tracking-[2px] font-mono text-[var(--color-cream-gold)] mt-2">{BRAND.tagline}</div>
+            <div className="text-[24px] font-normal tracking-[0.04em]">{BRAND.nameKo}</div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)] mt-3">{BRAND.tagline}</div>
             <p className="mt-3 text-[13px] text-white/70 leading-relaxed">산청 흑돼지 · 거창 백돼지 · 100% 대나무 숯</p>
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-3 mt-4 items-center">
               <a href={BRAND.instagramUrl} aria-label="Instagram" target="_blank" rel="noopener"><IconInstagram className="w-[18px] h-[18px]"/></a>
               <a href={BRAND.youtubeShort} aria-label="YouTube" target="_blank" rel="noopener"><IconYoutube className="w-[18px] h-[18px]"/></a>
               {BRAND.kakaoChannelUrl && (
-                <a href={BRAND.kakaoChannelUrl} aria-label="카카오 채널" target="_blank" rel="noopener" className="text-[13px] font-mono text-[var(--color-cream-gold)]">카카오</a>
+                <a href={BRAND.kakaoChannelUrl} aria-label="카카오 채널" target="_blank" rel="noopener" className="text-[12px] tracking-[0.15em] uppercase text-[var(--color-cream-gold)]">카카오</a>
               )}
             </div>
           </div>
           {locations.map(loc => (
             <div key={loc.slug}>
-              <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-cream-gold)]">{loc.slug.toUpperCase()}</div>
-              <div className="mt-2 text-[14px] font-medium">{loc.name_ko}</div>
+              <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">{loc.slug.toUpperCase()}</div>
+              <div className="mt-3 text-[14px] font-normal">{loc.name_ko}</div>
               <p className="mt-2 text-[12px] text-white/85 leading-relaxed">{loc.address_road}</p>
-              <p className="mt-1 text-[12px] text-white/85 font-mono">☎ {loc.virtual_phone}</p>
+              <p className="mt-1 text-[12px] text-white/85 tracking-[0.05em]">☎ {loc.virtual_phone}</p>
             </div>
           ))}
           <div>
-            <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-cream-gold)]">NAV</div>
-            <ul className="mt-2 space-y-2 text-[12px] text-white/85">
-              <li><a href="/menu">메뉴</a></li>
-              <li><a href="/#group">단체 회식</a></li>
-              <li><a href="/#reserve">예약</a></li>
+            <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">NAV</div>
+            <ul className="mt-3 space-y-2 text-[12px] text-white/85">
+              <li><a href="/menu" className="hover:text-white transition-colors">메뉴</a></li>
+              <li><a href="/#group" className="hover:text-white transition-colors">단체 회식</a></li>
+              <li><a href="/#reserve" className="hover:text-white transition-colors">예약</a></li>
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between text-[11px] text-white/50 font-mono">
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between text-[11px] text-white/50 tracking-[0.05em]">
           <span>© {new Date().getFullYear()} 육즙관리소 · 메뉴/가격은 매장 상황에 따라 다를 수 있습니다</span>
           <span>@{BRAND.instagramHandle}</span>
         </div>
