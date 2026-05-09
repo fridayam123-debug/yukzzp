@@ -225,6 +225,7 @@ export type Database = {
           is_signature: boolean | null
           name_en: string | null
           name_ko: string
+          photo_url: string | null
           price_krw: number | null
           sort_order: number
           updated_at: string | null
@@ -238,6 +239,7 @@ export type Database = {
           description_ko?: string | null
           id?: string
           image_url?: string | null
+          photo_url?: string | null
           is_lunch_special?: boolean | null
           is_signature?: boolean | null
           name_en?: string | null
@@ -259,6 +261,7 @@ export type Database = {
           is_signature?: boolean | null
           name_en?: string | null
           name_ko?: string
+          photo_url?: string | null
           price_krw?: number | null
           sort_order?: number
           updated_at?: string | null
