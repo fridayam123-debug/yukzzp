@@ -13,11 +13,13 @@ export const getMenu = unstable_cache(
   async (): Promise<{ categories: MenuCategory[]; items: MenuItem[] }> => {
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return { categories: [], items: [] }
     const supabase = createPublicClient()
-    const [{ data: cats }, { data: items }] = await Promise.all([
+    const [catsRes, itemsRes] = await Promise.all([
       supabase.from('menu_categories').select('*').order('sort_order'),
       supabase.from('menu_items').select('*').order('sort_order'),
     ])
-    return { categories: cats ?? [], items: items ?? [] }
+    if (catsRes.error) console.error('[getMenu] categories error:', catsRes.error)
+    if (itemsRes.error) console.error('[getMenu] items error:', itemsRes.error)
+    return { categories: catsRes.data ?? [], items: itemsRes.data ?? [] }
   },
   ['menu'],
   { revalidate: 60, tags: ['menu'] },
