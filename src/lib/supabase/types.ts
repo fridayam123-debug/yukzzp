@@ -295,6 +295,108 @@ export type Database = {
         }
         Relationships: []
       }
+      ingredient_catalog: {
+        Row: {
+          id: string
+          category: string
+          brand: string
+          product_name: string
+          sku: string | null
+          use_cases: string[]
+          flavor_notes: string | null
+          price_krw: number | null
+          unit: string | null
+          retailer: string | null
+          retailer_url: string | null
+          source_score: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          category: string
+          brand: string
+          product_name: string
+          sku?: string | null
+          use_cases?: string[]
+          flavor_notes?: string | null
+          price_krw?: number | null
+          unit?: string | null
+          retailer?: string | null
+          retailer_url?: string | null
+          source_score?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: Partial<{
+          category: string; brand: string; product_name: string
+          sku: string | null; use_cases: string[]
+          flavor_notes: string | null; price_krw: number | null
+          unit: string | null; retailer: string | null
+          retailer_url: string | null; source_score: number; updated_at: string
+        }>
+        Relationships: []
+      }
+      ingredient_profile: {
+        Row: {
+          id: string
+          ingredient_name: string
+          catalog_id: string | null
+          custom_brand: string | null
+          custom_note: string | null
+          vendor: string | null
+          is_active: boolean
+          added_at: string
+        }
+        Insert: {
+          id?: string
+          ingredient_name: string
+          catalog_id?: string | null
+          custom_brand?: string | null
+          custom_note?: string | null
+          vendor?: string | null
+          is_active?: boolean
+          added_at?: string
+        }
+        Update: Partial<{
+          ingredient_name: string; catalog_id: string | null
+          custom_brand: string | null; custom_note: string | null
+          vendor: string | null; is_active: boolean
+        }>
+        Relationships: [{ foreignKeyName: "ingredient_profile_catalog_id_fkey"; columns: ["catalog_id"]; referencedRelation: "ingredient_catalog"; referencedColumns: ["id"] }]
+      }
+      recipe_usage_log: {
+        Row: {
+          id: string
+          admin_user_id: string | null
+          dish_name: string | null
+          input_tokens: number | null
+          output_tokens: number | null
+          cost_usd: number | null
+          model: string
+          tier: string
+          error: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          admin_user_id?: string | null
+          dish_name?: string | null
+          input_tokens?: number | null
+          output_tokens?: number | null
+          cost_usd?: number | null
+          model?: string
+          tier?: string
+          error?: string | null
+          created_at?: string
+        }
+        Update: Partial<{
+          dish_name: string | null; input_tokens: number | null
+          output_tokens: number | null; cost_usd: number | null
+          error: string | null
+        }>
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
