@@ -7,6 +7,16 @@ const HISTORY_KEY = 'yukzzp_recipe_history'
 export function RecipeHistory() {
   const [open, setOpen] = useState(false)
   const [history, setHistory] = useState<RecipeHistoryItem[]>([])
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    try {
+      const items = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]')
+      setCount(Array.isArray(items) ? items.length : 0)
+    } catch {
+      setCount(0)
+    }
+  }, [])
 
   useEffect(() => {
     if (open) {
@@ -18,7 +28,7 @@ export function RecipeHistory() {
     }
   }, [open])
 
-  if (history.length === 0 && !open) return null
+  if (count === 0 && !open) return null
 
   return (
     <>
@@ -26,7 +36,7 @@ export function RecipeHistory() {
         onClick={() => setOpen(true)}
         className="text-[12px] text-[var(--color-body)] hover:text-[var(--color-ink)] border border-[var(--color-hairline)] px-3 py-1.5 rounded-[8px]"
       >
-        기록 ({JSON.parse(typeof window !== 'undefined' ? localStorage.getItem(HISTORY_KEY) ?? '[]' : '[]').length ?? 0})
+        기록 ({count})
       </button>
 
       {open && (

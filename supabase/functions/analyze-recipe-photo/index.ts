@@ -163,11 +163,16 @@ Deno.serve(async (req) => {
     const zodResult = RecipeSchema.safeParse(parsed)
     if (!zodResult.success) {
       console.warn('[zod] 검증 실패:', JSON.stringify(zodResult.error.flatten()))
-      // Best-effort: strip obvious hallucinated brands even without full schema validation
       if (parsed?.ingredients && Array.isArray(parsed.ingredients)) {
         parsed.ingredients = parsed.ingredients.map((ing: Record<string, unknown>) => {
-          if (ing.brand_source === 'generic' && (ing.brand || ing.product)) {
-            const { brand: _, product: __, ...safe } = ing
+          // Strip hallucinated brands: generic with brand, or catalog/profile without catalog_id
+          const isHallucinatedGeneric = ing.brand_source === 'generic' && (ing.brand || ing.product)
+          const isHallucinatedCatalog =
+            (ing.brand_source === 'catalog' || ing.brand_source === 'profile') &&
+            !ing.catalog_id &&
+            (ing.brand || ing.product)
+          if (isHallucinatedGeneric || isHallucinatedCatalog) {
+            const { brand: _, product: __, catalog_id: ___, ...safe } = ing
             return { ...safe, brand_source: 'generic' }
           }
           return ing
