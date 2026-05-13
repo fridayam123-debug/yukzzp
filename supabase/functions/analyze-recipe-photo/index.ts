@@ -18,6 +18,7 @@ Deno.serve(async (req) => {
 
   const supabaseUrl = Deno.env.get('SUPABASE_URL')!
   const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY')!
   const geminiApiKey = Deno.env.get('GEMINI_API_KEY')!
 
   // ── 1. 인증 검증 ───────────────────────────────────────────────────────────
@@ -28,7 +29,7 @@ Deno.serve(async (req) => {
     })
   }
 
-  const userSupabase = createClient(supabaseUrl, Deno.env.get('SUPABASE_ANON_KEY')!, {
+  const userSupabase = createClient(supabaseUrl, supabaseAnonKey, {
     global: { headers: { Authorization: authHeader } },
   })
   const { data: { user }, error: authError } = await userSupabase.auth.getUser()
@@ -56,7 +57,6 @@ Deno.serve(async (req) => {
       { status: 429, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } },
     )
   }
-  if (todayCount >= 1400) console.warn(`[warn] 무료 티어 일 한도 임박: ${todayCount}/1500`)
 
   // ── 3. 요청 파싱 ──────────────────────────────────────────────────────────
   let imageDataUrl: string
@@ -80,7 +80,17 @@ Deno.serve(async (req) => {
   const mime = mimeType.replace('data:', '').replace(';base64', '')
 
   // ── 4. 카탈로그·프로필 로드 ──────────────────────────────────────────────
-  const { catalog, profile } = await fetchCatalogAndProfile(supabaseUrl, supabaseServiceKey)
+  let catalog: Awaited<ReturnType<typeof fetchCatalogAndProfile>>['catalog']
+  let profile: Awaited<ReturnType<typeof fetchCatalogAndProfile>>['profile']
+  try {
+    const result = await fetchCatalogAndProfile(supabaseUrl, supabaseServiceKey)
+    catalog = result.catalog
+    profile = result.profile
+  } catch (e) {
+    return new Response(JSON.stringify({ error: `카탈로그 로드 실패: ${String(e)}`, code: 'CATALOG_ERROR' }), {
+      status: 502, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    })
+  }
 
   // ── 5. Gemini 호출 ────────────────────────────────────────────────────────
   const genAI = new GoogleGenerativeAI(geminiApiKey)
@@ -96,7 +106,7 @@ Deno.serve(async (req) => {
   const systemPrompt = buildSystemPrompt(catalog, profile, servings)
   const userText = dishHint ? `음식 힌트: ${dishHint}` : '사진을 분석하여 레시피를 작성해주세요'
 
-  let rawJson: string
+  let rawJson: string | undefined
   let usageMetadata: { promptTokenCount?: number; candidatesTokenCount?: number } = {}
   let geminiError: string | undefined
 
@@ -144,17 +154,31 @@ Deno.serve(async (req) => {
   // ── 6. Zod 검증 + Brand Guard ─────────────────────────────────────────────
   let recipe
   try {
-    const parsed = JSON.parse(rawJson!)
+    if (!rawJson) {
+      return new Response(JSON.stringify({ error: 'Gemini 응답 없음' }), {
+        status: 502, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      })
+    }
+    const parsed = JSON.parse(rawJson)
     const zodResult = RecipeSchema.safeParse(parsed)
     if (!zodResult.success) {
       console.warn('[zod] 검증 실패:', JSON.stringify(zodResult.error.flatten()))
-      // 부분 결과라도 반환 (완전 실패보단 낫다)
+      // Best-effort: strip obvious hallucinated brands even without full schema validation
+      if (parsed?.ingredients && Array.isArray(parsed.ingredients)) {
+        parsed.ingredients = parsed.ingredients.map((ing: Record<string, unknown>) => {
+          if (ing.brand_source === 'generic' && (ing.brand || ing.product)) {
+            const { brand: _, product: __, ...safe } = ing
+            return { ...safe, brand_source: 'generic' }
+          }
+          return ing
+        })
+      }
       recipe = parsed
     } else {
       recipe = applyBrandGuard(zodResult.data)
     }
   } catch {
-    return new Response(JSON.stringify({ error: 'JSON 파싱 실패', raw: rawJson! }), {
+    return new Response(JSON.stringify({ error: 'JSON 파싱 실패', raw: rawJson }), {
       status: 422, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
     })
   }
