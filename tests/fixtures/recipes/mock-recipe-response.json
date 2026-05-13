@@ -1,0 +1,63 @@
+{
+  "name": "전통 살얼음 물냉면 (10인분)",
+  "description": "깊고 시원한 육수에 아삭한 배와 오이 고명을 얹은 프리미엄 물냉면",
+  "servings": 10,
+  "equipment": [
+    { "name": "대형 솥", "quantity": 1, "note": "면 삶기용" },
+    { "name": "냉면 그릇", "quantity": 10 }
+  ],
+  "ingredients": [
+    {
+      "name": "메밀 냉면 사리",
+      "amount": 2000,
+      "unit": "g",
+      "category": "main",
+      "brand_source": "generic",
+      "note": "거래처 표준 사용 권장"
+    },
+    {
+      "name": "양조간장",
+      "prep_form": "계량",
+      "amount": 80,
+      "unit": "ml",
+      "category": "seasoning",
+      "brand_source": "catalog",
+      "brand": "샘표",
+      "product": "양조간장 501호 1.8L"
+    },
+    {
+      "name": "사과식초",
+      "amount": 60,
+      "unit": "ml",
+      "category": "seasoning",
+      "brand_source": "catalog",
+      "brand": "오뚜기",
+      "product": "사과식초 1.8L"
+    }
+  ],
+  "prep_time_min": 20,
+  "cook_time_min": 15,
+  "difficulty": "medium",
+  "steps": [
+    {
+      "order": 1,
+      "title": "육수 준비",
+      "instruction": "냉면 육수 5000ml를 냉동고에 넣어 살얼음 상태로 만든다",
+      "sensory_cues": ["표면에 얇은 얼음막이 형성되면 완성"],
+      "duration_sec": 14400,
+      "per_serving": false
+    },
+    {
+      "order": 2,
+      "title": "면 삶기",
+      "instruction": "대형 솥에 물을 넉넉히 끓이고 면을 40~60초 삶아낸다",
+      "sensory_cues": ["면이 투명해지기 시작하면 건진다"],
+      "duration_sec": 50,
+      "temperature": "강불",
+      "per_serving": false
+    }
+  ],
+  "chef_tips": ["육수는 서빙 3~4시간 전에 냉동고에 넣는다"],
+  "plating": "그릇 가장자리를 따라 조심스럽게 육수 500ml씩 붓는다",
+  "cost_estimate_krw": 42000
+}
