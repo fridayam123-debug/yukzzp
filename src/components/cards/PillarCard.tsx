@@ -33,10 +33,10 @@ export function PillarCard({
         {description}
       </p>
 
-      {/* Hanja — decorative illustration area, responsive */}
+      {/* Hanja — decorative illustration area, responsive (-30%) */}
       <div className="flex justify-center py-4 md:py-6">
         <span
-          className="text-[44px] md:text-[62px] leading-none select-none text-[var(--color-hairline)] font-serif"
+          className="text-[31px] md:text-[44px] leading-none select-none text-[var(--color-hairline)] font-serif"
           aria-hidden="true"
         >
           {icon}
