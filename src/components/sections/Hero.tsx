@@ -20,7 +20,7 @@ export function Hero() {
       <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 md:px-24 pb-20 md:pb-32 flex flex-col gap-6">
         <div className="text-[11px] tracking-[0.3em] uppercase text-white/80">{t('eyebrow')}</div>
         <h1 className="text-[36px] md:text-[60px] font-normal text-white leading-[1.05] tracking-[-0.01em] max-w-[900px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{t('h1')}</h1>
-        <p className="text-[13px] md:text-[14px] text-white/80 leading-[1.9] max-w-[860px] mt-4 whitespace-pre-line tracking-[0.01em]">{t('sub')}</p>
+        <p className="text-[14.5px] md:text-[15.5px] text-white/80 leading-[1.9] max-w-[860px] mt-4 whitespace-pre-line tracking-[0.01em]">{t('sub')}</p>
         <div className="flex flex-col sm:flex-row gap-3 mt-6">
           <Link href="/#reserve" className="inline-flex items-center justify-center bg-[var(--color-forest)] text-white px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium">
             {t('ctaPrimary')}
