@@ -18,9 +18,16 @@ export async function generateMetadata(
   const { slug } = await params
   const loc = await getLocationBySlug(slug)
   if (!loc) return { title: '지점을 찾을 수 없습니다' }
+  const ogImage = loc.hero_image
+    ? loc.hero_image
+    : '/photos/brand/brand-story.jpg'
   return {
     title: loc.name_ko,
     description: loc.meta_description_ko ?? undefined,
+    alternates: { canonical: `/locations/${slug}` },
+    openGraph: {
+      images: [{ url: ogImage, width: 1200, height: 630, alt: loc.name_ko }],
+    },
   }
 }
 

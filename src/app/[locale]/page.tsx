@@ -3,6 +3,7 @@ import { getLocations } from '@/lib/fetchers/locations'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { OrganizationJsonLd } from '@/components/schema/OrganizationJsonLd'
+import { WebsiteJsonLd } from '@/components/schema/WebsiteJsonLd'
 import { Hero } from '@/components/sections/Hero'
 import { AuthorityBanner } from '@/components/sections/AuthorityBanner'
 import { BrandStory } from '@/components/sections/BrandStory'
@@ -27,6 +28,7 @@ export default async function HomePage({
   return (
     <>
       <OrganizationJsonLd />
+      <WebsiteJsonLd />
       <Header />
       <main>
         <Hero />

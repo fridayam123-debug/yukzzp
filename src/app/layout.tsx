@@ -25,6 +25,18 @@ export const metadata: Metadata = {
     siteName: "육즙관리소",
     locale: "ko_KR",
     type: "website",
+    images: [
+      {
+        url: "/photos/brand/brand-story.jpg",
+        width: 1200,
+        height: 630,
+        alt: "육즙관리소 — 산청 흑돼지 프리미엄 다이닝",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/photos/brand/brand-story.jpg"],
   },
   alternates: {
     canonical: "/",
