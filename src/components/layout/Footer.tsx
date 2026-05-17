@@ -33,11 +33,35 @@ export function Footer({ locations }: { locations: Loc[] }) {
             <div className="text-[24px] font-normal tracking-[0.04em]">{BRAND.nameKo}</div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)] mt-3">{BRAND.tagline}</div>
             <p className="mt-3 text-[13px] text-white/70 leading-relaxed">{t('originLine')}</p>
-            <div className="flex gap-3 mt-4 items-center">
-              <a href={BRAND.instagramUrl} aria-label="Instagram" target="_blank" rel="noopener"><IconInstagram className="w-[18px] h-[18px]"/></a>
-              <a href={BRAND.youtubeShort} aria-label="YouTube" target="_blank" rel="noopener"><IconYoutube className="w-[18px] h-[18px]"/></a>
+            <div className="flex gap-1 mt-4 items-center -ml-2.5">
+              <a
+                href={BRAND.instagramUrl}
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center justify-center w-11 h-11 hover:opacity-70 transition-opacity"
+              >
+                <IconInstagram className="w-[18px] h-[18px]" />
+              </a>
+              <a
+                href={BRAND.youtubeShort}
+                aria-label="YouTube"
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center justify-center w-11 h-11 hover:opacity-70 transition-opacity"
+              >
+                <IconYoutube className="w-[18px] h-[18px]" />
+              </a>
               {BRAND.kakaoChannelUrl && (
-                <a href={BRAND.kakaoChannelUrl} aria-label="카카오 채널" target="_blank" rel="noopener" className="text-[12px] tracking-[0.15em] uppercase text-[var(--color-cream-gold)]">{t('kakao')}</a>
+                <a
+                  href={BRAND.kakaoChannelUrl}
+                  aria-label="카카오 채널"
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center px-3 h-11 text-[12px] tracking-[0.15em] uppercase text-[var(--color-cream-gold)] hover:opacity-70 transition-opacity"
+                >
+                  {t('kakao')}
+                </a>
               )}
             </div>
           </div>
