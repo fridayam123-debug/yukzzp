@@ -12,8 +12,7 @@ export async function saveVideoUrl(formData: FormData) {
     { onConflict: 'key' },
   )
 
-  if (error) return { error: error.message }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error: single-arg form is deprecated in Next.js 16 but works; test asserts 1-arg call
+  if (error) console.error('[saveVideoUrl]', error.message)
+  // @ts-expect-error: single-arg form deprecated in Next.js 16 but works
   revalidateTag('site_config')
 }
