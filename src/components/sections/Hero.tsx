@@ -15,8 +15,8 @@ export function Hero() {
         sizes="100vw"
         className="object-cover"
       />
-      {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-black/45" />
+      {/* Dark overlay for text legibility (50% — 10% darker than before) */}
+      <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 md:px-24 pb-20 md:pb-32 flex flex-col gap-6">
         <div className="text-[11px] tracking-[0.3em] uppercase text-white/80">{t('eyebrow')}</div>
         <h1 className="text-[36px] md:text-[60px] font-normal text-white leading-[1.05] tracking-[-0.01em] max-w-[900px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{t('h1')}</h1>
