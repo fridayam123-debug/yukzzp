@@ -6,10 +6,10 @@ export function Hero() {
   const t = useTranslations('hero')
   return (
     <section className="relative h-screen overflow-hidden bg-[var(--color-stone)] flex items-end">
-      {/* Photographic background — 을지로점 달항아리 룸 (#15) */}
+      {/* Photographic background — 을지로점 파동벽 (#37) */}
       <Image
-        src="/photos/locations/euljiro/hero-moon-room.jpg"
-        alt="육즙관리소 더룸 을지로동대문점 — 달항아리 룸"
+        src="/photos/locations/euljiro/wave-wall.jpg"
+        alt="육즙관리소 더룸 을지로동대문점 — 파동숙성 웨이브 아트월"
         fill
         priority
         sizes="100vw"
