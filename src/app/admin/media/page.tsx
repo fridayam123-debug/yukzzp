@@ -22,7 +22,7 @@ export default async function MediaPage() {
           </div>
         )}
 
-        <form action={async (fd) => { await saveVideoUrl(fd) }} className="flex gap-3">
+        <form action={saveVideoUrl} className="flex gap-3">
           <input
             name="chef_video_url"
             type="url"
