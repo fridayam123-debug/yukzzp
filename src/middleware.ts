@@ -1,7 +1,11 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import createIntlMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 
-export async function middleware(request: NextRequest) {
+const intlMiddleware = createIntlMiddleware(routing)
+
+async function adminAuth(request: NextRequest): Promise<NextResponse> {
   const response = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -42,6 +46,24 @@ export async function middleware(request: NextRequest) {
   return response
 }
 
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // 1) Admin routes — auth required, no locale prefix
+  if (pathname.startsWith('/admin')) {
+    return adminAuth(request)
+  }
+
+  // 2) Skip i18n for login (auth flow, single language)
+  if (pathname === '/login' || pathname.startsWith('/login/')) {
+    return NextResponse.next()
+  }
+
+  // 3) Everything else — locale routing via next-intl
+  return intlMiddleware(request)
+}
+
 export const config = {
-  matcher: ['/admin/:path*'],
+  // Match admin + everything except _next, static assets, and files with an extension
+  matcher: ['/admin/:path*', '/((?!_next|.*\\..*).*)'],
 }

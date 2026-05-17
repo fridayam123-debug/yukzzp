@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { PillarCard } from '@/components/cards/PillarCard'
 import { MenuItemCard } from '@/components/cards/MenuItemCard'
 import { getSignatureItems } from '@/lib/fetchers/menu'

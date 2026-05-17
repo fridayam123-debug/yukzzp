@@ -1,7 +1,10 @@
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { BRAND } from '@/lib/constants/brand'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 
 export function Header() {
+  const t = useTranslations('nav')
   return (
     <header className="sticky top-0 z-40 bg-[var(--color-canvas)]">
       {/* Top accent bar — LV 스타일 브랜드 강조 라인 */}
@@ -23,13 +26,13 @@ export function Header() {
                 <rect y="5.25" width="18" height="1.5" rx="0.75" />
                 <rect y="10.5" width="18" height="1.5" rx="0.75" />
               </svg>
-              <span>메뉴</span>
+              <span>{t('menu')}</span>
             </Link>
             <Link
               href="/#locations"
               className="hidden md:block text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
-              지점
+              {t('locationsShort')}
             </Link>
           </div>
 
@@ -44,19 +47,20 @@ export function Header() {
           </Link>
 
           {/* Right */}
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-5 md:gap-7">
             <Link
               href="/#group"
               className="hidden md:block text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
-              단체석
+              {t('group')}
             </Link>
             <Link
               href="/#reserve"
               className="text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
-              예약하기
+              {t('reserve')}
             </Link>
+            <LanguageSwitcher />
           </div>
         </nav>
       </div>
