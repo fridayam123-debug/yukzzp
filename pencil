@@ -1,0 +1,2005 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Homepage - 육즙관리소",
+      "clip": true,
+      "width": 1440,
+      "fill": "#F5F3EE",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "KzuTH",
+          "name": "Top Nav",
+          "width": "fill_container",
+          "height": 72,
+          "fill": "#F5F3EE",
+          "padding": [
+            48,
+            0
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "oF6DV",
+              "name": "logoBlk",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "VKJ1o",
+                  "fill": "#1B3A28",
+                  "content": "육즙관리소",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "U7tpJ4",
+                  "fill": "#4A6B52",
+                  "content": "PREMIUM DINING",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 9,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zT5uZ",
+              "name": "navMenu",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "WqsvT",
+                  "fill": "#1B3A28",
+                  "content": "메뉴",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "I8kD9",
+                  "fill": "#1B3A28",
+                  "content": "지점",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "f4sT1x",
+                  "fill": "#1B3A28",
+                  "content": "단체",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Jghxw",
+                  "fill": "#1B3A28",
+                  "content": "갤러리",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "u4vchO",
+                  "fill": "#1B3A28",
+                  "content": "소식",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "CWJJz",
+                  "fill": "#1B3A28",
+                  "content": "About",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kS8Ob",
+              "name": "navRight",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uOL0M",
+                  "fill": "#4A6B52",
+                  "content": "EN",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "frame",
+                  "id": "VOKFZ",
+                  "name": "ctaPill",
+                  "fill": "#1B3A28",
+                  "cornerRadius": 4,
+                  "padding": [
+                    24,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HayaS",
+                      "fill": "#FFFFFF",
+                      "content": "예약하기",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rtQs4",
+          "name": "Hero",
+          "clip": true,
+          "width": "fill_container",
+          "height": 720,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1778048230180.png",
+            "mode": "fill"
+          },
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 96,
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "text",
+              "id": "pK1aj",
+              "opacity": 0.85,
+              "fill": "#FFFFFF",
+              "content": "양재역 본점 · 더룸 을지로동대문점",
+              "fontFamily": "Geist Mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            },
+            {
+              "type": "text",
+              "id": "eLMSq",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width",
+              "width": 760,
+              "content": "프리미엄 흑돼지 다이닝",
+              "lineHeight": 1.1,
+              "fontFamily": "Inter",
+              "fontSize": 64
+            },
+            {
+              "type": "text",
+              "id": "AHXWO",
+              "opacity": 0.9,
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width",
+              "width": 680,
+              "content": "산청 흑돼지 · 거창 백돼지를 100% 대나무 숯으로",
+              "lineHeight": 1.4,
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Fr9kH",
+              "name": "Hero CTAs",
+              "gap": 12,
+              "padding": [
+                0,
+                24,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "dZXBn",
+                  "name": "ctaP",
+                  "fill": "#1B3A28",
+                  "cornerRadius": 4,
+                  "padding": [
+                    28,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fP7B2",
+                      "fill": "#FFFFFF",
+                      "content": "지금 예약하기",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YFn9b",
+                  "name": "ctaS",
+                  "cornerRadius": 4,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#FFFFFF"
+                  },
+                  "padding": [
+                    28,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WaMmJ",
+                      "fill": "#FFFFFF",
+                      "content": "메뉴 보기",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tid9Z",
+          "name": "Authority Banner - 셰프 추천",
+          "width": "fill_container",
+          "fill": "#aa2d00",
+          "gap": 64,
+          "padding": 96,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "L6Q0Y",
+              "name": "authLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gmmIX",
+                  "opacity": 0.9,
+                  "fill": "#FFFFFF",
+                  "content": "MEDIA · 셰프 추천",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "SNSSP",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "셰프 이원일이 직접 소개한",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Inter",
+                  "fontSize": 40
+                },
+                {
+                  "type": "text",
+                  "id": "Z5WweW",
+                  "opacity": 0.95,
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "돼지고기 참 잘하는 육즙관리소",
+                  "lineHeight": 1.3,
+                  "fontFamily": "Inter",
+                  "fontSize": 24
+                },
+                {
+                  "type": "text",
+                  "id": "oXPFI",
+                  "opacity": 0.8,
+                  "fill": "#FFFFFF",
+                  "content": "공식 셰프 채널 23,000+ 조회",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "dbdo2",
+                  "name": "authCta",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "gap": 8,
+                  "padding": [
+                    28,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Qy51f",
+                      "fill": "#aa2d00",
+                      "content": "▶  영상 보기",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Xpzwu",
+              "name": "Video Thumbnail",
+              "clip": true,
+              "width": 480,
+              "height": 280,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/generated-1778046294590.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 4,
+              "justifyContent": "center",
+              "alignItems": "center"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "scXLH",
+          "name": "4 Pillars",
+          "width": "fill_container",
+          "fill": "#F5F3EE",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 96,
+          "children": [
+            {
+              "type": "frame",
+              "id": "G7sV6g",
+              "name": "pillarHead",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rrKEF",
+                  "fill": "#4A6B52",
+                  "content": "WHY 육즙관리소",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "Ty060",
+                  "fill": "#1B3A28",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "네 가지 약속",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Inter",
+                  "fontSize": 40
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Kbu8m",
+              "name": "pillarRow",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "x4N82",
+                  "name": "c1",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "HZVPY",
+                      "width": 32,
+                      "height": 32,
+                      "iconFontName": "mountain",
+                      "iconFontFamily": "lucide",
+                      "fill": "#2D5E3A"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YtFhR",
+                      "fill": "#1B3A28",
+                      "content": "산지 직지정",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Gpftq",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "지리산 청정 자연에서 자란 산청 흑돼지 · 거창 백돼지",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "T0BBmy",
+                  "name": "c2",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "OjCDP",
+                      "width": 32,
+                      "height": 32,
+                      "iconFontName": "atom",
+                      "iconFontFamily": "lucide",
+                      "fill": "#2D5E3A"
+                    },
+                    {
+                      "type": "text",
+                      "id": "f8aelV",
+                      "fill": "#1B3A28",
+                      "content": "특허 파동숙성",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d2wjbD",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "부드러운 식감과 풍부한 육즙을 살리는 자체 숙성 기술",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mCnuC",
+                  "name": "c3",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "O3WaYC",
+                      "width": 32,
+                      "height": 32,
+                      "iconFontName": "flame",
+                      "iconFontFamily": "lucide",
+                      "fill": "#2D5E3A"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FZo6W",
+                      "fill": "#1B3A28",
+                      "content": "100% 대나무 숯",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QvdxN",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "잡내 없이 깊은 불향, 100% 대나무 숯 직화",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HUBli",
+                  "name": "c4",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ECwLo",
+                      "width": 32,
+                      "height": 32,
+                      "iconFontName": "chef-hat",
+                      "iconFontFamily": "lucide",
+                      "fill": "#2D5E3A"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RjD1O",
+                      "fill": "#1B3A28",
+                      "content": "숙련된 그릴링",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "B2mUo",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "직원이 직접 굽는 무료 그릴 서비스",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wVEMI",
+          "name": "Signature Menu",
+          "width": "fill_container",
+          "fill": "#F5E9D4",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 96,
+          "children": [
+            {
+              "type": "frame",
+              "id": "mIj4u",
+              "name": "sigHead",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Q9lzzN",
+                  "name": "sigHeadL",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ylSBA",
+                      "fill": "#4A6B52",
+                      "content": "SIGNATURE",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "ck4DU",
+                      "fill": "#1B3A28",
+                      "content": "산청 흑돼지 한 점, 깊은 육즙",
+                      "lineHeight": 1.15,
+                      "fontFamily": "Inter",
+                      "fontSize": 36
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "jMHNS",
+                  "fill": "#1B3A28",
+                  "content": "전체 메뉴 보기 →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n0qk9r",
+              "name": "sigGrid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "c6ZbHY",
+                  "name": "m1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "y5OKls",
+                      "name": "m1Img",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 380,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1778046376078.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 4
+                    },
+                    {
+                      "type": "text",
+                      "id": "nTxPe",
+                      "fill": "#1B3A28",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "지리산 흑돼지 모듬",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "xNgUm",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "특삼겹 · 특목살 · 항정살 · 가브리살 · 이겹살",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HqnTa",
+                      "fill": "#1B3A28",
+                      "content": "57,000원",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Pg7Lx",
+                  "name": "m2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fz4hT",
+                      "name": "m2Img",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 380,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1778046358410.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 4
+                    },
+                    {
+                      "type": "text",
+                      "id": "YFvTm",
+                      "fill": "#1B3A28",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "진꽃살 세트 (소고기)",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tamwZ",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "500g · 코스 정찬을 위한 프리미엄 소고기",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d8XRD",
+                      "fill": "#1B3A28",
+                      "content": "87,000원",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qzofG",
+                  "name": "m3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "q6s0dQ",
+                      "name": "m3Img",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 380,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1778046353292.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 4
+                    },
+                    {
+                      "type": "text",
+                      "id": "QZ6l2",
+                      "fill": "#1B3A28",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "아보카도 육회",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LZcye",
+                      "fill": "#4A6B52",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "신선한 육회와 부드러운 아보카도",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Li5vV",
+                      "fill": "#1B3A28",
+                      "content": "28,000원",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xzfwT",
+          "name": "Locations",
+          "width": "fill_container",
+          "fill": "#F5F3EE",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 96,
+          "children": [
+            {
+              "type": "frame",
+              "id": "LXj46",
+              "name": "locsHead",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bmGJr",
+                  "fill": "#4A6B52",
+                  "content": "LOCATIONS",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "D9wOm",
+                  "fill": "#1B3A28",
+                  "content": "두 곳에서 만나요",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Inter",
+                  "fontSize": 40
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MpDz1",
+              "name": "locsRow",
+              "width": "fill_container",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZUg3l",
+                  "name": "loc1",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": [
+                    40,
+                    32
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aerMq",
+                      "name": "loc1Img",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1778046381603.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 4
+                    },
+                    {
+                      "type": "frame",
+                      "id": "WC8cu",
+                      "name": "loc1Body",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vVb4d",
+                          "fill": "#4A6B52",
+                          "content": "YANGJAE",
+                          "fontFamily": "Geist Mono",
+                          "fontSize": 10,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "X9s14s",
+                          "fill": "#1B3A28",
+                          "content": "양재역 본점",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "S5FwWC",
+                          "fill": "#4A6B52",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "서울 강남구 강남대로44길 7 1층",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "LmGWF",
+                          "fill": "#4A6B52",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "평일 11:30–23:00 · 주말 16:00–22:00",
+                          "fontFamily": "Geist Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "y8IToi",
+                          "fill": "#1B3A28",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "콜키지 가능 · 점심특선 · 가족·기념일에 좋아요",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "x9m2sg",
+                          "fill": "#2D5E3A",
+                          "content": "양재 본점 보기 →",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fdfdL",
+                  "name": "loc2",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": [
+                    40,
+                    32
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "wOoi4",
+                      "name": "loc2Img",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./images/generated-1778046377687.png",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 4
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HJAWg",
+                      "name": "loc2Body",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "HjBR8",
+                          "fill": "#4A6B52",
+                          "content": "EULJI-RO",
+                          "fontFamily": "Geist Mono",
+                          "fontSize": 10,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "F90JpC",
+                          "fill": "#1B3A28",
+                          "content": "더룸 을지로동대문점",
+                          "fontFamily": "Inter",
+                          "fontSize": 24,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "T1Te32",
+                          "fill": "#4A6B52",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "서울 중구 을지로43길 7 1·2층",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Q9TRD",
+                          "fill": "#4A6B52",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "매일 11:00–익일 05:00 · 연중무휴",
+                          "fontFamily": "Geist Mono",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "IPR6o",
+                          "fill": "#1B3A28",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "DDP 인근 · 본관/별관 · 새벽까지 운영",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "W2v2Gp",
+                          "fill": "#2D5E3A",
+                          "content": "을지로 보기 →",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oML4y",
+          "name": "Group Dining - Forest Signature",
+          "width": "fill_container",
+          "fill": "#1B3A28",
+          "gap": 64,
+          "padding": 96,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "SVt2d",
+              "name": "grpImg",
+              "clip": true,
+              "width": 560,
+              "height": 400,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/generated-1778046398907.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 4
+            },
+            {
+              "type": "frame",
+              "id": "av3Ja",
+              "name": "grpRight",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ONxsY",
+                  "fill": "#D4C39A",
+                  "content": "GROUP DINING",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "NYnwD",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "회식 · 동창회 · 청첩장은 단체석에서",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Inter",
+                  "fontSize": 36
+                },
+                {
+                  "type": "text",
+                  "id": "OHusX",
+                  "opacity": 0.85,
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "4~16인 프라이빗 룸부터 20~40인 단체석까지. 두 지점 모두 소·중·대 모임을 모두 받습니다.",
+                  "lineHeight": 1.55,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "LQzWD",
+                  "name": "chips",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gMoc7",
+                      "name": "chip1",
+                      "fill": "#2D5E3A",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        20,
+                        10
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "jtXaz",
+                          "fill": "#FFFFFF",
+                          "content": "프라이빗 룸 · 4~16인",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cBzU2",
+                      "name": "chip2",
+                      "fill": "#2D5E3A",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        20,
+                        10
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nionu",
+                          "fill": "#FFFFFF",
+                          "content": "단체석 · 20~40인",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gc3TN",
+                  "name": "grpCta",
+                  "fill": "#D4C39A",
+                  "cornerRadius": 4,
+                  "gap": 8,
+                  "padding": [
+                    28,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aFMcK",
+                      "fill": "#1B3A28",
+                      "content": "단체 안내 보기 →",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NXoG2",
+          "name": "Gallery Preview",
+          "width": "fill_container",
+          "fill": "#F5F3EE",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 96,
+          "children": [
+            {
+              "type": "frame",
+              "id": "r8ZLsV",
+              "name": "galHead",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "M3zbdU",
+                  "name": "galHeadL",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Y6Txjz",
+                      "fill": "#4A6B52",
+                      "content": "SPACE",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "R12Xgo",
+                      "fill": "#1B3A28",
+                      "content": "공간",
+                      "fontFamily": "Inter",
+                      "fontSize": 36
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "cL80z",
+                  "fill": "#1B3A28",
+                  "content": "갤러리 전체 →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mMWQH",
+              "name": "galRow1",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZVr0n",
+                  "name": "g1",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 320,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1778046417023.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "EW50H",
+                  "name": "g2",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 320,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1778046413350.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "SsoXy",
+                  "name": "g3",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 320,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1778046415003.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gSanw",
+              "name": "galRow2",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "B52QG",
+                  "name": "g4",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 240,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1778046423633.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "oQYSK",
+                  "name": "g5",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 240,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1778046414894.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "pSAZB",
+                  "name": "g6",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 240,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/generated-1778046432180.png",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WabkD",
+          "name": "Testimonials",
+          "width": "fill_container",
+          "fill": "#F5E9D4",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 96,
+          "children": [
+            {
+              "type": "frame",
+              "id": "wV4y5",
+              "name": "tesHead",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IDQCs",
+                  "fill": "#4A6B52",
+                  "content": "VOICES",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "edXXM",
+                  "fill": "#1B3A28",
+                  "content": "손님들의 이야기",
+                  "fontFamily": "Inter",
+                  "fontSize": 36
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aYO9s",
+              "name": "tesRow",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "FzD3t",
+                  "name": "r1",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nMJiY",
+                      "fill": "#1B3A28",
+                      "content": "★ ★ ★ ★ ★",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "yiYom",
+                      "fill": "#1B3A28",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "고기 퀄 진짜 좋고 육즙 제대로 터져요. 직원분이 직접 구워줘서 편하고 반찬이랑 조합도 좋아서 계속 손 가는 맛.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CIcd2",
+                      "fill": "#4A6B52",
+                      "content": "캐치테이블 · 2026.5.3",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ImFGZ",
+                  "name": "r2",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "K09q7",
+                      "fill": "#1B3A28",
+                      "content": "★ ★ ★ ★ ★",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "j2pp8",
+                      "fill": "#1B3A28",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "양재역에서 만날 수 있는 어나더레벨 고기 맛집. 분위기·서비스·맛 모두 합격.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "F9wjQ",
+                      "fill": "#4A6B52",
+                      "content": "네이버 · 양재 본점",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DZZAu",
+                  "name": "r3",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 4,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "m4jaut",
+                      "fill": "#1B3A28",
+                      "content": "★ ★ ★ ★ ★",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LAvJY",
+                      "fill": "#1B3A28",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "동대문에서 데이트하다가 첫 방문. 분위기도 좋아서 데이트 맛집으로 추천해요. 또 방문하고 싶습니다.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EUeET",
+                      "fill": "#4A6B52",
+                      "content": "캐치테이블 · 더룸 을지로동대문점",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "I9Dibi",
+          "name": "Reservation CTA Band",
+          "width": "fill_container",
+          "fill": "#E0E2E6",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": 96,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "iXkop",
+              "fill": "#4A6B52",
+              "content": "RESERVATION",
+              "fontFamily": "Geist Mono",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            },
+            {
+              "type": "text",
+              "id": "a0T3Ed",
+              "fill": "#1B3A28",
+              "content": "지금 예약하기",
+              "fontFamily": "Inter",
+              "fontSize": 48
+            },
+            {
+              "type": "text",
+              "id": "Rs7vh",
+              "fill": "#4A6B52",
+              "content": "네이버 예약·캐치테이블 실시간 / 단체·룸은 전화 문의",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "ij2Zw",
+              "name": "ctaPair",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "RtQfh",
+                  "name": "yp",
+                  "fill": "#1B3A28",
+                  "cornerRadius": 4,
+                  "padding": [
+                    36,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IByUr",
+                      "fill": "#FFFFFF",
+                      "content": "양재 본점 예약하기 →",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SxCLc",
+                  "name": "ep",
+                  "fill": "#1B3A28",
+                  "cornerRadius": 4,
+                  "padding": [
+                    36,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FeDxw",
+                      "fill": "#FFFFFF",
+                      "content": "을지로동대문점 예약하기 →",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "bLaof",
+              "fill": "#4A6B52",
+              "content": "단체·룸 문의  ☎ 양재 0507-1335-6363  ·  ☎ 을지로 02-2275-2322",
+              "fontFamily": "Geist Mono",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "SUx29",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "#1B3A28",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            64,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "RvELn",
+              "name": "ftTop",
+              "width": "fill_container",
+              "gap": 64,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zrdYg",
+                  "name": "ftBrand",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "t8Qpe",
+                      "fill": "#FFFFFF",
+                      "content": "육즙관리소",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "M7Tq3",
+                      "fill": "#D4C39A",
+                      "content": "PREMIUM DINING",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "WrFk4",
+                      "opacity": 0.7,
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "산청 흑돼지 · 거창 백돼지 · 100% 대나무 숯",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ESMbj",
+                      "name": "ftSocial",
+                      "gap": 12,
+                      "padding": [
+                        0,
+                        16,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "B4xbw",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "instagram",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "B81WkW",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "youtube",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "e0uj5",
+                  "name": "ftYj",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "E0XaWY",
+                      "fill": "#D4C39A",
+                      "content": "YANGJAE 양재역 본점",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "Y7Nv5M",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "서울 강남구 강남대로44길 7 1층",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "E86GO1",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "content": "☎ 0507-1335-6363",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RdpbE",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "평 11:30–23:00 / 주 16:00–22:00",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mmdzv",
+                  "name": "ftEj",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Jyh8M",
+                      "fill": "#D4C39A",
+                      "content": "EULJI-RO 더룸 을지로동대문점",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "kpv6Q",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "서울 중구 을지로43길 7 1·2층",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "qNNdU",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "content": "☎ 02-2275-2322",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lQ3ul",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "매일 11:00 – 익일 05:00",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sXvxj",
+                  "name": "ftLinks",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "juRSE",
+                      "fill": "#D4C39A",
+                      "content": "NAV",
+                      "fontFamily": "Geist Mono",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "btdou",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "content": "메뉴",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TyDdN",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "content": "단체 회식",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G49JO",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "content": "갤러리",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "j3Jp91",
+                      "opacity": 0.85,
+                      "fill": "#FFFFFF",
+                      "content": "소식",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V9fGj",
+              "name": "ftBot",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2D5E3A"
+              },
+              "padding": [
+                24,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "l7TPl",
+                  "opacity": 0.5,
+                  "fill": "#FFFFFF",
+                  "content": "© 2026 육즙관리소 · 메뉴/가격은 매장 상황에 따라 다를 수 있습니다",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "gPveO",
+                  "opacity": 0.5,
+                  "fill": "#FFFFFF",
+                  "content": "@yukzzp__management_office",
+                  "fontFamily": "Geist Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
