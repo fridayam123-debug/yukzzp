@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 
 export const dynamic = 'force-dynamic'
 import { Header } from '@/components/layout/Header'
@@ -13,7 +14,13 @@ export const metadata: Metadata = {
   description: '지리산 흑돼지 모듬 57,000원, 진꽃살 87,000원, 아보카도 육회 28,000원. 100% 대나무 숯 직화 · 직원 그릴링 무료.',
 }
 
-export default async function MenuPage() {
+export default async function MenuPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
   const { categories, items } = await getMenu()
   const locations = await getLocations()
   return (

@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server'
 import { getLocations } from '@/lib/fetchers/locations'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -15,7 +16,13 @@ import { InstagramStrip } from '@/components/sections/InstagramStrip'
 
 export const dynamic = 'force-dynamic'
 
-export default async function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
   const locations = await getLocations()
   return (
     <>

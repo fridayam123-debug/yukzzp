@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import type { Database } from '@/lib/supabase/types'
 type Loc = Database['public']['Tables']['locations']['Row']
 

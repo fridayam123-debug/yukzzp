@@ -1,12 +1,14 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import type { Database } from '@/lib/supabase/types'
 
 type Cat = Database['public']['Tables']['menu_categories']['Row']
 type Item = Database['public']['Tables']['menu_items']['Row']
 
 export default function MenuClient({ categories, items }: { categories: Cat[]; items: Item[] }) {
+  const t = useTranslations('menu')
   const [activeCat, setActiveCat] = useState<string | null>(null)
 
   const visibleItems = activeCat
@@ -18,10 +20,10 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
       {/* Page header */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 pt-16 pb-8">
         <h1 className="text-[40px] md:text-[52px] font-semibold text-[var(--color-ink)] tracking-[-0.02em]">
-          전체 메뉴
+          {t('title')}
         </h1>
         <p className="mt-2 text-[14px] text-[var(--color-body)]">
-          {items.length}개 메뉴 · 양재역점 · 을지로동대문점
+          {items.length}{t('subtitleSuffix')}
         </p>
       </div>
 
@@ -36,7 +38,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
                 : 'bg-white text-[var(--color-body)] border border-[var(--color-hairline)] hover:border-[var(--color-ink)]'
             }`}
           >
-            전체
+            {t('all')}
           </button>
           {categories.map(cat => (
             <button
@@ -80,7 +82,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
               <div className="pt-3">
                 {item.is_signature && (
                   <span className="inline-block text-[10px] tracking-[1px] font-semibold bg-[#3a4820] text-white px-2 py-[3px] rounded-[3px] mb-2">
-                    대표
+                    {t('signatureBadge')}
                   </span>
                 )}
                 <h3 className="text-[15px] font-semibold text-[var(--color-ink)] leading-[1.35] break-keep">
@@ -93,7 +95,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
                 )}
                 {item.price_krw != null && (
                   <p className="mt-2 text-[14px] font-semibold text-[#c49128]">
-                    {item.price_krw.toLocaleString()}원
+                    {item.price_krw.toLocaleString()}{t('priceUnit')}
                   </p>
                 )}
               </div>

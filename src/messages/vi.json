@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "eyebrow": "Chi nhánh chính Yangjae · The Room Euljiro · Dongdaemun",
+    "h1": "Một chỗ ngồi tốt\nkhông nên là điều khó khăn.",
+    "sub": "Yukjeup Gwaliso là nhà hàng ẩm thực cao cấp Hàn Quốc — trang trọng nhưng không gò bó, từ bữa tối kinh doanh đến buổi tối thân mật. Heo đen Sancheong và heo trắng Geochang nuôi bằng ngải cứu tự nhiên, than tre 100%, dịch vụ nướng tại bàn, không gian không khói — mọi khoảnh khắc được thiết kế bởi người sáng lập xuất thân từ thời trang.",
+    "ctaPrimary": "Đặt bàn ngay",
+    "ctaSecondary": "Xem thực đơn"
+  },
+  "nav": {
+    "menu": "Thực đơn",
+    "reserve": "Đặt bàn",
+    "locations": "Chi nhánh",
+    "locationsShort": "Chi nhánh",
+    "group": "Phòng riêng"
+  },
+  "menu": {
+    "title": "Toàn bộ menu",
+    "all": "Tất cả",
+    "subtitleSuffix": " món · Yangjae · Euljiro Dongdaemun",
+    "signatureBadge": "Đặc trưng",
+    "priceUnit": "KRW"
+  },
+  "footer": {
+    "disclaimer": "Các món và giá có thể thay đổi tùy theo chi nhánh.",
+    "originLine": "Heo đen Sancheong · Heo trắng Geochang · Than tre 100%",
+    "navHeading": "NAV",
+    "navMenu": "Thực đơn",
+    "navGroup": "Đặt nhóm",
+    "navReserve": "Đặt bàn",
+    "kakao": "KAKAO",
+    "copyright": "© {year} Yukjeup Gwaliso · Menu và giá có thể thay đổi tùy chi nhánh"
+  },
+  "language": {
+    "label": "Ngôn ngữ",
+    "ko": "한국어",
+    "en": "English",
+    "ja": "日本語",
+    "vi": "Tiếng Việt"
+  }
+}

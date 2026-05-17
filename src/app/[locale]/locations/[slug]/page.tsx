@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { RestaurantJsonLd } from '@/components/schema/RestaurantJsonLd'
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ locale: string; slug: string }> }
 ): Promise<Metadata> {
   const { slug } = await params
   const loc = await getLocationBySlug(slug)
@@ -24,9 +25,10 @@ export async function generateMetadata(
 }
 
 export default async function LocationPage(
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: Promise<{ locale: string; slug: string }> }
 ) {
-  const { slug } = await params
+  const { locale, slug } = await params
+  setRequestLocale(locale)
   const [loc, locations] = await Promise.all([
     getLocationBySlug(slug),
     getLocations(),
