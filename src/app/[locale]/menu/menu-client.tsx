@@ -34,7 +34,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
             onClick={() => setActiveCat(null)}
             className={`shrink-0 px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
               activeCat === null
-                ? 'bg-[#1c1c14] text-white'
+                ? 'bg-[#1c1c14] text-[var(--color-canvas)]'
                 : 'bg-white text-[var(--color-body)] border border-[var(--color-hairline)] hover:border-[var(--color-ink)]'
             }`}
           >
@@ -46,7 +46,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
               onClick={() => setActiveCat(cat.id)}
               className={`shrink-0 px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
                 activeCat === cat.id
-                  ? 'bg-[#1c1c14] text-white'
+                  ? 'bg-[#1c1c14] text-[var(--color-canvas)]'
                   : 'bg-white text-[var(--color-body)] border border-[var(--color-hairline)] hover:border-[var(--color-ink)]'
               }`}
             >
@@ -63,13 +63,14 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
             <div key={item.id} className="flex flex-col">
               {/* Photo */}
               <div className="relative w-full aspect-[4/3] bg-[var(--color-canvas-soft)] overflow-hidden rounded-[4px]">
-                {item.photo_url ? (
+                {(item.photo_url || item.image_url) ? (
                   <Image
-                    src={item.photo_url}
+                    src={item.photo_url || item.image_url!}
                     alt={item.name_ko}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 50vw, 25vw"
+                    unoptimized
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -81,7 +82,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
               {/* Info */}
               <div className="pt-3">
                 {item.is_signature && (
-                  <span className="inline-block text-[10px] tracking-[1px] font-semibold bg-[#3a4820] text-white px-2 py-[3px] rounded-[3px] mb-2">
+                  <span className="inline-block text-[10px] tracking-[1px] font-semibold bg-[#3a4820] text-[var(--color-canvas)] px-2 py-[3px] rounded-[3px] mb-2">
                     {t('signatureBadge')}
                   </span>
                 )}

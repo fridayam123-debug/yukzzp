@@ -26,13 +26,13 @@ function IconYoutube({ className = '' }: { className?: string }) {
 export function Footer({ locations }: { locations: Loc[] }) {
   const t = useTranslations('footer')
   return (
-    <footer className="bg-[var(--color-forest)] text-white px-6 lg:px-20 pt-16 pb-8 mt-auto">
+    <footer className="bg-[var(--color-forest)] text-[var(--color-canvas)] px-6 lg:px-20 pt-16 pb-8 mt-auto">
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <div className="text-[24px] font-normal tracking-[0.04em]">{BRAND.nameKo}</div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)] mt-3">{BRAND.tagline}</div>
-            <p className="mt-3 text-[13px] text-white/70 leading-relaxed">{t('originLine')}</p>
+            <p className="mt-3 text-[13px] text-[var(--color-canvas)]/70 leading-relaxed">{t('originLine')}</p>
             <div className="flex gap-1 mt-4 items-center -ml-2.5">
               <a
                 href={BRAND.instagramUrl}
@@ -69,20 +69,20 @@ export function Footer({ locations }: { locations: Loc[] }) {
             <div key={loc.slug}>
               <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">{loc.slug.toUpperCase()}</div>
               <div className="mt-3 text-[14px] font-normal">{loc.name_ko}</div>
-              <p className="mt-2 text-[12px] text-white/85 leading-relaxed">{loc.address_road}</p>
-              <p className="mt-1 text-[12px] text-white/85 tracking-[0.05em]">☎ {loc.virtual_phone}</p>
+              <p className="mt-2 text-[12px] text-[var(--color-canvas)]/85 leading-relaxed">{loc.address_road}</p>
+              <p className="mt-1 text-[12px] text-[var(--color-canvas)]/85 tracking-[0.05em]">☎ {loc.virtual_phone}</p>
             </div>
           ))}
           <div>
             <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">{t('navHeading')}</div>
-            <ul className="mt-3 space-y-2 text-[12px] text-white/85">
-              <li><Link href="/menu" className="hover:text-white transition-colors">{t('navMenu')}</Link></li>
-              <li><Link href="/#group" className="hover:text-white transition-colors">{t('navGroup')}</Link></li>
-              <li><Link href="/#reserve" className="hover:text-white transition-colors">{t('navReserve')}</Link></li>
+            <ul className="mt-3 space-y-2 text-[12px] text-[var(--color-canvas)]/85">
+              <li><Link href="/menu" className="hover:text-[var(--color-canvas)] transition-colors">{t('navMenu')}</Link></li>
+              <li><Link href="/#group" className="hover:text-[var(--color-canvas)] transition-colors">{t('navGroup')}</Link></li>
+              <li><Link href="/#reserve" className="hover:text-[var(--color-canvas)] transition-colors">{t('navReserve')}</Link></li>
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between text-[11px] text-white/50 tracking-[0.05em]">
+        <div className="mt-12 pt-6 border-t border-[var(--color-canvas)]/10 flex flex-col md:flex-row justify-between text-[11px] text-[var(--color-canvas)]/50 tracking-[0.05em]">
           <span>{t('copyright', { year: new Date().getFullYear() })}</span>
           <span>@{BRAND.instagramHandle}</span>
         </div>

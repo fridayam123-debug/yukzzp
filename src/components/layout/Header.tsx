@@ -53,6 +53,12 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             >
               {t('locationsShort')}
             </Link>
+            <Link
+              href="/#reviews"
+              className="hidden md:inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+            >
+              {t('reviews')}
+            </Link>
           </div>
 
           {/* Center — 로고 절대 중앙 */}

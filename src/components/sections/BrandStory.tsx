@@ -9,13 +9,13 @@ export function BrandStory() {
           <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">
             {COPY_KO.brandStoryEyebrow}
           </div>
-          <h2 className="mt-3 text-[32px] md:text-[40px] font-normal text-white max-w-[480px] whitespace-pre-line">
+          <h2 className="mt-3 text-[32px] md:text-[40px] font-normal text-[var(--color-canvas)] max-w-[480px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif" }}>
             {COPY_KO.brandStoryH2}
           </h2>
-          <p className="mt-6 text-[14px] leading-relaxed text-white/75 whitespace-pre-line">
+          <p className="mt-6 text-[14px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line">
             {COPY_KO.brandStoryP1}
           </p>
-          <p className="mt-4 text-[14px] leading-relaxed text-white/75 whitespace-pre-line">
+          <p className="mt-4 text-[14px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line">
             {COPY_KO.brandStoryP2}
           </p>
         </div>

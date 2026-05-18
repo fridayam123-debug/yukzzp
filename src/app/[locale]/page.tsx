@@ -27,7 +27,7 @@ export default async function HomePage({
   return (
     <>
       <OrganizationJsonLd />
-      <Header />
+      <Header transparent />
       <main>
         <Hero />
         <AuthorityBanner />

@@ -130,6 +130,9 @@
     background: var(--color-canvas);
     color: var(--color-ink);
   }
+  h2, h3 {
+    font-family: 'Cafe24Classictype', 'Pretendard', serif;
+  }
 }
 
 /* ── 인쇄 스타일 ──────────────────────────────────────────────────────────── */

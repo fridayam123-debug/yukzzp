@@ -9,9 +9,9 @@ export function AuthorityBannerClient({ videoId }: { videoId: string }) {
   return (
     <section className="bg-[var(--color-coral)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-10 items-start">
-        <div className="text-white order-2 md:order-1">
+        <div className="text-[var(--color-canvas)] order-2 md:order-1">
           <div className="text-[11px] tracking-[0.3em] uppercase opacity-80">{COPY_KO.authorityEyebrow}</div>
-          <h2 className="text-[32px] md:text-[48px] font-normal mt-5 leading-[1.05] tracking-[-0.01em]">{COPY_KO.authorityH2}</h2>
+          <h2 className="text-[32px] md:text-[48px] font-normal mt-5 leading-[1.05] tracking-[-0.01em]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{COPY_KO.authorityH2}</h2>
           <p className="text-[20px] md:text-[26px] mt-3 opacity-95 font-normal leading-[1.3]">{COPY_KO.authoritySub}</p>
           <div className="mt-6 space-y-4 text-[14px] md:text-[15px] opacity-85 leading-[1.75] tracking-[0.01em]">
             {COPY_KO.authorityBody.map((para, i) => (
@@ -43,7 +43,7 @@ export function AuthorityBannerClient({ videoId }: { videoId: string }) {
                 className="object-cover"
               />
               <span className="absolute inset-0 flex items-center justify-center">
-                <span className="w-16 h-16 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm text-white text-3xl">▶</span>
+                <span className="w-16 h-16 flex items-center justify-center rounded-full bg-[var(--color-canvas)]/20 backdrop-blur-sm text-[var(--color-canvas)] text-3xl">▶</span>
               </span>
             </button>
           )}

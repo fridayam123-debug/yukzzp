@@ -2,7 +2,7 @@ import { BRAND, COPY_KO } from '@/lib/constants/brand'
 
 export function GroupCTA() {
   return (
-    <section id="group" className="bg-[var(--color-forest)] text-white py-20 md:py-32 px-6 md:px-24">
+    <section id="group" className="bg-[var(--color-forest)] text-[var(--color-canvas)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 items-start">
         <div className="aspect-[4/3] md:aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-stone)] md:sticky md:top-24" aria-label="단체 회식 공간" />
         <div className="flex flex-col gap-6">

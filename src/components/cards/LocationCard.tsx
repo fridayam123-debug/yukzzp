@@ -2,7 +2,7 @@ import { Link } from '@/i18n/navigation'
 import type { Database } from '@/lib/supabase/types'
 type Loc = Database['public']['Tables']['locations']['Row']
 
-export function LocationCard({ loc, kicker, points }: { loc: Loc; kicker: string; points: string }) {
+export function LocationCard({ loc, kicker, points, subway }: { loc: Loc; kicker: string; points: string; subway?: string }) {
   return (
     <div className="flex flex-col gap-6 p-8 md:p-10 bg-white rounded-[var(--radius-card)]">
       <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-stone)]" aria-label={`${loc.name_ko} 매장 사진`} />
@@ -11,6 +11,7 @@ export function LocationCard({ loc, kicker, points }: { loc: Loc; kicker: string
         <h3 className="text-[22px] font-medium text-[var(--color-ink)]">{loc.name_ko}</h3>
         <p className="text-[13px] text-[var(--color-body)]">{loc.address_road}</p>
         <p className="text-[13px] text-[var(--color-body)] font-mono">☎ {loc.virtual_phone}</p>
+        {subway && <p className="text-[12px] text-[var(--color-body)] font-mono tracking-[0.05em] mt-1">地 {subway}</p>}
         <p className="text-[13px] text-[var(--color-ink)] leading-[1.5] mt-1">{points}</p>
         <Link href={`/locations/${loc.slug}`} className="text-[14px] font-medium text-[var(--color-forest-mid)] mt-2">
           자세히 보기 →
