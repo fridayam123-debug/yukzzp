@@ -96,6 +96,7 @@ export const COPY_KO = {
 
   signatureH2: '시그니처 메뉴',
   signatureMore: '전체 메뉴 보기 →',
+  signatureSubtitle: '대표 메뉴 4선',
 
   locationsEyebrow: 'LOCATIONS',
   locationsH2: '두 곳에서 만나요',
@@ -116,6 +117,43 @@ export const COPY_KO = {
   /** 푸터 디스클레이머 — 메뉴/가격 변동성 안내 */
   menuPriceDisclaimer: '메뉴 항목과 가격은 각 매장의 사정에 따라 다를 수 있습니다.',
 } as const
+
+/** Signature menu 4선 (시그니처 섹션 — Supabase 대신 정적 데이터) */
+export const SIGNATURE_ITEMS = [
+  {
+    key: 'grilling-service',
+    name: '프리미엄 그릴링서비스 (100%무료)',
+    description: '직접 굽지 않아도 되는 편안함, 가장 맛있는 타이밍에 완성되는 풍미, 전문서버의 그릴링 서비스',
+    priceKrw: 0,
+    priceLabel: '0원',
+    image: null,  // /photos/food/grilling-service.jpg (TBD — placeholder shown until image added)
+    isSignature: true,
+  },
+  {
+    key: 'jirisan-modeum',
+    name: '지리산 숙성 흑돼지 모듬',
+    description: '명품 산청 흑돼지 목살 + 삼겹살 + 항정살 or 가브리살 + 이겹살 (540g) 특허 파동숙성',
+    priceKrw: 57000,
+    image: '/photos/food/modeum-platter.png',
+    isSignature: true,
+  },
+  {
+    key: 'bulgogi-set',
+    name: '양념소불고기정식 (점심특선)',
+    description: '양념소불고기와 낚지볶음소면, 된장찌개, 계란찜, 공기밥, 6가지 반찬까지 풍성한 점심 시그니처메뉴',
+    priceKrw: 24000,
+    image: '/photos/food/bulgogi-set.png',
+    isSignature: true,
+  },
+  {
+    key: 'avocado-yukhoe',
+    name: '아보카도 육회',
+    description: '부드러운 아보카도와 고소한 육회의 풍미가 완벽하게 어우러진 육즙관리소의 시그니처 콜드 메뉴',
+    priceKrw: 28000,
+    image: '/photos/food/avocado-yukhoe-mini.png',
+    isSignature: true,
+  },
+] as const
 
 /** 지점별 단체 CTA 카피 (지점 구분) */
 export const LOCATION_CTA = {

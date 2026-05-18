@@ -1,8 +1,7 @@
 import { Link } from '@/i18n/navigation'
 import { PillarCard } from '@/components/cards/PillarCard'
 import { MenuItemCard } from '@/components/cards/MenuItemCard'
-import { getSignatureItems } from '@/lib/fetchers/menu'
-import { COPY_KO } from '@/lib/constants/brand'
+import { COPY_KO, SIGNATURE_ITEMS } from '@/lib/constants/brand'
 
 // 4 약속 (스펙 2026-05-09: 그릴링 + 덕트 통합 → 火 / GEO copy 2026-05-19)
 const PILLARS = [
@@ -29,7 +28,6 @@ const PILLARS = [
 ]
 
 export async function WhySignature() {
-  const items = await getSignatureItems()
   return (
     <section className="bg-[var(--color-canvas-soft)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto">
@@ -49,14 +47,16 @@ export async function WhySignature() {
             <h3 className="text-[32px] md:text-[44px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{COPY_KO.signatureH2}</h3>
             <Link href="/menu" className="text-[14px] underline underline-offset-[6px] decoration-[1px] hover:decoration-[var(--color-cream-gold)] text-[var(--color-ink)]">{COPY_KO.signatureMore}</Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {items.slice(0, 3).map(item => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {SIGNATURE_ITEMS.map(item => (
               <MenuItemCard
-                key={item.id}
-                name={item.name_ko}
-                description={item.description_ko}
-                priceKrw={item.price_krw}
-                isSignature={item.is_signature ?? false}
+                key={item.key}
+                name={item.name}
+                description={item.description}
+                priceKrw={item.priceKrw}
+                priceLabel={item.priceLabel}
+                image={item.image}
+                isSignature={item.isSignature}
               />
             ))}
           </div>

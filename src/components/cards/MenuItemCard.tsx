@@ -1,17 +1,33 @@
+import Image from 'next/image'
+
 export function MenuItemCard({
   name,
   description,
   priceKrw,
+  priceLabel,
   isSignature,
+  image,
 }: {
   name: string
   description?: string | null
   priceKrw?: number | null
+  priceLabel?: string | null
   isSignature?: boolean
+  image?: string | null
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-canvas-soft)]" />
+      <div className="relative aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-canvas-soft)]">
+        {image && (
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(max-width: 768px) 50vw, 25vw"
+            className="object-cover"
+          />
+        )}
+      </div>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
@@ -22,8 +38,10 @@ export function MenuItemCard({
           </div>
           {description && <p className="text-[13px] text-[var(--color-body)] mt-1.5 leading-[1.5]">{description}</p>}
         </div>
-        {priceKrw && (
-          <span className="text-[15px] tracking-[0.02em] whitespace-nowrap text-[var(--color-ink)] shrink-0">{priceKrw.toLocaleString()}원</span>
+        {(priceLabel || (typeof priceKrw === 'number')) && (
+          <span className="text-[15px] tracking-[0.02em] whitespace-nowrap text-[var(--color-ink)] shrink-0">
+            {priceLabel ?? `${priceKrw!.toLocaleString()}원`}
+          </span>
         )}
       </div>
     </div>
