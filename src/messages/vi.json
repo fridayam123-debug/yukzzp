@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Chi nhánh chính Yangjae · The Room Euljiro · Dongdaemun",
+    "eyebrow": "Chi nhánh chính Yangjae · The Room Euljiro Dongdaemun",
     "h1": "Ẩm thực K-BBQ cao cấp\nhoàn hảo về hương vị, không gian & phong cách.",
     "sub": "Yukjeup Gwaliso là nhà hàng ẩm thực cao cấp Hàn Quốc — trang trọng nhưng không gò bó, từ bữa tối kinh doanh đến buổi tối thân mật. Heo đen Sancheong và heo trắng Geochang nuôi bằng ngải cứu tự nhiên, than tre 100%, dịch vụ nướng tại bàn, không gian không khói — mọi khoảnh khắc được thiết kế bởi người sáng lập xuất thân từ thời trang.",
     "ctaPrimary": "Đặt bàn ngay",
@@ -11,7 +11,8 @@
     "reserve": "Đặt bàn",
     "locations": "Chi nhánh",
     "locationsShort": "Chi nhánh",
-    "group": "Phòng riêng"
+    "group": "Phòng riêng",
+    "reviews": "Đánh giá"
   },
   "menu": {
     "title": "Toàn bộ menu",
