@@ -16,7 +16,9 @@ export function LocationCard({ loc, kicker, points, subway }: { loc: Loc; kicker
             alt={`${loc.name_ko} 매장`}
             fill
             className="object-cover"
-            style={{ filter: 'brightness(1.03) contrast(0.92) sepia(0.10) saturate(0.88)' }}
+            style={{ filter: loc.slug === 'yangjae'
+              ? 'brightness(1.08) contrast(0.88) sepia(0.22) saturate(0.80) hue-rotate(-8deg)'
+              : 'brightness(1.03) contrast(0.92) sepia(0.10) saturate(0.88)' }}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         ) : (
