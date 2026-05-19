@@ -1,12 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
-export default function LoginPage({
-  searchParams,
-}: {
-  searchParams: { error?: string }
-}) {
+export default function LoginPage() {
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -59,7 +57,7 @@ export default function LoginPage({
         <h1 className="text-[20px] font-semibold text-[var(--color-ink)] tracking-tight">
           육즙관리소 어드민
         </h1>
-        {searchParams.error === 'unauthorized' && (
+        {searchParams.get('error') === 'unauthorized' && (
           <p className="text-[13px] text-red-500">등록된 관리자 계정이 아닙니다.</p>
         )}
         <form onSubmit={handleLogin} className="space-y-4">

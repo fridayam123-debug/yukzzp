@@ -31,7 +31,6 @@ export async function uploadMenuPhoto(formData: FormData) {
 
   if (updateError) return { error: (updateError as { message: string }).message }
 
-  // @ts-expect-error: single-arg form deprecated in Next.js 16 but works
-  revalidateTag('menu')
+  revalidateTag('menu', 'max')
   return { success: true, url: publicUrl }
 }

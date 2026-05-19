@@ -60,9 +60,17 @@ export default async function LocationPage(
 
         {/* Hero image placeholder — no hero_image in DB yet */}
         <div
-          className="aspect-video rounded-[var(--radius-card)] overflow-hidden mt-8 bg-[var(--color-stone)]"
+          className="relative aspect-video rounded-[var(--radius-card)] overflow-hidden mt-8 bg-[var(--color-canvas-soft)]"
           aria-label={`${loc.name_ko} 매장 사진`}
-        />
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, var(--color-canvas) 0%, var(--color-canvas-soft) 55%, var(--color-hairline) 100%)',
+            }}
+          />
+        </div>
 
         {/* Reservation CTA — Naver + Catchtable */}
         <div className="flex flex-col sm:flex-row gap-3 mt-8">

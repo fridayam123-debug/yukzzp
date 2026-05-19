@@ -64,6 +64,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
           {/* Center — 로고 절대 중앙 */}
           <Link
             href="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="absolute left-1/2 -translate-x-1/2 hover:opacity-70 transition-opacity"
             aria-label={BRAND.nameKo}
           >

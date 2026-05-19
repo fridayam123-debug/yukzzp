@@ -1,5 +1,8 @@
 import { Link } from '@/i18n/navigation'
 import { getReviews, type Review } from '@/lib/fetchers/reviews'
+import { getSiteCopy } from '@/lib/fetchers/copy'
+import { getLocale } from 'next-intl/server'
+import type { Locale } from '@/lib/fetchers/copy'
 
 const FALLBACK_YANGJAE: Review[] = [
   { id: '1', location_slug: 'yangjae', author: 'eni28', rec_count: 0, rating: 5, source: 'naver', visited_at: null, text: '육즙관리소 다녀왔는데 고기 퀄 진짜 좋고 육즙 제대로 터져요. 직원분이 직접 구워줘서 편하고, 반찬이랑 조합도 좋아서 계속 손 가는 맛. 깔끔한 분위기까지 있어서 재방문 각입니다.' },
@@ -28,33 +31,36 @@ function ReviewCard({ text, author }: { text: string; author: string }) {
 }
 
 export async function ReviewStrip() {
-  const [yangjae, euljiro] = await Promise.all([
+  const locale = await getLocale() as Locale
+  const [yangjae, euljiro, copy] = await Promise.all([
     getReviews('yangjae', 8),
     getReviews('euljiro', 8),
+    getSiteCopy(locale),
   ])
 
   const yangjaeReviews = yangjae.length > 0 ? yangjae : FALLBACK_YANGJAE
   const euljiroReviews = euljiro.length > 0 ? euljiro : FALLBACK_EULJIRO
 
-  const yangjaeSlice = yangjaeReviews.slice(0, 4)
-  const euljiroSlice = euljiroReviews.slice(0, 4)
+  const eyebrow = copy['review.eyebrow'] || 'CUSTOMER REVIEWS'
+  const h2 = copy['review.h2'] || '방문자 리뷰'
+  const reviewMore = copy['review.more'] || copy['locations.reviewMore'] || '리뷰 더보기 →'
 
   return (
     <section id="reviews" className="bg-[var(--color-canvas)] py-16 md:py-24 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto">
-        <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">CUSTOMER REVIEWS</div>
+        <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">{eyebrow}</div>
         <h2 className="text-[32px] md:text-[40px] font-normal text-[var(--color-ink)] mt-3" style={{ fontFamily: "'Cafe24Classictype', serif" }}>
-          방문자 리뷰
+          {h2}
         </h2>
 
         <div className="mt-12">
           <p className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)] mb-5">YANGJAE · 양재역본점</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {yangjaeSlice.map((r) => <ReviewCard key={r.id} text={r.text} author={r.author} />)}
+            {yangjaeReviews.slice(0, 4).map((r) => <ReviewCard key={r.id} text={r.text} author={r.author} />)}
           </div>
           <div className="mt-5 text-right">
             <Link href="/locations/yangjae" className="text-[12px] tracking-[1px] font-mono text-[var(--color-body)] hover:text-[var(--color-ink)] transition-colors">
-              리뷰 더보기 →
+              {reviewMore}
             </Link>
           </div>
         </div>
@@ -62,11 +68,11 @@ export async function ReviewStrip() {
         <div className="mt-10">
           <p className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)] mb-5">EULJI-RO · 더룸 을지로동대문점</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {euljiroSlice.map((r) => <ReviewCard key={r.id} text={r.text} author={r.author} />)}
+            {euljiroReviews.slice(0, 4).map((r) => <ReviewCard key={r.id} text={r.text} author={r.author} />)}
           </div>
           <div className="mt-5 text-right">
             <Link href="/locations/euljiro" className="text-[12px] tracking-[1px] font-mono text-[var(--color-body)] hover:text-[var(--color-ink)] transition-colors">
-              리뷰 더보기 →
+              {reviewMore}
             </Link>
           </div>
         </div>
