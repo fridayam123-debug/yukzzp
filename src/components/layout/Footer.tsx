@@ -25,6 +25,7 @@ function IconYoutube({ className = '' }: { className?: string }) {
 
 export function Footer({ locations }: { locations: Loc[] }) {
   const t = useTranslations('footer')
+  const sorted = [...locations].sort((a, b) => a.slug === 'yangjae' ? -1 : b.slug === 'yangjae' ? 1 : 0)
   return (
     <footer className="bg-[var(--color-forest)] text-[var(--color-canvas)] px-6 lg:px-20 pt-16 pb-8 mt-auto">
       <div className="max-w-[1440px] mx-auto">
@@ -65,7 +66,7 @@ export function Footer({ locations }: { locations: Loc[] }) {
               )}
             </div>
           </div>
-          {locations.map(loc => (
+          {sorted.map(loc => (
             <div key={loc.slug}>
               <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">{loc.slug.toUpperCase()}</div>
               <div className="mt-3 text-[14px] font-normal">{loc.name_ko}</div>

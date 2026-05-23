@@ -28,8 +28,8 @@ export async function WhySignature() {
     <section className="bg-[var(--color-canvas-soft)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto">
         <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-body)]">{eyebrow}</div>
-        <h2 className="text-[40px] md:text-[48px] font-normal text-[var(--color-ink)] mt-4 tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{h2}</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16">
+        <h2 className="text-[28px] md:text-[48px] font-normal text-[var(--color-ink)] mt-4 tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>{h2}</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-10 md:mt-16">
           {pillars.map((p) => (
             <PillarCard
               key={p.ordinal}
@@ -42,7 +42,7 @@ export async function WhySignature() {
         </div>
         <div className="mt-24">
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <h3 className="text-[32px] md:text-[44px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{signatureH2}</h3>
+            <h3 className="text-[22px] md:text-[44px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>{signatureH2}</h3>
             <Link href="/menu" className="text-[14px] underline underline-offset-[6px] decoration-[1px] hover:decoration-[var(--color-cream-gold)] text-[var(--color-ink)]">{signatureMore}</Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">

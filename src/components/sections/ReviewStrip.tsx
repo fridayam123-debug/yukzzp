@@ -20,11 +20,11 @@ const FALLBACK_EULJIRO: Review[] = [
 
 function ReviewCard({ text, author }: { text: string; author: string }) {
   return (
-    <div className="flex flex-col bg-white rounded-[var(--radius-card)] p-6">
-      <span className="text-[48px] leading-[0.8] text-[var(--color-hairline)] font-serif select-none" aria-hidden="true">"</span>
-      <p className="mt-4 text-[13px] text-[var(--color-ink)] leading-[1.85] flex-1">{text}</p>
-      <div className="mt-6 pt-4 border-t border-[var(--color-hairline)]">
-        <span className="text-[12px] text-[var(--color-body)]">— {author}</span>
+    <div className="flex flex-col bg-white rounded-[var(--radius-card)] p-4 md:p-6">
+      <span className="text-[36px] md:text-[48px] leading-[0.8] text-[var(--color-hairline)] font-serif select-none" aria-hidden="true">"</span>
+      <p className="mt-3 text-[12px] md:text-[13px] text-[var(--color-ink)] leading-[1.75] flex-1 [word-break:keep-all]">{text}</p>
+      <div className="mt-4 pt-3 border-t border-[var(--color-hairline)]">
+        <span className="text-[11px] md:text-[12px] text-[var(--color-body)]">— {author}</span>
       </div>
     </div>
   )
@@ -49,7 +49,7 @@ export async function ReviewStrip() {
     <section id="reviews" className="bg-[var(--color-canvas)] py-16 md:py-24 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto">
         <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">{eyebrow}</div>
-        <h2 className="text-[32px] md:text-[40px] font-normal text-[var(--color-ink)] mt-3" style={{ fontFamily: "'Cafe24Classictype', serif" }}>
+        <h2 className="text-[24px] md:text-[40px] font-normal text-[var(--color-ink)] mt-3" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>
           {h2}
         </h2>
 

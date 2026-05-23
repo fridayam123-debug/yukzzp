@@ -171,7 +171,7 @@
           "fill": {
             "type": "image",
             "enabled": true,
-            "url": "./images/generated-1778048230180.png",
+            "url": "images/generated-1778048230180.png",
             "mode": "fill"
           },
           "layout": "vertical",
@@ -199,7 +199,8 @@
               "content": "프리미엄 흑돼지 다이닝",
               "lineHeight": 1.1,
               "fontFamily": "Inter",
-              "fontSize": 64
+              "fontSize": 64,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -317,7 +318,8 @@
                   "content": "셰프 이원일이 직접 소개한",
                   "lineHeight": 1.15,
                   "fontFamily": "Inter",
-                  "fontSize": 40
+                  "fontSize": 40,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -329,7 +331,8 @@
                   "content": "돼지고기 참 잘하는 육즙관리소",
                   "lineHeight": 1.3,
                   "fontFamily": "Inter",
-                  "fontSize": 24
+                  "fontSize": 24,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -377,7 +380,7 @@
               "fill": {
                 "type": "image",
                 "enabled": true,
-                "url": "./images/generated-1778046294590.png",
+                "url": "images/generated-1778046294590.png",
                 "mode": "fill"
               },
               "cornerRadius": 4,
@@ -423,7 +426,8 @@
                   "content": "네 가지 약속",
                   "lineHeight": 1.15,
                   "fontFamily": "Inter",
-                  "fontSize": 40
+                  "fontSize": 40,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -652,7 +656,8 @@
                       "content": "산청 흑돼지 한 점, 깊은 육즙",
                       "lineHeight": 1.15,
                       "fontFamily": "Inter",
-                      "fontSize": 36
+                      "fontSize": 36,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -692,7 +697,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "./images/generated-1778046376078.png",
+                        "url": "images/generated-1778046376078.png",
                         "mode": "fill"
                       },
                       "cornerRadius": 4
@@ -748,7 +753,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "./images/generated-1778046358410.png",
+                        "url": "images/generated-1778046358410.png",
                         "mode": "fill"
                       },
                       "cornerRadius": 4
@@ -804,7 +809,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "./images/generated-1778046353292.png",
+                        "url": "images/generated-1778046353292.png",
                         "mode": "fill"
                       },
                       "cornerRadius": 4
@@ -880,7 +885,8 @@
                   "content": "두 곳에서 만나요",
                   "lineHeight": 1.15,
                   "fontFamily": "Inter",
-                  "fontSize": 40
+                  "fontSize": 40,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -915,7 +921,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "./images/generated-1778046381603.png",
+                        "url": "images/generated-1778046381603.png",
                         "mode": "fill"
                       },
                       "cornerRadius": 4
@@ -1017,7 +1023,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "./images/generated-1778046377687.png",
+                        "url": "images/generated-1778046377687.png",
                         "mode": "fill"
                       },
                       "cornerRadius": 4
@@ -1119,7 +1125,7 @@
               "fill": {
                 "type": "image",
                 "enabled": true,
-                "url": "./images/generated-1778046398907.png",
+                "url": "images/generated-1778046398907.png",
                 "mode": "fill"
               },
               "cornerRadius": 4
@@ -1151,7 +1157,8 @@
                   "content": "회식 · 동창회 · 청첩장은 단체석에서",
                   "lineHeight": 1.15,
                   "fontFamily": "Inter",
-                  "fontSize": 36
+                  "fontSize": 36,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "text",
@@ -1287,7 +1294,8 @@
                       "fill": "#1B3A28",
                       "content": "공간",
                       "fontFamily": "Inter",
-                      "fontSize": 36
+                      "fontSize": 36,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -1319,7 +1327,7 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "./images/generated-1778046417023.png",
+                    "url": "images/generated-1778046417023.png",
                     "mode": "fill"
                   },
                   "cornerRadius": 4
@@ -1334,7 +1342,7 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "./images/generated-1778046413350.png",
+                    "url": "images/generated-1778046413350.png",
                     "mode": "fill"
                   },
                   "cornerRadius": 4
@@ -1349,7 +1357,7 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "./images/generated-1778046415003.png",
+                    "url": "images/generated-1778046415003.png",
                     "mode": "fill"
                   },
                   "cornerRadius": 4
@@ -1373,7 +1381,7 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "./images/generated-1778046423633.png",
+                    "url": "images/generated-1778046423633.png",
                     "mode": "fill"
                   },
                   "cornerRadius": 4
@@ -1388,7 +1396,7 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "./images/generated-1778046414894.png",
+                    "url": "images/generated-1778046414894.png",
                     "mode": "fill"
                   },
                   "cornerRadius": 4
@@ -1403,7 +1411,7 @@
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "./images/generated-1778046432180.png",
+                    "url": "images/generated-1778046432180.png",
                     "mode": "fill"
                   },
                   "cornerRadius": 4
@@ -1445,7 +1453,8 @@
                   "fill": "#1B3A28",
                   "content": "손님들의 이야기",
                   "fontFamily": "Inter",
-                  "fontSize": 36
+                  "fontSize": 36,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -1616,7 +1625,8 @@
               "fill": "#1B3A28",
               "content": "지금 예약하기",
               "fontFamily": "Inter",
-              "fontSize": 48
+              "fontSize": 48,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -2000,6 +2010,126 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "VWGeq",
+      "x": 1540,
+      "y": 0,
+      "name": "디자인기록-타이틀바",
+      "clip": true,
+      "width": 1440,
+      "height": 56,
+      "fill": "#3A3431"
+    },
+    {
+      "type": "frame",
+      "id": "AxQIB",
+      "x": 1540,
+      "y": 56,
+      "name": "디자인기록-Hero섹션",
+      "clip": true,
+      "width": 1440,
+      "height": 560,
+      "fill": "#3A3431"
+    },
+    {
+      "type": "frame",
+      "id": "YUIHn",
+      "x": 1540,
+      "y": 616,
+      "name": "디자인기록-타이포",
+      "clip": true,
+      "width": 1440,
+      "height": 320,
+      "fill": "#CFC6C0"
+    },
+    {
+      "type": "frame",
+      "id": "VvmB6",
+      "x": 1540,
+      "y": 936,
+      "name": "디자인기록-리뷰그리드",
+      "clip": true,
+      "width": 1440,
+      "height": 400,
+      "fill": "#E8DFD2"
+    },
+    {
+      "type": "frame",
+      "id": "X9lFK",
+      "x": 1540,
+      "y": 1336,
+      "name": "디자인기록-변경로그",
+      "clip": true,
+      "width": 1440,
+      "height": 320,
+      "fill": "#3A3431"
+    },
+    {
+      "type": "text",
+      "id": "H6gmKJ",
+      "x": 1572,
+      "y": 21,
+      "name": "t1",
+      "fill": "#E8DFD2",
+      "content": "육즙관리소 디자인 변경 기록 — 2026-05-18",
+      "fontFamily": "Inter",
+      "fontSize": 13,
+      "fontWeight": "500",
+      "letterSpacing": 1.5
+    },
+    {
+      "type": "text",
+      "id": "FcwFN",
+      "x": 1572,
+      "y": 120,
+      "name": "t2",
+      "fill": "#FFFFFF",
+      "content": "HERO  맛과 공간, 스타일로 완성한\n프리미엄 K-BBQ 다이닝",
+      "lineHeight": 1,
+      "fontFamily": "Inter",
+      "fontSize": 48,
+      "fontWeight": "normal"
+    },
+    {
+      "type": "text",
+      "id": "aH09h",
+      "x": 1572,
+      "y": 680,
+      "name": "t3",
+      "fill": "#3A3431",
+      "content": "TYPOGRAPHY  Cafe24Classictype — H1 · H2 적용",
+      "fontFamily": "Inter",
+      "fontSize": 16,
+      "fontWeight": "normal",
+      "letterSpacing": 1
+    },
+    {
+      "type": "text",
+      "id": "pPY5R",
+      "x": 1572,
+      "y": 990,
+      "name": "t4",
+      "fill": "#3A3431",
+      "content": "REVIEWS  양재 4개 · 을지로 4개  /  4열 그리드 레이아웃",
+      "fontFamily": "Inter",
+      "fontSize": 16,
+      "fontWeight": "normal",
+      "letterSpacing": 1
+    },
+    {
+      "type": "text",
+      "id": "wZca7",
+      "x": 1572,
+      "y": 1390,
+      "name": "t5",
+      "fill": "#E8DFD2",
+      "content": "CHANGES  Cafe24 폰트 · Hero 문구 · 리뷰 2지점 분리 · 로고 수정",
+      "fontFamily": "Inter",
+      "fontSize": 16,
+      "fontWeight": "normal",
+      "letterSpacing": 1
     }
   ]
 }

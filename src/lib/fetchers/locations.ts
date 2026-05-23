@@ -18,9 +18,10 @@ export const getLocations = unstable_cache(
       .select('*')
       .order('slug')
     if (error) throw error
-    return data ?? []
+    const rows = data ?? []
+    return rows.sort((a, b) => (a.slug === 'yangjae' ? -1 : b.slug === 'yangjae' ? 1 : 0))
   },
-  ['locations'],
+  ['locations-v2'],
   { revalidate: 300, tags: ['locations'] },
 )
 

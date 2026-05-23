@@ -20,7 +20,7 @@ export async function BrandStory() {
           <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">
             {eyebrow}
           </div>
-          <h2 className="mt-3 text-[32px] md:text-[40px] font-normal text-[var(--color-canvas)] max-w-[480px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif" }}>
+          <h2 className="mt-3 text-[24px] md:text-[40px] font-normal text-[var(--color-canvas)] max-w-[480px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>
             {h2}
           </h2>
           <p className="mt-6 text-[14px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line">

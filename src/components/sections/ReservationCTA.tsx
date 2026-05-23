@@ -17,7 +17,7 @@ export async function ReservationCTA({ locations }: { locations: Loc[] }) {
     <section id="reserve" className="bg-[var(--color-canvas-soft)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1024px] mx-auto text-center flex flex-col gap-7 items-center">
         <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-body)]">{eyebrow}</div>
-        <h2 className="text-[44px] md:text-[56px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{h2}</h2>
+        <h2 className="text-[28px] md:text-[56px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>{h2}</h2>
         <p className="text-[15px] text-[var(--color-body)]">{sub}</p>
         <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full justify-center flex-wrap">
           {locations.map(loc => (

@@ -21,23 +21,23 @@ export async function GroupCTA() {
   const ctaKakao = copy['group.cta.kakao'] || COPY_KO.groupCtaKakao
 
   return (
-    <section id="group" className="bg-[var(--color-forest)] text-[var(--color-canvas)] py-20 md:py-32 px-6 md:px-24">
-      <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 items-start">
-        <div className="aspect-[4/3] md:aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-stone)] md:sticky md:top-24" aria-label="단체 회식 공간" />
+    <section id="group" className="bg-[var(--color-forest)] text-[var(--color-canvas)] py-12 md:py-32 px-6 md:px-24">
+      <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="hidden md:block aspect-[4/5] min-h-[240px] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-stone)] md:sticky md:top-24" aria-label="단체 회식 공간" />
         <div className="flex flex-col gap-6">
           <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">
             {eyebrow}
           </div>
           <h2
-            className="text-[32px] md:text-[44px] font-normal leading-[1.05] tracking-[-0.01em]"
-            style={{ fontFamily: "'Cafe24Classictype', serif" }}
+            className="text-[22px] md:text-[44px] font-normal leading-[1.2] md:leading-[1.05] tracking-[-0.01em]"
+            style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}
           >
             {h2}
           </h2>
-          <p className="text-[15px] md:text-[18px] text-[var(--color-cream-gold)] opacity-95 leading-[1.5] tracking-[0.02em]">
+          <p className="text-[13px] md:text-[18px] text-[var(--color-cream-gold)] opacity-95 leading-[1.6] tracking-[0.02em] [word-break:keep-all]">
             {subheading}
           </p>
-          <div className="space-y-4 text-[14px] md:text-[15px] opacity-85 leading-[1.75] tracking-[0.01em] mt-2">
+          <div className="space-y-3 text-[13px] md:text-[15px] opacity-85 leading-[1.8] tracking-[0.01em] [word-break:keep-all]">
             {body.map((para, i) => (
               <p key={i}>{para}</p>
             ))}
