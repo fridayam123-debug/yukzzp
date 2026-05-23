@@ -29,7 +29,7 @@ export default async function HomePage({
     <>
       <OrganizationJsonLd />
       <WebsiteJsonLd />
-      <Header />
+      <Header transparent />
       <main>
         <Hero />
         <AuthorityBanner />

@@ -1,7 +1,7 @@
 {
   "hero": {
-    "eyebrow": "Yangjae Flagship · The Room Euljiro · Dongdaemun",
-    "h1": "Great dining\nshould feel effortless.",
+    "eyebrow": "Yangjae Flagship · The Room Euljiro Dongdaemun",
+    "h1": "Premium K-BBQ Dining\ncrafted with taste, space & style.",
     "sub": "Yukjeup Gwaliso offers Korean premium dining that is formal yet never stiff — from business dinners to intimate evenings. Naturally raised black pork from Sancheong and white pork from Geochang, 100% bamboo charcoal, tableside grilling service, and a smoke-free space — every moment designed by a founder with a background in fashion.",
     "ctaPrimary": "Reserve Now",
     "ctaSecondary": "View Menu"
@@ -11,7 +11,8 @@
     "reserve": "Reserve",
     "locations": "Locations",
     "locationsShort": "Locations",
-    "group": "Private Dining"
+    "group": "Private Dining",
+    "reviews": "Reviews"
   },
   "menu": {
     "title": "Full Menu",

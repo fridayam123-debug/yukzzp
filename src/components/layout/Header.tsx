@@ -1,25 +1,44 @@
+'use client'
+import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
 import { BRAND } from '@/lib/constants/brand'
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 
-export function Header() {
+export function Header({ transparent = false }: { transparent?: boolean }) {
   const t = useTranslations('nav')
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    if (!transparent) return
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [transparent])
+
+  const bgAlpha = !transparent ? 0.95 : scrolled ? 0.92 : 0.72
+  const blur = !transparent ? 0 : 16
+
   return (
-    <header className="sticky top-0 z-40 bg-[var(--color-canvas)]">
-      {/* Top accent bar — LV 스타일 브랜드 강조 라인 */}
+    <header
+      className={`${transparent ? 'fixed' : 'sticky'} top-0 left-0 right-0 z-40 transition-all duration-500`}
+      style={{ backgroundColor: `rgba(232,223,210,${bgAlpha})`, backdropFilter: blur ? `blur(${blur}px)` : undefined }}
+    >
+      {/* Top accent bar */}
       <div className="h-[3px] bg-[var(--color-espresso)]" />
 
       <div className="border-b border-[var(--color-hairline)]">
         <nav
           aria-label="주 내비게이션"
-          className="relative mx-auto max-w-[1440px] h-[68px] px-6 lg:px-16 flex items-center justify-between"
+          className="relative mx-auto max-w-[1440px] h-[136px] px-6 lg:px-16 flex items-center justify-between"
         >
           {/* Left */}
           <div className="flex items-center gap-7">
             <Link
               href="/menu"
-              className="flex items-center gap-2 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+              className="flex items-center gap-2 py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
               <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true">
                 <rect width="18" height="1.5" rx="0.75" />
@@ -30,33 +49,47 @@ export function Header() {
             </Link>
             <Link
               href="/#locations"
-              className="hidden md:block text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+              className="hidden md:inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
               {t('locationsShort')}
             </Link>
+            <Link
+              href="/#reviews"
+              className="hidden md:inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+            >
+              {t('reviews')}
+            </Link>
           </div>
 
-          {/* Center — 브랜드명 절대 중앙 */}
+          {/* Center — 로고 절대 중앙 */}
           <Link
             href="/"
-            className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap hover:opacity-60 transition-opacity"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="absolute left-1/2 -translate-x-1/2 hover:opacity-70 transition-opacity"
+            aria-label={BRAND.nameKo}
           >
-            <span className="text-[23px] md:text-[26px] tracking-[5px] font-medium text-[var(--color-espresso)]">
-              {BRAND.nameKo}
-            </span>
+            <Image
+              src="/logo.png"
+              alt={BRAND.nameKo}
+              width={1080}
+              height={573}
+              priority
+              unoptimized
+              className="h-[96px] w-auto object-contain"
+            />
           </Link>
 
           {/* Right */}
           <div className="flex items-center gap-5 md:gap-7">
             <Link
               href="/#group"
-              className="hidden md:block text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+              className="hidden md:inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
               {t('group')}
             </Link>
             <Link
               href="/#reserve"
-              className="text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+              className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
             >
               {t('reserve')}
             </Link>

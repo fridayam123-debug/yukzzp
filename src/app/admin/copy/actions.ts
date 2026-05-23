@@ -2,16 +2,21 @@
 
 import { revalidateTag } from 'next/cache'
 import { createPublicClient } from '@/lib/supabase/service'
+import type { Locale } from '@/lib/fetchers/copy'
 
-export async function updateCopy(key: string, value: string) {
+const LANG_COL: Record<Locale, string> = {
+  ko: 'value',
+  en: 'value_en',
+  ja: 'value_ja',
+  vi: 'value_vi',
+}
+
+export async function updateCopyLang(key: string, lang: Locale, value: string) {
   const supabase = createPublicClient()
+  const col = LANG_COL[lang]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { error } = await (supabase as any).rpc('update_site_copy', {
-    p_key: key,
-    p_value: value,
-  })
+  const { error } = await (supabase as any).from('site_copy').update({ [col]: value }).eq('key', key)
   if (error) return { error: (error as { message: string }).message }
-  // @ts-expect-error: single-arg form deprecated in Next.js 16 but works
-  revalidateTag('site-copy')
+  revalidateTag('site-copy', 'max')
   return { success: true }
 }

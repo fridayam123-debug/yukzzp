@@ -13,6 +13,5 @@ export async function saveVideoUrl(formData: FormData) {
   )
 
   if (error) console.error('[saveVideoUrl]', error.message)
-  // @ts-expect-error: single-arg form deprecated in Next.js 16 but works
-  revalidateTag('site_config')
+  revalidateTag('site_config', 'max')
 }

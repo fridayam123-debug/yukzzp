@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { RestaurantJsonLd } from '@/components/schema/RestaurantJsonLd'
 import { getLocations, getLocationBySlug } from '@/lib/fetchers/locations'
+import { getReviews } from '@/lib/fetchers/reviews'
 
 export const dynamic = 'force-dynamic'
 
@@ -36,9 +37,10 @@ export default async function LocationPage(
 ) {
   const { locale, slug } = await params
   setRequestLocale(locale)
-  const [loc, locations] = await Promise.all([
+  const [loc, locations, reviews] = await Promise.all([
     getLocationBySlug(slug),
     getLocations(),
+    getReviews(slug, 50),
   ])
   if (!loc) notFound()
 
@@ -65,9 +67,17 @@ export default async function LocationPage(
 
         {/* Hero image placeholder — no hero_image in DB yet */}
         <div
-          className="aspect-video rounded-[var(--radius-card)] overflow-hidden mt-8 bg-[var(--color-stone)]"
+          className="relative aspect-video rounded-[var(--radius-card)] overflow-hidden mt-8 bg-[var(--color-canvas-soft)]"
           aria-label={`${loc.name_ko} 매장 사진`}
-        />
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, var(--color-canvas) 0%, var(--color-canvas-soft) 55%, var(--color-hairline) 100%)',
+            }}
+          />
+        </div>
 
         {/* Reservation CTA — Naver + Catchtable */}
         <div className="flex flex-col sm:flex-row gap-3 mt-8">
@@ -78,7 +88,7 @@ export default async function LocationPage(
               rel="noopener noreferrer"
               data-event="reservation_click"
               data-location={loc.slug}
-              className="inline-flex items-center justify-center gap-2 bg-[#03C75A] text-white px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
+              className="inline-flex items-center justify-center gap-2 bg-[#03C75A] text-[var(--color-canvas)] px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
             >
               네이버 예약
             </a>
@@ -90,7 +100,7 @@ export default async function LocationPage(
               rel="noopener noreferrer"
               data-event="reservation_click"
               data-location={loc.slug}
-              className="inline-flex items-center justify-center gap-2 bg-[var(--color-forest)] text-white px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
+              className="inline-flex items-center justify-center gap-2 bg-[var(--color-forest)] text-[var(--color-canvas)] px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
             >
               캐치테이블 예약
             </a>
@@ -179,6 +189,26 @@ export default async function LocationPage(
             )}
           </div>
         </div>
+        {/* Reviews */}
+        {reviews.length > 0 && (
+          <section className="mt-16">
+            <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">CUSTOMER REVIEWS</div>
+            <h2 className="text-[28px] font-normal text-[var(--color-ink)] mt-2 mb-8" style={{ fontFamily: "'Cafe24Classictype', serif" }}>
+              방문자 리뷰
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {reviews.map((r) => (
+                <div key={r.id} className="flex flex-col bg-white rounded-[var(--radius-card)] p-6">
+                  <span className="text-[48px] leading-[0.8] text-[var(--color-hairline)] font-serif select-none" aria-hidden="true">"</span>
+                  <p className="mt-4 text-[13px] text-[var(--color-ink)] leading-[1.85] flex-1">{r.text}</p>
+                  <div className="mt-6 pt-4 border-t border-[var(--color-hairline)]">
+                    <span className="text-[12px] text-[var(--color-body)]">— {r.author}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
       <Footer locations={locations} />
     </>

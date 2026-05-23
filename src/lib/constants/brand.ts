@@ -49,14 +49,19 @@ export const CHEF_ENDORSEMENT = {
 /** Phase 1 메인 LP 카피 (한국어) */
 export const COPY_KO = {
   heroEyebrow: '양재역 본점 · 더룸 을지로 · 동대문점',
-  heroH1: '좋은 자리는,\n어렵지 않아야 합니다.',
-  heroSub: '육즙관리소는 비즈니스 디너부터 가까운 사람과의 저녁까지, 격을 갖추되 손님을 어색하게 만들지 않는 한국식 프리미엄 다이닝입니다. 야생쑥을 먹고 자란 산청 흑돼지와 거창 백돼지, 100% 대나무 숯, 전문 서버의 그릴링 서비스, 그리고 냄새와 연기가 없는 쾌적한 공간 — 패션 디자이너 출신 대표가 손님이 머무는 모든 순간을 설계했습니다.',
+  heroH1: '맛과 공간, 스타일로 완성한\n프리미엄 K-BBQ 다이닝',
+  heroSub: '육즙관리소는 서울의 프리미엄 K-BBQ 다이닝 브랜드입니다. 패션 디자이너 출신 대표의 감각으로 맛과 공간, 서비스를 하나의 경험으로 디자인했습니다. 엄선된 산청 흑돼지와 거창 백돼지, 그리고 7가지 시그니처 소스로 완성도 높은 Korean BBQ Dining을 제공합니다. 프라이빗 룸과 전문 그릴링 서비스, 하향식 덕트 시스템으로 더욱 편안하고 쾌적한 다이닝 경험을 제공합니다. 육즙관리소는 한국적인 미감과 현대적인 감각이 어우러진 새로운 서울 프리미엄 Korean Dining Experience를 만들어갑니다.',
   heroCtaPrimary: '지금 예약하기',
   heroCtaSecondary: '메뉴 보기',
 
-  authorityEyebrow: 'MEDIA · 셰프 추천',
-  authorityH2: '셰프 이원일이 직접 소개한',
-  authoritySub: '돼지고기 참 잘하는 육즙관리소',
+  authorityEyebrow: 'MEDIA · Chef Recommendation',
+  authorityH2: '이원일 셰프가 직접 소개한',
+  authoritySub: '"미친 듯이 맛있는 돼지고기집" 육즙관리소',
+  authorityBody: [
+    '이원일 셰프는 공식 채널 211TV를 통해 육즙관리소를 직접 소개하며, "미친 듯이 맛있는 돼지고기집"이라는 표현과 함께 프리미엄 K-BBQ 다이닝으로 추천했습니다.',
+    '주목한 포인트는 산청 흑돼지와 거창 백돼지, 특허받은 파동숙성, 100% 대나무숯 직화, 그리고 전문 서버의 그릴링 서비스였습니다. 특히 압력솥으로 지어 제공하는 프리미엄 수향미는 식사의 완성도를 높여주는 디테일로 높게 평가되었습니다.',
+    '육즙관리소는 프라이빗 룸과 하향식 덕트 시스템을 통해 연기와 냄새를 최소화하며, 더욱 쾌적하고 감각적인 서울 프리미엄 Korean BBQ Dining Experience를 제공합니다.',
+  ],
 
   brandStoryEyebrow: 'BRAND STORY',
   brandStoryH2: '대기업과 패션이 만나\n탄생한 정직한 다이닝',
@@ -91,13 +96,24 @@ export const COPY_KO = {
 
   signatureH2: '시그니처 메뉴',
   signatureMore: '전체 메뉴 보기 →',
+  signatureSubtitle: '대표 메뉴 4선',
 
   locationsEyebrow: 'LOCATIONS',
   locationsH2: '두 곳에서 만나요',
 
   groupEyebrow: 'GROUP DINING',
-  groupH2: '회식 · 동창회 · 청첩장은 단체석에서',
-  groupSub: '4~16인 프라이빗 룸부터 20~40인 단체석까지. 두 지점 모두 소·중·대 모임을 모두 받습니다.',
+  groupH2: '서울 프리미엄 K-BBQ 단체 다이닝',
+  groupSubheading: '회식 · 단체모임 · 청첩장 모임 · 기업행사 · 프라이빗',
+  groupBody: [
+    '육즙관리소는 4~16인 프라이빗 룸부터 20~40인 단체석까지 다양한 규모의 모임을 위한 프리미엄 K-BBQ 다이닝 공간을 제공합니다.',
+    '회사 회식부터 외국인 손님 접대, 청첩장 모임까지 편안하고 감각적인 공간에서 프리미엄 Korean BBQ Dining Experience를 경험할 수 있습니다.',
+    '산청 흑돼지·거창 백돼지, 전문 그릴링과 대나무숯, 하향식 덕트로 연기 없는 단체 다이닝을 제공합니다.',
+  ],
+  groupUseCases: [
+    '회사 회식', '부서 회식', '송년회', '신년회',
+    '청첩장 모임', '가족모임', '생일모임', '비즈니스 미팅',
+    '바이어 접대', '외국인 손님 식사', '동창모임', '단체회식',
+  ],
   groupCtaCall: '전화 문의',
   groupCtaKakao: '카카오 채널 문의',
 
@@ -111,6 +127,43 @@ export const COPY_KO = {
   /** 푸터 디스클레이머 — 메뉴/가격 변동성 안내 */
   menuPriceDisclaimer: '메뉴 항목과 가격은 각 매장의 사정에 따라 다를 수 있습니다.',
 } as const
+
+/** Signature menu 4선 (시그니처 섹션 — Supabase 대신 정적 데이터) */
+export const SIGNATURE_ITEMS = [
+  {
+    key: 'grilling-service',
+    name: '프리미엄 그릴링서비스 (100%무료)',
+    description: '직접 굽지 않아도 되는 편안함, 가장 맛있는 타이밍에 완성되는 풍미, 전문서버의 그릴링 서비스',
+    priceKrw: 0,
+    priceLabel: '0원',
+    image: null,  // /photos/food/grilling-service.jpg (TBD — placeholder shown until image added)
+    isSignature: true,
+  },
+  {
+    key: 'jirisan-moksal',
+    name: '지리산 산청 흑돼지 목살 (160g)',
+    description: '흑돼지의 순도 높은 본질과 부드러움 풍미의 정교한 균형이 돋보이는 프리미엄 목살',
+    priceKrw: 19000,
+    image: '/photos/food/modeum-platter.png',
+    isSignature: true,
+  },
+  {
+    key: 'bulgogi-set',
+    name: '양념소불고기정식 (점심특선)',
+    description: '양념소불고기와 낚지볶음소면, 된장찌개, 계란찜, 공기밥, 6가지 반찬까지 풍성한 점심 시그니처메뉴',
+    priceKrw: 24000,
+    image: '/photos/food/bulgogi-set.png',
+    isSignature: true,
+  },
+  {
+    key: 'avocado-yukhoe',
+    name: '아보카도 육회',
+    description: '부드러운 아보카도와 고소한 육회의 풍미가 완벽하게 어우러진 육즙관리소의 시그니처 콜드 메뉴',
+    priceKrw: 28000,
+    image: '/photos/food/avocado-yukhoe-mini.png',
+    isSignature: true,
+  },
+] as const
 
 /** 지점별 단체 CTA 카피 (지점 구분) */
 export const LOCATION_CTA = {
