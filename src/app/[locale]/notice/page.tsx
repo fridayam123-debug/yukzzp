@@ -57,8 +57,39 @@ export default async function NoticePage({
   const euljiroFaqs = faqs.filter((f) => f.category === 'euljiro' || f.category === 'general')
   const generalFaqs = faqs.filter((f) => f.category === 'general')
 
+  // FAQPage JSON-LD — FAQ 탭일 때만 삽입 (양재역 + 을지로 각각)
+  const faqSchemas = isFaq
+    ? [
+        yanjaeFaqs.length > 0 && {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: yanjaeFaqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question_ko,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer_ko },
+          })),
+        },
+        euljiroFaqs.length > 0 && {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: euljiroFaqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question_ko,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer_ko },
+          })),
+        },
+      ].filter(Boolean)
+    : []
+
   return (
     <>
+      {faqSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Header transparent={false} />
       <main className="min-h-screen bg-[#C8BDB0]">
         {/* 헤더 */}

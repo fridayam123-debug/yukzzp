@@ -11,7 +11,7 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
   )
 
   return (
-    <div className="divide-y divide-[var(--color-hairline)]">
+    <dl className="divide-y divide-[var(--color-hairline)]">
       {faqs.map((faq) => {
         const isZh = locale === 'zh'
 
@@ -30,50 +30,67 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
           : faq.answer_ko
 
         const isOpen = open === faq.id
+        const answerId = `faq-ans-${faq.id}`
 
         return (
           <div key={faq.id}>
-            <button
-              type="button"
-              onClick={() => setOpen(isOpen ? null : faq.id)}
-              className="w-full flex items-center justify-between py-5 text-left gap-6 group"
-            >
-              <div className="flex-1 min-w-0">
-                {isZh ? (
-                  <div className="space-y-1">
-                    {faq.question_zh_hans && (
-                      <p className="text-[15px] leading-[1.5] text-[var(--color-ink)] font-normal [word-break:keep-all] group-hover:opacity-70 transition-opacity">
-                        {faq.question_zh_hans}
-                      </p>
-                    )}
-                    {faq.question_zh_hant && (
-                      <p className="text-[13px] leading-[1.5] text-[var(--color-body)] font-normal [word-break:keep-all] group-hover:opacity-70 transition-opacity">
-                        {faq.question_zh_hant}
-                      </p>
-                    )}
-                    {!faq.question_zh_hans && !faq.question_zh_hant && (
-                      <p className="text-[15px] leading-[1.5] text-[var(--color-ink)] font-normal [word-break:keep-all]">
-                        {faq.question_ko}
-                      </p>
+            {/*
+              dt: 질문 — h3 > button (W3C ARIA accordion + SEO semantic)
+              h3가 질문 텍스트를 시맨틱하게 감쌈 → 크롤러가 heading으로 인식
+            */}
+            <dt>
+              <h3 className="m-0 text-[15px] font-normal">
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={answerId}
+                  onClick={() => setOpen(isOpen ? null : faq.id)}
+                  className="w-full flex items-center justify-between py-5 text-left gap-6 group"
+                >
+                  <div className="flex-1 min-w-0">
+                    {isZh ? (
+                      <div className="space-y-1">
+                        {faq.question_zh_hans && (
+                          <span className="block text-[15px] leading-[1.5] text-[var(--color-ink)] [word-break:keep-all] group-hover:opacity-70 transition-opacity">
+                            {faq.question_zh_hans}
+                          </span>
+                        )}
+                        {faq.question_zh_hant && (
+                          <span className="block text-[13px] leading-[1.5] text-[var(--color-body)] [word-break:keep-all] group-hover:opacity-70 transition-opacity">
+                            {faq.question_zh_hant}
+                          </span>
+                        )}
+                        {!faq.question_zh_hans && !faq.question_zh_hant && (
+                          <span className="block text-[15px] leading-[1.5] text-[var(--color-ink)] [word-break:keep-all]">
+                            {faq.question_ko}
+                          </span>
+                        )}
+                      </div>
+                    ) : (
+                      <span className="text-[15px] leading-[1.5] text-[var(--color-ink)] [word-break:keep-all] group-hover:opacity-70 transition-opacity">
+                        {question}
+                      </span>
                     )}
                   </div>
-                ) : (
-                  <span className="text-[15px] leading-[1.5] text-[var(--color-ink)] font-normal [word-break:keep-all] group-hover:opacity-70 transition-opacity">
-                    {question}
+                  <span
+                    aria-hidden="true"
+                    className={`text-[18px] text-[var(--color-espresso)] transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-45' : ''}`}
+                  >
+                    +
                   </span>
-                )}
-              </div>
-              <span className={`text-[18px] text-[var(--color-espresso)] transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-45' : ''}`}>
-                +
-              </span>
-            </button>
+                </button>
+              </h3>
+            </dt>
 
-            {/* 답변: 항상 DOM에 존재 (크롤러 접근 가능) — CSS로만 접기 */}
-            <div
-              className={`[word-break:keep-all] overflow-hidden transition-[max-height,padding] duration-300 ease-in-out ${
+            {/*
+              dd: 답변 — 항상 DOM에 존재 (aria-hidden 없음 → 크롤러 접근 가능)
+              시각적 접기는 max-height CSS만 사용
+            */}
+            <dd
+              id={answerId}
+              className={`[word-break:keep-all] overflow-hidden transition-[max-height,padding] duration-300 ease-in-out m-0 ${
                 isOpen ? 'max-h-[2000px] pb-6' : 'max-h-0'
               }`}
-              aria-hidden={!isOpen}
             >
               {isZh ? (
                 <div className="space-y-4">
@@ -98,10 +115,10 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
                   {answer}
                 </p>
               )}
-            </div>
+            </dd>
           </div>
         )
       })}
-    </div>
+    </dl>
   )
 }
