@@ -29,7 +29,7 @@ export function AuthorityBannerClient({ videoId, eyebrow, h2, sub, body, viewCou
           </div>
           <p className="hidden md:block text-[12px] mt-6 opacity-70 tracking-[0.15em] uppercase">{viewCountLabel}</p>
         </div>
-        <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-black/20 relative order-2">
+        <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-black/20 relative order-2 self-center">
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&controls=0`}
             className="w-full h-full border-0"
