@@ -12,7 +12,8 @@
     "locations": "门店信息",
     "locationsShort": "门店",
     "group": "包厢·团餐",
-    "reviews": "评价"
+    "reviews": "评价",
+    "notice": "NOTICE"
   },
   "menu": {
     "title": "全部菜单",

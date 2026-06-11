@@ -546,6 +546,48 @@ export type Database = {
         }
         Relationships: []
       }
+      posts: {
+        Row: {
+          id: string
+          title: string
+          excerpt: string | null
+          content: string
+          category: string
+          thumbnail_url: string | null
+          slug: string
+          is_published: boolean
+          published_at: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          excerpt?: string | null
+          content?: string
+          category: string
+          thumbnail_url?: string | null
+          slug: string
+          is_published?: boolean
+          published_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          excerpt?: string | null
+          content?: string
+          category?: string
+          thumbnail_url?: string | null
+          slug?: string
+          is_published?: boolean
+          published_at?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       daily_recipe_usage: {

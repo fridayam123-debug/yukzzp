@@ -32,6 +32,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
     { href: '/menu',      label: t('menu') },
     { href: '/#locations', label: t('locationsShort') },
     { href: '/#reviews',   label: t('reviews') },
+    { href: '/notice',     label: t('notice') },
     { href: '/#group',     label: t('group') },
     { href: '/#reserve',   label: t('reserve') },
   ]
@@ -79,6 +80,12 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
               >
                 {t('reviews')}
+              </Link>
+              <Link
+                href="/notice"
+                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+              >
+                {t('notice')}
               </Link>
             </div>
 
