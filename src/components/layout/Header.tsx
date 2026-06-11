@@ -93,7 +93,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             <Link
               href="/"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="absolute left-1/2 -translate-x-1/2 hover:opacity-70 transition-opacity"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:opacity-70 transition-opacity"
               aria-label={BRAND.nameKo}
             >
               <Image
