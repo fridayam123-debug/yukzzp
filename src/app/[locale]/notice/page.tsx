@@ -14,7 +14,6 @@ export function generateStaticParams() {
 }
 
 const TABS = [
-  { key: 'ALL',     label: 'ALL' },
   { key: 'NOTICE',  label: 'NOTICE' },
   { key: 'JOURNAL', label: 'JOURNAL' },
   { key: 'STORY',   label: 'STORY' },
@@ -40,11 +39,14 @@ export default async function NoticePage({
   const { category } = await searchParams
   setRequestLocale(locale as AppLocale)
 
-  const activeTab = (category?.toUpperCase() as TabKey) || 'ALL'
+  const rawCat = category?.toUpperCase()
+  const activeTab = (rawCat && TABS.some((t) => t.key === rawCat))
+    ? (rawCat as TabKey)
+    : null
   const isFaq = activeTab === 'FAQ'
 
-  const activePostCategory = (!isFaq && activeTab !== 'ALL')
-    ? activeTab as PostCategory
+  const activePostCategory = (activeTab && !isFaq)
+    ? (activeTab as PostCategory)
     : undefined
 
   const [posts, locations, faqs] = await Promise.all([
@@ -109,7 +111,7 @@ export default async function NoticePage({
           <div className="max-w-[1440px] mx-auto flex gap-8 overflow-x-auto">
             {TABS.map(({ key, label }) => {
               const isActive = activeTab === key
-              const href = key === 'ALL' ? '/notice' : `/notice?category=${key.toLowerCase()}`
+              const href = `/notice?category=${key.toLowerCase()}`
               return (
                 <Link
                   key={key}
