@@ -89,7 +89,14 @@
       "Bash(mkdir -p \"C:/Users/pc/Desktop/j project/.claude/worktrees/sleepy-hamilton-58679b/src/app/locations/[slug]\")",
       "Bash(npx --yes shadcn@latest add accordion dialog input label sheet tabs sonner --overwrite)",
       "Bash(cd \"/c/Users/pc/Desktop/j project\" && mkdir -p public/photos/locations/yangjae public/photos/locations/euljiro public/photos/food public/brand && echo OK)",
-      "Bash(node scripts/rename-photos.mjs)"
+      "Bash(node scripts/rename-photos.mjs)",
+      "mcp__22a92b80-b1b7-4578-9ed6-05b325a21e8c__NaverSearch-search_local",
+      "mcp__22a92b80-b1b7-4578-9ed6-05b325a21e8c__NaverSearch-datalab_search",
+      "Bash(del \"C:\\\\Users\\\\pc\\\\Desktop\\\\j project\\\\네이버 키워드\\\\gen_tpo.py\")",
+      "Bash(python gen_menu100.py)",
+      "mcp__Claude_in_Chrome__resize_window",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__navigate"
     ]
   }
 }

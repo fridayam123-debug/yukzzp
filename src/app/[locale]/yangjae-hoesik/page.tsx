@@ -1,0 +1,46 @@
+import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
+import { getLocations } from '@/lib/fetchers/locations'
+import { getFaqs } from '@/lib/fetchers/faqs'
+import { SeoLandingPage } from '@/components/seo/SeoLandingPage'
+import { routing } from '@/i18n/routing'
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export const metadata: Metadata = {
+  title: '양재역 회식 — 육즙관리소 단체석·프라이빗룸',
+  description: '양재역 회식 장소 추천. 4~16인 프라이빗 룸, 20~40인 단체석 운영. 하향식 덕트로 연기 없는 쾌적한 환경. 송년회·신년회·부서 회식·비즈니스 접대.',
+  alternates: { canonical: '/yangjae-hoesik' },
+}
+
+export default async function YangjaeHoesikPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const [locations, faqs] = await Promise.all([
+    getLocations(),
+    getFaqs('yangjae'),
+  ])
+  return (
+    <SeoLandingPage
+      locale={locale}
+      locations={locations}
+      faqs={faqs}
+      meta={{
+        eyebrow: 'GROUP DINING · YANGJAE',
+        h1: '양재역 회식\n프라이빗 룸 단체 다이닝',
+        description: '양재역 최고의 회식 장소. 4~16인 프라이빗 룸과 20~40인 단체석을 운영합니다. 하향식 덕트 시스템으로 옷에 냄새와 연기가 배지 않는 쾌적한 환경에서, 전담 서버의 그릴링 서비스와 함께 품격 있는 회식 자리를 만들어 드립니다.',
+        body: [
+          '육즙관리소 양재역점은 양재역 인근에서 가장 완성도 높은 단체 다이닝 공간입니다. 부서 회식, 송년회·신년회, 임원 만찬, 비즈니스 디너까지 다양한 규모의 단체 모임을 위한 공간을 운영합니다.',
+          '4~8인 소규모 프라이빗 룸부터 20~40인 대형 단체석까지, 모임의 규모에 맞는 공간을 선택하실 수 있습니다. 하향식 덕트 시스템으로 연기와 냄새를 완벽히 차단하여 옷에 냄새가 배지 않는 쾌적한 환경을 제공합니다.',
+          '전담 서버가 직접 구워드리는 그릴링 서비스로, 자리에 앉은 모든 분들이 대화에만 집중하실 수 있습니다. 산청 흑돼지와 거창 백돼지의 깊은 맛이 회식 자리를 더욱 특별하게 만들어 드립니다.',
+        ],
+        locationSlug: 'yangjae',
+        phone: '0507-1335-6363',
+        telHref: 'tel:0507-1335-6363',
+        ctaLabel: '단체 예약 문의',
+      }}
+    />
+  )
+}

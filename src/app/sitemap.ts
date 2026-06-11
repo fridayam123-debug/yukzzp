@@ -8,6 +8,13 @@ const PAGES = [
   { path: '/locations/yangjae',    priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/locations/euljiro',    priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/notice',               priority: 0.7, changeFrequency: 'weekly'  as const },
+  // SEO landing pages
+  { path: '/yangjae-matjip',       priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/yangjae-hoesik',       priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/yangjae-moksal',       priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/dongdaemun-matjip',    priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/ddp-matjip',           priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/euljiro-hoesik',       priority: 0.8, changeFrequency: 'monthly' as const },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

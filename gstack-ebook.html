@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gstack 입문 — 초보자를 위한 AI 엔지니어링 팀 사용법</title>
+<style>
+  :root {
+    --bg: #08090a;
+    --bg-card: #1c1d21;
+    --bg-card-warm: #252019;
+    --bg-card-deeper: #302a21;
+    --border: rgba(255, 240, 220, 0.10);
+    --border-strong: rgba(255, 240, 220, 0.18);
+    --text: #f5ecdd;
+    --text-dim: #c7b89f;
+    --text-mute: #8a8a8f;
+    --amber: #e8a16b;
+    --amber-hover: #f5b47c;
+    --amber-deep: #c67b4c;
+    --amber-faint: rgba(232, 161, 107, 0.15);
+    --amber-line: rgba(232, 161, 107, 0.35);
+    --red: #e07b7b;
+    --green: #8ec07c;
+    --blue: #7ba8d4;
+    --mono: "JetBrains Mono", "D2Coding", Consolas, monospace;
+    --sans: "Pretendard Variable", "Pretendard", -apple-system, "Malgun Gothic", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 28px 120px;
+  }
+
+  /* COVER */
+  .cover {
+    text-align: center;
+    padding: 60px 0 80px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+  .cover .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--amber-faint);
+    border: 1px solid var(--amber-line);
+    border-radius: 999px;
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 28px;
+  }
+  .cover h1 {
+    font-size: 52px;
+    margin: 0 0 16px;
+    background: linear-gradient(135deg, var(--amber-hover), var(--amber-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.15;
+    font-weight: 800;
+  }
+  .cover .subtitle {
+    font-size: 20px;
+    color: var(--text-dim);
+    margin: 0 0 32px;
+    font-weight: 400;
+  }
+  .cover .meta {
+    color: var(--text-mute);
+    font-size: 14px;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 60px;
+  }
+  .toc h2 {
+    margin: 0 0 20px;
+    color: var(--amber);
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--text-dim);
+  }
+  .toc li { margin-bottom: 8px; }
+  .toc a {
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: all 0.15s;
+  }
+  .toc a:hover {
+    color: var(--amber);
+    border-bottom-color: var(--amber-line);
+  }
+
+  /* CHAPTERS */
+  .chapter { margin-bottom: 80px; padding-top: 20px; }
+  .chapter-num {
+    font-family: var(--mono);
+    color: var(--amber);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .chapter h2 {
+    font-size: 34px;
+    margin: 0 0 12px;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .chapter .lead {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin: 0 0 36px;
+    border-left: 3px solid var(--amber);
+    padding-left: 16px;
+    line-height: 1.6;
+  }
+  .chapter h3 {
+    font-size: 22px;
+    margin: 40px 0 14px;
+    color: var(--amber-hover);
+  }
+  .chapter h4 {
+    font-size: 17px;
+    margin: 24px 0 10px;
+    color: var(--text);
+  }
+  p { margin: 0 0 16px; }
+
+  /* ANALOGY BOX */
+  .analogy {
+    background: var(--bg-card-deeper);
+    border: 1px solid var(--amber-line);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 24px 0;
+  }
+  .analogy::before {
+    content: "🍳 비유로 이해하기";
+    display: block;
+    color: var(--amber);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .analogy p:last-child { margin-bottom: 0; }
+  .analogy strong { color: var(--amber-hover); }
+
+  /* EXAMPLE BOX */
+  .example {
+    background: rgba(123, 168, 212, 0.08);
+    border: 1px solid rgba(123, 168, 212, 0.25);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 24px 0;
+  }
+  .example::before {
+    content: "💡 예시";
+    display: block;
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .example p:last-child { margin-bottom: 0; }
+
+  /* TIP BOX */
+  .tip {
+    background: rgba(142, 192, 124, 0.08);
+    border-left: 3px solid var(--green);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .tip::before {
+    content: "✨ TIP";
+    display: block;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .tip p:last-child { margin-bottom: 0; }
+
+  /* WARN BOX */
+  .warn {
+    background: rgba(224, 123, 123, 0.08);
+    border-left: 3px solid var(--red);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+  .warn::before {
+    content: "⚠️ 주의";
+    display: block;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .warn p:last-child { margin-bottom: 0; }
+
+  /* CODE */
+  code {
+    font-family: var(--mono);
+    background: var(--bg-card);
+    color: var(--amber-hover);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+  }
+  pre {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 18px 0;
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    color: var(--text);
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    font-size: 15px;
+    background: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  th {
+    background: var(--bg-card-warm);
+    color: var(--amber);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-strong);
+    font-size: 14px;
+    letter-spacing: 0.3px;
+  }
+  td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: 0; }
+  td code { font-size: 13px; }
+
+  /* COMMAND CARDS */
+  .cmd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+  }
+  .cmd {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    transition: all 0.2s;
+  }
+  .cmd:hover {
+    border-color: var(--amber-line);
+    transform: translateY(-2px);
+  }
+  .cmd-name {
+    font-family: var(--mono);
+    color: var(--amber);
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .cmd-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* STEP FLOW */
+  .flow {
+    background: var(--bg-card-warm);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .flow-step:last-child { border-bottom: 0; }
+  .flow-num {
+    flex-shrink: 0;
+    min-width: 44px;
+    height: 32px;
+    padding: 0 8px;
+    background: var(--amber-faint);
+    color: var(--amber);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .flow-text {
+    flex: 1;
+    padding-top: 4px;
+  }
+  .flow-text strong { color: var(--amber-hover); }
+  .flow-text code { font-size: 13px; }
+
+  /* CALLOUT */
+  .callout {
+    background: linear-gradient(135deg, var(--bg-card-warm), var(--bg-card-deeper));
+    border: 1px solid var(--amber-line);
+    border-radius: 14px;
+    padding: 32px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .callout h3 {
+    margin: 0 0 12px;
+    color: var(--amber);
+    font-size: 20px;
+  }
+  .callout p {
+    color: var(--text-dim);
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    color: var(--text-mute);
+    font-size: 13px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+  }
+
+  /* BADGES */
+  .badge-easy, .badge-mid, .badge-hard {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .badge-easy { background: rgba(142, 192, 124, 0.15); color: var(--green); }
+  .badge-mid  { background: var(--amber-faint); color: var(--amber); }
+  .badge-hard { background: rgba(224, 123, 123, 0.15); color: var(--red); }
+
+  ul, ol { padding-left: 24px; }
+  li { margin-bottom: 6px; color: var(--text-dim); }
+  li strong { color: var(--text); }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 50px 0;
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 40px 18px 80px; }
+    .cover h1 { font-size: 36px; }
+    .cover .subtitle { font-size: 16px; }
+    .chapter h2 { font-size: 26px; }
+    .chapter h3 { font-size: 18px; }
+    .cmd-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ====== COVER ====== -->
+<div class="cover">
+  <div class="badge">초보자를 위한 입문서</div>
+  <h1>gstack 입문</h1>
+  <p class="subtitle">Claude Code를 AI 엔지니어링 팀으로 만드는 47개의 마법 명령어</p>
+  <div class="meta">2026 — 비유와 예시로 배우는 친절한 안내서</div>
+</div>
+
+<!-- ====== TOC ====== -->
+<div class="toc">
+  <h2>📚 목차</h2>
+  <ol>
+    <li><a href="#ch1">gstack이 도대체 뭔가요?</a></li>
+    <li><a href="#ch2">설치는 끝났는데, 이제 뭘 해야 하죠?</a></li>
+    <li><a href="#ch3">슬래시 명령어 — 마법 주문 사용법</a></li>
+    <li><a href="#ch4">47개 명령어 카테고리별 둘러보기</a></li>
+    <li><a href="#ch5">슈퍼파워스 스킬과 어떻게 합쳐 쓰나요?</a></li>
+    <li><a href="#ch6">실전 시나리오 — 내 프로젝트에 적용하기</a></li>
+    <li><a href="#ch7">처음 일주일 — 따라 하기 좋은 학습 코스</a></li>
+    <li><a href="#ch8">자주 묻는 질문</a></li>
+  </ol>
+</div>
+
+<!-- ====== CHAPTER 1 ====== -->
+<section id="ch1" class="chapter">
+  <div class="chapter-num">CHAPTER 01</div>
+  <h2>gstack이 도대체 뭔가요?</h2>
+  <p class="lead">한 줄로: <strong>Claude Code 안에서 "전문가 역할"을 빌려 쓰는 명령어 모음</strong>입니다. Y Combinator 대표 Garry Tan이 만들었고, 오픈소스라 무료예요.</p>
+
+  <div class="analogy">
+    <p><strong>피자 가게 비유</strong>로 설명할게요.</p>
+    <p>여러분이 작은 피자 가게를 혼자 운영한다고 생각해보세요. 주방장, 배달원, 회계사, 매니저 역할을 전부 혼자 해야 한다면 너무 힘들죠.</p>
+    <p>gstack은 <strong>"오늘은 회계사 모자를 쓰세요" / "지금은 주방장처럼 생각해보세요"</strong>라고 옆에서 알려주는 모자 걸이 같은 거예요. 같은 사람(=Claude)이지만, 어떤 모자를 쓰느냐에 따라 일하는 방식이 완전히 달라집니다.</p>
+  </div>
+
+  <h3>왜 다들 좋다고 하나요?</h3>
+  <p>Claude Code에 그냥 <em>"이 코드 검토해줘"</em>라고 던지면, Claude는 어디서부터 어떻게 봐야 할지 매번 즉흥적으로 결정해요. 결과는 그때그때 달라지죠.</p>
+  <p>gstack의 <code>/review</code>를 쓰면, <strong>YC가 실리콘밸리에서 수천 개 스타트업을 검토하며 다듬은 체크리스트</strong>를 그대로 따라가요. 매번 같은 깊이로, 같은 항목을 빼먹지 않고요.</p>
+
+  <div class="analogy">
+    <p><strong>요리 레시피 비유</strong>:</p>
+    <p>"맛있게 해줘"라고 말하면 요리사 기분에 따라 결과가 들쭉날쭉합니다. 반면 <strong>"백종원 김치찌개 레시피로"</strong>라고 말하면, 매번 비슷한 맛이 나죠.</p>
+    <p>gstack 명령어는 <strong>검증된 레시피</strong>예요. Claude의 즉흥성을 줄이고, 결과의 일관성을 높입니다.</p>
+  </div>
+
+  <h3>핵심 구성</h3>
+  <ul>
+    <li><strong>47개의 슬래시 명령어</strong> — 각각 다른 "역할" 또는 "워크플로우"</li>
+    <li><strong>자체 브라우저 (<code>/browse</code>)</strong> — Playwright 기반, 웹페이지를 직접 열고 조작</li>
+    <li><strong>마크다운으로 작성된 프롬프트 모음</strong> — 비밀 같은 거 없음, 다 열려 있음</li>
+  </ul>
+
+  <div class="tip">
+    <p>gstack은 <strong>새로운 AI</strong>가 아닙니다. 여러분이 이미 쓰는 Claude를 <strong>더 잘 쓰는 법</strong>이에요. 비유하자면 같은 자동차에 <strong>네비게이션</strong>을 다는 것과 같습니다.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 2 ====== -->
+<section id="ch2" class="chapter">
+  <div class="chapter-num">CHAPTER 02</div>
+  <h2>설치는 끝났는데, 이제 뭘 해야 하죠?</h2>
+  <p class="lead">좋은 소식이에요. 여러분은 이미 설치가 끝났어요. <code>~/.claude/skills/gstack/</code>에 47개 명령어가 모두 들어가 있고, CLAUDE.md에도 등록됐죠.</p>
+
+  <h3>지금 당장 작동하는지 확인하는 법</h3>
+  <p>Claude Code 채팅창에 그냥 <code>/</code>를 한 번 쳐보세요. 자동완성 목록에 <code>/browse</code>, <code>/review</code>, <code>/office-hours</code> 같은 것들이 보이면 설치 완료입니다.</p>
+
+  <div class="example">
+    <p>채팅창에 이렇게 입력해보세요:</p>
+    <pre><code>/learn</code></pre>
+    <p>그러면 gstack이 <strong>스스로를 가르쳐줘요</strong>. 첫 명령어로 가장 추천합니다.</p>
+  </div>
+
+  <div class="analogy">
+    <p><strong>새 스마트폰 비유</strong>: 박스에서 막 꺼낸 폰엔 앱이 잔뜩 깔려 있지만, 뭐가 뭔지 모르잖아요? 일단 <strong>"앱 둘러보기" 튜토리얼</strong>부터 누르는 게 자연스럽죠. <code>/learn</code>이 딱 그거예요.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 3 ====== -->
+<section id="ch3" class="chapter">
+  <div class="chapter-num">CHAPTER 03</div>
+  <h2>슬래시 명령어 — 마법 주문 사용법</h2>
+  <p class="lead">슬래시 명령어는 그냥 <strong>"미리 준비된 긴 부탁"</strong>이에요. 짧게 치면 길고 정교한 부탁이 자동으로 펼쳐집니다.</p>
+
+  <div class="analogy">
+    <p><strong>편의점 도시락 비유</strong>:</p>
+    <p>"밥, 김치, 계란, 멸치볶음, 김 준비해서 도시락 만들어줘"라고 매번 말하기 귀찮죠? 그래서 편의점에선 <strong>"한식 도시락 하나요"</strong> 한 마디면 끝납니다.</p>
+    <p>슬래시 명령어가 그거예요. <code>/review</code> 한 마디 = <strong>"방금 바꾼 코드를 시니어 엔지니어 관점에서 보안, 성능, 가독성, 테스트 누락 순으로 검토하고 우선순위별로 정리해줘"</strong>라는 긴 부탁의 단축키.</p>
+  </div>
+
+  <h3>입력 방법 3가지</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">방법1</div>
+      <div class="flow-text"><strong>그냥 명령만</strong> — <code>/review</code> → Claude가 알아서 컨텍스트 잡고 진행</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">방법2</div>
+      <div class="flow-text"><strong>인자와 함께</strong> — <code>/browse https://naver.com</code> → 그 URL을 열어줌</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">방법3</div>
+      <div class="flow-text"><strong>여러 줄로</strong> — <code>/office-hours 블로그 등급 예측 정확도 올리고 싶어</code> → 그 주제로 컨설팅 시작</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <p><strong>같은 작업, 3가지 방식 비교</strong></p>
+    <pre><code>그냥 채팅:   "이 PR 좀 봐줘"      → 즉흥 검토
+슬래시 명령: /review              → 체크리스트 검토
+인자 추가:   /review 보안 위주로  → 보안 집중 검토</code></pre>
+  </div>
+
+  <div class="warn">
+    <p>슬래시 명령어는 <strong>다른 명령어보다 비용이 큽니다</strong>. 명령마다 평균 3,000~15,000 토큰이 추가로 들어가요. 매번 모든 일에 <code>/review</code>를 붙일 필요는 없습니다. 진짜 검토가 필요할 때만 쓰세요.</p>
+  </div>
+
+  <div class="analogy">
+    <p><strong>전자레인지 비유</strong>: 전자레인지가 편하다고 따뜻한 물 한 컵까지 거기 돌리진 않잖아요? 슬래시 명령은 <strong>식사용</strong>이고, 일반 채팅은 <strong>음료수</strong>입니다.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 4 ====== -->
+<section id="ch4" class="chapter">
+  <div class="chapter-num">CHAPTER 04</div>
+  <h2>47개 명령어 카테고리별 둘러보기</h2>
+  <p class="lead">전부 외울 필요 없어요. 카테고리별로 "이런 게 있구나" 정도만 알아두면, 필요할 때 가져다 쓸 수 있습니다.</p>
+
+  <h3>🟢 시작용 — 첫날 써볼 것 <span class="badge-easy">EASY</span></h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/learn</div><div class="cmd-desc">gstack 자체 튜토리얼. 어떤 명령이 있는지 자세히 안내</div></div>
+    <div class="cmd"><div class="cmd-name">/office-hours</div><div class="cmd-desc">"뭔가 만들고 싶은데 흐릿함" → YC 파트너처럼 캐물어서 아이디어 정리</div></div>
+    <div class="cmd"><div class="cmd-name">/autoplan</div><div class="cmd-desc">코드는 안 짜고 <strong>계획서</strong>만 생성</div></div>
+    <div class="cmd"><div class="cmd-name">/browse</div><div class="cmd-desc">URL 열고 스크린샷, DOM 읽기, JS 실행</div></div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>운전학원 비유</strong>: <code>/learn</code>은 안내 데스크, <code>/office-hours</code>는 면담실, <code>/autoplan</code>은 코스 도면, <code>/browse</code>는 모형 운전석이에요. 진짜 차에 타기 전에 한 번씩 들러보는 곳이죠.</p>
+  </div>
+
+  <h3>🟡 계획 / 리뷰 — 코드 짜기 <em>전</em> <span class="badge-mid">중요</span></h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/plan-ceo-review</div><div class="cmd-desc">"이거 진짜 만들 가치 있어?" — 사업적 관점에서 깎기</div></div>
+    <div class="cmd"><div class="cmd-name">/plan-eng-review</div><div class="cmd-desc">시니어 엔지니어가 아키텍처 결함 찾기</div></div>
+    <div class="cmd"><div class="cmd-name">/plan-design-review</div><div class="cmd-desc">디자인 디렉터가 UX 흐름 검토</div></div>
+    <div class="cmd"><div class="cmd-name">/plan-devex-review</div><div class="cmd-desc">개발자 경험(DX) 관점 검토</div></div>
+    <div class="cmd"><div class="cmd-name">/cso</div><div class="cmd-desc">보안 책임자(CSO)가 OWASP·STRIDE로 감사</div></div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>집 짓기 비유</strong>: 집을 짓기 <em>전에</em> 도면을 여러 전문가에게 보여주는 단계예요. <strong>건축주(/plan-ceo-review)</strong>는 "이거 살 사람 있어?"라고 묻고, <strong>구조 기술사(/plan-eng-review)</strong>는 "이 기둥으론 무너져요"라고 하죠. 짓고 나서 깎는 것보다 100배 쌉니다.</p>
+  </div>
+
+  <h3>🔵 코드 작성 후 — 가장 자주 쓸 것 <span class="badge-mid">필수</span></h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/review</div><div class="cmd-desc">변경된 코드 PR 리뷰. 프로덕션 버그 찾음</div></div>
+    <div class="cmd"><div class="cmd-name">/ship</div><div class="cmd-desc">커밋 → PR 작성 → 머지까지 자동</div></div>
+    <div class="cmd"><div class="cmd-name">/land-and-deploy</div><div class="cmd-desc">PR 머지 + 배포까지</div></div>
+    <div class="cmd"><div class="cmd-name">/canary</div><div class="cmd-desc">카나리 배포 후 모니터링</div></div>
+    <div class="cmd"><div class="cmd-name">/retro</div><div class="cmd-desc">이번 주 작업 회고</div></div>
+    <div class="cmd"><div class="cmd-name">/document-release</div><div class="cmd-desc">릴리즈 노트 자동 작성</div></div>
+  </div>
+
+  <div class="example">
+    <p>여러분의 <code>blog_grade_collector</code> 프로젝트에서:</p>
+    <pre><code># dashboard.py를 패치한 직후
+/review
+# → "_shape_grade_for_frontend 함수에 None 체크 빠졌어요.
+#    940K 캐시 미스 시 KeyError 가능성 있음" 같은 구체적 지적이 나옴</code></pre>
+  </div>
+
+  <h3>🌐 브라우저 / QA — 사이트 직접 만지기</h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/browse</div><div class="cmd-desc">URL 열고 조작. <code>mcp__claude-in-chrome</code> 대체</div></div>
+    <div class="cmd"><div class="cmd-name">/qa</div><div class="cmd-desc">진짜 브라우저 띄워서 유저 플로우 자동 테스트</div></div>
+    <div class="cmd"><div class="cmd-name">/qa-only</div><div class="cmd-desc">QA만 (배포 없이)</div></div>
+    <div class="cmd"><div class="cmd-name">/connect-chrome</div><div class="cmd-desc">본인 Chrome에 연결 — 로그인 세션 활용</div></div>
+    <div class="cmd"><div class="cmd-name">/setup-browser-cookies</div><div class="cmd-desc">쿠키 저장 — 로그인 유지</div></div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>마트 시식 비유</strong>: <code>/browse</code>는 <strong>시식대</strong>예요. 만든 게 진짜 동작하는지 한 입 먹어보는 거죠. <code>/qa</code>는 <strong>레스토랑 평가단</strong>이고요 — 코스 전체를 다 먹어보고 점수를 매깁니다.</p>
+  </div>
+
+  <h3>🎨 디자인</h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/design-consultation</div><div class="cmd-desc">디자인 방향 잡기 (아트 디렉터 컨설팅)</div></div>
+    <div class="cmd"><div class="cmd-name">/design-shotgun</div><div class="cmd-desc">여러 디자인 안 한꺼번에 (산탄총처럼)</div></div>
+    <div class="cmd"><div class="cmd-name">/design-html</div><div class="cmd-desc">HTML 시안 즉시 생성</div></div>
+    <div class="cmd"><div class="cmd-name">/design-review</div><div class="cmd-desc">완성된 디자인 검토</div></div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>옷가게 비유</strong>: <code>/design-consultation</code>은 <strong>퍼스널 쇼퍼</strong>(체형·취향 분석), <code>/design-shotgun</code>은 <strong>탈의실에 10벌 한꺼번에 가져다 주는 직원</strong>이에요. 빨리 비교하고 고르고 싶을 때 후자가 쓸모 있죠.</p>
+  </div>
+
+  <h3>🔧 개발 도구 / 디버깅</h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/investigate</div><div class="cmd-desc">버그 근본원인 분석 (디버깅 방법론)</div></div>
+    <div class="cmd"><div class="cmd-name">/codex</div><div class="cmd-desc">OpenAI Codex 협업 (두 AI 같이 쓰기)</div></div>
+    <div class="cmd"><div class="cmd-name">/benchmark</div><div class="cmd-desc">성능 벤치마크</div></div>
+    <div class="cmd"><div class="cmd-name">/devex-review</div><div class="cmd-desc">코드베이스 DX 점검</div></div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>병원 비유</strong>: <code>/investigate</code>는 <strong>내과 전문의</strong>예요. "어디가 아파요?" 묻고 끝나는 게 아니라 청진→촉진→혈액 검사 순으로 체계적으로 원인을 찾아요. 그냥 "고쳐줘"보다 훨씬 정확합니다.</p>
+  </div>
+
+  <h3>⚙️ 가드 / 시스템</h3>
+  <div class="cmd-grid">
+    <div class="cmd"><div class="cmd-name">/careful</div><div class="cmd-desc">위험 작업 전 안전 모드 활성화</div></div>
+    <div class="cmd"><div class="cmd-name">/freeze</div><div class="cmd-desc">파일 변경 잠금</div></div>
+    <div class="cmd"><div class="cmd-name">/unfreeze</div><div class="cmd-desc">잠금 해제</div></div>
+    <div class="cmd"><div class="cmd-name">/guard</div><div class="cmd-desc">가드레일 설정</div></div>
+    <div class="cmd"><div class="cmd-name">/gstack-upgrade</div><div class="cmd-desc">gstack 자체 업그레이드</div></div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>자동차 안전벨트 비유</strong>: <code>/careful</code>은 평소엔 안 보이지만, <strong>고속도로 들어가기 직전에 매는 안전벨트</strong>예요. 서버 배포 같은 "되돌리기 어려운 작업" 직전에 켜면 Claude가 신중 모드로 바뀝니다.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 5 ====== -->
+<section id="ch5" class="chapter">
+  <div class="chapter-num">CHAPTER 05</div>
+  <h2>슈퍼파워스 스킬과 어떻게 합쳐 쓰나요?</h2>
+  <p class="lead">두 시스템은 <strong>계층이 다릅니다</strong>. 충돌하지 않고 보완해요. 이 챕터 하나만 잘 이해해도 절반은 끝나요.</p>
+
+  <div class="analogy">
+    <p><strong>요리사 비유로 한 번에 정리</strong>:</p>
+    <p>슈퍼파워스 = <strong>"요리사의 습관"</strong>. 손 씻기, 도마 닦기, 간 보기 같은 무의식적 규율. 어떤 요리를 하든 자동으로 발동됩니다.</p>
+    <p>gstack = <strong>"오늘의 메뉴 코스"</strong>. "오늘은 이탈리안 풀코스", "오늘은 한정식". 큰 흐름과 역할을 결정합니다.</p>
+    <p>요리사가 한식 코스를 만들면서도 손 씻는 습관은 그대로 유지하죠. 두 시스템이 같이 돌아가는 방식이 정확히 이거예요.</p>
+  </div>
+
+  <h3>표로 비교</h3>
+  <table>
+    <thead>
+      <tr><th>구분</th><th>슈퍼파워스</th><th>gstack</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>역할</td><td>방법론 (HOW)</td><td>워크플로우 (WHAT)</td></tr>
+      <tr><td>예시</td><td>TDD, 브레인스토밍, 디버깅 절차</td><td>"PR 리뷰해", "QA 돌려"</td></tr>
+      <tr><td>발동 방식</td><td>자동 (상황 인식)</td><td>명시적 (/명령)</td></tr>
+      <tr><td>주 효과</td><td>코드 작성 규율</td><td>역할 / 페르소나</td></tr>
+    </tbody>
+  </table>
+
+  <h3>융합 시나리오</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-text"><code>/office-hours</code> 입력 → gstack이 YC 파트너 페르소나 활성화 → <strong>그 안에서 슈퍼파워스 brainstorming 스킬이 자동 발동</strong>해서 6개 질문이 더 깊어짐</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-text">코드 작성 단계 → 슈퍼파워스 <strong>TDD 스킬</strong>이 자동 발동, "테스트 먼저 작성하세요"라고 가이드</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-text"><code>/review</code> 입력 → gstack의 시니어 엔지니어 페르소나 + 슈퍼파워스의 <strong>코드 분석 규율</strong>이 동시 발동</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>축구팀 비유</strong>: gstack은 <strong>포지션</strong>(공격수, 수비수, 골키퍼) 같은 거고, 슈퍼파워스는 <strong>기본기</strong>(트래핑, 패스, 시야 확보) 같은 거예요. 공격수가 됐다고 기본기를 잊는 게 아니죠. 둘은 동시에 돌아갑니다.</p>
+  </div>
+
+  <div class="tip">
+    <p>두 시스템의 충돌이 걱정될 때는 <strong>사용자 지시가 항상 한 수 위입니다</strong>. CLAUDE.md에 "TDD 쓰지 마세요"라고 적혀 있으면, gstack 명령도 그 규칙을 존중합니다. <strong>사용자 지시 &gt; 슈퍼파워스 &gt; gstack</strong> 우선순위예요.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 6 ====== -->
+<section id="ch6" class="chapter">
+  <div class="chapter-num">CHAPTER 06</div>
+  <h2>실전 시나리오 — 내 프로젝트에 적용하기</h2>
+  <p class="lead">여러분의 <code>blog_grade_collector</code> 프로젝트를 기준으로 가장 자연스러운 활용 시나리오 3가지를 보여드릴게요.</p>
+
+  <h3>시나리오 1 — Mode B 정확도 60% 돌파 아이디어 정리</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-text"><code>/office-hours 외부 블로그 예측이 57%에서 안 올라감</code> — Claude가 YC 파트너처럼 "데이터 라벨링이 진짜 문제냐?", "지금 측정 지표가 맞냐?"라고 캐물어요.</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-text"><code>/autoplan</code> — 정리된 아이디어를 단계별 계획서로 저장. <strong>코드는 안 짭니다.</strong></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-text"><code>/plan-eng-review</code> — "이 계획의 약점은?" 시니어 엔지니어 관점 검토</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-text">실제 구현 (슈퍼파워스 TDD가 자동 가이드)</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div class="flow-text"><code>/review</code> → <code>/ship</code> — 검토하고 배포</div>
+    </div>
+  </div>
+
+  <h3>시나리오 2 — 서버에서 place.service 502 났을 때</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-text"><code>/investigate place.service 502 났음, naver_place_server.py 최근 변경 후 발생</code></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-text">Claude가 체계적으로: 로그 확인 → 최근 커밋 → 의심 함수 → 가설 → 검증 순으로 분석</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-text">근본 원인 파악 후 패치 → <code>/review</code> → 배포</div>
+    </div>
+  </div>
+
+  <div class="example">
+    <p>그냥 "502 났어 고쳐줘"라고 하면 Claude가 즉흥적으로 추측합니다.</p>
+    <p><code>/investigate</code>를 쓰면 <strong>가설을 세우고 → 증거를 모으고 → 검증하는</strong> 정찰 절차를 거쳐요. 결과적으로 엉뚱한 곳을 고치는 일이 줄어듭니다.</p>
+  </div>
+
+  <h3>시나리오 3 — 네이버 블로그 페이지 직접 검증</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-text"><code>/browse https://m.blog.naver.com/buanaes</code></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-text">스크린샷 + DOM + 콘솔 로그까지 한 번에 받아옴</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-text">INITIAL_STATE 파싱 결과가 코드와 일치하는지 즉시 확인 가능</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>군대 정찰 비유</strong>: <code>/investigate</code>는 <strong>정찰병</strong>이에요. 무작정 돌격(=즉흥 디버깅)하기 전에 적의 위치, 무기, 약점을 파악하고 옵니다. 시간이 더 걸리는 것 같지만, 결국 훨씬 빨라요.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 7 ====== -->
+<section id="ch7" class="chapter">
+  <div class="chapter-num">CHAPTER 07</div>
+  <h2>처음 일주일 — 따라 하기 좋은 학습 코스</h2>
+  <p class="lead">한 번에 47개 다 외우려 하지 마세요. <strong>하루에 하나씩</strong>이면 충분합니다.</p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-num">1일</div>
+      <div class="flow-text"><strong><code>/learn</code></strong> — gstack이 자기소개부터. 어떤 분위기인지 감만 잡기</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2일</div>
+      <div class="flow-text"><strong><code>/browse</code></strong> — 자주 보는 사이트 하나 열어보기. <code>/browse https://thegangsa.xyz</code></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3일</div>
+      <div class="flow-text"><strong><code>/office-hours</code></strong> — "다음에 만들고 싶은 거" 한 문장 던지고 어떻게 캐묻는지 관찰</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4일</div>
+      <div class="flow-text"><strong><code>/investigate</code></strong> — 최근에 고민하던 버그 하나 의뢰</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5일</div>
+      <div class="flow-text"><strong><code>/review</code></strong> — 다음 dashboard.py 패치 후 검토 의뢰</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">6일</div>
+      <div class="flow-text"><strong><code>/autoplan</code></strong> — 새 기능 아이디어를 계획서로</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">7일</div>
+      <div class="flow-text"><strong><code>/retro</code></strong> — 일주일 회고. 어떤 게 효과 있었는지 정리</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <p><strong>헬스장 비유</strong>: 첫날부터 100kg 들려고 하면 다쳐요. <strong>매일 다른 기구 하나씩 익히는</strong> 게 정석입니다. 일주일 지나면 자기한테 맞는 루틴이 자연스럽게 생겨요.</p>
+  </div>
+
+  <div class="callout">
+    <h3>🎯 일주일 후 목표</h3>
+    <p>"내 작업 흐름에서 어떤 5개 명령이 가장 자주 쓰이는지" 파악하기. 나머지 42개는 필요할 때 골라 쓰면 됩니다.</p>
+  </div>
+</section>
+
+<!-- ====== CHAPTER 8 ====== -->
+<section id="ch8" class="chapter">
+  <div class="chapter-num">CHAPTER 08</div>
+  <h2>자주 묻는 질문</h2>
+  <p class="lead">초보들이 흔히 막히는 지점들이에요.</p>
+
+  <h3>Q1. 슬래시 명령어가 자동완성에 안 떠요</h3>
+  <p>Claude Code를 재시작해보세요. 그래도 안 되면 <code>~/.claude/skills/gstack/</code> 폴더가 있는지 확인하고, 거기서 <code>./setup</code>을 다시 실행하세요.</p>
+
+  <h3>Q2. <code>/browse</code>가 페이지를 못 열어요</h3>
+  <p>Windows에서는 Playwright Chromium이 따로 설치되어야 해요. <code>bunx playwright install chromium</code>을 한 번 실행해보세요.</p>
+
+  <h3>Q3. <code>/review</code> 결과가 너무 길어요</h3>
+  <p>구체적인 범위를 알려주면 짧아집니다. <code>/review naver_place_server.py의 _shape_grade_for_frontend 함수만</code> 같이요.</p>
+
+  <h3>Q4. 모든 작업에 슬래시 명령을 써야 하나요?</h3>
+  <p>아뇨, 절대 그러지 마세요. 슬래시 명령은 <strong>비용이 큰 무거운 도구</strong>입니다. 간단한 질문은 그냥 채팅으로 하시고, <strong>"검토 / 계획 / 리뷰 / QA"</strong> 같은 무거운 작업에만 쓰세요.</p>
+
+  <div class="analogy">
+    <p><strong>택시 비유</strong>: 길 건너편 편의점도 택시 타고 가진 않잖아요? 슬래시 명령은 <strong>먼 거리 갈 때 부르는 택시</strong>입니다. 가까운 거리는 그냥 걸어가세요.</p>
+  </div>
+
+  <h3>Q5. 슈퍼파워스만 써도 충분하지 않나요?</h3>
+  <p>슈퍼파워스는 <strong>"잘 만드는 법"</strong>을 가르쳐요. gstack은 <strong>"무엇을 만들지 결정하는 법"</strong>을 도와줍니다. 둘 다 다른 층위라 같이 쓰면 가장 강력해요.</p>
+
+  <h3>Q6. 비용이 너무 늘어나면 어떡하죠?</h3>
+  <p>슬래시 명령 한 번에 평균 3K~15K 토큰 추가입니다. 하루에 5번 쓰면 무시할 수준이지만, 자동 루프에 넣으면 폭증할 수 있어요. <strong>의식적으로</strong> 사용하세요.</p>
+
+  <h3>Q7. 명령어를 내가 만들 수도 있나요?</h3>
+  <p>네. gstack 명령어는 다 마크다운 파일이에요. <code>~/.claude/skills/gstack/&lt;명령이름&gt;/SKILL.md</code>를 열어보면 그냥 잘 짜여진 프롬프트 모음입니다. 복붙해서 본인 버전을 만들 수 있어요.</p>
+
+  <div class="analogy">
+    <p><strong>레시피북 비유</strong>: 백종원 레시피북을 갖고 있다고 새 요리 못 만드는 거 아니죠. 보고 배운 다음 <strong>"내 집 김치찌개 레시피"</strong>를 적어두면 그게 본인 가족의 표준이 됩니다. gstack 명령어도 똑같이 응용 가능해요.</p>
+  </div>
+</section>
+
+<!-- ====== CLOSING ====== -->
+<div class="callout">
+  <h3>📖 마무리하며</h3>
+  <p>gstack은 새로운 기술이 아니라 <strong>새로운 습관</strong>입니다. 일주일만 의식적으로 써보면, 그 다음부턴 자연스럽게 손이 갑니다. 부담 갖지 말고 천천히, 명령 하나씩 친해져 보세요.</p>
+</div>
+
+<div class="footer">
+  gstack 입문 — 초보자를 위한 친절한 안내서<br>
+  2026 · blog_grade_collector 작업환경 기준으로 작성
+</div>
+
+</div>
+</body>
+</html>
