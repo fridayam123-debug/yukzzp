@@ -12,19 +12,21 @@ export async function Hero() {
   const subParagraphs = t('sub').split('\n\n')
 
   return (
-    <section className="relative h-[85vh] md:h-screen overflow-hidden bg-[var(--color-stone)] flex md:items-end">
-      {/* Photographic background */}
-      <Image
-        src={bgSrc}
-        alt="육즙관리소 더룸 을지로동대문점 — 파동숙성 웨이브 아트월"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-        unoptimized={bgSrc.startsWith('http')}
-      />
-      {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-black/50" />
+    <section className="relative h-[85vh] md:min-h-screen bg-[var(--color-stone)] flex md:items-end">
+      {/* Photographic background — overflow-hidden 이미지 전용 */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src={bgSrc}
+          alt="육즙관리소 더룸 을지로동대문점 — 파동숙성 웨이브 아트월"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          unoptimized={bgSrc.startsWith('http')}
+        />
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
       {/* 모바일: 텍스트 상단 / 버튼 하단 — 데스크톱: 하단 정렬 */}
       <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 md:px-24
                       flex flex-col justify-between h-full pt-[22vh] pb-10
