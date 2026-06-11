@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { BRAND } from '@/lib/constants/brand'
 
-const LOCALES = ['ko', 'en', 'ja', 'zh', 'vi'] as const
+const LOCALES = ['ko', 'en', 'ja', 'zh', 'zh-TW', 'vi'] as const
 const PAGES = [
   { path: '',                      priority: 1,   changeFrequency: 'weekly'  as const },
   { path: '/menu',                 priority: 0.9, changeFrequency: 'weekly'  as const },

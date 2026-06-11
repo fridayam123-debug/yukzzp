@@ -15,9 +15,13 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
       {faqs.map((faq) => {
         const question = locale === 'en' && faq.question_en ? faq.question_en
           : locale === 'ja' && faq.question_ja ? faq.question_ja
+          : locale === 'zh' && faq.question_zh_hans ? faq.question_zh_hans
+          : locale === 'zh-TW' && faq.question_zh_hant ? faq.question_zh_hant
           : faq.question_ko
         const answer   = locale === 'en' && faq.answer_en ? faq.answer_en
           : locale === 'ja' && faq.answer_ja ? faq.answer_ja
+          : locale === 'zh' && faq.answer_zh_hans ? faq.answer_zh_hans
+          : locale === 'zh-TW' && faq.answer_zh_hant ? faq.answer_zh_hant
           : faq.answer_ko
         const isOpen   = open === faq.id
 

@@ -1,7 +1,7 @@
 import { defineRouting } from 'next-intl/routing'
 
 export const routing = defineRouting({
-  locales: ['ko', 'en', 'ja', 'vi', 'zh'],
+  locales: ['ko', 'en', 'ja', 'vi', 'zh', 'zh-TW'],
   defaultLocale: 'ko',
   // Korean (default) stays at /, others get /en, /ja, /vi prefix
   localePrefix: 'as-needed',

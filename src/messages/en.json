@@ -54,6 +54,7 @@
     "en": "English",
     "ja": "日本語",
     "vi": "Tiếng Việt",
-    "zh": "中文"
+    "zh": "Chinese (Simplified)",
+    "zh-TW": "Chinese (Traditional)"
   }
 }

@@ -67,12 +67,16 @@ export type Database = {
           answer_en: string | null
           answer_ja: string | null
           answer_ko: string
+          answer_zh_hans: string | null
+          answer_zh_hant: string | null
           category: string | null
           id: string
           location_id: string | null
           question_en: string | null
           question_ja: string | null
           question_ko: string
+          question_zh_hans: string | null
+          question_zh_hant: string | null
           slug: string
           sort_order: number | null
         }
@@ -80,12 +84,16 @@ export type Database = {
           answer_en?: string | null
           answer_ja?: string | null
           answer_ko: string
+          answer_zh_hans?: string | null
+          answer_zh_hant?: string | null
           category?: string | null
           id?: string
           location_id?: string | null
           question_en?: string | null
           question_ja?: string | null
           question_ko: string
+          question_zh_hans?: string | null
+          question_zh_hant?: string | null
           slug: string
           sort_order?: number | null
         }
@@ -93,12 +101,16 @@ export type Database = {
           answer_en?: string | null
           answer_ja?: string | null
           answer_ko?: string
+          answer_zh_hans?: string | null
+          answer_zh_hant?: string | null
           category?: string | null
           id?: string
           location_id?: string | null
           question_en?: string | null
           question_ja?: string | null
           question_ko?: string
+          question_zh_hans?: string | null
+          question_zh_hant?: string | null
           slug?: string
           sort_order?: number | null
         }
