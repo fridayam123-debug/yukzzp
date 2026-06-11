@@ -5,6 +5,18 @@ import type { Faq } from '@/lib/fetchers/faqs'
 import type { Location } from '@/lib/fetchers/locations'
 import { BRAND, LOCATION_CTA } from '@/lib/constants/brand'
 
+function getFaqText(faq: Faq, locale: string): { q: string; a: string } {
+  if (locale === 'en')
+    return { q: faq.question_en ?? faq.question_ko, a: faq.answer_en ?? faq.answer_ko }
+  if (locale === 'ja')
+    return { q: faq.question_ja ?? faq.question_ko, a: faq.answer_ja ?? faq.answer_ko }
+  if (locale === 'vi')
+    return { q: faq.question_vi ?? faq.question_ko, a: faq.answer_vi ?? faq.answer_ko }
+  if (locale === 'zh')
+    return { q: faq.question_zh_hans ?? faq.question_ko, a: faq.answer_zh_hans ?? faq.answer_ko }
+  return { q: faq.question_ko, a: faq.answer_ko }
+}
+
 interface SeoPageProps {
   locale: string
   locations: Location[]
@@ -24,8 +36,29 @@ interface SeoPageProps {
 export function SeoLandingPage({ locale, locations, faqs, meta }: SeoPageProps) {
   const cta = meta.locationSlug === 'yangjae' ? LOCATION_CTA.yangjae : LOCATION_CTA.euljiro
 
+  const faqSchema = faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => {
+          const { q, a } = getFaqText(faq, locale)
+          return {
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a },
+          }
+        }),
+      }
+    : null
+
   return (
     <>
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Header transparent={false} />
       <main className="min-h-screen bg-[var(--color-canvas)]">
 

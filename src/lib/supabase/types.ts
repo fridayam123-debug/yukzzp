@@ -67,6 +67,7 @@ export type Database = {
           answer_en: string | null
           answer_ja: string | null
           answer_ko: string
+          answer_vi: string | null
           answer_zh_hans: string | null
           answer_zh_hant: string | null
           category: string | null
@@ -75,6 +76,7 @@ export type Database = {
           question_en: string | null
           question_ja: string | null
           question_ko: string
+          question_vi: string | null
           question_zh_hans: string | null
           question_zh_hant: string | null
           slug: string
@@ -84,6 +86,7 @@ export type Database = {
           answer_en?: string | null
           answer_ja?: string | null
           answer_ko: string
+          answer_vi?: string | null
           answer_zh_hans?: string | null
           answer_zh_hant?: string | null
           category?: string | null
@@ -92,6 +95,7 @@ export type Database = {
           question_en?: string | null
           question_ja?: string | null
           question_ko: string
+          question_vi?: string | null
           question_zh_hans?: string | null
           question_zh_hant?: string | null
           slug: string
@@ -101,6 +105,7 @@ export type Database = {
           answer_en?: string | null
           answer_ja?: string | null
           answer_ko?: string
+          answer_vi?: string | null
           answer_zh_hans?: string | null
           answer_zh_hant?: string | null
           category?: string | null
@@ -109,6 +114,7 @@ export type Database = {
           question_en?: string | null
           question_ja?: string | null
           question_ko?: string
+          question_vi?: string | null
           question_zh_hans?: string | null
           question_zh_hant?: string | null
           slug?: string

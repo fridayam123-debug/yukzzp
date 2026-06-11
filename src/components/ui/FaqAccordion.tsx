@@ -19,12 +19,14 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
           ? null
           : locale === 'en' && faq.question_en ? faq.question_en
           : locale === 'ja' && faq.question_ja ? faq.question_ja
+          : locale === 'vi' && faq.question_vi ? faq.question_vi
           : faq.question_ko
 
         const answer = isZh
           ? null
           : locale === 'en' && faq.answer_en ? faq.answer_en
           : locale === 'ja' && faq.answer_ja ? faq.answer_ja
+          : locale === 'vi' && faq.answer_vi ? faq.answer_vi
           : faq.answer_ko
 
         const isOpen = open === faq.id
@@ -66,33 +68,37 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
               </span>
             </button>
 
-            {isOpen && (
-              <div className="pb-6 [word-break:keep-all]">
-                {isZh ? (
-                  <div className="space-y-4">
-                    {faq.answer_zh_hans && (
-                      <p className="text-[14px] leading-[1.85] text-[var(--color-body)]">
-                        {faq.answer_zh_hans}
-                      </p>
-                    )}
-                    {faq.answer_zh_hant && (
-                      <p className="text-[13px] leading-[1.85] text-[var(--color-body)] opacity-75 border-t border-[var(--color-hairline)] pt-4">
-                        {faq.answer_zh_hant}
-                      </p>
-                    )}
-                    {!faq.answer_zh_hans && !faq.answer_zh_hant && (
-                      <p className="text-[14px] leading-[1.85] text-[var(--color-body)]">
-                        {faq.answer_ko}
-                      </p>
-                    )}
-                  </div>
-                ) : (
-                  <p className="text-[14px] leading-[1.85] text-[var(--color-body)]">
-                    {answer}
-                  </p>
-                )}
-              </div>
-            )}
+            {/* 답변: 항상 DOM에 존재 (크롤러 접근 가능) — CSS로만 접기 */}
+            <div
+              className={`[word-break:keep-all] overflow-hidden transition-[max-height,padding] duration-300 ease-in-out ${
+                isOpen ? 'max-h-[2000px] pb-6' : 'max-h-0'
+              }`}
+              aria-hidden={!isOpen}
+            >
+              {isZh ? (
+                <div className="space-y-4">
+                  {faq.answer_zh_hans && (
+                    <p className="text-[14px] leading-[1.85] text-[var(--color-body)]">
+                      {faq.answer_zh_hans}
+                    </p>
+                  )}
+                  {faq.answer_zh_hant && (
+                    <p className="text-[13px] leading-[1.85] text-[var(--color-body)] opacity-75 border-t border-[var(--color-hairline)] pt-4">
+                      {faq.answer_zh_hant}
+                    </p>
+                  )}
+                  {!faq.answer_zh_hans && !faq.answer_zh_hant && (
+                    <p className="text-[14px] leading-[1.85] text-[var(--color-body)]">
+                      {faq.answer_ko}
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <p className="text-[14px] leading-[1.85] text-[var(--color-body)]">
+                  {answer}
+                </p>
+              )}
+            </div>
           </div>
         )
       })}
