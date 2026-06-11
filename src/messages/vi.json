@@ -4,7 +4,8 @@
     "h1": "Vẻ đẹp Hàn Quốc và tinh thần phục vụ,\nK-BBQ cao cấp không gây áp lực.",
     "sub": "Yukjeup Gwaliso là nhà hàng K-BBQ cao cấp tại Seoul, nơi vẻ đẹp Hàn Quốc được thăng hoa qua từng bữa ăn. Với niềm tin rằng một bữa ăn có thể là một hành động phục vụ chân thành, chúng tôi kết hợp hương vị, không gian và tinh thần \"sŏmgim\" (phục vụ tận tâm) thành một trải nghiệm trọn vẹn.\n\nHeo đen Sancheong và heo trắng Geochang được nuôi bằng ngải cứu hoang dã trong không khí trong lành dưới chân núi Jirisan. Công nghệ ủ chín sóng được cấp bằng sáng chế, nướng trực tiếp bằng than tre 100%, 7 loại sốt đặc trưng và dịch vụ nướng bàn chuyên nghiệp. Từng chi tiết — không gian, cách bày trí đến nhịp phục vụ — đều được chủ nhà hàng xuất thân từ thiết kế thời trang tinh chỉnh thành một trải nghiệm.\n\nMột Korean Dining Experience mới, nơi thẩm mỹ truyền thống Hàn Quốc gặp gỡ cảm quan hiện đại.\n\nTiệc công ty, hẹn hò, hay buổi tối bên người thân — lịch sự, nhưng không bao giờ gò bó.",
     "ctaPrimary": "Đặt bàn ngay",
-    "ctaSecondary": "Xem thực đơn"
+    "ctaSecondary": "Xem thực đơn",
+    "mobileSub": "Heo đen Sancheong · Ủ sóng · Than tre 100%\nDịch vụ nướng chuyên nghiệp · 7 loại sốt đặc trưng\nNhà hàng K-BBQ do chủ nhà hàng thiết kế thời trang\nTiệc công ty · Hẹn hò · Buổi tối đặc biệt\nSang trọng nhưng thoải mái"
   },
   "nav": {
     "menu": "Thực đơn",
@@ -33,7 +34,7 @@
   },
   "sancheon": {
     "eyebrow": "ORIGIN · Heo đen Sancheong",
-    "h2": "Tại sao lại là Heo đen Sancheong?",
+    "h2": "Tại sao là Heo đen Sancheong?\nXếp hạng #1 trong Blind Test của MeatCreator",
     "body1": "Dưới chân đỉnh Cheonwangbong của núi Jirisan — Sancheong, quê hương của Đông y bảo giám Heo Jun. Heo đen nuôi tại đây khác biệt hoàn toàn.",
     "body2": "Heo đen Sancheong là 'Berkshire kiểu Hàn Quốc' — giống bản địa lai với Berkshire Anh. Được nuôi lâu hơn heo thường, thịt đặc chắc và tỷ lệ mỡ-nạc cân bằng hoàn hảo.",
     "body3": "Heo đen từ trang trại chúng tôi được nuôi bằng ngải cứu hoang dã. Chất chống oxy hóa trong ngải cứu loại bỏ mùi tanh và tạo ra vị umami càng nhai càng đậm đà.",
@@ -42,6 +43,9 @@
     "body4post": " trong 5 giống heo cao cấp hàng đầu Hàn Quốc.",
     "body5": "Kết hợp với công nghệ ủ sóng độc quyền được cấp bằng sáng chế của Yukjeup Gwaliso, hương vị tự nhiên của thịt được nâng lên mức tối đa.",
     "playBtn": "Xem Video"
+  },
+  "brandStory": {
+    "mobileSub": "Người chồng từ tập đoàn lớn và người vợ nhà thiết kế thời trang\ntạo nên nhà hàng từ 10 năm kinh nghiệm F&B franchise.\nTin rằng bữa ăn là hành động trân trọng một người,\ntừng chiếc bát đĩa đến từng chi tiết không gian đều chú tâm.\nMang vẻ đẹp và lòng hiếu khách Hàn Quốc đến thế giới."
   },
   "language": {
     "label": "Ngôn ngữ",

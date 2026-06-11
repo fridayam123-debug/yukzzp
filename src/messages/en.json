@@ -4,7 +4,8 @@
     "h1": "The grace of Korea,\nunintimidating high-end K-BBQ.",
     "sub": "Yukjeup Gwaliso is Seoul's premium K-BBQ dining experience, where Korean beauty is distilled into a single meal. We believe that dining can be an act of genuine hospitality — and so we bring together great food, thoughtful space, and the spirit of 'sŏmgim' (heartfelt service) into one.\n\nBlack pork from Sancheong and white pork from Geochang, raised on wild mugwort in the clean air of the Jirisan foothills. Patented wave-aging, 100% bamboo charcoal direct-fire grilling, seven signature sauces, and expert tableside grilling service. Every detail — from the space and plating to the flow of service — is crafted by a founder with a fashion design background.\n\nA new Korean Dining Experience where traditional aesthetics meet contemporary sensibility.\n\nWhether it's a company dinner, a date, or an evening with someone you cherish — dressed up, yet never stiff.",
     "ctaPrimary": "Reserve Now",
-    "ctaSecondary": "View Menu"
+    "ctaSecondary": "View Menu",
+    "mobileSub": "Sancheong black pork · Wave-aging · 100% bamboo charcoal\nDedicated grilling service · 7 signature sauces\nK-BBQ dining designed by a fashion designer founder\nCorporate dinners · Dates · Special evenings\nElevated yet approachable"
   },
   "nav": {
     "menu": "Menu",
@@ -33,7 +34,7 @@
   },
   "sancheon": {
     "eyebrow": "ORIGIN · Sancheong Black Pork",
-    "h2": "Why Sancheong Black Pork?",
+    "h2": "Why Sancheong Black Pork?\nRanked #1 in MeatCreator's Blind Test",
     "body1": "In the foothills of Mt. Jirisan's Cheonwangbong Peak — Sancheong, birthplace of Heo Jun's Dongui Bogam. The black pork raised here is unlike any other.",
     "body2": "Sancheong black pork is a 'Korean-style Berkshire' — a native heritage breed crossed with British Berkshire. Raised longer than standard pigs, it develops denser, firmer meat with an exceptional balance of fat and lean.",
     "body3": "The black pork we source is raised on wild mugwort. The antioxidants in mugwort eliminate off-flavors and create an umami that deepens with every bite.",
@@ -42,6 +43,9 @@
     "body4post": " among Korea's Top 5 Premium Pork breeds.",
     "body5": "Combined with Yukjeup Gwaliso's patented wave-aging technology, the natural flavors of the meat are elevated to their fullest expression.",
     "playBtn": "Watch Video"
+  },
+  "brandStory": {
+    "mobileSub": "A husband from corporate and a wife who is a fashion designer,\ncreated this dining with 10 years of franchise F&B experience.\nBelieving that dining is the act of genuinely honoring a person,\nfrom every utensil to the texture of the space.\nSharing Korean beauty and hospitality with the world."
   },
   "language": {
     "label": "Language",

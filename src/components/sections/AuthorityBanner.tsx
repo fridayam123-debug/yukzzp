@@ -23,7 +23,7 @@ export async function AuthorityBanner() {
     <AuthorityBannerClient
       videoId={videoId}
       eyebrow={copy['authority.eyebrow'] || 'MEDIA · Chef Recommendation'}
-      h2={copy['authority.h2'] || '이원일 셰프가 직접 소개한'}
+      h2={copy['authority.h2'] || '이원일 셰프가 직접 소개한\n미친듯이 맛있는 돼지고기집 육즙관리소'}
       sub={copy['authority.sub'] || '"미친 듯이 맛있는 돼지고기집" 육즙관리소'}
       body={[
         copy['authority.body1'],

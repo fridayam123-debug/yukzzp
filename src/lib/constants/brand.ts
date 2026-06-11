@@ -55,7 +55,7 @@ export const COPY_KO = {
   heroCtaSecondary: '메뉴 보기',
 
   authorityEyebrow: 'MEDIA · Chef Recommendation',
-  authorityH2: '이원일 셰프가 직접 소개한',
+  authorityH2: '이원일 셰프가 직접 소개한\n미친듯이 맛있는 돼지고기집 육즙관리소',
   authoritySub: '"미친 듯이 맛있는 돼지고기집" 육즙관리소',
   authorityBody: [
     '이원일 셰프는 공식 채널 211TV를 통해 육즙관리소를 직접 소개하며, "미친 듯이 맛있는 돼지고기집"이라는 표현과 함께 프리미엄 K-BBQ 다이닝으로 추천했습니다.',

@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import { COPY_KO } from '@/lib/constants/brand'
 import { getSiteCopy } from '@/lib/fetchers/copy'
-import { getLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import type { Locale } from '@/lib/fetchers/copy'
 
 export async function BrandStory() {
   const locale = await getLocale() as Locale
   const copy = await getSiteCopy(locale)
+  const t = await getTranslations('brandStory')
 
   const eyebrow = copy['brand-story.eyebrow'] || COPY_KO.brandStoryEyebrow
   const h2 = copy['brand-story.h2'] || COPY_KO.brandStoryH2
@@ -23,6 +24,8 @@ export async function BrandStory() {
           <h2 className="mt-3 text-[24px] md:text-[40px] font-normal text-[var(--color-canvas)] max-w-[480px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>
             {h2}
           </h2>
+          {/* 모바일 전용 요약 — 5줄 */}
+          <p className="md:hidden mt-4 text-[13px] leading-[1.8] text-[var(--color-canvas)]/75 whitespace-pre-line [word-break:keep-all]">{t('mobileSub')}</p>
           {/* 본문 — 모바일 숨김 */}
           <p className="hidden md:block mt-6 text-[17.6px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line [word-break:keep-all]">
             {p1}

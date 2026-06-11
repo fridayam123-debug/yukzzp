@@ -65,11 +65,10 @@ export async function GroupCTA() {
             {subheading}
           </p>
 
-          {/* 리드 문단 — 모바일 숨김 */}
-          <div className="hidden md:block space-y-3 text-[15px] opacity-85 leading-[1.8] tracking-[0.01em] [word-break:keep-all]">
-            {body.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
+          {/* 리드 문단 — 모바일: 첫 문단만 / 데스크톱: 전체 */}
+          <div className="space-y-3 text-[13px] md:text-[15px] opacity-85 leading-[1.8] tracking-[0.01em] [word-break:keep-all]">
+            <p>{body[0]}</p>
+            <p className="hidden md:block">{body[1]}</p>
           </div>
 
           {/* H3 목적별 카테고리 아티클 — 모바일 숨김 */}
@@ -86,8 +85,8 @@ export async function GroupCTA() {
             ))}
           </div>
 
-          {/* 규모 배지 — 모바일 숨김 */}
-          <div className="hidden md:flex flex-wrap gap-2">
+          {/* 규모 배지 */}
+          <div className="flex flex-wrap gap-2">
             <span className="px-4 py-1.5 bg-[var(--color-forest-mid)] rounded-full text-[12px]">{capacity1}</span>
             <span className="px-4 py-1.5 bg-[var(--color-forest-mid)] rounded-full text-[12px]">{capacity2}</span>
           </div>

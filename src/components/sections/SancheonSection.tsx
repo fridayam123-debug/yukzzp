@@ -15,7 +15,7 @@ export function SancheonSection() {
         <div className="text-[var(--color-canvas)] order-1">
           <div className="text-[11px] tracking-[0.3em] uppercase opacity-80">{t('eyebrow')}</div>
           <h2
-            className="text-[26px] md:text-[48px] font-normal mt-5 leading-[1.05] tracking-[-0.01em] [word-break:keep-all]"
+            className="text-[26px] md:text-[48px] font-normal mt-5 leading-[1.15] tracking-[-0.01em] whitespace-pre-line [word-break:keep-all]"
             style={{ fontFamily: "'Cafe24Classictype', serif" }}
           >
             {t('h2')}

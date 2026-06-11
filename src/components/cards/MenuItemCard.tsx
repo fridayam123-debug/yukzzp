@@ -36,7 +36,7 @@ export function MenuItemCard({
             Signature Service
           </span>
           <div
-            className="text-[var(--color-canvas)] leading-[1.1] text-[22px] md:text-[32px] font-normal"
+            className="text-[var(--color-canvas)] leading-[1.2] text-[13px] md:text-[32px] font-normal [word-break:keep-all]"
             style={{ fontFamily: "'Cafe24Classictype', serif" }}
           >
             전담 서버의<br />그릴링 서비스

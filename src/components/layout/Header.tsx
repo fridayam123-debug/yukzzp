@@ -99,7 +99,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
                 height={573}
                 priority
                 unoptimized
-                className="h-[48px] md:h-[106px] w-auto object-contain"
+                className="h-[50px] md:h-[111px] w-auto object-contain"
               />
             </Link>
 

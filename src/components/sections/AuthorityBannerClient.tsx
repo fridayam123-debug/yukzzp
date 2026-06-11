@@ -18,7 +18,7 @@ export function AuthorityBannerClient({ videoId, eyebrow, h2, sub, body, viewCou
       <div className="max-w-[1440px] mx-auto grid md:grid-cols-2 gap-8 md:gap-10 items-start">
         <div className="text-[var(--color-canvas)] order-1">
           <div className="text-[11px] tracking-[0.3em] uppercase opacity-80">{eyebrow}</div>
-          <h2 className="text-[26px] md:text-[48px] font-normal mt-5 leading-[1.05] tracking-[-0.01em]" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>{h2}</h2>
+          <h2 className="text-[26px] md:text-[48px] font-normal mt-5 leading-[1.15] tracking-[-0.01em] whitespace-pre-line [word-break:keep-all]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{h2}</h2>
           {/* sub — 모바일 숨김 */}
           <p className="hidden md:block text-[26px] mt-3 opacity-95 font-normal leading-[1.3]">{sub}</p>
           {/* 본문 — 모바일 숨김 */}

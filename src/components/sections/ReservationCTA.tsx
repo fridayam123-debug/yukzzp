@@ -20,35 +20,36 @@ export async function ReservationCTA({ locations }: { locations: Loc[] }) {
         <h2 className="text-[28px] md:text-[56px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>{h2}</h2>
         {/* sub — 모바일 숨김 */}
         <p className="hidden md:block text-[15px] text-[var(--color-body)]">{sub}</p>
-        <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full justify-center flex-wrap">
-          {locations.map(loc => (
-            <div key={loc.slug} className="flex flex-col sm:flex-row gap-2">
-              {loc.naver_place_id && (
-                <a
-                  href={`https://map.naver.com/v5/entry/place/${loc.naver_place_id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event="reservation_click"
-                  data-location={loc.slug}
-                  className="inline-flex items-center justify-center bg-[var(--color-ink)] text-[var(--color-canvas)] px-7 py-4 rounded-[var(--radius-cta)] text-[14px] font-medium whitespace-nowrap"
-                >
-                  네이버 예약 ({loc.slug === 'yangjae' ? '양재' : '을지로'})
-                </a>
-              )}
-              {loc.catchtable_url && (
-                <a
-                  href={loc.catchtable_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-event="reservation_click"
-                  data-location={loc.slug}
-                  className="inline-flex items-center justify-center bg-[var(--color-ink)] text-[var(--color-canvas)] px-7 py-4 rounded-[var(--radius-cta)] text-[14px] font-medium whitespace-nowrap"
-                >
-                  캐치테이블 ({loc.slug === 'yangjae' ? '양재' : '을지로'})
-                </a>
-              )}
-            </div>
-          ))}
+        {/* 모바일: 2×2 그리드 / 데스크톱: 가로 나열 */}
+        <div className="grid grid-cols-2 md:flex md:flex-row gap-3 md:gap-4 mt-2 w-full md:justify-center md:flex-wrap">
+          {locations.flatMap(loc => [
+            loc.naver_place_id ? (
+              <a
+                key={`naver-${loc.slug}`}
+                href={`https://map.naver.com/v5/entry/place/${loc.naver_place_id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="reservation_click"
+                data-location={loc.slug}
+                className="inline-flex items-center justify-center bg-[var(--color-ink)] text-[var(--color-canvas)] px-4 md:px-7 py-4 rounded-[var(--radius-cta)] text-[13px] md:text-[14px] font-medium text-center leading-snug"
+              >
+                네이버{'\n'}예약 ({loc.slug === 'yangjae' ? '양재' : '을지로'})
+              </a>
+            ) : null,
+            loc.catchtable_url ? (
+              <a
+                key={`catchtable-${loc.slug}`}
+                href={loc.catchtable_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="reservation_click"
+                data-location={loc.slug}
+                className="inline-flex items-center justify-center bg-[var(--color-ink)] text-[var(--color-canvas)] px-4 md:px-7 py-4 rounded-[var(--radius-cta)] text-[13px] md:text-[14px] font-medium text-center leading-snug"
+              >
+                캐치테이블{'\n'}({loc.slug === 'yangjae' ? '양재' : '을지로'})
+              </a>
+            ) : null,
+          ].filter(Boolean))}
         </div>
       </div>
     </section>
