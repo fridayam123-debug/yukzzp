@@ -55,32 +55,27 @@ export default async function NoticePage({
     isFaq ? getAllFaqs() : Promise.resolve([]),
   ])
 
-  const yanjaeFaqs = faqs.filter((f) => f.category === 'yangjae' || f.category === 'general')
-  const euljiroFaqs = faqs.filter((f) => f.category === 'euljiro' || f.category === 'general')
+  // 매장별 FAQ 그룹 (동적) — locations 테이블 기반. 직영점 추가 시 자동 반영
   const generalFaqs = faqs.filter((f) => f.category === 'general')
+  const storeGroups = locations
+    .map((loc) => ({
+      key: loc.slug,
+      label: loc.name_ko.replace('육즙관리소 ', ''),
+      faqs: faqs.filter((f) => f.category === loc.slug),
+    }))
+    .filter((g) => g.faqs.length > 0)
 
-  // FAQPage JSON-LD — FAQ 탭일 때만 삽입 (양재역 + 을지로 각각)
+  // FAQPage JSON-LD — FAQ 탭일 때만 삽입. 매장별(매장 FAQ + 공통 FAQ)로 생성
   const faqSchemas = isFaq
-    ? [
-        yanjaeFaqs.length > 0 && {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: yanjaeFaqs.map((f) => ({
-            '@type': 'Question',
-            name: f.question_ko,
-            acceptedAnswer: { '@type': 'Answer', text: f.answer_ko },
-          })),
-        },
-        euljiroFaqs.length > 0 && {
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: euljiroFaqs.map((f) => ({
-            '@type': 'Question',
-            name: f.question_ko,
-            acceptedAnswer: { '@type': 'Answer', text: f.answer_ko },
-          })),
-        },
-      ].filter(Boolean)
+    ? storeGroups.map((g) => ({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [...g.faqs, ...generalFaqs].map((f) => ({
+          '@type': 'Question',
+          name: f.question_ko,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer_ko },
+        })),
+      }))
     : []
 
   return (
@@ -136,27 +131,24 @@ export default async function NoticePage({
             {/* FAQ 탭 */}
             {isFaq ? (
               <div className="max-w-[800px]">
-                {/* 양재역점 */}
-                <div className="mb-12">
-                  <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
-                    양재역점 FAQ
-                  </h2>
-                  <FaqAccordion faqs={faqs.filter(f => f.category === 'yangjae')} locale={locale} />
-                </div>
-                {/* 을지로동대문점 */}
-                <div className="mb-12">
-                  <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
-                    을지로동대문점 FAQ
-                  </h2>
-                  <FaqAccordion faqs={faqs.filter(f => f.category === 'euljiro')} locale={locale} />
-                </div>
+                {/* 매장별 FAQ — locations 기반 동적 렌더링 (직영점 추가 시 자동 노출) */}
+                {storeGroups.map((g) => (
+                  <div key={g.key} className="mb-12">
+                    <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
+                      {g.label} FAQ
+                    </h2>
+                    <FaqAccordion faqs={g.faqs} locale={locale} />
+                  </div>
+                ))}
                 {/* 공통 */}
-                <div>
-                  <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
-                    공통 FAQ
-                  </h2>
-                  <FaqAccordion faqs={generalFaqs} locale={locale} />
-                </div>
+                {generalFaqs.length > 0 && (
+                  <div>
+                    <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
+                      공통 FAQ
+                    </h2>
+                    <FaqAccordion faqs={generalFaqs} locale={locale} />
+                  </div>
+                )}
               </div>
             ) : (
               /* 포스트 그리드 */

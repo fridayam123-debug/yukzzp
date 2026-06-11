@@ -9,6 +9,7 @@ const NAV = [
   { href: '/admin/instagram', label: '인스타그램' },
   { href: '/admin/locations', label: '지점 사진' },
   { href: '/admin/posts', label: 'NOTICE' },
+  { href: '/admin/faqs', label: 'FAQ 관리' },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
