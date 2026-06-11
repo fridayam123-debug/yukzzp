@@ -25,9 +25,8 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
     return () => { document.body.style.overflow = '' }
   }, [drawerOpen])
 
-  const bgAlpha = !transparent ? 0.97 : scrolled ? 0.92 : 0.72
+  const bgAlpha = !transparent ? 0.95 : scrolled ? 0.92 : 0.72
   const blur = !transparent ? 0 : 16
-  const bgColor = !transparent ? `rgba(255,255,255,${bgAlpha})` : `rgba(232,223,210,${bgAlpha})`
 
   const NAV_LINKS = [
     { href: '/menu',      label: t('menu') },
@@ -42,7 +41,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
     <>
       <header
         className={`${transparent ? 'fixed' : 'sticky'} top-0 left-0 right-0 z-40 transition-all duration-500`}
-        style={{ backgroundColor: bgColor, backdropFilter: blur ? `blur(${blur}px)` : undefined }}
+        style={{ backgroundColor: `rgba(232,223,210,${bgAlpha})`, backdropFilter: blur ? `blur(${blur}px)` : undefined }}
       >
         <div className="border-b border-[var(--color-hairline)]">
           <nav

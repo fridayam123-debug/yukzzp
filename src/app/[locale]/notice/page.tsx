@@ -45,7 +45,7 @@ export default async function NoticePage({
   return (
     <>
       <Header transparent={false} />
-      <main className="min-h-screen bg-[var(--color-canvas)]">
+      <main className="min-h-screen bg-[#C8BDB0]">
         {/* 헤더 영역 */}
         <div className="border-b border-[var(--color-hairline)] px-6 md:px-24 py-16 md:py-24">
           <div className="max-w-[1440px] mx-auto">
