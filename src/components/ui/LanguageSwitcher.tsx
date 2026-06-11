@@ -2,8 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const LOCALES = ['ko', 'en', 'ja', 'vi', 'zh'] as const
+const LOCALES = ['ko', 'en', 'ja', 'zh', 'vi'] as const
 type Locale = typeof LOCALES[number]
+
+const LOCALE_LABELS: Record<string, string> = {
+  ko: '한국어',
+  en: 'English',
+  ja: '日本語',
+  zh: '中文',
+  vi: 'Tiếng Việt',
+}
 
 function getLocaleFromPath(): Locale {
   if (typeof window === 'undefined') return 'ko'
@@ -49,7 +57,7 @@ export function LanguageSwitcher() {
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        {locale.toUpperCase()}
+        {LOCALE_LABELS[locale]}
         <svg
           width="7"
           height="4"
@@ -66,7 +74,7 @@ export function LanguageSwitcher() {
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 top-[calc(100%+8px)] w-[72px] bg-[rgba(232,223,210,0.97)] backdrop-blur-sm border border-[var(--color-hairline)] shadow-md z-50"
+          className="absolute right-0 top-[calc(100%+8px)] w-[120px] bg-[rgba(232,223,210,0.97)] backdrop-blur-sm border border-[var(--color-hairline)] shadow-md z-50"
         >
           {LOCALES.map(l => (
             <li key={l} role="option" aria-selected={l === locale}>
@@ -82,7 +90,7 @@ export function LanguageSwitcher() {
                     : 'text-[var(--color-body)]'
                 }`}
               >
-                {l.toUpperCase()}
+                {LOCALE_LABELS[l]}
               </button>
             </li>
           ))}
