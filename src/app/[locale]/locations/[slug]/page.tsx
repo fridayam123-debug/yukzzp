@@ -6,6 +6,20 @@ import { Footer } from '@/components/layout/Footer'
 import { RestaurantJsonLd } from '@/components/schema/RestaurantJsonLd'
 import { getLocations, getLocationBySlug } from '@/lib/fetchers/locations'
 import { getReviews } from '@/lib/fetchers/reviews'
+import { getFaqs } from '@/lib/fetchers/faqs'
+import type { Faq } from '@/lib/fetchers/faqs'
+
+function getFaqText(faq: Faq, locale: string): { q: string; a: string } {
+  if (locale === 'en')
+    return { q: faq.question_en ?? faq.question_ko, a: faq.answer_en ?? faq.answer_ko }
+  if (locale === 'ja')
+    return { q: faq.question_ja ?? faq.question_ko, a: faq.answer_ja ?? faq.answer_ko }
+  if (locale === 'vi')
+    return { q: faq.question_vi ?? faq.question_ko, a: faq.answer_vi ?? faq.answer_ko }
+  if (locale === 'zh')
+    return { q: faq.question_zh_hans ?? faq.question_ko, a: faq.answer_zh_hans ?? faq.answer_ko }
+  return { q: faq.question_ko, a: faq.answer_ko }
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -37,10 +51,11 @@ export default async function LocationPage(
 ) {
   const { locale, slug } = await params
   setRequestLocale(locale)
-  const [loc, locations, reviews] = await Promise.all([
+  const [loc, locations, reviews, faqs] = await Promise.all([
     getLocationBySlug(slug),
     getLocations(),
     getReviews(slug, 50),
+    getFaqs(slug === 'yangjae' ? 'yangjae' : 'euljiro'),
   ])
   if (!loc) notFound()
 
@@ -51,9 +66,30 @@ export default async function LocationPage(
     ? `https://map.naver.com/v5/entry/place/${loc.naver_place_id}`
     : null
 
+  const faqSchema = faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => {
+          const { q, a } = getFaqText(faq, locale)
+          return {
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a },
+          }
+        }),
+      }
+    : null
+
   return (
     <>
       <RestaurantJsonLd location={loc} />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Header />
       <main className="max-w-[1440px] mx-auto px-6 md:px-24 py-12">
         {/* Eyebrow + title */}
