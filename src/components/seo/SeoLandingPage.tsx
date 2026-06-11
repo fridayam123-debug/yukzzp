@@ -82,7 +82,7 @@ export function SeoLandingPage({ locale, locations, faqs, meta }: SeoPageProps) 
                 { label: '숙성', value: '특허 파동숙성 — 육즙·풍미 극대화' },
                 { label: '직화', value: '100% 대나무 숯 직화 · 하향식 덕트' },
                 { label: '서비스', value: '전담 서버 그릴링 · 7가지 시그니처 소스' },
-                { label: '공간', value: '8·10인 프라이빗 룸 · 20·40인 단체석' },
+                { label: '공간', value: meta.locationSlug === 'yangjae' ? '8·10인 룸 · 20·40인 단체석' : '4·8·10·16·20·35인 개별룸' },
               ].map(({ label, value }) => (
                 <div key={label} className="flex gap-6 pb-5 border-b border-[var(--color-hairline)]">
                   <span className="text-[11px] tracking-[0.2em] text-[var(--color-espresso)] font-semibold w-[56px] flex-shrink-0 pt-0.5">
