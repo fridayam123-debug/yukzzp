@@ -46,7 +46,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         <div className="border-b border-[var(--color-hairline)]">
           <nav
             aria-label="주 내비게이션"
-            className="relative mx-auto max-w-[1440px] h-[72px] md:h-[136px] px-6 lg:px-16 flex items-center justify-between"
+            className="relative mx-auto max-w-[1440px] h-[72px] md:h-[136px] px-6 lg:px-16 flex items-end pb-8 justify-between"
           >
             {/* ── MOBILE 왼쪽: 햄버거 ── */}
             <button
