@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: '양재역 목살 — 육즙관리소 산청 흑돼지 목살',
-  description: '양재역 흑돼지 목살 맛집. 지리산 산청 흑돼지 목살, 특허 파동숙성, 100% 대나무 숯 직화. 정육왕 블라인드 테스트 밸런스 1위. 이원일 셰프 추천.',
+  description: '양재역 흑돼지 목살 맛집. 지리산 산청 흑돼지 목살, 특허 파동숙성, 100% 대나무숯 직화. 양재역 3번 출구 도보 2분. 정육왕 블라인드 테스트 밸런스 1위. 이원일 셰프 추천.',
   alternates: { canonical: '/yangjae-moksal' },
 }
 
