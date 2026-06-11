@@ -42,9 +42,6 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
         className={`${transparent ? 'fixed' : 'sticky'} top-0 left-0 right-0 z-40 transition-all duration-500`}
         style={{ backgroundColor: `rgba(232,223,210,${bgAlpha})`, backdropFilter: blur ? `blur(${blur}px)` : undefined }}
       >
-        {/* Top accent bar */}
-        <div className="h-[3px] bg-[var(--color-espresso)]" />
-
         <div className="border-b border-[var(--color-hairline)]">
           <nav
             aria-label="주 내비게이션"
