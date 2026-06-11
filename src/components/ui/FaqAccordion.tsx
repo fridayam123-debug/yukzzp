@@ -13,8 +13,12 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
   return (
     <div className="divide-y divide-[var(--color-hairline)]">
       {faqs.map((faq) => {
-        const question = locale === 'en' && faq.question_en ? faq.question_en : faq.question_ko
-        const answer   = locale === 'en' && faq.answer_en   ? faq.answer_en   : faq.answer_ko
+        const question = locale === 'en' && faq.question_en ? faq.question_en
+          : locale === 'ja' && faq.question_ja ? faq.question_ja
+          : faq.question_ko
+        const answer   = locale === 'en' && faq.answer_en ? faq.answer_en
+          : locale === 'ja' && faq.answer_ja ? faq.answer_ja
+          : faq.answer_ko
         const isOpen   = open === faq.id
 
         return (

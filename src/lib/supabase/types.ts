@@ -65,33 +65,39 @@ export type Database = {
       faqs: {
         Row: {
           answer_en: string | null
+          answer_ja: string | null
           answer_ko: string
           category: string | null
           id: string
           location_id: string | null
           question_en: string | null
+          question_ja: string | null
           question_ko: string
           slug: string
           sort_order: number | null
         }
         Insert: {
           answer_en?: string | null
+          answer_ja?: string | null
           answer_ko: string
           category?: string | null
           id?: string
           location_id?: string | null
           question_en?: string | null
+          question_ja?: string | null
           question_ko: string
           slug: string
           sort_order?: number | null
         }
         Update: {
           answer_en?: string | null
+          answer_ja?: string | null
           answer_ko?: string
           category?: string | null
           id?: string
           location_id?: string | null
           question_en?: string | null
+          question_ja?: string | null
           question_ko?: string
           slug?: string
           sort_order?: number | null
