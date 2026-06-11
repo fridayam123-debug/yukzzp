@@ -31,7 +31,7 @@ export async function Hero() {
                       md:h-auto md:pt-0 md:pb-20 md:justify-start md:gap-4">
         {/* 텍스트 그룹 */}
         <div className="flex flex-col gap-3 md:gap-4">
-          <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-canvas)]/70">{t('eyebrow')}</div>
+          <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-canvas)]/70 mt-3 md:mt-6">{t('eyebrow')}</div>
           <h1 className="text-[22px] md:text-[52px] font-normal text-[var(--color-canvas)] leading-[1.15] md:leading-[1.08] tracking-[-0.01em] max-w-[800px] whitespace-pre-line [word-break:keep-all]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{t('h1')}</h1>
           {/* 모바일 전용 요약 — 5줄 */}
           <p className="md:hidden text-[13px] text-[var(--color-canvas)]/80 leading-[1.8] mt-1 whitespace-pre-line [word-break:keep-all]">{t('mobileSub')}</p>
