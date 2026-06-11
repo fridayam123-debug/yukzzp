@@ -1,17 +1,21 @@
-'use client'
+/**
+ * FaqAccordion — 순수 서버 컴포넌트 (no 'use client')
+ *
+ * <details>/<summary> 네이티브 HTML 사용:
+ *  - 답변 텍스트가 JavaScript 실행 여부와 무관하게 초기 HTML에 항상 포함
+ *  - aria-hidden 없음 → 크롤러가 모든 답변 텍스트를 읽을 수 있음
+ *  - 접힘/펼침 상태는 CSS group-open: variant로 제어
+ */
 
-import { useState } from 'react'
 import type { Faq } from '@/lib/fetchers/faqs'
 
 export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) {
-  const [open, setOpen] = useState<string | null>(null)
-
   if (faqs.length === 0) return (
     <p className="text-[13px] text-[var(--color-body)] opacity-50 py-4">준비 중입니다.</p>
   )
 
   return (
-    <dl className="divide-y divide-[var(--color-hairline)]">
+    <div className="divide-y divide-[var(--color-hairline)]">
       {faqs.map((faq) => {
         const isZh = locale === 'zh'
 
@@ -29,69 +33,44 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
           : locale === 'vi' && faq.answer_vi ? faq.answer_vi
           : faq.answer_ko
 
-        const isOpen = open === faq.id
-        const answerId = `faq-ans-${faq.id}`
-
         return (
-          <div key={faq.id}>
-            {/*
-              dt: 질문 — h3 > button (W3C ARIA accordion + SEO semantic)
-              h3가 질문 텍스트를 시맨틱하게 감쌈 → 크롤러가 heading으로 인식
-            */}
-            <dt>
-              <h3 className="m-0 text-[15px] font-normal">
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  aria-controls={answerId}
-                  onClick={() => setOpen(isOpen ? null : faq.id)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-6 group"
-                >
-                  <div className="flex-1 min-w-0">
-                    {isZh ? (
-                      <div className="space-y-1">
-                        {faq.question_zh_hans && (
-                          <span className="block text-[15px] leading-[1.5] text-[var(--color-ink)] [word-break:keep-all] group-hover:opacity-70 transition-opacity">
-                            {faq.question_zh_hans}
-                          </span>
-                        )}
-                        {faq.question_zh_hant && (
-                          <span className="block text-[13px] leading-[1.5] text-[var(--color-body)] [word-break:keep-all] group-hover:opacity-70 transition-opacity">
-                            {faq.question_zh_hant}
-                          </span>
-                        )}
-                        {!faq.question_zh_hans && !faq.question_zh_hant && (
-                          <span className="block text-[15px] leading-[1.5] text-[var(--color-ink)] [word-break:keep-all]">
-                            {faq.question_ko}
-                          </span>
-                        )}
-                      </div>
-                    ) : (
-                      <span className="text-[15px] leading-[1.5] text-[var(--color-ink)] [word-break:keep-all] group-hover:opacity-70 transition-opacity">
-                        {question}
+          /**
+           * <details>: 열림/닫힘은 브라우저가 관리 (open 어트리뷰트)
+           * 중요: 내부 콘텐츠는 닫힌 상태에서도 HTML 소스에 항상 존재
+           */
+          <details key={faq.id} className="group">
+            {/* summary: 질문 헤딩 + 토글 아이콘 */}
+            <summary className="flex items-center justify-between py-5 gap-6 cursor-pointer [list-style:none] [&::-webkit-details-marker]:hidden hover:opacity-70 transition-opacity">
+              <h3 className="flex-1 m-0 text-[15px] font-normal leading-[1.5] text-[var(--color-ink)] [word-break:keep-all]">
+                {isZh ? (
+                  <>
+                    {faq.question_zh_hans && (
+                      <span className="block">{faq.question_zh_hans}</span>
+                    )}
+                    {faq.question_zh_hant && (
+                      <span className="block text-[13px] text-[var(--color-body)] mt-1">
+                        {faq.question_zh_hant}
                       </span>
                     )}
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    className={`text-[18px] text-[var(--color-espresso)] transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-45' : ''}`}
-                  >
-                    +
-                  </span>
-                </button>
+                    {!faq.question_zh_hans && !faq.question_zh_hant && faq.question_ko}
+                  </>
+                ) : question}
               </h3>
-            </dt>
+              {/* 아이콘: details[open]이면 45도 회전 */}
+              <span
+                aria-hidden="true"
+                className="text-[18px] text-[var(--color-espresso)] transition-transform duration-200 flex-shrink-0 group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
 
             {/*
-              dd: 답변 — 항상 DOM에 존재 (aria-hidden 없음 → 크롤러 접근 가능)
-              시각적 접기는 max-height CSS만 사용
+              답변: <details> 특성상 HTML 소스에 항상 포함됨.
+              닫힌 상태에서 브라우저가 시각적으로 숨기지만,
+              view-source / 크롤러는 이 텍스트를 읽을 수 있음.
             */}
-            <dd
-              id={answerId}
-              className={`[word-break:keep-all] overflow-hidden transition-[max-height,padding] duration-300 ease-in-out m-0 ${
-                isOpen ? 'max-h-[2000px] pb-6' : 'max-h-0'
-              }`}
-            >
+            <div className="faq-answer pb-6 [word-break:keep-all]">
               {isZh ? (
                 <div className="space-y-4">
                   {faq.answer_zh_hans && (
@@ -115,10 +94,10 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
                   {answer}
                 </p>
               )}
-            </dd>
-          </div>
+            </div>
+          </details>
         )
       })}
-    </dl>
+    </div>
   )
 }
