@@ -30,20 +30,10 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
       {/* Category filter pills */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 pb-10">
         <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
-          <button
-            onClick={() => setActiveCat(null)}
-            className={`shrink-0 px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
-              activeCat === null
-                ? 'bg-[#1c1c14] text-[var(--color-canvas)]'
-                : 'bg-white text-[var(--color-body)] border border-[var(--color-hairline)] hover:border-[var(--color-ink)]'
-            }`}
-          >
-            {t('all')}
-          </button>
           {categories.map(cat => (
             <button
               key={cat.id}
-              onClick={() => setActiveCat(cat.id)}
+              onClick={() => setActiveCat(activeCat === cat.id ? null : cat.id)}
               className={`shrink-0 px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
                 activeCat === cat.id
                   ? 'bg-[#1c1c14] text-[var(--color-canvas)]'
