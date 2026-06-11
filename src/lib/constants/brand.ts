@@ -9,7 +9,7 @@ export const BRAND = {
   tagline: 'PREMIUM DINING',
   taglineSubKo: '프리미엄 흑돼지 다이닝',
   origin: '산청 흑돼지 · 거창 백돼지',
-  domain: 'https://yukzzp.com',
+  domain: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://jproject-mauve.vercel.app',
   email: '', // 사장님께 받음 — 빌드 시 .env로 주입
 
   instagramHandle: 'yukzzp__management_office',
