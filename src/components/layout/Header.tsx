@@ -62,7 +62,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             </button>
 
             {/* ── DESKTOP 왼쪽: 텍스트 링크 ── */}
-            <div className="hidden md:flex items-center gap-7">
+            <div className="hidden md:flex flex-1 items-center gap-7 justify-start">
               <Link
                 href="/menu"
                 className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
@@ -108,7 +108,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             </Link>
 
             {/* ── DESKTOP 오른쪽 ── */}
-            <div className="hidden md:flex items-center gap-7">
+            <div className="hidden md:flex flex-1 items-center gap-7 justify-end">
               <Link
                 href="/#group"
                 className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
