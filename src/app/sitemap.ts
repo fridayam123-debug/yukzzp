@@ -8,13 +8,25 @@ const PAGES = [
   { path: '/locations/yangjae',    priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/locations/euljiro',    priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/notice',               priority: 0.7, changeFrequency: 'weekly'  as const },
-  // SEO landing pages
-  { path: '/yangjae-matjip',       priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: '/yangjae-hoesik',       priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: '/yangjae-moksal',       priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: '/dongdaemun-matjip',    priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: '/ddp-matjip',           priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: '/euljiro-hoesik',       priority: 0.8, changeFrequency: 'monthly' as const },
+  // SEO landing pages — 양재역
+  { path: '/yangjae-matjip',          priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/yangjae-gogitjip',        priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/yangjae-hoesik',          priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/yangjae-moksal',          priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/yangjae-samgyeopsal',     priority: 0.8, changeFrequency: 'monthly' as const },
+  // SEO landing pages — 을지로
+  { path: '/euljiro-matjip',          priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/euljiro-gogitjip',        priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/euljiro-hoesik',          priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/euljiro-samgyeopsal',     priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/euljiro-moksal',          priority: 0.8, changeFrequency: 'monthly' as const },
+  // SEO landing pages — 동대문/DDP
+  { path: '/dongdaemun-matjip',       priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/dongdaemun-gogitjip',     priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/dongdaemun-hoesik',       priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/dongdaemun-samgyeopsal',  priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/dongdaemun-moksal',       priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/ddp-matjip',              priority: 0.8, changeFrequency: 'monthly' as const },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
