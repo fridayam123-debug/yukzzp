@@ -49,9 +49,6 @@ export default async function NoticePage({
         {/* 헤더 영역 */}
         <div className="border-b border-[var(--color-hairline)] px-6 md:px-24 py-16 md:py-24">
           <div className="max-w-[1440px] mx-auto">
-            <div className="text-[10px] tracking-[0.35em] uppercase text-[var(--color-espresso)] opacity-70 mb-4">
-              YUKJEUP GWALISO
-            </div>
             <h1
               className="text-[36px] md:text-[64px] font-normal tracking-[-0.02em] text-[var(--color-ink)]"
               style={{ fontFamily: "'Cafe24Classictype', serif" }}
