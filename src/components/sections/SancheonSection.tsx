@@ -39,7 +39,7 @@ export function SancheonSection() {
         {/* 우측: 유튜브 영상 */}
         <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-black relative order-2">
           <iframe
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&playsinline=1&controls=1`}
+            src={`https://www.youtube.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1`}
             className="w-full h-full border-0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

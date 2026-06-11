@@ -31,7 +31,7 @@ export function AuthorityBannerClient({ videoId, eyebrow, h2, sub, body, viewCou
         </div>
         <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-black/20 relative order-2 self-center">
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1&controls=1`}
+            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1`}
             className="w-full h-full border-0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
