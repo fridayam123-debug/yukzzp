@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const LOCALES = ['ko', 'en', 'ja', 'vi'] as const
+const LOCALES = ['ko', 'en', 'ja', 'vi', 'zh'] as const
 type Locale = typeof LOCALES[number]
 
 function getLocaleFromPath(): Locale {

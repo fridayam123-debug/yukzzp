@@ -24,12 +24,12 @@ export function PillarCard({
       <div className="border-t border-[var(--color-hairline)] mb-4" />
 
       {/* Title — LV weight 400, responsive size, centered */}
-      <h3 className="text-[13px] md:text-[20px] font-normal text-[var(--color-espresso)] leading-[1.25] tracking-[-0.02em] break-keep mb-3 text-center whitespace-nowrap overflow-hidden text-ellipsis md:whitespace-normal">
+      <h3 className="text-[13px] md:text-[20px] font-normal text-[var(--color-espresso)] leading-[1.25] tracking-[-0.02em] break-keep mb-3 text-center [word-break:keep-all]">
         {title}
       </h3>
 
-      {/* Description — centered */}
-      <p className="text-[11px] md:text-[14px] text-[var(--color-body)] leading-[1.65] flex-1 text-center line-clamp-5 md:line-clamp-none [word-break:keep-all]">
+      {/* Description — 모바일 숨김 */}
+      <p className="hidden md:block text-[14px] text-[var(--color-body)] leading-[1.65] flex-1 text-center break-words">
         {description}
       </p>
 

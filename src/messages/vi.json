@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Chi nhánh chính Yangjae · The Room Euljiro Dongdaemun",
-    "h1": "Ẩm thực K-BBQ cao cấp\nhoàn hảo về hương vị, không gian & phong cách.",
-    "sub": "Yukjeup Gwaliso là nhà hàng ẩm thực cao cấp Hàn Quốc — trang trọng nhưng không gò bó, từ bữa tối kinh doanh đến buổi tối thân mật. Heo đen Sancheong và heo trắng Geochang nuôi bằng ngải cứu tự nhiên, than tre 100%, dịch vụ nướng tại bàn, không gian không khói — mọi khoảnh khắc được thiết kế bởi người sáng lập xuất thân từ thời trang.",
+    "h1": "Vẻ đẹp Hàn Quốc và tinh thần phục vụ,\nK-BBQ cao cấp không gây áp lực.",
+    "sub": "Yukjeup Gwaliso là nhà hàng K-BBQ cao cấp tại Seoul, nơi vẻ đẹp Hàn Quốc được thăng hoa qua từng bữa ăn. Với niềm tin rằng một bữa ăn có thể là một hành động phục vụ chân thành, chúng tôi kết hợp hương vị, không gian và tinh thần \"sŏmgim\" (phục vụ tận tâm) thành một trải nghiệm trọn vẹn.\n\nHeo đen Sancheong và heo trắng Geochang được nuôi bằng ngải cứu hoang dã trong không khí trong lành dưới chân núi Jirisan. Công nghệ ủ chín sóng được cấp bằng sáng chế, nướng trực tiếp bằng than tre 100%, 7 loại sốt đặc trưng và dịch vụ nướng bàn chuyên nghiệp. Từng chi tiết — không gian, cách bày trí đến nhịp phục vụ — đều được chủ nhà hàng xuất thân từ thiết kế thời trang tinh chỉnh thành một trải nghiệm.\n\nMột Korean Dining Experience mới, nơi thẩm mỹ truyền thống Hàn Quốc gặp gỡ cảm quan hiện đại.\n\nTiệc công ty, hẹn hò, hay buổi tối bên người thân — lịch sự, nhưng không bao giờ gò bó.",
     "ctaPrimary": "Đặt bàn ngay",
     "ctaSecondary": "Xem thực đơn"
   },
@@ -31,11 +31,24 @@
     "kakao": "KAKAO",
     "copyright": "© {year} Yukjeup Gwaliso · Menu và giá có thể thay đổi tùy chi nhánh"
   },
+  "sancheon": {
+    "eyebrow": "ORIGIN · Heo đen Sancheong",
+    "h2": "Tại sao lại là Heo đen Sancheong?",
+    "body1": "Dưới chân đỉnh Cheonwangbong của núi Jirisan — Sancheong, quê hương của Đông y bảo giám Heo Jun. Heo đen nuôi tại đây khác biệt hoàn toàn.",
+    "body2": "Heo đen Sancheong là 'Berkshire kiểu Hàn Quốc' — giống bản địa lai với Berkshire Anh. Được nuôi lâu hơn heo thường, thịt đặc chắc và tỷ lệ mỡ-nạc cân bằng hoàn hảo.",
+    "body3": "Heo đen từ trang trại chúng tôi được nuôi bằng ngải cứu hoang dã. Chất chống oxy hóa trong ngải cứu loại bỏ mùi tanh và tạo ra vị umami càng nhai càng đậm đà.",
+    "body4pre": "Sự cân bằng đó đã được xác nhận bởi các chuyên gia ẩm thực. Trong bài kiểm tra mù của '정육왕' (Meat King) — kênh YouTube chuyên về thịt — heo đen Sancheong được bình chọn ",
+    "body4badge": "'Cân bằng số 1'",
+    "body4post": " trong 5 giống heo cao cấp hàng đầu Hàn Quốc.",
+    "body5": "Kết hợp với công nghệ ủ sóng độc quyền được cấp bằng sáng chế của Yukjeup Gwaliso, hương vị tự nhiên của thịt được nâng lên mức tối đa.",
+    "playBtn": "Xem Video"
+  },
   "language": {
     "label": "Ngôn ngữ",
     "ko": "한국어",
     "en": "English",
     "ja": "日本語",
-    "vi": "Tiếng Việt"
+    "vi": "Tiếng Việt",
+    "zh": "中文"
   }
 }

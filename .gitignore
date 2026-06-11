@@ -51,3 +51,15 @@ pencil-new.pen
 # Claude Code worktrees (embedded git repos)
 .claude/worktrees/
 .claude/sessions/
+.claude/settings.local.json
+
+# 대용량 미디어 (Git LFS 또는 외부 스토리지 사용)
+*.mp4
+*.mov
+*.zip
+.clone/
+
+# 작업 임시 디렉토리
+사진/
+동영상/
+네이버\ 키워드/

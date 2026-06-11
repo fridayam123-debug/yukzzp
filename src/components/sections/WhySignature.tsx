@@ -24,6 +24,29 @@ export async function WhySignature() {
   const signatureH2 = copy['why.signatureH2'] || COPY_KO.signatureH2
   const signatureMore = copy['why.signatureMore'] || COPY_KO.signatureMore
 
+  // Signature items — read from site_copy with SIGNATURE_ITEMS as fallback
+  const signatureItems = [1, 2, 3, 4].map((n, i) => {
+    const fallback = SIGNATURE_ITEMS[i]
+    const name = copy[`signature.${n}.name`] || fallback.name
+    const description = copy[`signature.${n}.desc`] || fallback.description
+    const priceRaw = copy[`signature.${n}.price`]
+    const priceKrw = priceRaw
+      ? (priceRaw === 'INCLUDED' ? 0 : parseInt(priceRaw.replace(/[^0-9]/g, ''), 10) || 0)
+      : fallback.priceKrw
+    const priceLabel: string | undefined = priceRaw === 'INCLUDED'
+      ? 'INCLUDED'
+      : ('priceLabel' in fallback ? fallback.priceLabel : undefined)
+    return {
+      key: fallback.key,
+      name,
+      description,
+      priceKrw,
+      priceLabel,
+      image: fallback.image,
+      isSignature: true,
+    }
+  })
+
   return (
     <section className="bg-[var(--color-canvas-soft)] py-20 md:py-32 px-6 md:px-24">
       <div className="max-w-[1440px] mx-auto">
@@ -46,13 +69,13 @@ export async function WhySignature() {
             <Link href="/menu" className="text-[14px] underline underline-offset-[6px] decoration-[1px] hover:decoration-[var(--color-cream-gold)] text-[var(--color-ink)]">{signatureMore}</Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {SIGNATURE_ITEMS.map(item => (
+            {signatureItems.map(item => (
               <MenuItemCard
                 key={item.key}
                 name={item.name}
                 description={item.description}
                 priceKrw={item.priceKrw}
-                priceLabel={'priceLabel' in item ? item.priceLabel : undefined}
+                priceLabel={item.priceLabel}
                 image={item.image}
                 isSignature={item.isSignature}
               />

@@ -9,6 +9,7 @@ const SECTION_LABELS: Record<string, string> = {
   authority: '미디어 · 셰프 추천',
   'brand-story': '브랜드 스토리',
   why: 'WHY 육즙관리소',
+  signature: '시그니처 메뉴',
   locations: '지점',
   group: '단체 다이닝',
   reservation: '예약',

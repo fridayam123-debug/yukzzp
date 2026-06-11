@@ -31,18 +31,18 @@ export function MenuItemCard({
           />
         </div>
       ) : (
-        <div className="relative aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-espresso)] flex flex-col items-center justify-center text-center px-4 py-6">
+        <div className="relative aspect-[4/5] rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-espresso)] flex flex-col items-center justify-between text-center px-4 py-8">
           <span className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)]">
-            100% Free Service
+            Signature Service
           </span>
           <div
-            className="mt-4 md:mt-6 text-[var(--color-canvas)] leading-[1.05] text-[24px] md:text-[36px] font-normal"
+            className="text-[var(--color-canvas)] leading-[1.1] text-[22px] md:text-[32px] font-normal"
             style={{ fontFamily: "'Cafe24Classictype', serif" }}
           >
-            전문 그릴링<br />서비스
+            전담 서버의<br />그릴링 서비스
           </div>
-          <div className="mt-auto pt-4 text-[9px] md:text-[11px] tracking-[0.05em] text-[var(--color-canvas)]/70 leading-[1.5]">
-            직접 굽지 않아도<br />되는 편안함
+          <div className="text-[9px] md:text-[11px] tracking-[0.05em] text-[var(--color-canvas)]/70 leading-[1.5]">
+            가장 맛있는 타이밍에<br />완성되는 한 점
           </div>
         </div>
       )}
@@ -70,9 +70,9 @@ export function MenuItemCard({
           </span>
         )}
 
-        {/* 설명 */}
+        {/* 설명 — 모바일 숨김 */}
         {description && (
-          <p className="text-[11px] md:text-[13px] text-[var(--color-body)] mt-0.5 leading-[1.5] [word-break:keep-all]">
+          <p className="hidden md:block text-[13px] text-[var(--color-body)] mt-0.5 leading-[1.5] [word-break:keep-all]">
             {description}
           </p>
         )}

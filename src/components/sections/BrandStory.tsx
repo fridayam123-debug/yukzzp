@@ -16,18 +16,30 @@ export async function BrandStory() {
   return (
     <section className="bg-[var(--color-forest)] overflow-hidden">
       <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row min-h-[400px] md:min-h-[560px]">
-        <div className="flex flex-col justify-center px-6 py-16 md:px-16 md:py-24 md:w-1/2">
+        <div className="flex flex-col justify-center px-6 py-10 md:px-16 md:py-24 md:w-1/2">
           <div className="text-[11px] tracking-[2px] font-mono text-[var(--color-body)]">
             {eyebrow}
           </div>
           <h2 className="mt-3 text-[24px] md:text-[40px] font-normal text-[var(--color-canvas)] max-w-[480px] whitespace-pre-line" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>
             {h2}
           </h2>
-          <p className="mt-6 text-[14px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line">
+          {/* 본문 — 모바일 숨김 */}
+          <p className="hidden md:block mt-6 text-[17.6px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line [word-break:keep-all]">
             {p1}
           </p>
-          <p className="mt-4 text-[14px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line">
-            {p2}
+          <p className="hidden md:block mt-4 text-[17.6px] leading-relaxed text-[var(--color-canvas)]/75 whitespace-pre-line [word-break:keep-all]">
+            {p2.split('\n').map((line, i) => {
+              const dashIdx = line.indexOf(' — ')
+              const hasMidDash = dashIdx !== -1 && dashIdx < line.length - 3
+              return (
+                <span key={i}>
+                  {i > 0 && '\n'}
+                  {hasMidDash ? (
+                    <>{line.slice(0, dashIdx)}{'— '}{line.slice(dashIdx + 3)}</>
+                  ) : line}
+                </span>
+              )
+            })}
           </p>
         </div>
         <div className="relative order-first md:order-last md:w-1/2 aspect-[4/3] md:aspect-auto">

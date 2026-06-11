@@ -64,9 +64,9 @@ export const COPY_KO = {
   ],
 
   brandStoryEyebrow: 'BRAND STORY',
-  brandStoryH2: '대기업과 패션이 만나\n탄생한 정직한 다이닝',
-  brandStoryP1: '대기업에서 일하던 남편과 패션 디자이너로 활동하던 아내.\n두 사람이 육즙관리소를 시작한 이유는 단순했습니다.\n자신들이 진짜 먹고 싶은 고기를, 자신들이 대접받고 싶은 방식으로.',
-  brandStoryP2: '산청 흑돼지와 거창 백돼지를 산지에서 직계약합니다.\n특허 파동숙성 기술로 육즙을 살리고,\n100% 대나무 숯 직화로 불향을 더합니다.\n재료에 정직한 기술을 더해 한 접시를 완성합니다.',
+  brandStoryH2: '한국의 아름다움을\n한 끼의 경험으로 담아내고 싶었습니다',
+  brandStoryP1: '대기업에서 일하던 남편과 패션 디자이너로 활동하던 아내.\n10년간 프랜차이즈 외식업을 함께 일구며 우리가 깨달은 것은,\n한 끼의 식사가 한 사람을 귀하게 모시는 일이 될 수 있다는 사실이었습니다.\n우리는 그 마음을 \'섬김\'이라 부릅니다.\n손님을 가장 귀한 사람으로 모시는 한국의 환대 정신.\n그것이 우리가 차리는 모든 상의 시작입니다.',
+  brandStoryP2: '그리고 우리는 한국의 멋을 온전히 담습니다.\n정성껏 구운 고기의 맛은 물론, 손에 닿는 식기와 정갈한 오브제, 공간의 결 하나하나까지 — 한국의 미감을 오늘의 식탁 위에 새깁니다.\n자연이 준 정직한 재료에 한국의 멋과 섬김을 더해\n한 접시에 한국을 담아 세상에 전합니다.',
 
   whyEyebrow: 'WHY 육즙관리소',
   whyH2: '네 가지 약속',
@@ -103,16 +103,15 @@ export const COPY_KO = {
 
   groupEyebrow: 'GROUP DINING',
   groupH2: '서울 프리미엄 K-BBQ 단체 다이닝',
-  groupSubheading: '회식 · 단체모임 · 청첩장 모임 · 기업행사 · 프라이빗',
+  groupSubheading: '회식 · 송년회 · 신년회 · 청첩장 · 비즈니스 미팅 · 외국인 접대 · 데이트',
   groupBody: [
-    '육즙관리소는 4~16인 프라이빗 룸부터 20~40인 단체석까지 다양한 규모의 모임을 위한 프리미엄 K-BBQ 다이닝 공간을 제공합니다.',
-    '회사 회식부터 외국인 손님 접대, 청첩장 모임까지 편안하고 감각적인 공간에서 프리미엄 Korean BBQ Dining Experience를 경험할 수 있습니다.',
-    '산청 흑돼지·거창 백돼지, 전문 그릴링과 대나무숯, 하향식 덕트로 연기 없는 단체 다이닝을 제공합니다.',
+    '육즙관리소는 서울 양재역과 을지로동대문에 위치한 프리미엄 K-BBQ 단체 다이닝 브랜드입니다. 4~16인 프라이빗 룸부터 20~40인 단체석까지, 다양한 규모와 목적의 단체 모임을 위한 공간을 제공합니다.',
+    '산청 흑돼지와 거창 백돼지, 전담 서버의 그릴링 서비스, 100% 대나무 숯 직화, 하향식 덕트 시스템. 옷에 냄새와 연기가 배지 않는 쾌적한 환경에서 한국적 미감과 현대적 감각이 어우러진 새로운 Korean Dining Experience를 누리실 수 있습니다.',
   ],
   groupUseCases: [
     '회사 회식', '부서 회식', '송년회', '신년회',
-    '청첩장 모임', '가족모임', '생일모임', '비즈니스 미팅',
-    '바이어 접대', '외국인 손님 식사', '동창모임', '단체회식',
+    '청첩장 모임', '가족 모임', '생일 모임',
+    '비즈니스 미팅', '바이어 접대', '외국인 손님 식사', '동창 모임', '단체 회식', '데이트',
   ],
   groupCtaCall: '전화 문의',
   groupCtaKakao: '카카오 채널 문의',
@@ -132,17 +131,17 @@ export const COPY_KO = {
 export const SIGNATURE_ITEMS = [
   {
     key: 'grilling-service',
-    name: '프리미엄 그릴링서비스 (100%무료)',
-    description: '직접 굽지 않아도 되는 편안함, 가장 맛있는 타이밍에 완성되는 풍미, 전문서버의 그릴링 서비스',
+    name: '전담 서버의 그릴링 서비스',
+    description: '직접 굽지 않아도 되는 편안함, 가장 맛있는 타이밍에 완성되는 풍미. 손님은 대화와 식사에만 집중하시면 됩니다.',
     priceKrw: 0,
-    priceLabel: '0원',
-    image: null,  // /photos/food/grilling-service.jpg (TBD — placeholder shown until image added)
+    priceLabel: 'INCLUDED',
+    image: null,
     isSignature: true,
   },
   {
     key: 'jirisan-moksal',
     name: '지리산 산청 흑돼지 목살 (160g)',
-    description: '흑돼지의 순도 높은 본질과 부드러움 풍미의 정교한 균형이 돋보이는 프리미엄 목살',
+    description: '야생쑥을 먹고 자란 산청 흑돼지의 목살. 지방과 살코기의 탁월한 균형, 씹을수록 깊어지는 감칠맛.',
     priceKrw: 19000,
     image: '/photos/food/modeum-platter.png',
     isSignature: true,
@@ -150,7 +149,7 @@ export const SIGNATURE_ITEMS = [
   {
     key: 'bulgogi-set',
     name: '양념소불고기정식 (점심특선)',
-    description: '양념소불고기와 낚지볶음소면, 된장찌개, 계란찜, 공기밥, 6가지 반찬까지 풍성한 점심 시그니처메뉴',
+    description: '양념소불고기, 낙지볶음소면, 된장찌개, 계란찜. 격을 갖춘 한 상을, 점심에 가볍게 누리는 시그니처 정식.',
     priceKrw: 24000,
     image: '/photos/food/bulgogi-set.png',
     isSignature: true,
@@ -158,10 +157,30 @@ export const SIGNATURE_ITEMS = [
   {
     key: 'avocado-yukhoe',
     name: '아보카도 육회',
-    description: '부드러운 아보카도와 고소한 육회의 풍미가 완벽하게 어우러진 육즙관리소의 시그니처 콜드 메뉴',
+    description: '부드러운 아보카도 위에 올린 정갈한 육회. 고소함과 깔끔함이 한 점에서 만나는 콜드 시그니처.',
     priceKrw: 28000,
     image: '/photos/food/avocado-yukhoe-mini.png',
     isSignature: true,
+  },
+] as const
+
+/** 단체 다이닝 목적별 카테고리 (SEO h3 아티클) */
+export const GROUP_CATEGORIES = [
+  {
+    h3: '회사 회식 · 부서 회식 · 송년회 · 신년회',
+    body: '4~16인 프라이빗 룸으로 부서 단위 회식과 연말 송년회, 신년회에 적합합니다. 양재역·을지로 도심 접근성이 좋아 직장인 회식 장소로 많은 분들이 찾으십니다.',
+  },
+  {
+    h3: '비즈니스 미팅 · 바이어 접대 · VIP 의전',
+    body: '독립된 프라이빗 룸과 전담 서버의 그릴링 서비스로 비즈니스 디너와 바이어 접대, VIP 의전에 적합합니다. 산청 흑돼지·거창 백돼지 등 한국 프리미엄 식재료로 격을 갖춘 한 상을 차립니다.',
+  },
+  {
+    h3: '외국인 손님 접대 · K-BBQ Experience',
+    body: '영문 메뉴와 한국적 미감의 공간으로 외국인 손님 접대와 해외 파트너 미팅에 최적입니다. K-BBQ를 통해 한국의 맛과 멋을 함께 소개할 수 있는 Korean Dining Experience를 제공합니다.',
+  },
+  {
+    h3: '청첩장 모임 · 상견례 · 가족 모임 · 생일 · 동창 모임',
+    body: '20~40인 단체석으로 청첩장 모임, 상견례, 가족 모임, 생일 모임, 동창회 등 의미 있는 자리에 어울리는 공간입니다.',
   },
 ] as const
 

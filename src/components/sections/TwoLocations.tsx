@@ -19,7 +19,7 @@ export async function TwoLocations({ locations }: { locations: Loc[] }) {
   const eyebrow = copy['locations.eyebrow'] || COPY_KO.locationsEyebrow
   const h2 = copy['locations.h2'] || COPY_KO.locationsH2
 
-  const highlights: Record<string, { kicker: string; points: string; subway: string }> = {
+  const highlights: Record<string, { kicker: string; points: string; subway: string; naverPlaceId: string }> = {
     yangjae: {
       kicker: 'YANGJAE · 양재역본점',
       points: copy['locations.yangjae.points'] || HIGHLIGHT_KO.yangjae.points,
@@ -39,7 +39,7 @@ export async function TwoLocations({ locations }: { locations: Loc[] }) {
       <div className="max-w-[1440px] mx-auto">
         <div className="text-[11px] tracking-[0.3em] uppercase text-[var(--color-body)]">{eyebrow}</div>
         <h2 className="text-[28px] md:text-[48px] font-normal mt-4 text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif", wordBreak: 'keep-all' }}>{h2}</h2>
-        <div className="flex flex-wrap gap-3 mt-4">
+        <div className="hidden md:flex flex-wrap gap-3 mt-4">
           <Link
             href={`https://map.naver.com/p/entry/place/${BRAND.naverPlaceIds.yangjae}`}
             target="_blank"

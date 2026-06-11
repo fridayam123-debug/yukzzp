@@ -9,14 +9,18 @@ export type Banner = Database['public']['Tables']['emergency_banner']['Row']
  */
 export async function getActiveBanner(): Promise<Banner | null> {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null
-  const supabase = await createClient()
-  const { data } = await supabase
-    .from('emergency_banner')
-    .select('*')
-    .eq('active', true)
-    .or(`expires_at.is.null,expires_at.gte.${new Date().toISOString()}`)
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .maybeSingle()
-  return data
+  try {
+    const supabase = await createClient()
+    const { data } = await supabase
+      .from('emergency_banner')
+      .select('*')
+      .eq('active', true)
+      .or(`expires_at.is.null,expires_at.gte.${new Date().toISOString()}`)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle()
+    return data
+  } catch {
+    return null
+  }
 }

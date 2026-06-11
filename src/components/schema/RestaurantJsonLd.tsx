@@ -38,8 +38,8 @@ export function RestaurantJsonLd({ location }: { location: Loc }) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Restaurant',
-    '@id': locationUrl,
-    url: locationUrl,
+    '@id': `${BRAND.domain}/#restaurant-${location.slug}`,
+    url: BRAND.domain,
     name: location.name_ko,
     image: location.hero_image ? [`${BRAND.domain}${location.hero_image}`] : undefined,
     address: {
@@ -50,15 +50,25 @@ export function RestaurantJsonLd({ location }: { location: Loc }) {
       addressCountry: 'KR',
     },
     telephone: location.phone,
-    servesCuisine: ['흑돼지구이', '프리미엄 Korean BBQ'],
+    servesCuisine: ['Korean BBQ', '한식', '프리미엄 K-BBQ', '흑돼지구이'],
     priceRange: '₩₩₩',
+    acceptsReservations: 'True',
     geo: location.geo
       ? { '@type': 'GeoCoordinates', ...(location.geo as Record<string, unknown>) }
       : undefined,
     openingHours: openingHours.length > 0 ? openingHours : undefined,
     hasMenu: `${BRAND.domain}/menu`,
+    amenityFeature: [
+      { '@type': 'LocationFeatureSpecification', name: '프라이빗 룸', value: true },
+      { '@type': 'LocationFeatureSpecification', name: '단체석', value: true },
+      { '@type': 'LocationFeatureSpecification', name: '하향식 덕트 시스템', value: true },
+      { '@type': 'LocationFeatureSpecification', name: '영문 메뉴', value: true },
+      { '@type': 'LocationFeatureSpecification', name: '전담 서버 그릴링 서비스', value: true },
+      { '@type': 'LocationFeatureSpecification', name: '주차 가능', value: true },
+    ],
     sameAs: [
       BRAND.instagramUrl,
+      BRAND.kakaoChannelUrl,
       location.naver_place_id ? `https://place.map.naver.com/restaurant/${location.naver_place_id}` : null,
       location.catchtable_url,
       BRAND.youtubeShort,

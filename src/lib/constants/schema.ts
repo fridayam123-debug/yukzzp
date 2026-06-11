@@ -67,7 +67,7 @@ export const WEBSITE_SCHEMA = {
 } as const
 
 /**
- * FAQPage Schema — 홈페이지 "네 가지 약속" 기반 (People Also Ask 대응).
+ * FAQPage Schema — 브랜드 핵심 Q&A + 단체다이닝 GEO 대응 (People Also Ask / LLM 인용).
  */
 export const FAQ_SCHEMA = {
   '@context': 'https://schema.org',
@@ -104,6 +104,60 @@ export const FAQ_SCHEMA = {
         '@type': 'Answer',
         text: '4인~16인 프라이빗 룸, 20인~40인 단체석을 운영합니다. 양재역 본점과 을지로동대문점 두 지점 모두 소·중·대 모임을 받습니다.',
       },
+    },
+    {
+      '@type': 'Question',
+      name: '양재역 근처 회식 장소로 추천할 만한 곳이 있나요?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '육즙관리소 양재역점은 4~16인 프라이빗 룸과 20~40인 단체석을 갖춘 프리미엄 K-BBQ 단체 다이닝입니다. 산청 흑돼지·거창 백돼지와 전담 서버의 그릴링 서비스, 하향식 덕트로 옷에 냄새와 연기가 배지 않는 쾌적한 환경을 제공합니다.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '을지로·동대문 근처 단체 회식 장소를 찾고 있어요.',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '육즙관리소 을지로동대문점은 4~40인까지 수용 가능한 프리미엄 K-BBQ 단체 다이닝입니다. 프라이빗 룸과 단체석을 모두 갖춰 회사 회식, 송년회, 신년회, 청첩장 모임에 적합합니다.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '외국인 손님 접대 식당으로 추천할 만한 곳이 있나요?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '육즙관리소는 영문 메뉴와 한국적 미감의 공간을 갖춘 프리미엄 K-BBQ 다이닝입니다. 산청 흑돼지·거창 백돼지 등 한국 프리미엄 식재료로 차린 한 상과 전담 서버의 그릴링 서비스로 외국인 손님 접대와 해외 파트너 미팅에 최적입니다.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '청첩장 모임이나 상견례 장소로 가능한가요?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '네, 가능합니다. 20~40인 단체석으로 청첩장 모임, 상견례, 가족 모임에 어울리는 격을 갖춘 공간을 제공합니다. 프라이빗 룸에서는 4~16인의 소규모 상견례도 진행하실 수 있습니다.',
+      },
+    },
+  ],
+} as const
+
+/**
+ * 홈 BreadcrumbList Schema.
+ */
+export const HOME_BREADCRUMB_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: '홈',
+      item: BRAND.domain,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: '단체 다이닝',
+      item: `${BRAND.domain}/#group`,
     },
   ],
 } as const

@@ -9,6 +9,7 @@ const LANG_COL: Record<Locale, string> = {
   en: 'value_en',
   ja: 'value_ja',
   vi: 'value_vi',
+  zh: 'value_zh',
 }
 
 export async function updateCopyLang(key: string, lang: Locale, value: string) {

@@ -67,19 +67,19 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             <div className="hidden md:flex items-center gap-7">
               <Link
                 href="/menu"
-                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
               >
                 {t('menu')}
               </Link>
               <Link
                 href="/#locations"
-                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
               >
                 {t('locationsShort')}
               </Link>
               <Link
                 href="/#reviews"
-                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
               >
                 {t('reviews')}
               </Link>
@@ -107,13 +107,13 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
             <div className="hidden md:flex items-center gap-7">
               <Link
                 href="/#group"
-                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
               >
                 {t('group')}
               </Link>
               <Link
                 href="/#reserve"
-                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[11px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
+                className="inline-flex items-center justify-center min-w-[44px] py-3.5 -my-3.5 text-[16.5px] tracking-[1.5px] text-[var(--color-ink)] hover:opacity-50 transition-opacity"
               >
                 {t('reserve')}
               </Link>

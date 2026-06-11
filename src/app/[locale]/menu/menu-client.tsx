@@ -19,7 +19,7 @@ export default function MenuClient({ categories, items }: { categories: Cat[]; i
     <main className="bg-[var(--color-canvas)] min-h-screen">
       {/* Page header */}
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 pt-16 pb-8">
-        <h1 className="text-[40px] md:text-[52px] font-semibold text-[var(--color-ink)] tracking-[-0.02em]">
+        <h1 className="text-[40px] md:text-[52px] font-normal text-[var(--color-ink)] tracking-[-0.01em] leading-[1.05]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>
           {t('title')}
         </h1>
         <p className="mt-2 text-[14px] text-[var(--color-body)]">

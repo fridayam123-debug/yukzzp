@@ -1,4 +1,3 @@
-import { unstable_cache } from 'next/cache'
 import { createPublicClient } from '@/lib/supabase/service'
 
 export interface InstagramReel {
@@ -8,8 +7,16 @@ export interface InstagramReel {
   sort_order: number
 }
 
-export const getInstagramReels = unstable_cache(
-  async (): Promise<InstagramReel[]> => {
+let _cache: InstagramReel[] | null = null
+let _cacheTime = 0
+const TTL = 5 * 60 * 1000 // 5분
+
+export async function getInstagramReels(): Promise<InstagramReel[]> {
+  if (_cache && Date.now() - _cacheTime < TTL) return _cache
+
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return _cache ?? []
+
+  try {
     const supabase = createPublicClient()
     const { data } = await supabase
       .from('instagram_reels')
@@ -17,8 +24,12 @@ export const getInstagramReels = unstable_cache(
       .eq('visible', true)
       .order('sort_order', { ascending: true })
       .limit(4)
-    return (data ?? []) as InstagramReel[]
-  },
-  ['instagram_reels'],
-  { revalidate: 300, tags: ['instagram_reels'] },
-)
+
+    const rows = (data ?? []) as InstagramReel[]
+    _cache = rows
+    _cacheTime = Date.now()
+    return rows
+  } catch {
+    return _cache ?? []
+  }
+}

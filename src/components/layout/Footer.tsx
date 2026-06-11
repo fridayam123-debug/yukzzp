@@ -33,7 +33,7 @@ export function Footer({ locations }: { locations: Loc[] }) {
           <div>
             <div className="text-[24px] font-normal tracking-[0.04em]">{BRAND.nameKo}</div>
             <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-cream-gold)] mt-3">{BRAND.tagline}</div>
-            <p className="mt-3 text-[13px] text-[var(--color-canvas)]/70 leading-relaxed">{t('originLine')}</p>
+
             <div className="flex gap-1 mt-4 items-center -ml-2.5">
               <a
                 href={BRAND.instagramUrl}
