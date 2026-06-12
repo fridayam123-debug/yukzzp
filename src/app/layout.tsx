@@ -41,6 +41,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    other: {
+      'naver-site-verification': '08823a1fd3a76a7be6f8bf049777f51dfe28e9a1',
+    },
+  },
 };
 
 export default async function RootLayout({
