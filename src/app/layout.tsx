@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yukzzp.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://yukjeup.com"),
   title: {
     default: "육즙관리소 — 프리미엄 흑돼지 다이닝",
     template: "%s — 육즙관리소",
