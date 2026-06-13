@@ -35,10 +35,9 @@ export async function generateMetadata({
 }
 
 const TABS = [
-  { key: 'NOTICE',  label: 'NOTICE' },
-  { key: 'JOURNAL', label: 'JOURNAL' },
-  { key: 'STORY',   label: 'STORY' },
   { key: 'FAQ',     label: 'FAQ' },
+  { key: 'NOTICE',  label: '새소식' },
+  { key: 'STORY',   label: 'STORY' },
 ] as const
 
 type TabKey = typeof TABS[number]['key']
