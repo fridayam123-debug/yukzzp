@@ -7,9 +7,9 @@ import type { Locale } from '@/lib/fetchers/copy'
 import type { Database } from '@/lib/supabase/types'
 type Loc = Database['public']['Tables']['locations']['Row']
 
-const HIGHLIGHT_KO: Record<string, { kicker: string; points: string; subway: string; naverPlaceId: string }> = {
-  yangjae: { kicker: 'YANGJAE · 양재역본점', points: '콜키지 · 점심특선 · 가족 · 기념일에 어울려요', subway: '양재역 3번출구 도보 5분', naverPlaceId: '1672141709' },
-  euljiro: { kicker: 'EULJI-RO · 더룸 을지로동대문점', points: 'DDP 인근 · 별관 · 매일 새벽 5시까지 운영', subway: '동대문역사문화공원역 13번출구 도보 3분', naverPlaceId: '2033717879' },
+const HIGHLIGHT_KO: Record<string, { kicker: string; points: string; subway: string; parking: string; naverPlaceId: string }> = {
+  yangjae: { kicker: 'YANGJAE · 양재역본점', points: '콜키지 · 점심특선 · 가족 · 기념일에 어울려요', subway: '양재역 3번출구 도보 5분', parking: '근처 공영주차장 또는 SK허브프리모 유료주차장', naverPlaceId: '1672141709' },
+  euljiro: { kicker: 'EULJI-RO · 더룸 을지로동대문점', points: 'DDP 인근 · 별관 · 매일 새벽 5시까지 운영', subway: '동대문역사문화공원역 13번출구 도보 3분', parking: '굿모닝시티 주차 1시간 무료', naverPlaceId: '2033717879' },
 }
 
 export async function TwoLocations({ locations }: { locations: Loc[] }) {
@@ -19,17 +19,19 @@ export async function TwoLocations({ locations }: { locations: Loc[] }) {
   const eyebrow = copy['locations.eyebrow'] || COPY_KO.locationsEyebrow
   const h2 = copy['locations.h2'] || COPY_KO.locationsH2
 
-  const highlights: Record<string, { kicker: string; points: string; subway: string; naverPlaceId: string }> = {
+  const highlights: Record<string, { kicker: string; points: string; subway: string; parking: string; naverPlaceId: string }> = {
     yangjae: {
       kicker: 'YANGJAE · 양재역본점',
       points: copy['locations.yangjae.points'] || HIGHLIGHT_KO.yangjae.points,
       subway: copy['locations.yangjae.subway'] || HIGHLIGHT_KO.yangjae.subway,
+      parking: copy['locations.yangjae.parking'] || HIGHLIGHT_KO.yangjae.parking,
       naverPlaceId: '1672141709',
     },
     euljiro: {
       kicker: 'EULJI-RO · 더룸 을지로동대문점',
       points: copy['locations.euljiro.points'] || HIGHLIGHT_KO.euljiro.points,
       subway: copy['locations.euljiro.subway'] || HIGHLIGHT_KO.euljiro.subway,
+      parking: copy['locations.euljiro.parking'] || HIGHLIGHT_KO.euljiro.parking,
       naverPlaceId: '2033717879',
     },
   }

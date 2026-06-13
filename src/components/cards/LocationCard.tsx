@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation'
 import type { Database } from '@/lib/supabase/types'
 type Loc = Database['public']['Tables']['locations']['Row']
 
-export function LocationCard({ loc, kicker, subway, naverPlaceId }: { loc: Loc; kicker: string; points?: string; subway?: string; naverPlaceId?: string }) {
+export function LocationCard({ loc, kicker, subway, parking, naverPlaceId }: { loc: Loc; kicker: string; points?: string; subway?: string; parking?: string; naverPlaceId?: string }) {
   return (
     <div className="flex flex-col gap-4 p-5 md:p-10 bg-white rounded-[var(--radius-card)]">
       <div
@@ -38,6 +38,7 @@ export function LocationCard({ loc, kicker, subway, naverPlaceId }: { loc: Loc; 
         <p className="text-[12px] text-[var(--color-body)]">{loc.address_road}</p>
         <p className="text-[12px] text-[var(--color-body)] font-mono">☎ {loc.virtual_phone}</p>
         {subway && <p className="text-[11px] text-[var(--color-body)] font-mono tracking-[0.05em]">地 {subway}</p>}
+        {parking && <p className="text-[11px] text-[var(--color-body)] font-mono tracking-[0.05em]">駐 {parking}</p>}
         {/* 길찾기 버튼 */}
         <div className="flex gap-2 mt-2">
           <a
