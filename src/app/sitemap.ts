@@ -7,6 +7,7 @@ const PAGES = [
   { path: '/menu',                 priority: 0.9, changeFrequency: 'weekly'  as const },
   { path: '/locations/yangjae',    priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/locations/euljiro',    priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/faq',                   priority: 0.9, changeFrequency: 'weekly'  as const },
   { path: '/notice',               priority: 0.7, changeFrequency: 'weekly'  as const },
   // SEO landing pages — 양재역
   { path: '/yangjae-matjip',          priority: 0.8, changeFrequency: 'monthly' as const },

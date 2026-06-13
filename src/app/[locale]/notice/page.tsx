@@ -13,6 +13,27 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>
+}) {
+  const { category } = await searchParams
+  const rawCat = category?.toUpperCase()
+  const isFaqTab = !rawCat || rawCat === 'FAQ'
+  if (isFaqTab) {
+    return {
+      title: '육즙관리소 FAQ | 양재역·을지로동대문 프리미엄 K-BBQ 자주 묻는 질문',
+      description: '이원일 셰프가 소개한 육즙관리소의 산청 흑돼지, 전담 그릴링 서비스, 하향식 덕트, 회식·접대·데이트·외국인 방문 관련 자주 묻는 질문을 확인하세요.',
+      alternates: { canonical: '/faq' },
+    }
+  }
+  return {
+    title: 'NOTICE — 육즙관리소',
+    alternates: { canonical: '/notice' },
+  }
+}
+
 const TABS = [
   { key: 'NOTICE',  label: 'NOTICE' },
   { key: 'JOURNAL', label: 'JOURNAL' },
@@ -42,7 +63,7 @@ export default async function NoticePage({
   const rawCat = category?.toUpperCase()
   const activeTab = (rawCat && TABS.some((t) => t.key === rawCat))
     ? (rawCat as TabKey)
-    : null
+    : 'FAQ' as TabKey
   const isFaq = activeTab === 'FAQ'
 
   const activePostCategory = (activeTab && !isFaq)
