@@ -16,7 +16,7 @@ interface Post {
   created_at: string
 }
 
-const CATEGORIES: PostCategory[] = ['NOTICE', 'JOURNAL', 'STORY']
+const CATEGORIES: PostCategory[] = ['NOTICE', 'STORY']
 
 const EMPTY_FORM = {
   title: '',
