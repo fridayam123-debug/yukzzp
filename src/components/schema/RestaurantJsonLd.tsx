@@ -12,6 +12,15 @@ type HourPeriod = {
   break_weekday?: string[]
 }
 
+/**
+ * 지점별 정적 aggregateRating — 캐치테이블 / 네이버 플레이스 공개 수치 기준.
+ * DB reviews에 numeric rating 컬럼이 채워지면 동적으로 교체할 것.
+ */
+const STATIC_RATINGS: Record<string, { ratingValue: number; ratingCount: number }> = {
+  yangjae: { ratingValue: 4.5, ratingCount: 51 },
+  euljiro: { ratingValue: 4.4, ratingCount: 60 },
+}
+
 /** 지점별 GEO 상세 정보 (화면 FAQ/카피와 동일 사실 기반) */
 const LOCATION_DETAIL: Record<
   string,
@@ -99,6 +108,18 @@ export function RestaurantJsonLd({ location }: { location: Loc }) {
       : undefined,
     openingHours: openingHours.length > 0 ? openingHours : undefined,
     hasMenu: `${BRAND.domain}/menu`,
+    hasMap: location.naver_place_id
+      ? `https://map.naver.com/p/entry/place/${location.naver_place_id}`
+      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.name_ko ?? '')}`,
+    aggregateRating: STATIC_RATINGS[location.slug]
+      ? {
+          '@type': 'AggregateRating',
+          ratingValue: STATIC_RATINGS[location.slug].ratingValue,
+          bestRating: 5,
+          worstRating: 1,
+          ratingCount: STATIC_RATINGS[location.slug].ratingCount,
+        }
+      : undefined,
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: `프라이빗 룸 (${detail?.rooms ?? '룸'})`, value: true },
       { '@type': 'LocationFeatureSpecification', name: '단체석', value: true },
