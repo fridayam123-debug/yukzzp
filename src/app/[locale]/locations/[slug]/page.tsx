@@ -21,6 +21,17 @@ function getFaqText(faq: Faq, locale: string): { q: string; a: string } {
   return { q: faq.question_ko, a: faq.answer_ko }
 }
 
+const SEO_META: Record<string, { title: string; description: string }> = {
+  yangjae: {
+    title: '육즙관리소 양재역본점 | 양재역 고기집·회식·룸식당',
+    description: '육즙관리소 양재역본점은 양재역 3번 출구 도보 약 2~3분 거리의 프리미엄 K-BBQ 고기집입니다. 산청 흑돼지, 전문 서버 그릴링, 하향식 덕트, 프라이빗 룸을 갖춘 양재역 회식·접대·가족 외식 맛집입니다.',
+  },
+  euljiro: {
+    title: '육즙관리소 더룸 을지로동대문점 | 동대문·DDP K-BBQ 새벽영업',
+    description: '육즙관리소 더룸 을지로동대문점은 동대문역사문화공원역과 DDP 인근의 프리미엄 K-BBQ 레스토랑입니다. 새벽 5시까지 운영하며 외국인 관광객, 해외 바이어 접대, 단체 회식, DDP 전시 후 식사 장소로 적합합니다.',
+  },
+}
+
 const LOCATION_INTRO: Record<string, string> = {
   yangjae:
     '육즙관리소 양재역본점은 양재역 3번 출구 도보 약 2~3분 거리에 위치한 프리미엄 K-BBQ 고기집입니다. 산청 흑돼지와 거창 백돼지를 특허 파동숙성으로 준비하고, 전문 서버가 직접 구워주는 그릴링 서비스와 하향식 덕트, 프라이빗 룸을 갖춰 양재역 회식, 접대, 가족 외식, 데이트 장소로 적합합니다.',
@@ -42,9 +53,10 @@ export async function generateMetadata(
   if (!loc) return { title: '지점을 찾을 수 없습니다' }
   const ogImage = loc.hero_image ?? '/photos/brand/brand-story.jpg'
   const canonical = locale === 'ko' ? `/locations/${slug}` : `/${locale}/locations/${slug}`
+  const seoMeta = SEO_META[slug]
   return {
-    title: loc.name_ko,
-    description: loc.meta_description_ko ?? undefined,
+    title: seoMeta?.title ?? loc.name_ko,
+    description: seoMeta?.description ?? loc.meta_description_ko ?? undefined,
     alternates: {
       canonical,
       languages: {

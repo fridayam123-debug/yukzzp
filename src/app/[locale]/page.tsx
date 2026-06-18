@@ -25,8 +25,8 @@ const BASE_URL = 'https://yukzzp.com'
 
 const META: Record<string, { title: string; description: string; keywords: string; ogTitle: string; ogDescription: string }> = {
   ko: {
-    title: '육즙관리소 | 서울 프리미엄 K-BBQ 다이닝 · 양재역 · 을지로',
-    description: '셰프 이원일이 인정한 서울 프리미엄 K-BBQ 다이닝. 산청 흑돼지·거창 백돼지 100% 대나무 숯 직화. 4~16인 프라이빗 룸 · 20~40인 단체석. 회식·송년회·비즈니스 미팅·외국인 접대. 양재역 본점·을지로동대문점.',
+    title: '육즙관리소 | 서울 프리미엄 K-BBQ 다이닝',
+    description: '육즙관리소는 산청 흑돼지와 거창 백돼지, 특허 파동숙성, 100% 대나무숯, 전문 서버 그릴링으로 완성하는 서울 프리미엄 K-BBQ 다이닝입니다. 양재역본점과 을지로동대문점을 운영합니다.',
     keywords: '육즙관리소, 서울 단체 회식, 강남 프라이빗 룸, 을지로 단체석, 회식 장소 추천, 비즈니스 미팅 레스토랑, 외국인 접대 K-BBQ, 송년회 장소, 양재역 맛집, 산청 흑돼지',
     ogTitle: '육즙관리소 | 서울 프리미엄 K-BBQ',
     ogDescription: '서울 양재역·을지로 프리미엄 K-BBQ 다이닝. 4~16인 프라이빗 룸, 20~40인 단체석, 전담 서버 그릴링 서비스.',
