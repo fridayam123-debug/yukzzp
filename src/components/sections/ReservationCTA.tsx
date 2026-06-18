@@ -29,7 +29,7 @@ export async function ReservationCTA({ locations }: { locations: Loc[] }) {
                 href={`https://map.naver.com/v5/entry/place/${loc.naver_place_id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event="reservation_click"
+                data-event="click_naver_place"
                 data-location={loc.slug}
                 className="inline-flex items-center justify-center bg-[var(--color-ink)] text-[var(--color-canvas)] px-4 md:px-7 py-4 rounded-[var(--radius-cta)] text-[13px] md:text-[14px] font-medium text-center leading-snug"
               >
@@ -42,7 +42,7 @@ export async function ReservationCTA({ locations }: { locations: Loc[] }) {
                 href={loc.catchtable_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-event="reservation_click"
+                data-event="click_reservation"
                 data-location={loc.slug}
                 className="inline-flex items-center justify-center bg-[var(--color-ink)] text-[var(--color-canvas)] px-4 md:px-7 py-4 rounded-[var(--radius-cta)] text-[13px] md:text-[14px] font-medium text-center leading-snug"
               >

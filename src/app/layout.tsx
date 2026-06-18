@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
+import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { TrackingProvider } from "@/components/analytics/TrackingProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,7 +65,11 @@ export default async function RootLayout({
       <head>
         <link href="https://cdn.cafe24.com/fonts/classictype/cafe24classictype.css" rel="stylesheet" />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <AnalyticsScripts />
+      <body className="min-h-full flex flex-col">
+        <TrackingProvider />
+        {children}
+      </body>
     </html>
   );
 }

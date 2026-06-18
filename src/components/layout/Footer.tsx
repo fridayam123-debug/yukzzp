@@ -59,6 +59,7 @@ export function Footer({ locations }: { locations: Loc[] }) {
                   aria-label="카카오 채널"
                   target="_blank"
                   rel="noopener"
+                  data-event="click_kakao_inquiry"
                   className="inline-flex items-center px-3 h-11 text-[12px] tracking-[0.15em] uppercase text-[var(--color-cream-gold)] hover:opacity-70 transition-opacity"
                 >
                   {t('kakao')}

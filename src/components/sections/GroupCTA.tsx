@@ -107,25 +107,30 @@ export async function GroupCTA() {
           </ul>
 
           {/* CTA 버튼 */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-4">
+          <div className="flex flex-col sm:flex-row gap-2.5 mt-4">
             <a
               href="tel:0507-1335-6363"
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-[var(--color-canvas)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-cream-gold)]/10 transition-colors"
+              data-event="click_phone"
+              data-location="yangjae"
+              className="inline-flex items-center justify-center whitespace-nowrap bg-transparent text-[var(--color-canvas)] border border-[var(--color-cream-gold)]/70 px-6 py-2.5 text-[13px] tracking-[0.06em] hover:border-[var(--color-cream-gold)] hover:bg-[var(--color-cream-gold)]/8 transition-all"
             >
-              ☎ {ctaCall} (양재)
+              {ctaCall} · 양재
             </a>
             <a
               href="tel:0507-1461-7228"
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-[var(--color-canvas)] border-2 border-[var(--color-cream-gold)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:bg-[var(--color-cream-gold)]/10 transition-colors"
+              data-event="click_phone"
+              data-location="euljiro"
+              className="inline-flex items-center justify-center whitespace-nowrap bg-transparent text-[var(--color-canvas)] border border-[var(--color-cream-gold)]/70 px-6 py-2.5 text-[13px] tracking-[0.06em] hover:border-[var(--color-cream-gold)] hover:bg-[var(--color-cream-gold)]/8 transition-all"
             >
-              ☎ {ctaCall} (을지로)
+              {ctaCall} · 을지로
             </a>
             {BRAND.kakaoChannelUrl && (
               <a
                 href={BRAND.kakaoChannelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[var(--color-cream-gold)] text-[var(--color-ink)] px-6 py-3.5 rounded-[var(--radius-cta)] font-medium text-[14px] hover:opacity-90 transition-opacity"
+                data-event="click_kakao_inquiry"
+                className="inline-flex items-center justify-center whitespace-nowrap bg-[var(--color-cream-gold)] text-[var(--color-ink)] px-6 py-2.5 text-[13px] tracking-[0.06em] hover:opacity-90 transition-opacity"
               >
                 {ctaKakao}
               </a>

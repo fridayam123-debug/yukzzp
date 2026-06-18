@@ -155,7 +155,7 @@ export default async function LocationPage(
               href={naverUrl}
               target="_blank"
               rel="noopener noreferrer"
-              data-event="reservation_click"
+              data-event="click_naver_place"
               data-location={loc.slug}
               className="inline-flex items-center justify-center gap-2 bg-[#03C75A] text-[var(--color-canvas)] px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
             >
@@ -167,7 +167,7 @@ export default async function LocationPage(
               href={loc.catchtable_url}
               target="_blank"
               rel="noopener noreferrer"
-              data-event="reservation_click"
+              data-event="click_reservation"
               data-location={loc.slug}
               className="inline-flex items-center justify-center gap-2 bg-[var(--color-forest)] text-[var(--color-canvas)] px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
             >
@@ -176,6 +176,8 @@ export default async function LocationPage(
           )}
           <a
             href={`tel:${loc.virtual_phone}`}
+            data-event="click_phone"
+            data-location={slug}
             className="inline-flex items-center justify-center gap-2 border border-[var(--color-forest)] text-[var(--color-forest)] px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium"
           >
             ☎ {loc.virtual_phone}
