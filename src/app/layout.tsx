@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
@@ -63,12 +64,21 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <link href="https://cdn.cafe24.com/fonts/classictype/cafe24classictype.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://cdn.cafe24.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.cafe24.com" />
       </head>
       <AnalyticsScripts />
       <body className="min-h-full flex flex-col">
         <TrackingProvider />
         {children}
+        {/* 렌더 블로킹 방지: 폰트 CSS를 페이지 로드 후 비동기 삽입 */}
+        <Script
+          id="cafe24-font"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://cdn.cafe24.com/fonts/classictype/cafe24classictype.css';document.head.appendChild(l);})()`,
+          }}
+        />
       </body>
     </html>
   );
