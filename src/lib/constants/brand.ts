@@ -12,8 +12,8 @@ export const BRAND = {
   domain: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://jproject-mauve.vercel.app',
   email: '', // 사장님께 받음 — 빌드 시 .env로 주입
 
-  instagramHandle: 'yekjeup_official',
-  instagramUrl: 'https://www.instagram.com/',
+  instagramHandle: 'yukjeup_official',
+  instagramUrl: 'https://www.instagram.com/yukjeup_official/',
 
   youtubeShort: 'https://www.youtube.com/shorts/7CCR4BYW7D0',
 
@@ -121,7 +121,7 @@ export const COPY_KO = {
   reservationSub: '네이버 예약 · 캐치테이블 실시간 / 단체 · 룸은 전화 문의',
 
   instagramEyebrow: 'INSTAGRAM',
-  instagramFollow: `@${'yekjeup_official'} 팔로우 →`,
+  instagramFollow: `@${'yukjeup_official'} 팔로우 →`,
 
   /** 푸터 디스클레이머 — 메뉴/가격 변동성 안내 */
   menuPriceDisclaimer: '메뉴 항목과 가격은 각 매장의 사정에 따라 다를 수 있습니다.',
