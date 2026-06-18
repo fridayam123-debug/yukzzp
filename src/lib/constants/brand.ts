@@ -13,7 +13,7 @@ export const BRAND = {
   email: '', // 사장님께 받음 — 빌드 시 .env로 주입
 
   instagramHandle: 'yekjeup_official',
-  instagramUrl: 'https://www.instagram.com/yekjeup_official',
+  instagramUrl: 'https://www.instagram.com/',
 
   youtubeShort: 'https://www.youtube.com/shorts/7CCR4BYW7D0',
 
