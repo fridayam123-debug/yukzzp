@@ -30,16 +30,25 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string; slug: string }> }
 ): Promise<Metadata> {
-  const { slug } = await params
+  const { locale, slug } = await params
   const loc = await getLocationBySlug(slug)
   if (!loc) return { title: '지점을 찾을 수 없습니다' }
-  const ogImage = loc.hero_image
-    ? loc.hero_image
-    : '/photos/brand/brand-story.jpg'
+  const ogImage = loc.hero_image ?? '/photos/brand/brand-story.jpg'
+  const canonical = locale === 'ko' ? `/locations/${slug}` : `/${locale}/locations/${slug}`
   return {
     title: loc.name_ko,
     description: loc.meta_description_ko ?? undefined,
-    alternates: { canonical: `/locations/${slug}` },
+    alternates: {
+      canonical,
+      languages: {
+        'ko':      `/locations/${slug}`,
+        'en':      `/en/locations/${slug}`,
+        'ja':      `/ja/locations/${slug}`,
+        'vi':      `/vi/locations/${slug}`,
+        'zh-Hans': `/zh/locations/${slug}`,
+        'x-default': `/locations/${slug}`,
+      },
+    },
     openGraph: {
       images: [{ url: ogImage, width: 1200, height: 630, alt: loc.name_ko }],
     },
