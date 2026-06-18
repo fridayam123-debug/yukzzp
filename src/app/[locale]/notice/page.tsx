@@ -72,7 +72,7 @@ export default async function NoticePage({
   const [posts, locations, faqs] = await Promise.all([
     isFaq ? Promise.resolve([]) : getPosts(activePostCategory),
     getLocations(),
-    isFaq ? getAllFaqs() : Promise.resolve([]),
+    getAllFaqs(),
   ])
 
   // 매장별 FAQ 그룹 (동적) — locations 테이블 기반. 직영점 추가 시 자동 반영
@@ -148,30 +148,28 @@ export default async function NoticePage({
         <div className="px-6 md:px-24 py-12 md:py-16">
           <div className="max-w-[1440px] mx-auto">
 
-            {/* FAQ 탭 */}
-            {isFaq ? (
-              <div className="max-w-[800px]">
-                {/* 매장별 FAQ — locations 기반 동적 렌더링 (직영점 추가 시 자동 노출) */}
-                {storeGroups.map((g) => (
-                  <div key={g.key} className="mb-12">
-                    <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
-                      {g.label} FAQ
-                    </h2>
-                    <FaqAccordion faqs={g.faqs} locale={locale} />
-                  </div>
-                ))}
-                {/* 공통 */}
-                {generalFaqs.length > 0 && (
-                  <div>
-                    <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
-                      공통 FAQ
-                    </h2>
-                    <FaqAccordion faqs={generalFaqs} locale={locale} />
-                  </div>
-                )}
-              </div>
-            ) : (
-              /* 포스트 그리드 */
+            {/* FAQ 섹션 — 항상 HTML에 포함 (SEO). 다른 탭 활성 시 CSS hidden */}
+            <div className={isFaq ? 'max-w-[800px]' : 'hidden'}>
+              {storeGroups.map((g) => (
+                <div key={g.key} id={`${g.key}-faq`} className="mb-12 scroll-mt-24">
+                  <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
+                    {g.label} FAQ
+                  </h2>
+                  <FaqAccordion faqs={g.faqs} locale={locale} idPrefix={g.key} />
+                </div>
+              ))}
+              {generalFaqs.length > 0 && (
+                <div id="general-faq" className="scroll-mt-24">
+                  <h2 className="text-[13px] tracking-[0.25em] text-[var(--color-espresso)] font-semibold mb-6 uppercase">
+                    공통 FAQ
+                  </h2>
+                  <FaqAccordion faqs={generalFaqs} locale={locale} idPrefix="general" />
+                </div>
+              )}
+            </div>
+
+            {/* 포스트 그리드 */}
+            {!isFaq && (
               posts.length === 0 ? (
                 <div className="py-24 text-center text-[13px] text-[var(--color-body)] tracking-[0.1em] opacity-60">
                   아직 게시된 글이 없습니다

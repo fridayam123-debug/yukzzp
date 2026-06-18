@@ -9,7 +9,7 @@
 
 import type { Faq } from '@/lib/fetchers/faqs'
 
-export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) {
+export function FaqAccordion({ faqs, locale, idPrefix }: { faqs: Faq[]; locale: string; idPrefix?: string }) {
   if (faqs.length === 0) return (
     <p className="text-[13px] text-[var(--color-body)] opacity-50 py-4">준비 중입니다.</p>
   )
@@ -38,7 +38,7 @@ export function FaqAccordion({ faqs, locale }: { faqs: Faq[]; locale: string }) 
            * <details>: 열림/닫힘은 브라우저가 관리 (open 어트리뷰트)
            * 중요: 내부 콘텐츠는 닫힌 상태에서도 HTML 소스에 항상 존재
            */
-          <details key={faq.id} className="group">
+          <details key={faq.id} id={idPrefix ? `${idPrefix}-q${faq.id}` : undefined} className="group scroll-mt-24">
             {/* summary: 질문 헤딩 + 토글 아이콘 */}
             <summary className="flex items-center justify-between py-5 gap-6 cursor-pointer [list-style:none] [&::-webkit-details-marker]:hidden hover:opacity-70 transition-opacity">
               <h3 className="flex-1 m-0 text-[15px] font-normal leading-[1.5] text-[var(--color-ink)] [word-break:keep-all]">
