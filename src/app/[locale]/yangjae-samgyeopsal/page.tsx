@@ -11,7 +11,7 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: '양재역 삼겹살 — 육즙관리소 산청 흑돼지 삼겹살',
-  description: '양재역 삼겹살 맛집. 지리산 산청 흑돼지 삼겹살, 특허 파동숙성, 100% 대나무 숯 직화. 정육왕 블라인드 테스트 1위. 이원일 셰프 추천. 양재역 3번 출구 도보 2분.',
+  description: '양재역 삼겹살 맛집. 지리산 산청 흑돼지 삼겹살, 특허 파동숙성, 100% 대나무 숯 직화. 정육왕 블라인드 테스트 1위. 이원일 셰프 추천. 양재역 3번 출구 도보 약 2~3분.',
   alternates: { canonical: '/yangjae-samgyeopsal' },
 }
 
