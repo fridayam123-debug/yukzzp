@@ -143,7 +143,7 @@ export const SIGNATURE_ITEMS = [
     name: '지리산 산청 흑돼지 목살 (160g)',
     description: '야생쑥을 먹고 자란 산청 흑돼지의 목살. 지방과 살코기의 탁월한 균형, 씹을수록 깊어지는 감칠맛.',
     priceKrw: 19000,
-    image: '/photos/food/modeum-platter.png',
+    image: '/photos/food/modeum-platter.webp',
     isSignature: true,
   },
   {
@@ -151,7 +151,7 @@ export const SIGNATURE_ITEMS = [
     name: '양념소불고기정식 (점심특선)',
     description: '양념소불고기, 낙지볶음소면, 된장찌개, 계란찜. 격을 갖춘 한 상을, 점심에 가볍게 누리는 시그니처 정식.',
     priceKrw: 24000,
-    image: '/photos/food/bulgogi-set.png',
+    image: '/photos/food/bulgogi-set.webp',
     isSignature: true,
   },
   {
@@ -159,7 +159,7 @@ export const SIGNATURE_ITEMS = [
     name: '아보카도 육회',
     description: '부드러운 아보카도 위에 올린 정갈한 육회. 고소함과 깔끔함이 한 점에서 만나는 콜드 시그니처.',
     priceKrw: 28000,
-    image: '/photos/food/avocado-yukhoe-mini.png',
+    image: '/photos/food/avocado-yukhoe-mini.webp',
     isSignature: true,
   },
 ] as const

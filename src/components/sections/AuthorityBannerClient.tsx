@@ -1,6 +1,7 @@
 'use client'
 
 import { CHEF_ENDORSEMENT } from '@/lib/constants/brand'
+import { LazyYoutubeEmbed } from '@/components/ui/LazyYoutubeEmbed'
 
 interface Props {
   videoId: string
@@ -29,15 +30,7 @@ export function AuthorityBannerClient({ videoId, eyebrow, h2, sub, body, viewCou
           </div>
           <p className="hidden md:block text-[12px] mt-6 opacity-70 tracking-[0.15em] uppercase">{viewCountLabel}</p>
         </div>
-        <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-black/20 relative order-2 self-center">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1`}
-            className="w-full h-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title={CHEF_ENDORSEMENT.videoTitle}
-          />
-        </div>
+        <LazyYoutubeEmbed videoId={videoId} title={CHEF_ENDORSEMENT.videoTitle} />
       </div>
     </section>
   )
