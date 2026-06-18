@@ -1,6 +1,5 @@
 import { revalidateTag } from 'next/cache'
 import { createPublicClient } from '@/lib/supabase/service'
-import { createClient } from '@/lib/supabase/server'
 import type { Database } from '@/lib/supabase/types'
 
 export type Location = Database['public']['Tables']['locations']['Row']
@@ -37,22 +36,25 @@ export function invalidateLocationsCache() {
   _cacheTime = 0
 }
 
-/**
- * slug로 단일 지점 조회.
- * 매번 fresh — 어드민 미리보기에서 즉시 반영되어야 하므로 캐시 X.
- */
+const _slugCache = new Map<string, { data: Location | null; time: number }>()
+
 export async function getLocationBySlug(slug: string): Promise<Location | null> {
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null
+  const cached = _slugCache.get(slug)
+  if (cached && Date.now() - cached.time < TTL) return cached.data
+
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return cached?.data ?? null
+
   try {
-    const supabase = await createClient()
+    const supabase = createPublicClient()
     const { data, error } = await supabase
       .from('locations')
       .select('*')
       .eq('slug', slug)
       .single()
-    if (error) return null
+    if (error) return cached?.data ?? null
+    _slugCache.set(slug, { data, time: Date.now() })
     return data
   } catch {
-    return null
+    return cached?.data ?? null
   }
 }

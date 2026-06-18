@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MenuJsonLd } from '@/components/schema/MenuJsonLd'

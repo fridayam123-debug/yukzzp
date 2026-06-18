@@ -39,7 +39,7 @@ const LOCATION_INTRO: Record<string, string> = {
     '육즙관리소 더룸 을지로동대문점은 동대문역사문화공원역, DDP, 동대문 쇼핑타운 인근에 위치한 프리미엄 K-BBQ 레스토랑입니다. 새벽 5시까지 운영하며, 외국인 관광객, 해외 바이어 접대, 동대문 회식, 을지로 모임, DDP 전시 후 식사 장소로 적합합니다.',
 }
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 export async function generateStaticParams() {
   return [{ slug: 'yangjae' }, { slug: 'euljiro' }]

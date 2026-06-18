@@ -19,7 +19,7 @@ import { ReviewStrip } from '@/components/sections/ReviewStrip'
 import { InstagramStrip } from '@/components/sections/InstagramStrip'
 import { SancheonSection } from '@/components/sections/SancheonSection'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 300
 
 const BASE_URL = 'https://yukzzp.com'
 
