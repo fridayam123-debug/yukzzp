@@ -126,17 +126,28 @@ export default async function HomePage({
       ))}
       <Header transparent />
       <main>
+        {/* 1. Hero */}
         <Suspense fallback={<div className="h-[85vh] md:min-h-screen bg-[var(--color-stone)]" />}><Hero /></Suspense>
-        <TwoLocations locations={locations} />
+        {/* 2. 셰프 추천 영상 */}
         <Suspense fallback={null}><AuthorityBanner /></Suspense>
-        <Suspense fallback={null}><WhySignature /></Suspense>
+        {/* 3. 왜 산청 흑돼지인가 영상 */}
         <Suspense fallback={null}><SancheonSection /></Suspense>
-        <Suspense fallback={null}><BrandStory /></Suspense>
-        <InteriorBanner />
-        <LazySection minH="640px"><GroupCTA /></LazySection>
-        <ReservationCTA locations={locations} />
-        <LazySection minH="800px"><ReviewStrip /></LazySection>
+        {/* 4. 인스타그램 릴스 */}
         <LazySection minH="560px"><InstagramStrip /></LazySection>
+        {/* 5. 네가지 약속 + 시그니처 */}
+        <Suspense fallback={null}><WhySignature /></Suspense>
+        {/* 6. 로케이션 */}
+        <TwoLocations locations={locations} />
+        {/* 7. 단체 */}
+        <LazySection minH="640px"><GroupCTA /></LazySection>
+        {/* 8. 인테리어 배너 */}
+        <InteriorBanner />
+        {/* 9. 브랜드 스토리 */}
+        <Suspense fallback={null}><BrandStory /></Suspense>
+        {/* 10. 예약 CTA */}
+        <ReservationCTA locations={locations} />
+        {/* 11. 리뷰 */}
+        <LazySection minH="800px"><ReviewStrip /></LazySection>
       </main>
       <Footer locations={locations} />
     </>
