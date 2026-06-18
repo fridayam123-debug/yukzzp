@@ -10,6 +10,9 @@ export async function Hero() {
   const t = await getTranslations('hero')
   const config = await getSiteConfig()
   const bgSrc = config['hero_background_url'] || FALLBACK_HERO
+  // Supabase URLs are in remotePatterns → Next.js can optimize them
+  // Only skip optimization for truly external (non-allowlisted) hosts
+  const isUnoptimized = bgSrc.startsWith('http') && !bgSrc.includes('supabase.co')
   const subParagraphs = t('sub').split('\n\n')
 
   return (
@@ -26,7 +29,7 @@ export async function Hero() {
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
           className="object-cover"
-          unoptimized={bgSrc.startsWith('http')}
+          unoptimized={isUnoptimized}
         />
         {/* Dark overlay for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
