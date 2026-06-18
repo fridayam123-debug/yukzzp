@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { BLUR_DATA_URL } from '@/lib/constants/blur'
 
 const PHOTOS = Array.from({ length: 26 }, (_, i) => ({
   src: `/photos/group/grp-${i + 1}.jpg`,
@@ -8,10 +9,25 @@ const PHOTOS = Array.from({ length: 26 }, (_, i) => ({
 }))
 
 const INTERVAL = 4000
+// 초기 preload: 첫 번째 + 인접 2장만
+const INITIAL_LOADED = new Set([0, 1, 2])
 
 export function GroupPhotoSlider() {
   const [current, setCurrent] = useState(0)
+  // loaded 셋은 한 번 추가되면 삭제되지 않음 — 이미 받은 이미지는 유지
+  const [loaded, setLoaded] = useState<Set<number>>(new Set(INITIAL_LOADED))
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  // current가 바뀔 때마다 ±1 인접 이미지를 loaded에 추가
+  useEffect(() => {
+    setLoaded(prev => {
+      const next = new Set(prev)
+      next.add(current)
+      next.add((current + 1) % PHOTOS.length)
+      next.add((current - 1 + PHOTOS.length) % PHOTOS.length)
+      return next
+    })
+  }, [current])
 
   const startTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current)
@@ -27,7 +43,7 @@ export function GroupPhotoSlider() {
 
   const goNext = useCallback(() => {
     setCurrent(c => (c + 1) % PHOTOS.length)
-    startTimer() // 타이머 리셋
+    startTimer()
   }, [startTimer])
 
   const goPrev = useCallback(() => {
@@ -40,19 +56,24 @@ export function GroupPhotoSlider() {
       className="aspect-[4/3] md:aspect-[3/2] rounded-[var(--radius-card)] overflow-hidden md:sticky md:top-[calc(50vh-200px)] relative select-none"
       aria-label="단체 회식 공간"
     >
-      {/* 사진 레이어 */}
-      {PHOTOS.map((photo, i) => (
-        <Image
-          key={photo.src}
-          src={photo.src}
-          alt={photo.alt}
-          fill
-          sizes="(max-width: 1440px) 50vw, 720px"
-          className="object-cover transition-opacity duration-700"
-          style={{ opacity: i === current ? 1 : 0 }}
-          priority={i === 0}
-        />
-      ))}
+      {/* loaded 셋에 있는 이미지만 렌더링 — 나머지는 DOM에 없음 */}
+      {PHOTOS.map((photo, i) =>
+        loaded.has(i) ? (
+          <Image
+            key={photo.src}
+            src={photo.src}
+            alt={photo.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1440px) 50vw, 720px"
+            quality={70}
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+            className="object-cover transition-opacity duration-700"
+            style={{ opacity: i === current ? 1 : 0 }}
+            priority={i === 0}
+          />
+        ) : null
+      )}
 
       {/* 클릭 영역: 좌 절반 → 이전, 우 절반 → 다음 */}
       <button

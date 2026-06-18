@@ -1,11 +1,10 @@
-'use client'
-
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
+import { LazyYoutubeEmbed } from '@/components/ui/LazyYoutubeEmbed'
 
 const VIDEO_ID = 'fRNvGwsI4S4'
 
-export function SancheonSection() {
-  const t = useTranslations('sancheon')
+export async function SancheonSection() {
+  const t = await getTranslations('sancheon')
 
   return (
     <section className="bg-[var(--color-coral)] py-10 md:py-32 px-6 md:px-24">
@@ -36,16 +35,8 @@ export function SancheonSection() {
           </div>
         </div>
 
-        {/* 우측: 유튜브 영상 */}
-        <div className="aspect-video rounded-[var(--radius-card)] overflow-hidden bg-black relative order-2">
-          <iframe
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1&controls=1`}
-            className="w-full h-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="정육왕 블라인드 테스트"
-          />
-        </div>
+        {/* 우측: 유튜브 영상 — 뷰포트 진입 시 로드 */}
+        <LazyYoutubeEmbed videoId={VIDEO_ID} title="정육왕 블라인드 테스트" />
 
       </div>
     </section>

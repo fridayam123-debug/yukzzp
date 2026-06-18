@@ -18,6 +18,7 @@ import { InteriorBanner } from '@/components/sections/InteriorBanner'
 import { ReviewStrip } from '@/components/sections/ReviewStrip'
 import { InstagramStrip } from '@/components/sections/InstagramStrip'
 import { SancheonSection } from '@/components/sections/SancheonSection'
+import { LazySection } from '@/components/ui/LazySection'
 
 export const revalidate = 300
 
@@ -125,17 +126,17 @@ export default async function HomePage({
       ))}
       <Header transparent />
       <main>
-        <Suspense fallback={null}><Hero /></Suspense>
-        <Suspense fallback={null}><AuthorityBanner /></Suspense>
-        <Suspense fallback={null}><SancheonSection /></Suspense>
-        <Suspense fallback={null}><InstagramStrip /></Suspense>
-        <Suspense fallback={null}><WhySignature /></Suspense>
+        <Suspense fallback={<div className="h-[85vh] md:min-h-screen bg-[var(--color-stone)]" />}><Hero /></Suspense>
         <TwoLocations locations={locations} />
-        <InteriorBanner />
-        <Suspense fallback={null}><GroupCTA /></Suspense>
+        <Suspense fallback={null}><AuthorityBanner /></Suspense>
+        <Suspense fallback={null}><WhySignature /></Suspense>
+        <Suspense fallback={null}><SancheonSection /></Suspense>
         <Suspense fallback={null}><BrandStory /></Suspense>
+        <InteriorBanner />
+        <LazySection minH="640px"><GroupCTA /></LazySection>
         <ReservationCTA locations={locations} />
-        <Suspense fallback={null}><ReviewStrip /></Suspense>
+        <LazySection minH="800px"><ReviewStrip /></LazySection>
+        <LazySection minH="560px"><InstagramStrip /></LazySection>
       </main>
       <Footer locations={locations} />
     </>

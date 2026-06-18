@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getSiteConfig } from '@/lib/fetchers/config'
+import { BLUR_DATA_URL } from '@/lib/constants/blur'
 
 const FALLBACK_HERO = '/photos/locations/euljiro/wave-wall.jpg'
 
@@ -20,7 +21,10 @@ export async function Hero() {
           alt="육즙관리소 더룸 을지로동대문점 — 파동숙성 웨이브 아트월"
           fill
           priority
-          sizes="100vw"
+          sizes="(max-width: 828px) 100vw, (max-width: 1920px) 100vw, 1920px"
+          quality={75}
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
           className="object-cover"
           unoptimized={bgSrc.startsWith('http')}
         />
@@ -33,7 +37,10 @@ export async function Hero() {
                       md:h-auto md:pt-0 md:pb-20 md:justify-start md:gap-4">
         {/* 텍스트 그룹 */}
         <div className="flex flex-col gap-3 md:gap-4">
-          <div className="text-[10px] tracking-[0.3em] uppercase text-[var(--color-canvas)]/70 mt-3 md:mt-6">{t('eyebrow')}</div>
+          <div className="mt-3 md:mt-6">
+            <span className="md:hidden text-[10px] tracking-[0.2em] uppercase text-[var(--color-canvas)]/70">서울 프리미엄 K-BBQ 다이닝</span>
+            <span className="hidden md:inline text-[10px] tracking-[0.3em] uppercase text-[var(--color-canvas)]/70">{t('eyebrow')}</span>
+          </div>
           <h1 className="text-[22px] md:text-[52px] font-normal text-[var(--color-canvas)] leading-[1.15] md:leading-[1.08] tracking-[-0.01em] max-w-[800px] whitespace-pre-line [word-break:keep-all]" style={{ fontFamily: "'Cafe24Classictype', serif" }}>{t('h1')}</h1>
           {/* 모바일 전용 요약 — 5줄 */}
           <p className="md:hidden text-[13px] text-[var(--color-canvas)]/80 leading-[1.8] mt-1 whitespace-pre-line [word-break:keep-all]">{t('mobileSub')}</p>
@@ -45,13 +52,24 @@ export async function Hero() {
           </div>
         </div>
         {/* CTA 버튼 — 모바일: 하단 고정 */}
-        <div className="flex flex-col sm:flex-row gap-3 md:mt-6">
+        <div className="flex flex-col gap-2.5 md:flex-row md:gap-3 md:mt-6">
           <Link href="/#reserve" className="inline-flex items-center justify-center bg-[var(--color-cream-gold)] text-[var(--color-ink)] px-[22px] py-[11px] md:px-8 md:py-4 rounded-[var(--radius-cta)] text-[11px] md:text-[15px] font-medium md:bg-[var(--color-forest)] md:text-[var(--color-canvas)]">
             {t('ctaPrimary')}
           </Link>
-          <Link href="/menu" className="inline-flex items-center justify-center border border-[var(--color-canvas)] text-[var(--color-canvas)] px-[22px] py-[11px] md:px-8 md:py-4 rounded-[var(--radius-cta)] text-[11px] md:text-[15px] font-medium">
+          <Link href="/menu" className="hidden md:inline-flex items-center justify-center border border-[var(--color-canvas)] text-[var(--color-canvas)] px-8 py-4 rounded-[var(--radius-cta)] text-[15px] font-medium">
             {t('ctaSecondary')}
           </Link>
+          {/* 모바일 전용 — 지점 바로가기 */}
+          <div className="md:hidden flex gap-2">
+            <Link href="/locations/yangjae" className="flex-1 inline-flex items-center justify-center gap-1.5 border border-[var(--color-canvas)]/40 text-[var(--color-canvas)]/80 text-[11px] tracking-[0.04em] py-[10px] rounded-[var(--radius-cta)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cream-gold)] shrink-0" />
+              양재역본점
+            </Link>
+            <Link href="/locations/euljiro" className="flex-1 inline-flex items-center justify-center gap-1.5 border border-[var(--color-canvas)]/40 text-[var(--color-canvas)]/80 text-[11px] tracking-[0.04em] py-[10px] rounded-[var(--radius-cta)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cream-gold)] shrink-0" />
+              을지로동대문점
+            </Link>
+          </div>
         </div>
       </div>
     </section>

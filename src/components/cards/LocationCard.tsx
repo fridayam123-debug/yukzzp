@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
+import { BLUR_DATA_URL } from '@/lib/constants/blur'
 import type { Database } from '@/lib/supabase/types'
 type Loc = Database['public']['Tables']['locations']['Row']
 
@@ -17,7 +18,11 @@ export function LocationCard({ loc, kicker, subway, parking, naverPlaceId }: { l
             fill
             className="object-cover"
             style={{ filter: 'brightness(1.03) contrast(0.92) sepia(0.10) saturate(0.88)' }}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 828px) 100vw, (max-width: 1440px) 50vw, 720px"
+            quality={70}
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
         ) : (
           <div
