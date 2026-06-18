@@ -37,8 +37,8 @@ export default async function EuljiroHoesikPage({ params }: { params: Promise<{ 
           '해외 바이어·임원급 접대를 위한 영어·일어·중국어 다국어 메뉴와 서비스를 완비하고 있습니다. 오전 11시부터 새벽 5시까지 운영하여 늦은 회식도 편안하게 마무리할 수 있습니다.',
         ],
         locationSlug: 'euljiro',
-        phone: '0507-1335-7474',
-        telHref: 'tel:0507-1335-7474',
+        phone: '0507-1461-7228',
+        telHref: 'tel:0507-1461-7228',
         ctaLabel: '단체 예약 문의',
       }}
     />

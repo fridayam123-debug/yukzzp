@@ -37,8 +37,8 @@ export default async function EuljiroGogitjipPage({ params }: { params: Promise<
           '하향식 덕트 시스템으로 연기와 냄새를 차단하며, 오전 11시부터 새벽 5시까지 운영합니다. 굿모닝시티 지하주차장에서 1시간 무료 주차권을 제공하여 자가용 방문도 편리합니다.',
         ],
         locationSlug: 'euljiro',
-        phone: '0507-1335-7474',
-        telHref: 'tel:0507-1335-7474',
+        phone: '0507-1461-7228',
+        telHref: 'tel:0507-1461-7228',
         ctaLabel: '더룸 을지로 동대문점 예약',
       }}
     />

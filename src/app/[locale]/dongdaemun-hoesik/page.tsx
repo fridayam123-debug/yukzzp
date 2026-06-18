@@ -37,8 +37,8 @@ export default async function DongdaemunHoesikPage({ params }: { params: Promise
           '오전 11시부터 새벽 5시까지 운영하여 야간 회식도 편안하게 마무리할 수 있습니다. 굿모닝시티 지하주차장에서 1시간 무료 주차권을 제공합니다.',
         ],
         locationSlug: 'euljiro',
-        phone: '0507-1335-7474',
-        telHref: 'tel:0507-1335-7474',
+        phone: '0507-1461-7228',
+        telHref: 'tel:0507-1461-7228',
         ctaLabel: '단체 예약 문의',
       }}
     />

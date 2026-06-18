@@ -37,8 +37,8 @@ export default async function DongdaemunGogitjipPage({ params }: { params: Promi
           '외국인 관광객을 위한 영어·일어·중국어 메뉴와 전담 그릴링 서비스를 제공합니다. 오전 11시부터 새벽 5시까지 운영하며 굿모닝시티 주차 1시간 무료.',
         ],
         locationSlug: 'euljiro',
-        phone: '0507-1335-7474',
-        telHref: 'tel:0507-1335-7474',
+        phone: '0507-1461-7228',
+        telHref: 'tel:0507-1461-7228',
         ctaLabel: '더룸 을지로 동대문점 예약',
       }}
     />

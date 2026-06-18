@@ -37,8 +37,8 @@ export default async function EuljiroMatjipPage({ params }: { params: Promise<{ 
           '오전 11시부터 새벽 5시까지 운영해 DDP 행사, 동대문 쇼핑, 야간 모임 후에도 방문하기 좋습니다. 굿모닝시티 지하주차장 이용 시 1시간 무료 주차권을 제공합니다.',
         ],
         locationSlug: 'euljiro',
-        phone: '0507-1335-7474',
-        telHref: 'tel:0507-1335-7474',
+        phone: '0507-1461-7228',
+        telHref: 'tel:0507-1461-7228',
         ctaLabel: '더룸 을지로 동대문점 예약',
       }}
     />
