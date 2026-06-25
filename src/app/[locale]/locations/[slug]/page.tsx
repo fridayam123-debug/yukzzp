@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
+import Image from 'next/image'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { RestaurantJsonLd } from '@/components/schema/RestaurantJsonLd'
@@ -8,6 +9,12 @@ import { getLocations, getLocationBySlug } from '@/lib/fetchers/locations'
 import { getReviews } from '@/lib/fetchers/reviews'
 import { getFaqs } from '@/lib/fetchers/faqs'
 import type { Faq } from '@/lib/fetchers/faqs'
+import { BLUR_DATA_URL } from '@/lib/constants/blur'
+
+const FALLBACK_IMAGE: Record<string, string> = {
+  yangjae: '/photos/locations/yangjae/bonkwan-concrete-wide.jpg',
+  euljiro: '/photos/locations/euljiro/wave-wall.jpg',
+}
 
 function getFaqText(faq: Faq, locale: string): { q: string; a: string } {
   if (locale === 'en')
@@ -134,17 +141,21 @@ export default async function LocationPage(
           </p>
         )}
 
-        {/* Hero image placeholder — no hero_image in DB yet */}
+        {/* Hero image */}
         <div
           className="relative aspect-video rounded-[var(--radius-card)] overflow-hidden mt-8 bg-[var(--color-canvas-soft)]"
           aria-label={`${loc.name_ko} 매장 사진`}
         >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(135deg, var(--color-canvas) 0%, var(--color-canvas-soft) 55%, var(--color-hairline) 100%)',
-            }}
+          <Image
+            src={loc.hero_image ?? FALLBACK_IMAGE[slug] ?? '/photos/brand/brand-story.jpg'}
+            alt={`${loc.name_ko} 매장`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 828px) 100vw, (max-width: 1440px) 90vw, 1280px"
+            quality={80}
+            priority
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
         </div>
 
