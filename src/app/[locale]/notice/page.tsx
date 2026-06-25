@@ -25,11 +25,19 @@ export async function generateMetadata({
     return {
       title: '육즙관리소 FAQ | 양재역·을지로동대문 프리미엄 K-BBQ 자주 묻는 질문',
       description: '이원일 셰프가 소개한 육즙관리소의 산청 흑돼지, 전담 그릴링 서비스, 하향식 덕트, 회식·접대·데이트·외국인 방문 관련 자주 묻는 질문을 확인하세요.',
-      alternates: { canonical: '/faq' },
+      alternates: { canonical: '/notice' },
+    }
+  }
+  if (rawCat === 'STORY') {
+    return {
+      title: '브랜드 스토리 — 육즙관리소',
+      description: '대기업 출신 남편과 패션 디자이너 아내가 만든 육즙관리소의 브랜드 이야기. 한국의 섬김 정신과 미감으로 빚은 프리미엄 K-BBQ 다이닝의 시작.',
+      alternates: { canonical: '/notice?category=STORY' },
     }
   }
   return {
-    title: 'NOTICE — 육즙관리소',
+    title: '새소식 — 육즙관리소',
+    description: '육즙관리소의 최신 소식, 이벤트, 시즌 메뉴 업데이트를 확인하세요.',
     alternates: { canonical: '/notice' },
   }
 }

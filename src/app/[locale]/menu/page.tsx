@@ -10,7 +10,7 @@ import { getLocations } from '@/lib/fetchers/locations'
 import MenuClient from './menu-client'
 
 export const metadata: Metadata = {
-  title: '메뉴',
+  title: '육즙관리소 메뉴 | 산청 흑돼지 목살·삼겹살·아보카도 육회',
   description: '지리산 흑돼지 모듬 57,000원, 진꽃살 87,000원, 아보카도 육회 28,000원. 100% 대나무 숯 직화 · 직원 그릴링 무료.',
   alternates: { canonical: '/menu' },
   openGraph: {
