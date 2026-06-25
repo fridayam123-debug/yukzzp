@@ -26,11 +26,11 @@ const BASE_URL = 'https://www.yukjeup.com'
 
 const META: Record<string, { title: string; description: string; keywords: string; ogTitle: string; ogDescription: string }> = {
   ko: {
-    title: '육즙관리소 공식 홈페이지 | 양재역·동대문 프리미엄 K-BBQ',
-    description: '육즙관리소 공식 홈페이지입니다. 양재역본점과 더룸 을지로동대문점에서 산청 흑돼지, 거창 백돼지, 특허 파동숙성, 100% 대나무숯 직화구이, 전문 서버 그릴링 서비스를 제공하는 프리미엄 K-BBQ 다이닝입니다.',
+    title: '육즙관리소 공식홈 | 양재·동대문 K-BBQ',
+    description: '육즙관리소 공식홈. 양재·동대문 K-BBQ, 산청 흑돼지와 전문 서버 그릴링.',
     keywords: '육즙관리소, 육즙관리소 공식 홈페이지, 서울 단체 회식, 강남 프라이빗 룸, 을지로 단체석, 회식 장소 추천, 비즈니스 미팅 레스토랑, 외국인 접대 K-BBQ, 송년회 장소, 양재역 맛집, 산청 흑돼지',
-    ogTitle: '육즙관리소 공식 홈페이지 | 양재역·동대문 프리미엄 K-BBQ',
-    ogDescription: '육즙관리소 공식 홈페이지. 양재역본점·더룸 을지로동대문점. 산청 흑돼지, 파동숙성, 대나무숯 직화, 전문 서버 그릴링.',
+    ogTitle: '육즙관리소 공식홈 | 양재·동대문 K-BBQ',
+    ogDescription: '육즙관리소 공식홈. 양재·동대문 K-BBQ, 산청 흑돼지와 전문 서버 그릴링.',
   },
   en: {
     title: 'Yukzzp | Premium K-BBQ Dining Seoul · Yangjae · Euljiro',
@@ -71,7 +71,7 @@ export async function generateMetadata({
   const m = META[locale] ?? META.ko
 
   return {
-    title: m.title,
+    title: { absolute: m.title },
     description: m.description,
     keywords: m.keywords,
     openGraph: {
