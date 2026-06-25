@@ -7,6 +7,7 @@
     "ctaSecondary": "查看菜单"
   },
   "nav": {
+    "home": "首页",
     "menu": "菜单",
     "reserve": "预约",
     "locations": "门店信息",

@@ -22,15 +22,15 @@ import { LazySection } from '@/components/ui/LazySection'
 
 export const revalidate = 300
 
-const BASE_URL = 'https://yukzzp.com'
+const BASE_URL = 'https://www.yukjeup.com'
 
 const META: Record<string, { title: string; description: string; keywords: string; ogTitle: string; ogDescription: string }> = {
   ko: {
-    title: '육즙관리소 | 서울 프리미엄 K-BBQ 다이닝',
-    description: '육즙관리소는 산청 흑돼지와 거창 백돼지, 특허 파동숙성, 100% 대나무숯, 전문 서버 그릴링으로 완성하는 서울 프리미엄 K-BBQ 다이닝입니다. 양재역본점과 을지로동대문점을 운영합니다.',
-    keywords: '육즙관리소, 서울 단체 회식, 강남 프라이빗 룸, 을지로 단체석, 회식 장소 추천, 비즈니스 미팅 레스토랑, 외국인 접대 K-BBQ, 송년회 장소, 양재역 맛집, 산청 흑돼지',
-    ogTitle: '육즙관리소 | 서울 프리미엄 K-BBQ',
-    ogDescription: '서울 양재역·을지로 프리미엄 K-BBQ 다이닝. 4~16인 프라이빗 룸, 20~40인 단체석, 전담 서버 그릴링 서비스.',
+    title: '육즙관리소 공식 홈페이지 | 양재역·동대문 프리미엄 K-BBQ',
+    description: '육즙관리소 공식 홈페이지입니다. 양재역본점과 더룸 을지로동대문점에서 산청 흑돼지, 거창 백돼지, 특허 파동숙성, 100% 대나무숯 직화구이, 전문 서버 그릴링 서비스를 제공하는 프리미엄 K-BBQ 다이닝입니다.',
+    keywords: '육즙관리소, 육즙관리소 공식 홈페이지, 서울 단체 회식, 강남 프라이빗 룸, 을지로 단체석, 회식 장소 추천, 비즈니스 미팅 레스토랑, 외국인 접대 K-BBQ, 송년회 장소, 양재역 맛집, 산청 흑돼지',
+    ogTitle: '육즙관리소 공식 홈페이지 | 양재역·동대문 프리미엄 K-BBQ',
+    ogDescription: '육즙관리소 공식 홈페이지. 양재역본점·더룸 을지로동대문점. 산청 흑돼지, 파동숙성, 대나무숯 직화, 전문 서버 그릴링.',
   },
   en: {
     title: 'Yukzzp | Premium K-BBQ Dining Seoul · Yangjae · Euljiro',
@@ -96,14 +96,14 @@ export async function generateMetadata({
       images: ['/photos/brand/brand-story.jpg'],
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: locale === 'ko' ? BASE_URL : `${BASE_URL}/${locale}`,
       languages: {
-        ko: `${BASE_URL}/ko`,
+        ko: BASE_URL,
         en: `${BASE_URL}/en`,
         ja: `${BASE_URL}/ja`,
         vi: `${BASE_URL}/vi`,
         zh: `${BASE_URL}/zh`,
-        'x-default': `${BASE_URL}/ko`,
+        'x-default': BASE_URL,
       },
     },
   }
