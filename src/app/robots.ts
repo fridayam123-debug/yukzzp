@@ -3,10 +3,10 @@ import { BRAND } from '@/lib/constants/brand'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
+    rules: [
+      { userAgent: 'Yeti', allow: '/' },
+      { userAgent: '*', allow: '/' },
+    ],
     sitemap: `${BRAND.domain}/sitemap.xml`,
   }
 }

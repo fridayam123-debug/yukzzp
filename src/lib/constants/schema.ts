@@ -10,7 +10,7 @@ export const ORGANIZATION_SCHEMA = {
   alternateName: BRAND.nameEn,
   description: '셰프 이원일이 인정한 프리미엄 K-BBQ 다이닝. 경남 산청·거창 산지 흑돼지·백돼지, 특허 파동숙성, 100% 대나무 숯 직화, 전담 서버 그릴링. 양재역본점·을지로동대문점 운영.',
   url: BRAND.domain,
-  logo: `${BRAND.domain}/brand/logo.png`,
+  logo: `${BRAND.domain}/logo.png`,
   sameAs: [
     BRAND.instagramUrl,
     BRAND.youtubeShort,
