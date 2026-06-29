@@ -27,10 +27,10 @@ const BASE_URL = 'https://www.yukjeup.com'
 const META: Record<string, { title: string; description: string; keywords: string; ogTitle: string; ogDescription: string }> = {
   ko: {
     title: '육즙관리소 공식 홈페이지 | 양재역본점·을지로동대문점',
-    description: '육즙관리소 공식 홈페이지. 양재역본점과 을지로동대문점에서 산청 흑돼지, 거창 백돼지, 전문 서버 그릴링을 제공하는 프리미엄 K-BBQ 다이닝입니다.',
+    description: '육즙관리소 공식 홈페이지. 양재역·을지로 산청 흑돼지 전문 K-BBQ 다이닝.',
     keywords: '육즙관리소, 육즙관리소 공식 홈페이지, 서울 단체 회식, 강남 프라이빗 룸, 을지로 단체석, 회식 장소 추천, 비즈니스 미팅 레스토랑, 외국인 접대 K-BBQ, 송년회 장소, 양재역 맛집, 산청 흑돼지',
     ogTitle: '육즙관리소 공식 홈페이지 | 양재역본점·을지로동대문점',
-    ogDescription: '육즙관리소 공식 홈페이지. 양재역본점과 을지로동대문점에서 산청 흑돼지, 거창 백돼지, 전문 서버 그릴링을 제공하는 프리미엄 K-BBQ 다이닝입니다.',
+    ogDescription: '육즙관리소 공식 홈페이지. 양재역·을지로 산청 흑돼지 전문 K-BBQ 다이닝.',
   },
   en: {
     title: 'Yukzzp | Premium K-BBQ Dining Seoul · Yangjae · Euljiro',
