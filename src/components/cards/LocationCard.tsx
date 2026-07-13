@@ -7,9 +7,10 @@ type Loc = Database['public']['Tables']['locations']['Row']
 export function LocationCard({ loc, kicker, subway, parking, naverPlaceId }: { loc: Loc; kicker: string; points?: string; subway?: string; parking?: string; naverPlaceId?: string }) {
   return (
     <div className="flex flex-col gap-4 p-5 md:p-10 bg-white rounded-[var(--radius-card)]">
-      <div
-        className="relative aspect-video rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-canvas-soft)]"
-        aria-label={`${loc.name_ko} 매장 사진`}
+      <Link
+        href={`/locations/${loc.slug}`}
+        className="relative block aspect-video rounded-[var(--radius-card)] overflow-hidden bg-[var(--color-canvas-soft)]"
+        aria-label={`${loc.name_ko} 자세히 보기`}
       >
         {loc.hero_image ? (
           <Image
@@ -36,7 +37,7 @@ export function LocationCard({ loc, kicker, subway, parking, naverPlaceId }: { l
         <span className="absolute bottom-3 right-4 text-[10px] tracking-[2px] font-mono text-[var(--color-body)]/60 select-none">
           {loc.slug.toUpperCase()}
         </span>
-      </div>
+      </Link>
       <div className="flex flex-col gap-1.5">
         <div className="text-[9px] tracking-[2px] font-mono text-[var(--color-body)]">{kicker}</div>
         <h3 className="text-[18px] md:text-[22px] font-medium text-[var(--color-ink)]">{loc.name_ko}</h3>
