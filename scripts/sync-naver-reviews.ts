@@ -1,7 +1,8 @@
 /**
  * 네이버 플레이스 리뷰 자동 동기화
  * - Playwright로 ncaptcha 토큰만 획득
- * - 이후 직접 HTTP 호출로 전체 리뷰 수집 (빠름)
+ * - 이후 직접 HTTP 호출로 리뷰 수집 (커서: 응답 item.cursor → 다음 요청 after)
+ * - 부정 리뷰 필터링 후 매장별 최대 TARGET_PER_LOCATION건 upsert
  * - GitHub Actions 매일 새벽 4시 KST 실행
  */
 
@@ -12,6 +13,15 @@ const SUPABASE_URL = process.env.SUPABASE_URL!
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY!
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
+
+/** 매장별 업로드 목표 건수 */
+const TARGET_PER_LOCATION = 70
+
+/** 부정 리뷰 스킵 키워드 */
+const NEGATIVE_KEYWORDS = [
+  '별로', '실망', '아쉬', '불친절', '최악', '비추', '더러', '위생',
+  '머리카락', '다신 안', '다시는 안', '짜증', '불쾌', '기분 나쁘', '기분나쁘', '불만',
+]
 
 const LOCATIONS = [
   {
@@ -38,6 +48,7 @@ query getVisitorReviews($input: VisitorReviewsInput) {
 fragment VisitorReviews on VisitorReviewsResult {
   items {
     id
+    cursor
     reviewId
     rating
     author { id nickname from imageUrl __typename }
@@ -103,35 +114,45 @@ function makeWtmGraphqlToken(businessId: string): string {
   })).toString('base64')
 }
 
-async function fetchAllReviews(
+/** 부정 리뷰 판별 — rating 3점 이하 또는 부정 키워드 포함 */
+function isNegative(r: any): boolean {
+  if (typeof r.rating === 'number' && r.rating <= 3) return true
+  const body: string = r.body ?? ''
+  return NEGATIVE_KEYWORDS.some((kw) => body.includes(kw))
+}
+
+async function fetchReviews(
   loc: typeof LOCATIONS[0],
   headers: Record<string, string>
 ): Promise<any[]> {
-  const allItems: any[] = []
-  let cursor = '0'
+  const positive: any[] = []
+  let after: string | null = null
   let page = 0
+  let skipped = 0
 
   headers['x-wtm-graphql'] = makeWtmGraphqlToken(loc.businessId)
 
-  while (true) {
+  // 목표 채울 때까지 페이지네이션 (안전 상한 20페이지)
+  while (positive.length < TARGET_PER_LOCATION && page < 20) {
+    const input: Record<string, unknown> = {
+      businessId: loc.businessId,
+      businessType: 'restaurant',
+      item: '0',
+      bookingBusinessId: loc.bookingBusinessId,
+      size: 10,
+      isPhotoUsed: false,
+      includeContent: true,
+      getUserStats: true,
+      includeReceiptPhotos: true,
+      cidList: loc.cidList,
+      getReactions: true,
+      getTrailer: true,
+    }
+    if (after) input.after = after
+
     const body = JSON.stringify([{
       operationName: 'getVisitorReviews',
-      variables: {
-        input: {
-          businessId: loc.businessId,
-          businessType: 'restaurant',
-          item: cursor,
-          bookingBusinessId: loc.bookingBusinessId,
-          size: 10,
-          isPhotoUsed: false,
-          includeContent: true,
-          getUserStats: true,
-          includeReceiptPhotos: true,
-          cidList: loc.cidList,
-          getReactions: true,
-          getTrailer: true,
-        },
-      },
+      variables: { input },
       query: GQL_QUERY,
     }])
 
@@ -142,44 +163,51 @@ async function fetchAllReviews(
     })
 
     if (!res.ok) {
-      console.error(`[${loc.slug}] HTTP ${res.status} (page ${page})`)
+      console.error(`[${loc.slug}] HTTP ${res.status} (page ${page}) — 중단`)
       break
     }
 
     const json: any = await res.json()
     const vr = json[0]?.data?.visitorReviews
-    if (!vr) break
+    if (!vr) {
+      console.error(`[${loc.slug}] visitorReviews null (page ${page}) — 중단`)
+      break
+    }
 
     const items: any[] = vr.items ?? []
     if (items.length === 0) break
 
-    allItems.push(...items)
+    for (const item of items) {
+      if (positive.length >= TARGET_PER_LOCATION) break
+      if (isNegative(item)) { skipped++; continue }
+      if (!item.body?.trim()) continue
+      positive.push(item)
+    }
+
     page++
-    console.log(`[${loc.slug}] ${allItems.length} / ${vr.total}건`)
+    console.log(`[${loc.slug}] p${page}: 수집 ${positive.length}/${TARGET_PER_LOCATION} (부정 스킵 누적 ${skipped})`)
 
-    if (allItems.length >= vr.total) break
-
-    cursor = items[items.length - 1].id
-    await new Promise((r) => setTimeout(r, 300))
+    after = items[items.length - 1]?.cursor ?? null
+    if (!after) break
+    await new Promise((r) => setTimeout(r, 500))
   }
 
-  return allItems
+  console.log(`[${loc.slug}] 최종: 긍정 ${positive.length}건, 부정 스킵 ${skipped}건`)
+  return positive
 }
 
 async function upsert(slug: string, items: any[]) {
-  const rows = items
-    .filter((r) => r.body?.trim())
-    .map((r) => ({
-      location_slug: slug,
-      author: r.author?.nickname ?? '익명',
-      text: r.body,
-      rating: r.rating ?? 5,
-      rec_count: 0,
-      source: 'naver',
-      source_id: r.id ?? r.reviewId,
-      visible: true,
-      visited_at: r.visitedDate ? r.visitedDate.slice(0, 10) : null,
-    }))
+  const rows = items.map((r) => ({
+    location_slug: slug,
+    author: r.author?.nickname ?? '익명',
+    text: r.body,
+    rating: r.rating ?? 5,
+    rec_count: 0,
+    source: 'naver',
+    source_id: r.id ?? r.reviewId,
+    visible: true,
+    visited_at: r.visitedDate ? r.visitedDate.slice(0, 10) : null,
+  }))
 
   const CHUNK = 500
   for (let i = 0; i < rows.length; i += CHUNK) {
@@ -200,8 +228,7 @@ async function main() {
       console.warn(`[${loc.slug}] ncaptcha 토큰 미획득 — 토큰 없이 시도`)
     }
 
-    const items = await fetchAllReviews(loc, headers)
-    console.log(`[${loc.slug}] 총 ${items.length}건 수집`)
+    const items = await fetchReviews(loc, headers)
     await upsert(loc.slug, items)
   }
   console.log('\n완료')
