@@ -211,26 +211,40 @@ async function fetchReviews(
 }
 
 async function upsert(slug: string, items: any[]) {
-  const rows = items.map((r) => ({
-    location_slug: slug,
-    author: r.author?.nickname ?? '익명',
-    text: r.body,
-    rating: r.rating ?? 5,
-    rec_count: 0,
-    source: 'naver',
-    source_id: r.id ?? r.reviewId,
-    visible: true,
-    visited_at: r.visitedDate ? r.visitedDate.slice(0, 10) : null,
-  }))
-
-  const CHUNK = 500
-  for (let i = 0; i < rows.length; i += CHUNK) {
-    const { error } = await supabase
-      .from('reviews')
-      .upsert(rows.slice(i, i + CHUNK), { onConflict: 'source,source_id', ignoreDuplicates: true })
-    if (error) console.error(`[${slug}] upsert 오류:`, error.message)
+  // DB에 (source, source_id) 유니크 제약이 없어 조회 후 신규만 insert
+  const { data: existing, error: selErr } = await supabase
+    .from('reviews')
+    .select('source_id')
+    .eq('location_slug', slug)
+    .eq('source', 'naver')
+  if (selErr) {
+    console.error(`[${slug}] 기존 리뷰 조회 오류:`, selErr.message)
+    return
   }
-  console.log(`[${slug}] ${rows.length}건 upsert 완료`)
+  const seen = new Set((existing ?? []).map((r) => r.source_id).filter(Boolean))
+
+  const rows = items
+    .filter((r) => !seen.has(r.id ?? r.reviewId))
+    .map((r) => ({
+      location_slug: slug,
+      author: r.author?.nickname ?? '익명',
+      text: r.body,
+      rating: r.rating ?? 5,
+      rec_count: 0,
+      source: 'naver',
+      source_id: r.id ?? r.reviewId,
+      visible: true,
+      visited_at: r.visitedDate ? r.visitedDate.slice(0, 10) : null,
+    }))
+
+  if (rows.length === 0) {
+    console.log(`[${slug}] 신규 리뷰 없음 (기존 ${seen.size}건)`)
+    return
+  }
+
+  const { error } = await supabase.from('reviews').insert(rows)
+  if (error) console.error(`[${slug}] insert 오류:`, error.message)
+  else console.log(`[${slug}] 신규 ${rows.length}건 insert 완료 (기존 ${seen.size}건)`)
 }
 
 async function main() {
