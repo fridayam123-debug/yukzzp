@@ -89,7 +89,7 @@ export default async function LocationPage(
   const [loc, locations, reviews, faqs] = await Promise.all([
     getLocationBySlug(slug),
     getLocations(),
-    getReviews(slug, 50),
+    getReviews(slug, 70),
     getFaqs(slug === 'yangjae' ? 'yangjae' : 'euljiro'),
   ])
   if (!loc) notFound()
