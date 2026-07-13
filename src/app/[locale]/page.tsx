@@ -18,6 +18,7 @@ import { InteriorBanner } from '@/components/sections/InteriorBanner'
 import { ReviewStrip } from '@/components/sections/ReviewStrip'
 import { InstagramStrip } from '@/components/sections/InstagramStrip'
 import { SancheonSection } from '@/components/sections/SancheonSection'
+import { GeoAnswersSection } from '@/components/sections/GeoAnswersSection'
 import { LazySection } from '@/components/ui/LazySection'
 
 export const revalidate = 300
@@ -144,6 +145,8 @@ export default async function HomePage({
         <InteriorBanner />
         {/* 9. 브랜드 스토리 */}
         <Suspense fallback={null}><BrandStory /></Suspense>
+        {/* 9-1. GEO 답변 섹션 — AI 인용 최적화 */}
+        <GeoAnswersSection />
         {/* 10. 예약 CTA */}
         <ReservationCTA locations={locations} />
         {/* 11. 리뷰 */}
