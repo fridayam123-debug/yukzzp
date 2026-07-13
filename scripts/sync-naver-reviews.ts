@@ -8,9 +8,23 @@
 
 import { chromium } from '@playwright/test'
 import { createClient } from '@supabase/supabase-js'
+import { readFileSync, existsSync } from 'fs'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-const SUPABASE_URL = process.env.SUPABASE_URL!
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY!
+// env 없으면 .env.local에서 로드 (로컬 실행용)
+function loadEnv(key: string, localKey: string): string {
+  if (process.env[key]) return process.env[key]!
+  const envPath = join(dirname(fileURLToPath(import.meta.url)), '..', '.env.local')
+  if (existsSync(envPath)) {
+    const m = readFileSync(envPath, 'utf8').match(new RegExp(`^${localKey}=(.+)$`, 'm'))
+    if (m) return m[1].trim()
+  }
+  throw new Error(`${key} 환경변수 없음`)
+}
+
+const SUPABASE_URL = loadEnv('SUPABASE_URL', 'NEXT_PUBLIC_SUPABASE_URL')
+const SUPABASE_SERVICE_KEY = loadEnv('SUPABASE_SERVICE_KEY', 'SUPABASE_SERVICE_ROLE_KEY')
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 

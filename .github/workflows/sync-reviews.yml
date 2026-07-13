@@ -1,9 +1,9 @@
 name: Sync Naver Reviews
 
+# 참고: 네이버가 GitHub Actions IP(데이터센터)를 차단하여 cron 예약을 제거함.
+# 매일 새벽 4시 동기화는 로컬 PC의 Windows 작업 스케줄러가 수행 (scripts/run-sync.cmd).
 on:
-  schedule:
-    - cron: '0 19 * * *'   # 매일 새벽 4시 KST (UTC 19:00)
-  workflow_dispatch:         # 수동 실행 버튼
+  workflow_dispatch:         # 수동 실행 버튼 (디버그용)
 
 jobs:
   sync:
