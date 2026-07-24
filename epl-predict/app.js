@@ -48,7 +48,11 @@ function renderMatches() {
     // 팀 이름·날짜는 우리가 만든 데이터(data.js)라 안전 → innerHTML 사용
     card.innerHTML =
       '<div class="match-date">' + match.date + "</div>" +
-      '<div class="match-teams">' + match.home + " vs " + match.away + "</div>" +
+      '<div class="match-teams">' +
+        '<div class="team-row"><span class="badge home-badge">홈</span>' + match.home + "</div>" +
+        '<div class="vs">vs</div>' +
+        '<div class="team-row"><span class="badge away-badge">원정</span>' + match.away + "</div>" +
+      "</div>" +
       '<div class="pick-buttons">' +
       '<button data-match="' + i + '" data-pick="home">홈 승</button>' +
       '<button data-match="' + i + '" data-pick="draw">무승부</button>' +
@@ -147,7 +151,10 @@ function renderDetail(details) {
     const realScore = d.match.homeScore + ":" + d.match.awayScore;
     // 팀 이름은 우리 데이터라 안전
     row.innerHTML =
-      '<span class="detail-teams">' + d.match.home + " vs " + d.match.away + "</span>" +
+      '<span class="detail-teams">' +
+        '<span class="mini-badge">홈</span>' + d.match.home +
+        " vs " + d.match.away + '<span class="mini-badge out">원정</span>' +
+      "</span>" +
       '<span class="detail-meta">내 예측: ' + labelOf(d.myPick) +
         " · 실제: " + labelOf(d.result) + " (" + realScore + ")" +
       '<span class="detail-mark">' + (d.correct ? "⭕" : "❌") + "</span></span>";
