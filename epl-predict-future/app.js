@@ -62,6 +62,8 @@ function renderMatches() {
       '<div class="form-box hidden" data-form="' + i + '"></div>' +
       '<button class="info-toggle" data-index="' + i + '">▼ 팀 정보 보기</button>' +
       '<div class="info-box hidden" data-info="' + i + '"></div>' +
+      '<button class="tactic-toggle" data-index="' + i + '">▼ 감독·전술·약점 보기</button>' +
+      '<div class="tactic-box hidden" data-tactic="' + i + '"></div>' +
       '<div class="model-box hidden" data-model="' + i + '"></div>';
     matchList.appendChild(card);
   }
@@ -105,6 +107,21 @@ matchList.addEventListener("click", function (e) {
     } else {
       box.classList.add("hidden");
       btn.textContent = "▼ 팀 정보 보기";
+    }
+    return;
+  }
+
+  // (a-3) 감독·전술·약점 토글
+  if (btn.classList.contains("tactic-toggle")) {
+    const i = Number(btn.dataset.index);
+    const box = matchList.querySelector('[data-tactic="' + i + '"]');
+    if (box.classList.contains("hidden")) {
+      if (box.innerHTML === "") box.innerHTML = buildTacticHTML(FIXTURES[i]);
+      box.classList.remove("hidden");
+      btn.textContent = "▲ 감독·전술·약점 닫기";
+    } else {
+      box.classList.add("hidden");
+      btn.textContent = "▼ 감독·전술·약점 보기";
     }
     return;
   }
@@ -170,6 +187,68 @@ function oneTeamInfo(team) {
   }
   html += "</div></div>";
   return html;
+}
+
+// 감독·전술·약점 HTML (감독·전술은 조사된 데이터가 있을 때만 표시)
+function buildTacticHTML(fixture) {
+  return oneTeamTactic(fixture.home) + oneTeamTactic(fixture.away);
+}
+function oneTeamTactic(team) {
+  const s = TEAM_STATS[team];
+  const t = (typeof TEAM_TACTICS !== "undefined") ? TEAM_TACTICS[team] : null;
+  let html = '<div class="tactic-team"><div class="tactic-team-name">' + team + "</div>";
+
+  if (t && t.manager) {
+    html += '<div class="tactic-line"><b>감독</b> ' + t.manager + "</div>";
+  } else {
+    html += '<div class="tactic-line unknown"><b>감독</b> 26/27 시즌 확정 정보 없음 (확인 필요)</div>';
+  }
+  if (t && t.formation) {
+    html += '<div class="tactic-line"><b>전술</b> ' + t.formation +
+            (t.style ? " · " + t.style : "") + "</div>";
+  } else {
+    html += '<div class="tactic-line unknown"><b>전술</b> 확정 정보 없음</div>';
+  }
+
+  const weaknesses = weaknessOf(team, s);
+  html += '<div class="tactic-line"><b>약점(25/26 데이터 근거)</b></div><ul class="weakness-list">';
+  for (let i = 0; i < weaknesses.length; i++) {
+    html += "<li>" + weaknesses[i] + "</li>";
+  }
+  html += "</ul></div>";
+  return html;
+}
+
+// 25/26 실데이터로 약점을 자동 도출 (추측이 아니라 숫자 근거)
+function weaknessOf(team, s) {
+  if (s.promoted) {
+    return ["승격팀 — 25/26 EPL 데이터가 없어 약점을 산출할 수 없음 (챔피언십에서 승격)"];
+  }
+  const list = [];
+  const gaPerGame = s.ga / s.played;
+  const gfPerGame = s.gf / s.played;
+
+  if (gaPerGame >= 1.3) {
+    list.push("수비 불안 — 경기당 평균 " + gaPerGame.toFixed(2) + "실점 (시즌 총 " + s.ga + "실점)");
+  }
+  if (gfPerGame <= 1.1) {
+    list.push("득점력 부족 — 경기당 평균 " + gfPerGame.toFixed(2) + "득점 (시즌 총 " + s.gf + "득점)");
+  }
+  if (s.awayPPG < s.homePPG - 0.5) {
+    list.push("원정 경기에 약함 — 홈 평균승점 " + s.homePPG.toFixed(2) +
+               " vs 원정 " + s.awayPPG.toFixed(2));
+  }
+  const recentPts = s.recent5.reduce(function (sum, r) {
+    return sum + (r === "W" ? 3 : r === "D" ? 1 : 0);
+  }, 0);
+  if (recentPts <= 4) {
+    list.push("최근 폼 하락 — 최근 5경기 " + s.recent5.join("") +
+               " (승점 " + recentPts + "/15)");
+  }
+  if (list.length === 0) {
+    list.push("25/26 데이터 기준 뚜렷한 약점 없음 (안정적인 시즌)");
+  }
+  return list;
 }
 
 // 모델 확률 공개

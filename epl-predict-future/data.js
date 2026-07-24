@@ -615,3 +615,8 @@ const TEAM_STATS = {
     "promoted": true
   }
 };
+
+// 감독·전술 (외부 조사 데이터, 2026-07-25 기준 확인된 것만 채움)
+// null = 확정 정보를 찾지 못함 → 화면에 "확인 필요"로 정직하게 표시
+const TEAM_TACTICS = {};
+

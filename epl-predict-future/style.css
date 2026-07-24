@@ -66,12 +66,22 @@ button:disabled { background: #c5d0dc; cursor: not-allowed; }
 .pick-buttons button:hover:not(.selected) { background: #dde5ee; }
 .pick-buttons button.selected { background: #3d195b; color: #fff; }
 
-/* 전적/팀정보 토글 */
-.form-toggle, .info-toggle {
+/* 전적/팀정보/전술 토글 */
+.form-toggle, .info-toggle, .tactic-toggle {
   width: 100%; margin-top: 8px; padding: 8px;
   background: #f6f1fb; color: #3d195b; font-size: 12px;
 }
-.form-toggle:hover:not(:disabled), .info-toggle:hover:not(:disabled) { background: #ecdff7; opacity: 1; }
+.form-toggle:hover:not(:disabled), .info-toggle:hover:not(:disabled), .tactic-toggle:hover:not(:disabled) { background: #ecdff7; opacity: 1; }
+
+/* 감독·전술·약점 */
+.tactic-box { margin-top: 8px; border-top: 1px dashed #dde5ee; padding-top: 8px; }
+.tactic-team { font-size: 12px; margin-bottom: 10px; }
+.tactic-team-name { font-weight: bold; margin-bottom: 5px; }
+.tactic-line { margin-bottom: 3px; color: #1a2332; }
+.tactic-line b { color: #3d195b; margin-right: 4px; }
+.tactic-line.unknown { color: #9aa7b5; font-style: italic; }
+.weakness-list { margin: 4px 0 0 16px; padding: 0; color: #5a6b7f; }
+.weakness-list li { margin-bottom: 2px; }
 
 /* 팀 정보 */
 .info-box { margin-top: 8px; border-top: 1px dashed #dde5ee; padding-top: 8px; }
