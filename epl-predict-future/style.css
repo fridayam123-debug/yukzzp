@@ -66,12 +66,29 @@ button:disabled { background: #c5d0dc; cursor: not-allowed; }
 .pick-buttons button:hover:not(.selected) { background: #dde5ee; }
 .pick-buttons button.selected { background: #3d195b; color: #fff; }
 
-/* 최근 전적 토글 */
-.form-toggle {
+/* 전적/팀정보 토글 */
+.form-toggle, .info-toggle {
   width: 100%; margin-top: 8px; padding: 8px;
   background: #f6f1fb; color: #3d195b; font-size: 12px;
 }
-.form-toggle:hover:not(:disabled) { background: #ecdff7; opacity: 1; }
+.form-toggle:hover:not(:disabled), .info-toggle:hover:not(:disabled) { background: #ecdff7; opacity: 1; }
+
+/* 팀 정보 */
+.info-box { margin-top: 8px; border-top: 1px dashed #dde5ee; padding-top: 8px; }
+.info-team { font-size: 12px; margin-bottom: 10px; }
+.info-team-name { font-weight: bold; margin-bottom: 5px; }
+.stat-grid { display: flex; flex-wrap: wrap; gap: 5px 10px; }
+.stat { font-size: 11px; color: #5a6b7f; }
+.stat b { color: #1a2332; font-size: 12px; }
+.recent-form { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
+.recent-label { font-size: 11px; color: #5a6b7f; margin-right: 2px; }
+.rchip {
+  width: 18px; height: 18px; border-radius: 4px; font-size: 10px; font-weight: bold;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+}
+.rchip.W { background: #1a9e5f; }
+.rchip.D { background: #9aa7b5; }
+.rchip.L { background: #d64545; }
 .form-box { margin-top: 8px; border-top: 1px dashed #dde5ee; padding-top: 8px; }
 .form-team { font-size: 12px; margin-bottom: 6px; }
 .form-team-name { font-weight: bold; margin-bottom: 3px; }

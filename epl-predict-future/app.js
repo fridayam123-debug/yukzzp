@@ -60,6 +60,8 @@ function renderMatches() {
       "</div>" +
       '<button class="form-toggle" data-index="' + i + '">▼ 상대 전적 보기</button>' +
       '<div class="form-box hidden" data-form="' + i + '"></div>' +
+      '<button class="info-toggle" data-index="' + i + '">▼ 팀 정보 보기</button>' +
+      '<div class="info-box hidden" data-info="' + i + '"></div>' +
       '<div class="model-box hidden" data-model="' + i + '"></div>';
     matchList.appendChild(card);
   }
@@ -88,6 +90,21 @@ matchList.addEventListener("click", function (e) {
     } else {
       box.classList.add("hidden");
       btn.textContent = "▼ 상대 전적 보기";
+    }
+    return;
+  }
+
+  // (a-2) 팀 정보 토글
+  if (btn.classList.contains("info-toggle")) {
+    const i = Number(btn.dataset.index);
+    const box = matchList.querySelector('[data-info="' + i + '"]');
+    if (box.classList.contains("hidden")) {
+      if (box.innerHTML === "") box.innerHTML = buildInfoHTML(FIXTURES[i]);
+      box.classList.remove("hidden");
+      btn.textContent = "▲ 팀 정보 닫기";
+    } else {
+      box.classList.add("hidden");
+      btn.textContent = "▼ 팀 정보 보기";
     }
     return;
   }
@@ -121,6 +138,35 @@ function buildH2HHTML(fixture) {
     html += '<span class="form-chip ' + cls + '">' + g.date + " " +
             g.home + " " + g.score + " " + g.away +
             '<span class="r">' + g.res + "</span></span>";
+  }
+  html += "</div></div>";
+  return html;
+}
+
+// 두 팀 정보(25/26 성적) HTML
+function buildInfoHTML(fixture) {
+  return oneTeamInfo(fixture.home) + oneTeamInfo(fixture.away);
+}
+function oneTeamInfo(team) {
+  const s = TEAM_STATS[team];
+  let html = '<div class="info-team"><div class="info-team-name">' + team + "</div>";
+  if (s.promoted) {
+    html += '<div class="form-none">승격팀 — 지난 시즌 EPL 기록 없음 (챔피언십에서 승격)</div></div>';
+    return html;
+  }
+  const gd = (s.gd >= 0 ? "+" : "") + s.gd;
+  html +=
+    '<div class="stat-grid">' +
+      '<span class="stat"><b>' + s.rank + "위</b> 최종순위</span>" +
+      '<span class="stat"><b>' + s.pts + "점</b> 승점</span>" +
+      '<span class="stat"><b>' + s.gf + ":" + s.ga + "</b> 득실 (" + gd + ")</span>" +
+      '<span class="stat"><b>' + s.homePPG.toFixed(2) + "</b> 홈 평균승점</span>" +
+      '<span class="stat"><b>' + s.awayPPG.toFixed(2) + "</b> 원정 평균승점</span>" +
+    "</div>" +
+    '<div class="recent-form"><span class="recent-label">최근 5경기</span>';
+  for (let i = 0; i < s.recent5.length; i++) {
+    const r = s.recent5[i];
+    html += '<span class="rchip ' + r + '">' + r + "</span>";
   }
   html += "</div></div>";
   return html;
