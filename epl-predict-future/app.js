@@ -199,15 +199,13 @@ function oneTeamTactic(team) {
   let html = '<div class="tactic-team"><div class="tactic-team-name">' + team + "</div>";
 
   if (t && t.manager) {
+    // manager 필드에 "감독 이름 — 만드는 축구 스타일"이 함께 서술되어 있음
     html += '<div class="tactic-line"><b>감독</b> ' + t.manager + "</div>";
   } else {
     html += '<div class="tactic-line unknown"><b>감독</b> 26/27 시즌 확정 정보 없음 (확인 필요)</div>';
   }
   if (t && t.formation) {
-    html += '<div class="tactic-line"><b>전술</b> ' + t.formation +
-            (t.style ? " · " + t.style : "") + "</div>";
-  } else {
-    html += '<div class="tactic-line unknown"><b>전술</b> 확정 정보 없음</div>';
+    html += '<div class="tactic-line"><b>선호 포메이션</b> ' + t.formation + "</div>";
   }
 
   const weaknesses = weaknessOf(team, s);

@@ -616,7 +616,81 @@ const TEAM_STATS = {
   }
 };
 
-// 감독·전술 (외부 조사 데이터, 2026-07-25 기준 확인된 것만 채움)
-// null = 확정 정보를 찾지 못함 → 화면에 "확인 필요"로 정직하게 표시
-const TEAM_TACTICS = {};
+// 감독·전술 (외부 조사, 2026-07-25 기준 공식 구단·언론 소스로 교차 검증된 것만 채움)
+// manager: 감독 이름 뒤에 "이 감독이 만드는 축구 스타일"을 함께 서술
+// null = 공신력 있는 소스로 확인하지 못함 → 화면에 "확인 필요"로 정직하게 표시
+//   (헐 시티·크리스탈 팰리스·풀럼: 26/27 감독이 미정이거나 검증되지 않아 비워둠)
+const TEAM_TACTICS = {
+  "아스날": {
+    "manager": "미켈 아르테타 — 높은 점유율을 기반으로 측면을 침투하며 세트피스를 적극 활용하는 축구",
+    "formation": "4-3-3", "style": "높은 점유율과 측면 침투 위주", "confidence": "high"
+  },
+  "코번트리": {
+    "manager": "프랭크 램파드 — 조직적인 중원 장악과 규율 잡힌 수비 전환을 강조하는 축구",
+    "formation": "4-2-3-1", "style": "조직적이고 규율있는 중원 장악", "confidence": "high"
+  },
+  "헐 시티": { "manager": null, "formation": null, "style": null, "confidence": "low" },
+  "맨체스터 유나이티드": {
+    "manager": "마이클 캐릭 — 인내심 있는 빌드업과 중원 장악을 바탕으로 기회를 노리는 축구",
+    "formation": "4-2-3-1", "style": "중원 장악과 인내심 있는 포지셔닝", "confidence": "high"
+  },
+  "에버턴": {
+    "manager": "데이비드 모예스 — 탄탄한 조직력과 세트피스, 빠른 역습을 앞세우는 실용적인 축구",
+    "formation": "4-2-3-1", "style": "조직력과 세트피스 중심의 실용 축구", "confidence": "high"
+  },
+  "크리스탈 팰리스": { "manager": null, "formation": null, "style": null, "confidence": "low" },
+  "입스위치": {
+    "manager": "게리 오닐 — 상황에 따라 형태를 바꾸는 유연하고 실용적인 축구",
+    "formation": "3-4-2-1", "style": "유동적 형태의 실용주의", "confidence": "medium"
+  },
+  "선덜랜드": {
+    "manager": "레지 르 브리 — 측면 1대1 돌파와 빠른 역습 전환을 중시하는 축구",
+    "formation": "4-2-3-1", "style": "측면 1대1과 빠른 전환", "confidence": "high"
+  },
+  "노팅엄 포레스트": {
+    "manager": "올리버 글라스너 — 공격적이고 유동적인 대형으로 측면을 적극 활용하는 축구",
+    "formation": "3-4-2-1", "style": "공격적·유동적인 측면 공략", "confidence": "high"
+  },
+  "리즈": {
+    "manager": "다니엘 파르케 — 풀백을 활용한 점유율 장악과 측면 전개를 중시하는 축구",
+    "formation": "3-4-2-1", "style": "풀백 기반 점유율과 측면 활용", "confidence": "high"
+  },
+  "브렌트포드": {
+    "manager": "키스 앤드루스 — 직접적이고 빠른 측면 공략과 강한 압박을 강조하는 축구",
+    "formation": "4-2-3-1", "style": "직선적인 측면 공략과 압박", "confidence": "high"
+  },
+  "토트넘": {
+    "manager": "로베르토 데제르비 — 점유율을 지배하며 의도적으로 변칙을 섞는(controlled chaos) 축구",
+    "formation": "4-2-3-1", "style": "점유율 지배 + 변칙적 측면 공격", "confidence": "high"
+  },
+  "맨체스터 시티": {
+    "manager": "엔조 마레스카 — 기술적인 점유율 장악과 풀백의 중원 침투를 활용하는 포지셔널 축구",
+    "formation": "3-2-2-3", "style": "기술적 점유율과 풀백의 중원 침투", "confidence": "high"
+  },
+  "본머스": {
+    "manager": "마르코 로제 — 강한 전방 압박(게겐프레싱)과 빠른 수직 전개를 강조하는 축구",
+    "formation": "4-3-3", "style": "강한 전방 압박과 수직 플레이", "confidence": "high"
+  },
+  "브라이턴": {
+    "manager": "파비안 휘르첼러 — 유동적인 포지셔닝과 측면 압박을 활용하는 역동적인 축구",
+    "formation": "4-2-3-1", "style": "유동적 포지셔닝과 측면 압박", "confidence": "high"
+  },
+  "아스톤 빌라": {
+    "manager": "우나이 에메리 — 탄탄한 수비 구조를 바탕으로 측면을 노리는 실리적인 축구",
+    "formation": "4-2-3-1", "style": "수비 구조 + 측면 공략의 실리 축구", "confidence": "high"
+  },
+  "뉴캐슬": {
+    "manager": "에디 하우 — 조직적인 측면 공격과 빠른 전환을 앞세우는 축구",
+    "formation": "4-3-3", "style": "조직적 측면 공격과 빠른 전환", "confidence": "high"
+  },
+  "리버풀": {
+    "manager": "안도니 이라올라 — 강한 전방 압박(게겐프레싱)으로 빠르게 볼을 탈취해 측면을 공략하는 축구",
+    "formation": "4-2-3-1", "style": "강한 게겐프레싱과 측면 공략", "confidence": "high"
+  },
+  "풀럼": { "manager": null, "formation": null, "style": null, "confidence": "low" },
+  "첼시": {
+    "manager": "사비 알론소 — 후방 빌드업부터 통제된 점유율을 유지하는 포제셔널 축구",
+    "formation": "3-4-3", "style": "통제된 점유율 기반 포제셔널 플레이", "confidence": "high"
+  }
+};
 
