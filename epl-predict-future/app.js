@@ -58,7 +58,7 @@ function renderMatches() {
         '<button data-index="' + i + '" data-pick="draw">무승부</button>' +
         '<button data-index="' + i + '" data-pick="away">원정 승</button>' +
       "</div>" +
-      '<button class="form-toggle" data-index="' + i + '">▼ 최근 전적 보기</button>' +
+      '<button class="form-toggle" data-index="' + i + '">▼ 상대 전적 보기</button>' +
       '<div class="form-box hidden" data-form="' + i + '"></div>' +
       '<div class="model-box hidden" data-model="' + i + '"></div>';
     matchList.appendChild(card);
@@ -77,17 +77,17 @@ matchList.addEventListener("click", function (e) {
   const btn = e.target.closest("button");
   if (!btn) return;
 
-  // (a) 최근 전적 토글
+  // (a) 상대 전적(head-to-head) 토글
   if (btn.classList.contains("form-toggle")) {
     const i = Number(btn.dataset.index);
     const box = matchList.querySelector('[data-form="' + i + '"]');
     if (box.classList.contains("hidden")) {
-      if (box.innerHTML === "") box.innerHTML = buildFormHTML(FIXTURES[i]);
+      if (box.innerHTML === "") box.innerHTML = buildH2HHTML(FIXTURES[i]);
       box.classList.remove("hidden");
-      btn.textContent = "▲ 최근 전적 닫기";
+      btn.textContent = "▲ 상대 전적 닫기";
     } else {
       box.classList.add("hidden");
-      btn.textContent = "▼ 최근 전적 보기";
+      btn.textContent = "▼ 상대 전적 보기";
     }
     return;
   }
@@ -104,23 +104,22 @@ matchList.addEventListener("click", function (e) {
   }
 });
 
-// 최근 5경기 전적 HTML (두 팀)
-function buildFormHTML(fixture) {
-  return oneTeamForm(fixture.home) + oneTeamForm(fixture.away);
-}
-function oneTeamForm(team) {
-  const s = TEAM_STATS[team];
-  let html = '<div class="form-team"><div class="form-team-name">' + team +
-             " <span class=\"rank\">(25/26 " + s.pts + "점)</span></div>";
-  if (s.promoted || s.last5.length === 0) {
-    html += '<div class="form-none">승격팀 — 지난 시즌 EPL 전적 없음 (모델은 강등 3팀 평균으로 추정)</div></div>';
+// 두 팀 상대 전적(head-to-head) HTML — 25/26 시즌 맞대결
+function buildH2HHTML(fixture) {
+  const games = fixture.h2h;
+  let html = '<div class="form-team"><div class="form-team-name">' +
+             fixture.home + " vs " + fixture.away + " — 25/26 상대 전적</div>";
+  if (!games || games.length === 0) {
+    html += '<div class="form-none">승격팀 경기 — 지난 시즌 상대 전적 없음</div></div>';
     return html;
   }
   html += '<div class="form-games">';
-  for (let i = 0; i < s.last5.length; i++) {
-    const g = s.last5[i];
-    const vs = g.venue === "H" ? "vs" : "@";  // H=홈, A=원정(@)
-    html += '<span class="form-chip ' + g.res + '">' + vs + g.opp + " " + g.score +
+  for (let i = 0; i < games.length; i++) {
+    const g = games[i];
+    // 결과 색상: 이 경기의 홈팀 기준(홈승=초록, 원정승=빨강, 무=회색)
+    const cls = g.res === "홈승" ? "W" : (g.res === "원정승" ? "L" : "D");
+    html += '<span class="form-chip ' + cls + '">' + g.date + " " +
+            g.home + " " + g.score + " " + g.away +
             '<span class="r">' + g.res + "</span></span>";
   }
   html += "</div></div>";
