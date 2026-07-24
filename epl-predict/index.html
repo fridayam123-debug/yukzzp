@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1>⚽ EPL 승부예측 게임</h1>
-    <p>경기 결과를 예측하고 친구들과 점수를 겨뤄보세요!</p>
+    <p>2024-25 시즌 실제 경기 결과를 예측하고 친구들과 점수를 겨뤄보세요!</p>
   </header>
 
   <!-- 1. 이름 입력 -->
@@ -21,13 +21,21 @@
   <!-- 2. 경기 예측 (시작 전에는 숨김) -->
   <section id="game-section" class="hidden">
     <h2>경기 결과를 예측하세요 (적중 시 +3점)</h2>
+    <p id="progress" class="progress">0 / 20 경기 선택</p>
     <div id="match-list"></div>
     <button id="score-btn" disabled>채점하기</button>
   </section>
 
   <!-- 3. 결과 + 랭킹 (채점 전에는 숨김) -->
   <section id="result-section" class="hidden">
-    <h2>내 점수: <span id="my-score">0</span>점 / 30점</h2>
+    <div id="score-box">
+      <p class="score-line">내 점수 <strong id="my-score">0</strong> / <span id="max-score">60</span>점</p>
+      <p class="score-percent"><span id="my-percent">0</span>% 적중</p>
+    </div>
+
+    <h2>경기별 결과</h2>
+    <div id="result-detail"></div>
+
     <h2>🏆 랭킹</h2>
     <table id="ranking-table">
       <thead><tr><th>순위</th><th>이름</th><th>점수</th></tr></thead>
