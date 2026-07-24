@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPL 26/27 미래 승부예측 — 나 vs AI 모델</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>⚽ EPL 미래 승부예측</h1>
+    <p><strong>26/27 시즌 개막 라운드(8/21~24)</strong> — 아직 아무도 결과를 모르는 진짜 미래 경기입니다.<br>
+    25/26 시즌 전적으로 예측하는 <strong>AI 모델과 대결</strong>해보세요!</p>
+  </header>
+
+  <!-- 1. 이름 입력 -->
+  <section id="name-section">
+    <input id="name-input" type="text" placeholder="이름을 입력하세요" maxlength="10">
+    <button id="start-btn">예측 시작</button>
+  </section>
+
+  <!-- 2. 경기 예측 (시작 전에는 숨김) -->
+  <section id="game-section" class="hidden">
+    <h2>개막 라운드 10경기를 예측하세요</h2>
+    <p class="notice">내가 먼저 고르면 → 그 경기에 대한 <strong>모델의 확률</strong>이 공개됩니다. [최근 전적]을 눌러 참고하세요.</p>
+    <p id="progress" class="progress">0 / 10 경기 선택</p>
+    <div id="match-list"></div>
+    <button id="save-btn" disabled>예측 저장하기</button>
+  </section>
+
+  <!-- 3. 내 예측 vs 모델 예측 비교 (저장 후 표시) -->
+  <section id="compare-section" class="hidden">
+    <h2>📋 내 예측 vs AI 모델</h2>
+    <p class="notice">예측이 저장됐습니다. 경기가 끝나면(8월 말) 아래 <strong>결과 입력</strong>에 실제 스코어를 넣어 채점하세요.</p>
+    <div id="compare-list"></div>
+
+    <h2>📝 결과 입력 (경기 종료 후)</h2>
+    <div id="result-entry"></div>
+    <button id="grade-btn">채점하기 — 나 vs 모델</button>
+
+    <div id="final-box" class="hidden">
+      <h2>🏆 최종 결과</h2>
+      <table id="score-table">
+        <thead><tr><th>순위</th><th>이름</th><th>점수</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p id="verdict" class="verdict"></p>
+    </div>
+    <button id="reset-btn">새로 예측하기</button>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="model.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
