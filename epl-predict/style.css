@@ -47,6 +47,8 @@ button:disabled { background: #c5d0dc; cursor: not-allowed; }
 .match-date { font-size: 11px; color: #9aa7b5; text-align: center; margin-bottom: 6px; }
 .match-teams { font-size: 15px; font-weight: bold; margin-bottom: 12px; }
 .team-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+.team-name { flex: 1; }
+.rank { font-size: 12px; font-weight: normal; color: #7a5a9e; white-space: nowrap; }
 .vs { font-size: 11px; color: #9aa7b5; font-weight: normal; text-align: center; margin: 1px 0; }
 
 /* 홈/원정 배지 */

@@ -18,6 +18,11 @@ function labelOf(code) {
   return "무승부";
 }
 
+// 팀 순위 라벨 ("15위") — 표에 없으면 빈 문자열
+function rankLabel(team) {
+  return TEAM_RANK[team] ? TEAM_RANK[team] + "위" : "";
+}
+
 // 실제 경기 결과(home/draw/away) 계산
 function resultOf(match) {
   if (match.homeScore > match.awayScore) return "home";
@@ -49,9 +54,13 @@ function renderMatches() {
     card.innerHTML =
       '<div class="match-date">' + match.date + "</div>" +
       '<div class="match-teams">' +
-        '<div class="team-row"><span class="badge home-badge">홈</span>' + match.home + "</div>" +
+        '<div class="team-row"><span class="badge home-badge">홈</span>' +
+          '<span class="team-name">' + match.home + "</span>" +
+          '<span class="rank">' + rankLabel(match.home) + "</span></div>" +
         '<div class="vs">vs</div>' +
-        '<div class="team-row"><span class="badge away-badge">원정</span>' + match.away + "</div>" +
+        '<div class="team-row"><span class="badge away-badge">원정</span>' +
+          '<span class="team-name">' + match.away + "</span>" +
+          '<span class="rank">' + rankLabel(match.away) + "</span></div>" +
       "</div>" +
       '<div class="pick-buttons">' +
       '<button data-match="' + i + '" data-pick="home">홈 승</button>' +
