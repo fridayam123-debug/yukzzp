@@ -4,7 +4,9 @@
   --paper-card: #f2eee5;
   --navy: #232759;
   --navy-soft: #4b4f73;
-  --accent: #e88fb0;
+  --accent: #e88fb0;          /* 장식용(나비·반짝임·포커스 링) — 텍스트에 쓰지 말 것 */
+  --accent-text: #94405c;     /* 텍스트용 딥로즈 — 핑크 배경 대비 5.1:1 (WCAG AA) */
+  --muted-text: #6f646c;      /* 작은 보조 텍스트 — 종이/크림 배경 대비 4.9~5.3:1 */
   color-scheme: light;
 }
 
@@ -73,7 +75,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .hero__title {
@@ -104,7 +106,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   font-style: italic;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 /* ---------- Form card ---------- */
@@ -123,7 +125,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .form-card__title {
@@ -223,7 +225,7 @@ body {
   margin: 12px 0 0;
   font-size: 12px;
   line-height: 1.5;
-  color: #a99aa4;
+  color: var(--muted-text);
   text-align: center;
 }
 
@@ -244,7 +246,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .wall__title {
@@ -444,7 +446,7 @@ body {
 }
 
 .card__date {
-  color: #a99aa4;
+  color: var(--muted-text);
 }
 
 @keyframes card-in {
