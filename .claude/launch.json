@@ -7,6 +7,20 @@
       "runtimeArgs": ["run", "dev"],
       "port": 3000,
       "autoPort": false
+    },
+    {
+      "name": "vietnamese-app",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8420", "--directory", "vietnamese-app"],
+      "port": 8420,
+      "autoPort": false
+    },
+    {
+      "name": "rolling-paper",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8421", "--directory", "rolling-paper"],
+      "port": 8421,
+      "autoPort": false
     }
   ]
 }

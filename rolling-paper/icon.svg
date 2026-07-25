@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <rect width="192" height="192" fill="#F3EEE4" />
+  <rect x="8" y="8" width="176" height="176" fill="none" stroke="#111111" stroke-width="8" />
+  <text x="96" y="128" font-family="Pretendard, -apple-system, sans-serif" font-size="92" font-weight="700" fill="#111111" text-anchor="middle">전</text>
+</svg>

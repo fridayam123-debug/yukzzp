@@ -1,0 +1,19 @@
+{
+  "name": "전승기 강사님, 축하합니다!",
+  "short_name": "마음 한 장",
+  "description": "전승기 강사님께 응원과 감사의 마음을 전하는 롤링페이퍼",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F3EEE4",
+  "theme_color": "#F3EEE4",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

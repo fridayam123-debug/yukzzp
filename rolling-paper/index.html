@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>전승기 강사님, 축하합니다!</title>
+  <meta name="description" content="전승기 강사님께 응원과 감사의 마음을 전하는 롤링페이퍼" />
+  <meta name="theme-color" content="#F3EEE4" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="마음 한 장" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <svg class="hero__doodle hero__doodle--butterfly" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M24 24c-2-8-9-14-16-12-4 1-4 8 1 10 5 2 12-1 15-3 0 0-8 6-6 12 1 4 8 3 9-1 1-4-1-4-1-4" stroke="#e88fb0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M24 24c2-8 9-14 16-12 4 1 4 8-1 10-5 2-12-1-15-3 0 0 8 6 6 12-1 4-8 3-9-1-1-4 1-4 1-4" stroke="#e88fb0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="24" y1="18" x2="24" y2="30" stroke="#232759" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <svg class="hero__doodle hero__doodle--sparkle" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 4c1 6 3 9 12 12-9 3-11 6-12 12-1-6-3-9-12-12 9-3 11-6 12-12z" fill="#e88fb0"/>
+      </svg>
+      <p class="hero__label">CONGRATULATIONS</p>
+      <h1 class="hero__title">전승기 강사님,<br />축하합니다!</h1>
+      <p class="hero__subtitle">전승기를 만나면 전성기가 옵니다!!</p>
+      <p class="hero__hint">따뜻한 한마디를 남겨보세요</p>
+    </header>
+
+    <section class="form-card" aria-labelledby="form-title">
+      <p class="form-card__label">FROM. 마음을 전하는 사람</p>
+      <h2 class="form-card__title" id="form-title">응원 메시지 남기기</h2>
+
+      <form id="message-form" novalidate>
+        <div class="field">
+          <div class="field__row">
+            <label for="name">이름</label>
+            <span class="field__hint">선택 · 비우면 익명</span>
+          </div>
+          <input type="text" id="name" name="name" placeholder="익명" maxlength="20" />
+        </div>
+
+        <div class="field">
+          <div class="field__row">
+            <label for="message">응원 한마디</label>
+            <span class="field__hint"><span id="char-count">0</span>/300</span>
+          </div>
+          <textarea id="message" name="message" placeholder="따뜻한 한마디를 남겨주세요..." maxlength="300" rows="4" required></textarea>
+          <p class="field__error" id="message-error" role="alert" hidden>메시지를 입력해주세요.</p>
+        </div>
+
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+
+        <button type="submit" id="submit-btn">등록하기</button>
+      </form>
+    </section>
+
+    <section class="wall" aria-labelledby="wall-title">
+      <div class="wall__header">
+        <div>
+          <p class="wall__label">TO. 전승기 강사님께</p>
+          <h2 class="wall__title" id="wall-title">도착한 마음들</h2>
+        </div>
+        <span class="wall__count" id="wall-count">0개의 마음</span>
+      </div>
+      <div class="wall__grid" id="wall-grid"></div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
