@@ -287,7 +287,7 @@ body {
 .card {
   --rot: -1.4deg;
   animation: card-in 0.35s ease both;
-  filter: drop-shadow(0 10px 16px rgba(35, 39, 89, 0.2));
+  filter: drop-shadow(0 3px 4px rgba(35, 39, 89, 0.1)) drop-shadow(0 16px 14px rgba(88, 62, 102, 0.3));
   --torn: polygon(
     0.0% 1.8%, 6.2% 2.1%, 12.5% 2.1%, 18.8% 3.3%, 25.0% 1.7%, 31.2% 1.0%, 37.5% 1.1%,
     43.8% 1.6%, 50.0% 2.9%, 56.2% 4.1%, 62.5% 1.0%, 68.8% 1.0%, 75.0% 1.0%, 81.2% 4.0%,
@@ -324,7 +324,7 @@ body {
 .card__inner {
   position: relative;
   clip-path: var(--torn);
-  background-color: #f9f5ec; /* 찢긴 단면의 섬유색 (본체보다 살짝만 밝게) */
+  background-color: #f2ede2; /* 본체 질감과 같은 톤 — 테두리 색 차이 없음 */
   padding: 25px 21px 17px;
   height: 100%;
 }
