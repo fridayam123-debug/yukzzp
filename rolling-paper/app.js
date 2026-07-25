@@ -76,7 +76,7 @@ async function handleDelete(id) {
   if (!window.confirm("이 메시지를 삭제할까요? 되돌릴 수 없습니다.")) return;
 
   const { error } = await supabase
-    .from("messages")
+    .from("rolling_messages")
     .delete()
     .eq("id", id)
     .eq("secret", secret);
@@ -205,7 +205,7 @@ async function loadMessages() {
   renderSkeletons();
 
   const { data, error } = await supabase
-    .from("messages")
+    .from("rolling_messages")
     .select("id, message, created_at")
     .order("created_at", { ascending: true });
 
@@ -268,7 +268,7 @@ form.addEventListener("submit", async (e) => {
   const secret = crypto.randomUUID();
 
   const { data, error } = await supabase
-    .from("messages")
+    .from("rolling_messages")
     .insert({ message, secret })
     .select("id, message, created_at, secret")
     .single();
