@@ -92,6 +92,7 @@ async function handleDelete(id) {
 
   const remaining = wallGrid.querySelectorAll(".card:not([data-blank])").length;
   updateCapacityState(remaining);
+  renumberCards();
   syncBlankPapers();
 }
 
@@ -110,11 +111,21 @@ function renderCard(msg, index) {
       ${deleteBtn}
       <p class="card__message">${escapeHtml(msg.message)}</p>
       <div class="card__meta">
+        <span class="card__order">${index + 1}번째 마음</span>
         <span class="card__date">${formatDate(msg.created_at)}</span>
       </div>
     </div>
   `;
   return card;
+}
+
+// 삭제 등으로 순번이 비면 1번부터 다시 매김
+function renumberCards() {
+  wallGrid.querySelectorAll(".card:not([data-blank])").forEach((card, i) => {
+    card.classList.toggle("card--alt", i % 2 === 1);
+    const order = card.querySelector(".card__order");
+    if (order) order.textContent = `${i + 1}번째 마음`;
+  });
 }
 
 function renderSkeletons(count = 3) {
@@ -172,9 +183,15 @@ function renderMessages(messages) {
   syncBlankPapers();
 }
 
-function prependMessage(msg, currentTotal) {
-  const card = renderCard(msg, 0);
-  wallGrid.prepend(card);
+// 새 메시지는 목록 맨 아래(마지막 순번)에 추가 — 1번부터 아래로 내려가는 등록순 유지
+function appendMessage(msg, currentTotal) {
+  const card = renderCard(msg, currentTotal);
+  const firstBlank = wallGrid.querySelector(".card[data-blank]");
+  if (firstBlank) {
+    wallGrid.insertBefore(card, firstBlank);
+  } else {
+    wallGrid.appendChild(card);
+  }
   syncBlankPapers();
   updateCapacityState(currentTotal + 1);
 }
@@ -190,7 +207,7 @@ async function loadMessages() {
   const { data, error } = await supabase
     .from("messages")
     .select("id, message, created_at")
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: true });
 
   if (error) {
     renderEmptyState("메시지를 불러오지 못했습니다. 잠시 후 새로고침해주세요.");
@@ -270,7 +287,7 @@ form.addEventListener("submit", async (e) => {
 
   submitBtn.textContent = originalLabel;
   rememberMyMessage(data.id, data.secret);
-  prependMessage(data, currentTotal);
+  appendMessage(data, currentTotal);
 
   form.reset();
   charCount.textContent = "0";

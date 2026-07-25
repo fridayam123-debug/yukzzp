@@ -395,10 +395,15 @@ body {
 .card__meta {
   display: flex;
   align-items: baseline;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-top: 12px;
   border-top: 1px dashed #d9c3cf;
   font-size: 12px;
+}
+
+.card__order {
+  font-weight: 700;
+  color: var(--navy);
 }
 
 .card__date {
