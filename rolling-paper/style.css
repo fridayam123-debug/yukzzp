@@ -289,9 +289,8 @@ body {
   --rot: -1.4deg;
   animation: card-in 0.35s ease both;
   filter:
-    drop-shadow(3px 4px 1px rgba(40, 22, 44, 0.42))
-    drop-shadow(0 5px 3px rgba(60, 40, 70, 0.4))
-    drop-shadow(0 12px 9px rgba(88, 62, 102, 0.22));
+    drop-shadow(0 3px 2px rgba(60, 40, 72, 0.38))
+    drop-shadow(1px 7px 6px rgba(78, 52, 92, 0.22));
   /* 섬유질 찢김 가장자리: 폴리곤(큰 찢김 형태)을 feTurbulence+feDisplacementMap으로
      한 번 더 미세하게 흔들어 종이 결처럼 불규칙한 경계를 만듦 (clip-path 대신 mask 사용 —
      displacement가 경계 바깥으로도 살짝 삐져나올 수 있어 더 섬세하게 보임) */
@@ -356,8 +355,8 @@ body {
   clip-path: var(--torn);
   background-color: var(--paper-card);
   background-image:
-    linear-gradient(to right, transparent 84%, rgba(35, 24, 18, 0.42) 98%, rgba(35, 24, 18, 0.5) 100%),
-    linear-gradient(to bottom, transparent 85%, rgba(35, 24, 18, 0.34) 98%, rgba(35, 24, 18, 0.4) 100%),
+    linear-gradient(to right, transparent 88%, rgba(60, 45, 32, 0.10) 97%, rgba(60, 45, 32, 0.16) 100%),
+    linear-gradient(to bottom, transparent 88%, rgba(60, 45, 32, 0.09) 97%, rgba(60, 45, 32, 0.14) 100%),
     radial-gradient(130% 130% at 30% 20%, transparent 60%, rgba(112, 84, 46, 0.035) 100%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.09'/%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='2' seed='11' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)' opacity='0.04'/%3E%3C/svg%3E"),
@@ -368,8 +367,8 @@ body {
 
 .card--alt .card__inner::before {
   background-image:
-    linear-gradient(to right, transparent 84%, rgba(35, 24, 18, 0.42) 98%, rgba(35, 24, 18, 0.5) 100%),
-    linear-gradient(to bottom, transparent 85%, rgba(35, 24, 18, 0.34) 98%, rgba(35, 24, 18, 0.4) 100%),
+    linear-gradient(to right, transparent 88%, rgba(60, 45, 32, 0.10) 97%, rgba(60, 45, 32, 0.16) 100%),
+    linear-gradient(to bottom, transparent 88%, rgba(60, 45, 32, 0.09) 97%, rgba(60, 45, 32, 0.14) 100%),
     radial-gradient(130% 130% at 70% 25%, transparent 60%, rgba(112, 84, 46, 0.035) 100%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.09'/%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='2' seed='31' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)' opacity='0.04'/%3E%3C/svg%3E"),
