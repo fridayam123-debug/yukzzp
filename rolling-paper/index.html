@@ -12,7 +12,9 @@
   <link rel="apple-touch-icon" href="icon.svg" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <!-- dynamic-subset: unicode-range로 필요한 한글 글리프 조각만 내려받음 (static 대비 초기 로드 대폭 감소) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
