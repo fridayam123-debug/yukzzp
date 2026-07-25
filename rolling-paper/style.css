@@ -292,6 +292,16 @@ body {
     drop-shadow(2px 3px 0px rgba(40, 22, 44, 0.38))
     drop-shadow(0 3px 4px rgba(35, 39, 89, 0.1))
     drop-shadow(0 16px 14px rgba(88, 62, 102, 0.3));
+  /* 섬유질 찢김 가장자리: 폴리곤(큰 찢김 형태)을 feTurbulence+feDisplacementMap으로
+     한 번 더 미세하게 흔들어 종이 결처럼 불규칙한 경계를 만듦 (clip-path 대신 mask 사용 —
+     displacement가 경계 바깥으로도 살짝 삐져나올 수 있어 더 섬세하게 보임) */
+  --fiber: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cfilter id='rf' x='-12%25' y='-12%25' width='124%25' height='124%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.06 0.16' numOctaves='2' seed='41' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='3.4' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cpolygon points='0.0,1.8 6.2,2.1 12.5,2.1 18.8,3.3 25.0,1.7 31.2,1.0 37.5,1.1 43.8,1.6 50.0,2.9 56.2,4.1 62.5,1.0 68.8,1.0 75.0,1.0 81.2,4.0 87.5,2.9 93.8,2.0 100.0,2.1 99.1,12.5 97.9,25.0 98.9,37.5 99.4,50.0 99.5,62.5 98.6,75.0 99.2,87.5 98.2,100.0 93.8,98.8 87.5,98.5 81.2,98.5 75.0,99.1 68.8,99.2 62.5,98.0 56.2,96.1 50.0,98.4 43.8,97.3 37.5,95.9 31.2,96.2 25.0,97.9 18.8,98.7 12.5,98.1 6.2,96.2 0.0,98.0 2.1,87.5 1.6,75.0 1.0,62.5 1.0,50.0 0.6,37.5 0.5,25.0 1.4,12.5' fill='white' filter='url(%23rf)'/%3E%3C/svg%3E");
+  mask-image: var(--fiber);
+  -webkit-mask-image: var(--fiber);
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
   --torn: polygon(
     0.0% 1.8%, 6.2% 2.1%, 12.5% 2.1%, 18.8% 3.3%, 25.0% 1.7%, 31.2% 1.0%, 37.5% 1.1%,
     43.8% 1.6%, 50.0% 2.9%, 56.2% 4.1%, 62.5% 1.0%, 68.8% 1.0%, 75.0% 1.0%, 81.2% 4.0%,
@@ -307,6 +317,7 @@ body {
 
 .card--alt {
   --rot: 1.2deg;
+  --fiber: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cfilter id='rf2' x='-12%25' y='-12%25' width='124%25' height='124%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.06 0.16' numOctaves='2' seed='53' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='3.4' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cpolygon points='0.0,1.3 6.2,1.2 12.5,1.3 18.8,2.2 25.0,3.3 31.2,3.2 37.5,1.3 43.8,1.4 50.0,1.4 56.2,3.3 62.5,1.9 68.8,1.1 75.0,1.2 81.2,1.1 87.5,1.9 93.8,1.9 100.0,1.6 99.3,12.5 99.1,25.0 97.9,37.5 99.5,50.0 98.4,62.5 98.4,75.0 99.1,87.5 98.9,100.0 93.8,98.8 87.5,98.2 81.2,98.2 75.0,98.9 68.8,95.8 62.5,95.9 56.2,99.0 50.0,95.9 43.8,98.0 37.5,98.1 31.2,99.2 25.0,98.0 18.8,98.5 12.5,97.1 6.2,98.9 0.0,97.1 0.5,87.5 1.4,75.0 1.9,62.5 0.5,50.0 1.0,37.5 1.6,25.0 0.9,12.5' fill='white' filter='url(%23rf2)'/%3E%3C/svg%3E");
   --torn: polygon(
     0.0% 1.3%, 6.2% 1.2%, 12.5% 1.3%, 18.8% 2.2%, 25.0% 3.3%, 31.2% 3.2%, 37.5% 1.3%,
     43.8% 1.4%, 50.0% 1.4%, 56.2% 3.3%, 62.5% 1.9%, 68.8% 1.1%, 75.0% 1.2%, 81.2% 1.1%,
