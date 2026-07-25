@@ -2,6 +2,7 @@
 // Project Settings → API → Project URL / anon public key
 const SUPABASE_URL = "YOUR_SUPABASE_URL";
 const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const MAX_MESSAGES = 60;
 
 const isConfigured =
   SUPABASE_URL !== "YOUR_SUPABASE_URL" && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY";
@@ -11,7 +12,6 @@ const supabase = isConfigured
   : null;
 
 const form = document.getElementById("message-form");
-const nameInput = document.getElementById("name");
 const messageInput = document.getElementById("message");
 const charCount = document.getElementById("char-count");
 const messageError = document.getElementById("message-error");
@@ -34,12 +34,10 @@ function escapeHtml(str) {
 function renderCard(msg, index) {
   const card = document.createElement("article");
   card.className = "card" + (index % 2 === 1 ? " card--alt" : "");
-  const displayName = msg.name && msg.name.trim() ? msg.name.trim() : "익명";
   card.innerHTML = `
     <div class="card__inner">
       <p class="card__message">${escapeHtml(msg.message)}</p>
       <div class="card__meta">
-        <span class="card__from">from. ${escapeHtml(displayName)}</span>
         <span class="card__date">${formatDate(msg.created_at)}</span>
       </div>
     </div>
@@ -60,8 +58,17 @@ function renderEmptyState(text) {
   wallGrid.innerHTML = `<div class="empty-state">${text}</div>`;
 }
 
+function updateCapacityState(total) {
+  wallCount.textContent = `${total}개의 마음`;
+  if (total >= MAX_MESSAGES) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "정원이 가득 찼습니다";
+    formError.hidden = true;
+  }
+}
+
 function renderMessages(messages) {
-  wallCount.textContent = `${messages.length}개의 마음`;
+  updateCapacityState(messages.length);
   if (messages.length === 0) {
     renderEmptyState("첫 메시지를 남겨보세요");
     return;
@@ -76,7 +83,7 @@ function prependMessage(msg, currentTotal) {
   }
   const card = renderCard(msg, 0);
   wallGrid.prepend(card);
-  wallCount.textContent = `${currentTotal + 1}개의 마음`;
+  updateCapacityState(currentTotal + 1);
 }
 
 async function loadMessages() {
@@ -89,7 +96,7 @@ async function loadMessages() {
 
   const { data, error } = await supabase
     .from("messages")
-    .select("id, name, message, created_at")
+    .select("id, message, created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -125,27 +132,34 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  const name = nameInput.value.trim();
+  const currentTotal = wallGrid.querySelectorAll(".card").length;
+  if (currentTotal >= MAX_MESSAGES) {
+    formError.textContent = "정원(60개)이 가득 차 더 이상 등록할 수 없습니다.";
+    formError.hidden = false;
+    return;
+  }
+
   const originalLabel = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = "등록 중...";
 
   const { data, error } = await supabase
     .from("messages")
-    .insert({ name: name || null, message })
-    .select("id, name, message, created_at")
+    .insert({ message })
+    .select("id, message, created_at")
     .single();
 
-  submitBtn.disabled = false;
-  submitBtn.textContent = originalLabel;
-
   if (error) {
-    formError.textContent = "메시지 등록에 실패했습니다. 다시 시도해주세요.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalLabel;
+    formError.textContent = error.message && error.message.includes("message limit")
+      ? "정원(60개)이 가득 차 더 이상 등록할 수 없습니다."
+      : "메시지 등록에 실패했습니다. 다시 시도해주세요.";
     formError.hidden = false;
     return;
   }
 
-  const currentTotal = wallGrid.querySelectorAll(".card").length;
+  submitBtn.textContent = originalLabel;
   prependMessage(data, currentTotal);
 
   form.reset();

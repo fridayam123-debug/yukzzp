@@ -273,28 +273,28 @@ body {
   animation: card-in 0.35s ease both;
   filter: drop-shadow(0 10px 16px rgba(35, 39, 89, 0.2));
   --torn: polygon(
-    2% 6%, 10% 1%, 18% 5%, 26% 0%, 34% 4%, 42% 1%, 50% 5%, 58% 0%, 66% 4%,
-    74% 1%, 82% 5%, 90% 0%, 98% 4%,
-    100% 12%, 97% 20%, 100% 28%, 98% 36%, 100% 44%, 97% 52%, 100% 60%,
-    98% 68%, 100% 76%, 97% 84%, 100% 92%, 96% 98%,
-    88% 100%, 80% 96%, 72% 100%, 64% 97%, 56% 100%, 48% 96%, 40% 100%,
-    32% 97%, 24% 100%, 16% 96%, 8% 100%, 2% 97%,
-    0% 90%, 3% 82%, 0% 74%, 2% 66%, 0% 58%, 3% 50%, 0% 42%, 2% 34%,
-    0% 26%, 3% 18%, 0% 10%, 2% 6%
+    0.0% 1.0%, 7.1% 0.8%, 14.3% 1.1%, 21.4% 2.7%, 28.6% 1.4%, 35.7% 2.3%, 42.9% 3.3%, 50.0% 0.1%,
+    57.1% 1.7%, 64.3% 1.1%, 71.4% 1.8%, 78.6% 0.1%, 85.7% 2.2%, 92.9% 2.6%, 100.0% 1.5%,
+    98.8% 7.1%, 98.8% 14.3%, 99.5% 21.4%, 98.2% 28.6%, 98.7% 35.7%, 99.6% 42.9%, 99.9% 50.0%,
+    99.3% 57.1%, 99.3% 64.3%, 98.5% 71.4%, 97.8% 78.6%, 99.2% 85.7%, 99.3% 92.9%, 97.1% 100.0%,
+    92.9% 99.5%, 85.7% 97.6%, 78.6% 98.6%, 71.4% 97.8%, 64.3% 98.1%, 57.1% 99.7%, 50.0% 99.2%,
+    42.9% 96.9%, 35.7% 97.0%, 28.6% 97.4%, 21.4% 99.5%, 14.3% 98.6%, 7.1% 98.4%, 0.0% 99.3%,
+    1.2% 92.9%, 3.6% 85.7%, 0.5% 78.6%, 0.6% 71.4%, 0.1% 64.3%, 2.8% 57.1%, 1.1% 50.0%,
+    0.8% 42.9%, 0.9% 35.7%, 1.6% 28.6%, 2.1% 21.4%, 1.5% 14.3%, 0.3% 7.1%
   );
 }
 
 .card--alt {
   --rot: 1.2deg;
   --torn: polygon(
-    1% 4%, 9% 0%, 17% 4%, 25% 1%, 33% 5%, 41% 0%, 49% 4%, 57% 1%, 65% 5%,
-    73% 0%, 81% 4%, 89% 1%, 97% 5%,
-    100% 14%, 98% 22%, 100% 30%, 97% 38%, 100% 46%, 98% 54%, 100% 62%,
-    97% 70%, 100% 78%, 98% 86%, 100% 94%, 95% 100%,
-    87% 97%, 79% 100%, 71% 96%, 63% 100%, 55% 97%, 47% 100%, 39% 96%,
-    31% 100%, 23% 97%, 15% 100%, 7% 96%, 0% 99%,
-    2% 92%, 0% 84%, 3% 76%, 0% 68%, 2% 60%, 0% 52%, 3% 44%, 0% 36%,
-    2% 28%, 0% 20%, 3% 12%, 1% 4%
+    0.0% 0.0%, 7.1% 0.4%, 14.3% 1.2%, 21.4% 0.2%, 28.6% 0.1%, 35.7% 0.9%, 42.9% 2.2%, 50.0% 1.0%,
+    57.1% 1.1%, 64.3% 0.0%, 71.4% 1.3%, 78.6% 0.3%, 85.7% 0.6%, 92.9% 2.0%, 100.0% 1.1%,
+    98.7% 7.1%, 98.2% 14.3%, 99.0% 21.4%, 98.9% 28.6%, 99.0% 35.7%, 99.9% 42.9%, 99.5% 50.0%,
+    97.8% 57.1%, 97.7% 64.3%, 99.3% 71.4%, 99.6% 78.6%, 98.3% 85.7%, 98.9% 92.9%, 96.9% 100.0%,
+    92.9% 97.5%, 85.7% 98.8%, 78.6% 98.8%, 71.4% 98.6%, 64.3% 99.9%, 57.1% 99.5%, 50.0% 98.3%,
+    42.9% 99.4%, 35.7% 99.3%, 28.6% 99.2%, 21.4% 99.6%, 14.3% 99.5%, 7.1% 98.4%, 0.0% 99.6%,
+    0.9% 92.9%, 1.9% 85.7%, 2.9% 78.6%, 0.8% 71.4%, 2.5% 64.3%, 1.0% 57.1%, 1.5% 50.0%,
+    3.1% 42.9%, 1.0% 35.7%, 1.2% 28.6%, 2.6% 21.4%, 1.7% 14.3%, 0.5% 7.1%
   );
 }
 
@@ -302,12 +302,12 @@ body {
   position: relative;
   background-color: var(--paper);
   background-image:
-    linear-gradient(97deg, transparent 22%, rgba(35, 27, 20, 0.07) 23%, transparent 25%),
-    linear-gradient(34deg, transparent 44%, rgba(255, 255, 255, 0.65) 45%, transparent 47%),
-    linear-gradient(158deg, transparent 63%, rgba(35, 27, 20, 0.06) 64%, transparent 66%),
-    linear-gradient(-12deg, transparent 78%, rgba(255, 255, 255, 0.5) 79%, transparent 81%),
-    radial-gradient(130% 130% at 30% 20%, transparent 55%, rgba(35, 39, 89, 0.1) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    radial-gradient(60% 45% at 25% 18%, rgba(35, 27, 20, 0.05) 0%, transparent 70%),
+    radial-gradient(55% 40% at 78% 30%, rgba(255, 255, 255, 0.55) 0%, transparent 72%),
+    radial-gradient(60% 45% at 65% 82%, rgba(35, 27, 20, 0.045) 0%, transparent 72%),
+    radial-gradient(50% 40% at 15% 78%, rgba(255, 255, 255, 0.45) 0%, transparent 70%),
+    radial-gradient(130% 130% at 30% 20%, transparent 55%, rgba(35, 39, 89, 0.08) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.28'/%3E%3C/svg%3E");
   background-blend-mode: multiply, screen, multiply, screen, multiply, multiply;
   clip-path: var(--torn);
   padding: 25px 21px 17px;
@@ -316,12 +316,12 @@ body {
 
 .card--alt .card__inner {
   background-image:
-    linear-gradient(-105deg, transparent 20%, rgba(35, 27, 20, 0.07) 21%, transparent 23%),
-    linear-gradient(-38deg, transparent 40%, rgba(255, 255, 255, 0.6) 41%, transparent 43%),
-    linear-gradient(150deg, transparent 68%, rgba(35, 27, 20, 0.06) 69%, transparent 71%),
-    linear-gradient(15deg, transparent 82%, rgba(255, 255, 255, 0.5) 83%, transparent 85%),
-    radial-gradient(130% 130% at 70% 25%, transparent 55%, rgba(35, 39, 89, 0.1) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    radial-gradient(55% 42% at 75% 20%, rgba(35, 27, 20, 0.05) 0%, transparent 70%),
+    radial-gradient(60% 45% at 22% 32%, rgba(255, 255, 255, 0.55) 0%, transparent 72%),
+    radial-gradient(50% 40% at 30% 85%, rgba(35, 27, 20, 0.045) 0%, transparent 70%),
+    radial-gradient(55% 42% at 85% 75%, rgba(255, 255, 255, 0.45) 0%, transparent 72%),
+    radial-gradient(130% 130% at 70% 25%, transparent 55%, rgba(35, 39, 89, 0.08) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.28'/%3E%3C/svg%3E");
 }
 
 .card__message {
@@ -337,15 +337,10 @@ body {
 .card__meta {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding-top: 12px;
   border-top: 1px dashed #d9c3cf;
   font-size: 12px;
-}
-
-.card__from {
-  font-weight: 700;
-  color: var(--navy);
 }
 
 .card__date {
