@@ -17,7 +17,7 @@ const BANNED_WORDS = [
 const isConfigured =
   SUPABASE_URL !== "YOUR_SUPABASE_URL" && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY";
 
-const supabase = isConfigured
+const db = isConfigured
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
   : null;
 
@@ -72,10 +72,10 @@ function findMySecret(id) {
 
 async function handleDelete(id) {
   const secret = findMySecret(id);
-  if (!secret || !supabase) return;
+  if (!secret || !db) return;
   if (!window.confirm("이 메시지를 삭제할까요? 되돌릴 수 없습니다.")) return;
 
-  const { error } = await supabase
+  const { error } = await db
     .from("rolling_messages")
     .delete()
     .eq("id", id)
@@ -197,14 +197,14 @@ function appendMessage(msg, currentTotal) {
 }
 
 async function loadMessages() {
-  if (!supabase) {
+  if (!db) {
     renderEmptyState("Supabase 연결 정보가 설정되지 않았습니다. app.js 상단의 SUPABASE_URL / SUPABASE_ANON_KEY를 입력해주세요.");
     return;
   }
 
   renderSkeletons();
 
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from("rolling_messages")
     .select("id, message, created_at")
     .order("created_at", { ascending: true });
@@ -248,7 +248,7 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  if (!supabase) {
+  if (!db) {
     formError.textContent = "Supabase 연결 정보가 설정되지 않아 등록할 수 없습니다.";
     formError.hidden = false;
     return;
@@ -267,7 +267,7 @@ form.addEventListener("submit", async (e) => {
 
   const secret = crypto.randomUUID();
 
-  const { data, error } = await supabase
+  const { data, error } = await db
     .from("rolling_messages")
     .insert({ message, secret })
     .select("id, message, created_at, secret")
