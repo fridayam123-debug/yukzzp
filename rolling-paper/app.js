@@ -1,7 +1,7 @@
 // Supabase 프로젝트 생성 후 아래 두 값만 교체하면 됩니다.
 // Project Settings → API → Project URL / anon public key
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://trqpmrhbctaxtgukygrl.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_l2ofsOJdGUR6IWyg1pH9nQ_6GOHNUl5";
 const MAX_MESSAGES = 60;
 const MIN_PAPERS = 4; // 첫 화면에 항상 보여줄 최소 페이퍼 수 (빈 종이 포함)
 const MY_MESSAGES_KEY = "rolling-paper:my-messages";
