@@ -58,6 +58,17 @@ function renderEmptyState(text) {
   wallGrid.innerHTML = `<div class="empty-state">${text}</div>`;
 }
 
+function renderBlankPapers(count = 4) {
+  wallGrid.innerHTML = "";
+  for (let i = 0; i < count; i++) {
+    const card = document.createElement("article");
+    card.dataset.blank = "true";
+    card.className = "card card--blank" + (i % 2 === 1 ? " card--alt" : "");
+    card.innerHTML = `<div class="card__inner"></div>`;
+    wallGrid.appendChild(card);
+  }
+}
+
 function updateCapacityState(total) {
   wallCount.textContent = `${total}개의 마음`;
   if (total >= MAX_MESSAGES) {
@@ -70,7 +81,7 @@ function updateCapacityState(total) {
 function renderMessages(messages) {
   updateCapacityState(messages.length);
   if (messages.length === 0) {
-    renderEmptyState("첫 메시지를 남겨보세요");
+    renderBlankPapers(4);
     return;
   }
   wallGrid.innerHTML = "";
@@ -132,7 +143,7 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  const currentTotal = wallGrid.querySelectorAll(".card").length;
+  const currentTotal = wallGrid.querySelectorAll(".card:not([data-blank])").length;
   if (currentTotal >= MAX_MESSAGES) {
     formError.textContent = "정원(60개)이 가득 차 더 이상 등록할 수 없습니다.";
     formError.hidden = false;
