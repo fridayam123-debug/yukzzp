@@ -21,7 +21,7 @@ create policy "Anyone can read messages"
 drop policy if exists "Anyone can insert messages" on messages;
 create policy "Anyone can insert messages"
   on messages for insert
-  with check (char_length(message) > 0 and char_length(message) <= 300);
+  with check (char_length(message) > 0 and char_length(message) <= 200);
 
 -- 본인이 등록할 때 받은 secret과 일치할 때만 삭제 가능
 -- (secret은 select에 포함하지 않으므로 작성자 본인 외에는 알 수 없음.
