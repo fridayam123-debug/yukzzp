@@ -218,6 +218,14 @@ body {
   opacity: 0.55;
 }
 
+.form-card__notice {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #a99aa4;
+  text-align: center;
+}
+
 /* ---------- Wall ---------- */
 
 .wall__header {
@@ -341,6 +349,35 @@ body {
   opacity: 0.9;
 }
 
+.card__delete {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(35, 39, 89, 0.08);
+  color: var(--navy-soft);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.card__delete:hover {
+  background: var(--navy);
+  color: var(--paper);
+}
+
+.card__delete:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
 .card__message {
   margin: 0 0 20px;
   font-size: 15px;
@@ -349,6 +386,10 @@ body {
   color: var(--navy-soft);
   word-break: break-word;
   white-space: pre-wrap;
+}
+
+.card__inner:has(.card__delete) .card__message {
+  padding-right: 26px;
 }
 
 .card__meta {

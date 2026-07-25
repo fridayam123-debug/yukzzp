@@ -3,6 +3,15 @@
 const SUPABASE_URL = "YOUR_SUPABASE_URL";
 const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
 const MAX_MESSAGES = 60;
+const MY_MESSAGES_KEY = "rolling-paper:my-messages";
+
+// 서버(supabase.sql)에도 같은 목록으로 필터가 걸려있습니다.
+// 여기서는 등록 전에 미리 안내하기 위한 1차 체크입니다.
+const BANNED_WORDS = [
+  "씨발", "씨팔", "시발", "ㅅㅂ", "개새끼", "개새기", "개새키",
+  "병신", "ㅂㅅ", "지랄", "미친놈", "미친년", "좆", "존나", "존내",
+  "걸레", "창녀", "보지", "자지", "씹", "꺼져", "죽어", "개년", "개놈",
+];
 
 const isConfigured =
   SUPABASE_URL !== "YOUR_SUPABASE_URL" && SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY";
@@ -31,11 +40,75 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function containsBannedWord(text) {
+  const normalized = text.replace(/\s/g, "").toLowerCase();
+  return BANNED_WORDS.some((w) => normalized.includes(w));
+}
+
+function getMyMessages() {
+  try {
+    return JSON.parse(localStorage.getItem(MY_MESSAGES_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function rememberMyMessage(id, secret) {
+  const mine = getMyMessages();
+  mine.push({ id, secret });
+  localStorage.setItem(MY_MESSAGES_KEY, JSON.stringify(mine));
+}
+
+function forgetMyMessage(id) {
+  const mine = getMyMessages().filter((m) => m.id !== id);
+  localStorage.setItem(MY_MESSAGES_KEY, JSON.stringify(mine));
+}
+
+function findMySecret(id) {
+  const found = getMyMessages().find((m) => m.id === id);
+  return found ? found.secret : null;
+}
+
+async function handleDelete(id) {
+  const secret = findMySecret(id);
+  if (!secret || !supabase) return;
+  if (!window.confirm("이 메시지를 삭제할까요? 되돌릴 수 없습니다.")) return;
+
+  const { error } = await supabase
+    .from("messages")
+    .delete()
+    .eq("id", id)
+    .eq("secret", secret);
+
+  if (error) {
+    window.alert("삭제에 실패했습니다. 다시 시도해주세요.");
+    return;
+  }
+
+  forgetMyMessage(id);
+  const card = wallGrid.querySelector(`[data-id="${id}"]`);
+  if (card) card.remove();
+
+  const remaining = wallGrid.querySelectorAll(".card:not([data-blank])").length;
+  updateCapacityState(remaining);
+  if (remaining === 0) {
+    renderBlankPapers(4);
+  }
+}
+
 function renderCard(msg, index) {
   const card = document.createElement("article");
   card.className = "card" + (index % 2 === 1 ? " card--alt" : "");
+  card.dataset.id = msg.id;
+
+  const isMine = !!findMySecret(msg.id);
+  const deleteBtn = isMine
+    ? `<button type="button" class="card__delete" aria-label="메시지 삭제" data-delete-id="${msg.id}">×</button>`
+    : "";
+
   card.innerHTML = `
     <div class="card__inner">
+      ${deleteBtn}
       <p class="card__message">${escapeHtml(msg.message)}</p>
       <div class="card__meta">
         <span class="card__date">${formatDate(msg.created_at)}</span>
@@ -75,6 +148,9 @@ function updateCapacityState(total) {
     submitBtn.disabled = true;
     submitBtn.textContent = "정원이 가득 찼습니다";
     formError.hidden = true;
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "등록하기";
   }
 }
 
@@ -118,6 +194,12 @@ async function loadMessages() {
   renderMessages(data);
 }
 
+wallGrid.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-delete-id]");
+  if (!btn) return;
+  handleDelete(btn.dataset.deleteId);
+});
+
 messageInput.addEventListener("input", () => {
   charCount.textContent = String(messageInput.value.length);
   if (messageInput.value.trim()) {
@@ -134,6 +216,12 @@ form.addEventListener("submit", async (e) => {
   if (!message) {
     messageError.hidden = false;
     messageInput.focus();
+    return;
+  }
+
+  if (containsBannedWord(message)) {
+    formError.textContent = "부적절한 표현이 포함되어 있어 등록할 수 없습니다.";
+    formError.hidden = false;
     return;
   }
 
@@ -154,16 +242,20 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "등록 중...";
 
+  const secret = crypto.randomUUID();
+
   const { data, error } = await supabase
     .from("messages")
-    .insert({ message })
-    .select("id, message, created_at")
+    .insert({ message, secret })
+    .select("id, message, created_at, secret")
     .single();
 
   if (error) {
     submitBtn.disabled = false;
     submitBtn.textContent = originalLabel;
-    formError.textContent = error.message && error.message.includes("message limit")
+    formError.textContent = error.message && error.message.includes("banned word")
+      ? "부적절한 표현이 포함되어 있어 등록할 수 없습니다."
+      : error.message && error.message.includes("message limit")
       ? "정원(60개)이 가득 차 더 이상 등록할 수 없습니다."
       : "메시지 등록에 실패했습니다. 다시 시도해주세요.";
     formError.hidden = false;
@@ -171,6 +263,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   submitBtn.textContent = originalLabel;
+  rememberMyMessage(data.id, data.secret);
   prependMessage(data, currentTotal);
 
   form.reset();
