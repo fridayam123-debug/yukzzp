@@ -290,6 +290,7 @@ body {
   animation: card-in 0.35s ease both;
   filter:
     drop-shadow(0 4px 5px rgba(64, 50, 80, 0.65))
+    drop-shadow(4px 3px 5px rgba(58, 45, 74, 0.5))
     drop-shadow(0 9px 11px rgba(74, 58, 92, 0.37));
   /* 섬유질 찢김 가장자리: 폴리곤(큰 찢김 형태)을 feTurbulence+feDisplacementMap으로
      한 번 더 미세하게 흔들어 종이 결처럼 불규칙한 경계를 만듦 (clip-path 대신 mask 사용 —
