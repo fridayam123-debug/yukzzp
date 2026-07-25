@@ -3,6 +3,7 @@
 const SUPABASE_URL = "YOUR_SUPABASE_URL";
 const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
 const MAX_MESSAGES = 60;
+const MIN_PAPERS = 4; // 첫 화면에 항상 보여줄 최소 페이퍼 수 (빈 종이 포함)
 const MY_MESSAGES_KEY = "rolling-paper:my-messages";
 
 // 서버(supabase.sql)에도 같은 목록으로 필터가 걸려있습니다.
@@ -91,9 +92,7 @@ async function handleDelete(id) {
 
   const remaining = wallGrid.querySelectorAll(".card:not([data-blank])").length;
   updateCapacityState(remaining);
-  if (remaining === 0) {
-    renderBlankPapers(4);
-  }
+  syncBlankPapers();
 }
 
 function renderCard(msg, index) {
@@ -131,14 +130,26 @@ function renderEmptyState(text) {
   wallGrid.innerHTML = `<div class="empty-state">${text}</div>`;
 }
 
-function renderBlankPapers(count = 4) {
-  wallGrid.innerHTML = "";
-  for (let i = 0; i < count; i++) {
-    const card = document.createElement("article");
-    card.dataset.blank = "true";
-    card.className = "card card--blank" + (i % 2 === 1 ? " card--alt" : "");
-    card.innerHTML = `<div class="card__inner"></div>`;
-    wallGrid.appendChild(card);
+function makeBlankPaper(positionIndex) {
+  const card = document.createElement("article");
+  card.dataset.blank = "true";
+  card.className = "card card--blank" + (positionIndex % 2 === 1 ? " card--alt" : "");
+  card.innerHTML = `<div class="card__inner"></div>`;
+  return card;
+}
+
+// 실제 메시지 카드 뒤에 빈 페이퍼를 채워 화면에 항상 최소 MIN_PAPERS장이 보이게 유지.
+// 수강생이 작성하면 빈 페이퍼 한 장이 실제 메시지로 채워지고,
+// 실제 메시지가 MIN_PAPERS장을 넘어서면 그때부터는 작성될 때마다 페이퍼가 추가로 늘어남.
+function syncBlankPapers() {
+  const realCount = wallGrid.querySelectorAll(".card:not([data-blank])").length;
+  const blanks = wallGrid.querySelectorAll(".card[data-blank]");
+  const desired = Math.max(0, MIN_PAPERS - realCount);
+  for (let i = blanks.length - 1; i >= desired; i--) {
+    blanks[i].remove();
+  }
+  for (let i = blanks.length; i < desired; i++) {
+    wallGrid.appendChild(makeBlankPaper(realCount + i));
   }
 }
 
@@ -156,20 +167,15 @@ function updateCapacityState(total) {
 
 function renderMessages(messages) {
   updateCapacityState(messages.length);
-  if (messages.length === 0) {
-    renderBlankPapers(4);
-    return;
-  }
   wallGrid.innerHTML = "";
   messages.forEach((msg, i) => wallGrid.appendChild(renderCard(msg, i)));
+  syncBlankPapers();
 }
 
 function prependMessage(msg, currentTotal) {
-  if (currentTotal === 0) {
-    wallGrid.innerHTML = "";
-  }
   const card = renderCard(msg, 0);
   wallGrid.prepend(card);
+  syncBlankPapers();
   updateCapacityState(currentTotal + 1);
 }
 
