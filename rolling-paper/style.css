@@ -365,7 +365,7 @@ body {
   position: relative;
   clip-path: var(--torn);
   background-color: var(--paper-rim); /* 본체 렌더 평균톤과 맞춘 값 — 흰 테두리 방지 */
-  padding: 25px 21px 17px;
+  padding: 32px 21px 22px; /* 세로 여백 42px → 54px (카드 높이 +10%) */
   height: 100%;
 }
 
@@ -401,7 +401,7 @@ body {
 }
 
 .card--blank .card__inner {
-  min-height: 155px;
+  min-height: 170px; /* 155px +10% */
   padding: 0;
 }
 
