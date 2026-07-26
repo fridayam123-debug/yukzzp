@@ -3,7 +3,9 @@
 const SUPABASE_URL = "https://trqpmrhbctaxtgukygrl.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_l2ofsOJdGUR6IWyg1pH9nQ_6GOHNUl5";
 const MAX_MESSAGES = 60;
-const MIN_PAPERS = 4; // 첫 화면에 항상 보여줄 최소 페이퍼 수 (빈 종이 포함)
+// 첫 화면에 항상 보여줄 최소 페이퍼 수 (빈 종이 포함).
+// PC는 한 줄에 3장이므로 6이면 3+3으로 딱 맞아 빈 줄이 어색해지지 않음.
+const MIN_PAPERS = 6;
 const MY_MESSAGES_KEY = "rolling-paper:my-messages";
 
 // 서버(supabase.sql)에도 같은 목록으로 필터가 걸려있습니다.
