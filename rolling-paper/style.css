@@ -298,8 +298,9 @@ body {
     drop-shadow(0 4px 5px rgba(64, 50, 80, 0.65))
     drop-shadow(4px 3px 5px rgba(58, 45, 74, 0.5))
     drop-shadow(0 9px 11px rgba(74, 58, 92, 0.37))
-    /* 하단 뒤쪽으로 깔리는 넓고 부드러운 접지 그림자 — 종이가 바닥에서 살짝 들린 느낌 */
-    drop-shadow(0 20px 16px rgba(52, 38, 68, 0.34));
+    /* 하단 뒤쪽으로 깔리는 넓고 부드러운 접지 그림자 — 종이가 바닥에서 살짝 들린 느낌
+       (20% 진하게 0.34→0.41, 1mm≈3.8px 더 아래로 20→24px) */
+    drop-shadow(0 24px 16px rgba(52, 38, 68, 0.41));
   /* 섬유질 찢김 가장자리: 폴리곤(큰 찢김 형태)을 feTurbulence+feDisplacementMap으로
      한 번 더 미세하게 흔들어 종이 결처럼 불규칙한 경계를 만듦 (clip-path 대신 mask 사용 —
      displacement가 경계 바깥으로도 살짝 삐져나올 수 있어 더 섬세하게 보임) */
