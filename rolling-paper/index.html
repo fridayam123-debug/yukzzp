@@ -31,6 +31,11 @@
       <p class="hero__label">CONGRATULATIONS</p>
       <h1 class="hero__title">전승기 강사님의 첫 강의<br />잊지 않겠습니다</h1>
       <p class="hero__subtitle">전승기를 만나면 전성기가 옵니다.</p>
+      <!-- 사진 파일이 없으면 깨진 이미지 대신 영역 자체를 제거 -->
+      <figure class="hero__portrait">
+        <img src="lecturer.jpg" alt="전승기 강사님" width="168" height="168"
+             onerror="this.closest('.hero__portrait').remove()" />
+      </figure>
       <p class="hero__hint">첫 강의를 함께한 마음을 남겨주세요.</p>
       <p class="hero__byline">from. 전성기를 준비하는 사람들</p>
     </header>
