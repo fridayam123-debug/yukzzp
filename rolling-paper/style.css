@@ -51,25 +51,6 @@ body {
   padding: 32px 0 48px;
 }
 
-.hero__doodle {
-  position: absolute;
-  opacity: 0.85;
-}
-
-.hero__doodle--butterfly {
-  top: -4px;
-  left: 4%;
-  width: 46px;
-  height: 46px;
-}
-
-.hero__doodle--sparkle {
-  top: 8px;
-  right: 4%;
-  width: 34px;
-  height: 34px;
-}
-
 .hero__label {
   margin: 0 0 16px;
   font-size: 14px;
