@@ -416,6 +416,28 @@ body {
   outline-offset: 2px;
 }
 
+.card__delete:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* window.confirm()이 막히는 인앱 브라우저(카카오톡 등) 대응 —
+   한 번 더 누르면 삭제되는 페이지 내장 확인 상태 */
+.card__delete--confirm {
+  width: auto;
+  height: 26px;
+  padding: 0 12px;
+  background: var(--accent-text);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.card__delete--confirm:hover {
+  background: var(--accent-text);
+}
+
 .card__message {
   margin: 0 0 20px;
   font-size: 15px;

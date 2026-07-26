@@ -70,19 +70,50 @@ function findMySecret(id) {
   return found ? found.secret : null;
 }
 
-async function handleDelete(id) {
+const DELETE_CONFIRM_MS = 4000;
+
+// 카카오톡 인앱 브라우저 등 일부 모바일 웹뷰는 window.confirm()을 차단하거나
+// 항상 false로 처리해 삭제가 되지 않는 문제가 있어, 네이티브 confirm 대신
+// 버튼을 두 번 눌러야 삭제되는 페이지 내장 확인 방식을 사용한다.
+async function handleDelete(id, btn) {
   const secret = findMySecret(id);
   if (!secret || !db) return;
-  if (!window.confirm("이 메시지를 삭제할까요? 되돌릴 수 없습니다.")) return;
 
-  const { error } = await db
+  if (btn && !btn.classList.contains("card__delete--confirm")) {
+    btn.classList.add("card__delete--confirm");
+    btn.textContent = "삭제?";
+    btn.setAttribute("aria-label", "삭제하려면 한 번 더 누르세요");
+    btn.dataset.confirmTimer = window.setTimeout(() => {
+      btn.classList.remove("card__delete--confirm");
+      btn.textContent = "×";
+      btn.setAttribute("aria-label", "메시지 삭제");
+    }, DELETE_CONFIRM_MS);
+    return;
+  }
+
+  if (btn) {
+    window.clearTimeout(Number(btn.dataset.confirmTimer));
+    btn.disabled = true;
+  }
+
+  // select()로 실제 삭제된 행을 받아 확인 — 없으면 화면에서만 지워지고
+  // 새로고침 때 다시 살아나는 조용한 실패가 된다
+  const { data: deleted, error } = await db
     .from("rolling_messages")
     .delete()
     .eq("id", id)
-    .eq("secret", secret);
+    .eq("secret", secret)
+    .select("id");
 
-  if (error) {
-    window.alert("삭제에 실패했습니다. 다시 시도해주세요.");
+  if (error || !deleted || deleted.length === 0) {
+    if (btn) {
+      btn.disabled = false;
+      btn.classList.remove("card__delete--confirm");
+      btn.textContent = "×";
+      btn.setAttribute("aria-label", "메시지 삭제");
+    }
+    formError.textContent = "삭제에 실패했습니다. 다시 시도해주세요.";
+    formError.hidden = false;
     return;
   }
 
@@ -220,7 +251,7 @@ async function loadMessages() {
 wallGrid.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-delete-id]");
   if (!btn) return;
-  handleDelete(btn.dataset.deleteId);
+  handleDelete(btn.dataset.deleteId, btn);
 });
 
 messageInput.addEventListener("input", () => {
