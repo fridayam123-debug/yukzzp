@@ -9,8 +9,9 @@
   <meta name="theme-color" content="#F8D9E6" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="마음 한 장" />
-  <link rel="apple-touch-icon" href="icon.svg" />
+  <meta name="apple-mobile-web-app-title" content="전승기 롤링페이퍼" />
+  <!-- iOS는 apple-touch-icon에 SVG를 지원하지 않아 PNG를 써야 홈 화면 아이콘이 나온다 -->
+  <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -70,5 +71,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="app.js" defer></script>
+  <!-- 안드로이드에서 "앱으로 설치"가 뜨게 하는 용도. 캐시는 하지 않으므로 최신 내용이 항상 보인다. -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>
