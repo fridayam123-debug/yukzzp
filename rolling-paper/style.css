@@ -95,17 +95,18 @@ body {
   color: var(--navy);
 }
 
-/* 강사님 사진 — 원형 크롭. 얼굴이 원 정중앙에 오도록 object-position으로 보정 */
+/* 강사님 사진 — 원형 크롭.
+   이미지 자체를 얼굴 정중선 기준 정사각형으로 재구성해두었으므로 50% 50%로 정중앙 정렬 */
 .hero__portrait {
   margin: 24px auto 20px;
-  width: clamp(140px, 20vw, 168px);
+  width: clamp(84px, 12vw, 101px);
   aspect-ratio: 1;
   border-radius: 999px;
   overflow: hidden;
   background: var(--paper);
   box-shadow:
-    0 0 0 5px rgba(255, 255, 255, 0.75),
-    0 12px 26px rgba(35, 39, 89, 0.18);
+    0 0 0 4px rgba(255, 255, 255, 0.75),
+    0 8px 18px rgba(35, 39, 89, 0.16);
 }
 
 .hero__portrait img {
@@ -113,7 +114,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 47% 42%;
+  object-position: 50% 50%;
 }
 
 .hero__hint {
