@@ -99,13 +99,13 @@ body {
    이미지 자체를 얼굴 정중선 기준 정사각형으로 재구성해두었으므로 50% 50%로 정중앙 정렬 */
 .hero__portrait {
   margin: 24px auto 20px;
-  width: clamp(84px, 12vw, 101px);
+  width: clamp(101px, 14.4vw, 121px);
   aspect-ratio: 1;
   border-radius: 999px;
   overflow: hidden;
   background: var(--paper);
   box-shadow:
-    0 0 0 4px rgba(255, 255, 255, 0.75),
+    0 0 0 4px var(--navy),
     0 8px 18px rgba(35, 39, 89, 0.16);
 }
 
