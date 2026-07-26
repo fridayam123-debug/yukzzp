@@ -52,10 +52,14 @@ create trigger enforce_message_limit
 create or replace function check_message_language()
 returns trigger as $$
 declare
+  -- '보지'·'자지'·'죽어'는 어미로 흔히 쓰여 정상 문구를 오차단했으므로
+  -- ("보지 못해서", "자지 않으셨나요", "죽어도 잊지 않겠습니다") 욕설 형태로만 좁혔다.
+  -- app.js의 BANNED_WORDS와 같은 목록으로 유지해야 함.
   banned text[] := array[
     '씨발', '씨팔', '시발', 'ㅅㅂ', '개새끼', '개새기', '개새키',
     '병신', 'ㅂㅅ', '지랄', '미친놈', '미친년', '좆', '존나', '존내',
-    '걸레', '창녀', '보지', '자지', '씹', '꺼져', '죽어', '개년', '개놈'
+    '걸레', '창녀', '씹', '꺼져', '개년', '개놈',
+    '죽어라', '죽어버려', '죽을래'
   ];
   w text;
   normalized text := lower(regexp_replace(NEW.message, '\s', '', 'g'));
