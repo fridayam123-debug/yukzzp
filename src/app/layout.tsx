@@ -45,6 +45,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   verification: {
+    // 구글 서치콘솔 "HTML 태그" 방식 소유확인 코드 (content 값만 넣으면 됨)
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     other: {
       'naver-site-verification': '08823a1fd3a76a7be6f8bf049777f51dfe28e9a1',
     },
